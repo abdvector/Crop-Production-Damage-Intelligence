@@ -45,6 +45,12 @@ For a new environment, install dependencies once with
 `python -m pip install -r requirements.txt` using the interpreter you will
 use to run the app.
 
+The dashboard uses the project theme in `.streamlit/config.toml`. File watching
+is disabled because inspecting Transformers' lazy modules can import unrelated
+optional vision dependencies and flood the terminal with errors. Sidebar controls
+still update normally. After editing source or theme settings, stop the app and
+run `app.py` again.
+
 ## Project implementation map
 
 - `app.py`: the dashboard and sole application entry point. Sidebar inputs

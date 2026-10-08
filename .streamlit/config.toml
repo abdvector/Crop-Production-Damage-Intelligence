@@ -1,0 +1,14 @@
+[server]
+# Transformers uses lazy modules; watching them imports unrelated vision models.
+fileWatcherType = "none"
+
+[theme]
+base = "dark"
+primaryColor = "#38BDA6"
+backgroundColor = "#0B1220"
+secondaryBackgroundColor = "#111C2E"
+textColor = "#E6EDF5"
+font = "sans serif"
+
+[browser]
+gatherUsageStats = false

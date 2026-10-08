@@ -8,6 +8,7 @@ Focus: Multi-Scale Crop Production Modeling, Soil Aluminium Toxicity, and Phenol
 import os
 import sys
 from pathlib import Path
+from html import escape
 
 # Resolve existing model/data paths relative to this file, including when
 # launching from an IDE or a different working directory.
@@ -22,13 +23,21 @@ if __name__ == "__main__":
 
         # Streamlit executes app.py again inside its script context. The guard
         # above prevents restarting the server during dashboard reruns.
-        cli.main(args=["run", str(PROJECT_ROOT / "app.py"), *sys.argv[1:]])
+        cli.main(args=["run", str(PROJECT_ROOT / "app.py"),
+                       "--server.fileWatcherType=none", *sys.argv[1:]])
         raise SystemExit(0)
 
 import streamlit as st
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+
+plt.rcParams.update({
+    "figure.facecolor": "#111C2E", "axes.facecolor": "#111C2E",
+    "text.color": "#E6EDF5", "axes.labelcolor": "#A9B8CA",
+    "xtick.color": "#A9B8CA", "ytick.color": "#A9B8CA",
+    "axes.edgecolor": "#334155", "font.size": 10,
+})
 
 from src.bio_embeddings import BioEmbeddingExtractor, WHEAT_PROTEIN_SEQUENCES
 from src.edaphic_features import EdaphicFeatureEngine, DISTRICT_SOIL_PROFILES
@@ -47,17 +56,23 @@ st.set_page_config(
 # Custom Styling
 st.markdown("""
 <style>
+    .block-container {max-width: 1480px; padding-top: 4.5rem; padding-bottom: 3rem;}
+    [data-testid="stSidebar"] {min-width: 300px; max-width: 320px;}
+    [data-testid="stSidebar"] h2 {font-size: 1.15rem;}
+    [data-testid="stSidebar"] h3 {font-size: 1rem;}
+    [data-testid="stTabs"] button {font-size: 0.92rem;}
     .main-header {
-        font-size: 2.2rem;
+        font-size: clamp(1.65rem, 2.1vw, 2.3rem);
+        line-height: 1.2;
         font-weight: 700;
-        color: #1B365D;
+        color: var(--text-color, #E6EDF5);
         margin-bottom: 0.2rem;
     }
     .brand-heading {
         display: flex;
         align-items: center;
         gap: 1rem;
-        border-bottom: 1px solid #E2E8F0;
+        border-bottom: 1px solid rgba(148,163,184,0.22);
         padding-bottom: 1rem;
         margin-bottom: 1rem;
     }
@@ -65,58 +80,78 @@ st.markdown("""
         flex: 0 0 48px;
         width: 48px;
         height: 48px;
-        color: #1B365D;
+        color: #38BDA6;
     }
     .sub-header {
-        font-size: 1.05rem;
-        color: #4A5568;
+        font-size: 0.88rem;
+        line-height: 1.8;
+        color: var(--text-color, #E6EDF5);
+        opacity: 0.75;
         margin-bottom: 1.5rem;
     }
     .diag-box-normal {
-        background-color: #ECFDF5;
-        border: 1px solid #10B981;
+        background-color: rgba(16,185,129,0.08);
+        border: 1px solid rgba(16,185,129,0.4);
         border-radius: 8px;
         padding: 1.2rem;
-        color: #065F46;
+        color: var(--text-color);
     }
     .diag-box-moderate {
-        background-color: #FFFBEB;
-        border: 1px solid #F59E0B;
+        background-color: rgba(245,158,11,0.08);
+        border: 1px solid rgba(245,158,11,0.4);
         border-radius: 8px;
         padding: 1.2rem;
-        color: #92400E;
+        color: var(--text-color);
     }
     .diag-box-severe {
-        background-color: #FEF2F2;
-        border: 1px solid #EF4444;
+        background-color: rgba(239,68,68,0.08);
+        border: 1px solid rgba(239,68,68,0.4);
         border-radius: 8px;
         padding: 1.2rem;
-        color: #991B1B;
+        color: var(--text-color);
     }
     .paper-card {
-        background-color: #F8FAFC;
-        border-left: 4px solid #1B365D;
+        background-color: var(--secondary-background-color, #111C2E);
+        color: var(--text-color);
+        border: 1px solid rgba(148,163,184,0.22);
+        border-left: 3px solid #38BDA6;
         padding: 1rem;
         border-radius: 6px;
         margin-bottom: 1rem;
     }
+    .paper-card h4, [class^="diag-box"] h3 {color: inherit; font-size: 1.2rem;}
+    .metric-grid {display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 1rem; margin: 1.2rem 0 1.7rem;}
+    .metric-card {background: var(--secondary-background-color, #111C2E); border: 1px solid rgba(148,163,184,0.22); border-radius: 12px; padding: 1.15rem; min-width: 0;}
+    .metric-label {font-size: 0.8rem; opacity: 0.75; margin-bottom: 0.65rem;}
+    .metric-value {font-size: clamp(1.5rem,2.1vw,2.1rem); font-weight: 650; line-height: 1.25; overflow-wrap: anywhere;}
+    .metric-unit {font-size: 0.85rem; opacity: 0.7; font-weight: 400;}
+    .metric-note {font-size: 0.8rem; opacity: 0.75; margin-top: 0.65rem;}
+    .metric-severity {font-size: 1.1rem; line-height: 1.5;}
+    .context-label {font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.12em; color: #38BDA6; margin-bottom: 0.5rem;}
+    @media(max-width: 1000px) {.metric-grid {grid-template-columns: repeat(2,minmax(0,1fr));}}
+    @media(max-width: 900px) {
+        [data-testid="stMain"] [data-testid="stHorizontalBlock"] {flex-direction: column;}
+        [data-testid="stMain"] [data-testid="stColumn"] {width: 100%; flex: 1 1 100%;}
+    }
+    @media(max-width: 580px) {.metric-grid {grid-template-columns: 1fr;} .brand-heading {align-items: flex-start;} .block-container {padding: 4rem 1rem 1rem;}}
 </style>
 """, unsafe_allow_html=True)
 
 # Title & Institution Banner
 st.markdown('''<div class="brand-heading">
     <svg class="brand-mark" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-        <rect x="1" y="1" width="46" height="46" rx="10" fill="#EFF4FA"/>
+        <rect x="1" y="1" width="46" height="46" rx="10" fill="#111C2E"/>
         <path d="M11 34H37M14 29V24M23 29V19M32 29V14"
               stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-        <path d="M13 19L22 14L31 9" stroke="#527A9F" stroke-width="2"
+        <path d="M13 19L22 14L31 9" stroke="#38BDA6" stroke-width="2"
               stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
-    <div class="main-header">Wheat Crop Production &amp; Damage Intelligence System</div>
+    <div><div class="context-label">Crop research / Decision support</div>
+    <div class="main-header">Wheat Production &amp; Damage Intelligence</div></div>
 </div>''', unsafe_allow_html=True)
 st.markdown('<div class="sub-header"><b>Birla Institute of Technology, Mesra</b><br>'
-            'Department of Quantitative Economics and Data Science | Guide: Dr. Manish Kumar Pandey<br>'
-            'Multi-Scale Modeling: From Molecular Defense Proteins and Subsurface Soil Toxicity to Vast Acreage Yield Prediction</div>', unsafe_allow_html=True)
+            'Department of Quantitative Economics and Data Science<br>'
+            'Guide: Dr. Manish Kumar Pandey</div>', unsafe_allow_html=True)
 
 # Cache Engines
 @st.cache_resource
@@ -134,27 +169,29 @@ bio_engine, edaphic_engine, weather_engine, xai_engine, damage_engine, dataset_d
 # ==========================================
 # SIDEBAR: Simulation & Agronomic Controls
 # ==========================================
-st.sidebar.header("Field & Simulation Controls")
+st.sidebar.header("Field configuration")
+st.sidebar.caption("Adjust a field scenario to explore production risk.")
 
 # District Selection
 districts = edaphic_engine.get_all_districts()
-selected_district = st.sidebar.selectbox("Select District / Agro-Climatic Zone:", districts, index=0)
+selected_district = st.sidebar.selectbox("District", districts, index=0)
 soil_profile = edaphic_engine.get_district_profile(selected_district)
 
 st.sidebar.markdown(f"**State:** {soil_profile['state']} | **Soil:** {soil_profile['soil_type']}")
 
 # Wheat Variety Selection
-st.sidebar.subheader("Crop Variety (Molecular Defense Profile)")
+st.sidebar.subheader("Crop profile")
 variety_options = list(WHEAT_PROTEIN_SEQUENCES.keys())
-selected_variety = st.sidebar.selectbox("Select Wheat Cultivar / Protein Marker:", variety_options, index=1)
+selected_variety = st.sidebar.selectbox("Protein / cultivar profile", variety_options, index=1,
+                                       format_func=lambda value: value.replace("_", " "))
 variety_profile = bio_engine.get_variety_resilience_profile(selected_variety)
 
-st.sidebar.info(f"**Key Marker:** {variety_profile['uniprot_id']}\n"
-               f"**Defense Category:** {variety_profile['tolerance_type']}\n"
-               f"**Protein Resilience Index:** {variety_profile['baseline_resilience']:.2f} / 1.00")
+st.sidebar.markdown(f"**Marker:** {variety_profile['uniprot_id']}  \n"
+                    f"**Defense:** {variety_profile['tolerance_type'].replace('_', ' ')}  \n"
+                    f"**Resilience:** {variety_profile['baseline_resilience']:.2f} / 1.00")
 
 # What-If Climatic & Edaphic Stress Sliders
-st.sidebar.subheader("Environmental Stress Simulation")
+st.sidebar.subheader("Environmental stress")
 override_ph = st.sidebar.slider("Soil pH Level:", min_value=4.0, max_value=8.0, value=float(soil_profile["pH"]), step=0.1)
 override_al_sat = st.sidebar.slider("Soil Aluminium Saturation (%):", min_value=0.0, max_value=80.0, value=float(soil_profile["al_saturation_pct"]), step=1.0)
 heatwave_anomaly = st.sidebar.slider("Flowering Heatwave Anomaly (°C spike):", min_value=0.0, max_value=6.0, value=1.5, step=0.5)
@@ -205,33 +242,28 @@ damage_report = damage_engine.assess_damage(explanation, {
 # ==========================================
 # MAIN DASHBOARD METRICS
 # ==========================================
-col1, col2, col3, col4 = st.columns(4)
-
-with col1:
-    st.metric("Potential Target Yield", f"{damage_report['base_potential_yield_kg_ha']:.0f} kg/ha", "Normal potential")
-with col2:
-    st.metric("Predicted Crop Damage", f"{damage_report['predicted_loss_pct']:.1f}%", f"{'High Stress' if damage_report['predicted_loss_pct'] >= 25 else 'Moderate'}", delta_color="inverse")
-with col3:
-    st.metric("Estimated Net Production", f"{damage_report['harvested_yield_kg_ha']:.0f} kg/ha", f"Loss: {damage_report['production_loss_kg_ha']:.0f} kg/ha", delta_color="inverse")
-with col4:
-    st.metric("Damage Severity Tier", damage_report["damage_severity"])
-
-st.markdown("---")
+st.caption(f"{selected_district}, {soil_profile['state']} | Rabi season 2024 | Simulated field scenario")
+st.markdown(f"""<div class="metric-grid">
+<div class="metric-card"><div class="metric-label">Potential yield</div><div class="metric-value">{damage_report['base_potential_yield_kg_ha']:,.0f} <span class="metric-unit">kg/ha</span></div><div class="metric-note">Baseline production potential</div></div>
+<div class="metric-card"><div class="metric-label">Predicted crop loss</div><div class="metric-value">{damage_report['predicted_loss_pct']:.1f}<span class="metric-unit"> %</span></div><div class="metric-note">Deviation from potential yield</div></div>
+<div class="metric-card"><div class="metric-label">Estimated production</div><div class="metric-value">{damage_report['harvested_yield_kg_ha']:,.0f} <span class="metric-unit">kg/ha</span></div><div class="metric-note">{damage_report['production_loss_kg_ha']:,.0f} kg/ha estimated loss</div></div>
+<div class="metric-card"><div class="metric-label">Damage assessment</div><div class="metric-value metric-severity">{escape(damage_report['damage_severity'])}</div><div class="metric-note">Based on predicted yield loss</div></div>
+</div>""", unsafe_allow_html=True)
 
 # ==========================================
 # TABS INTERFACE
 # ==========================================
 tab_diag, tab_xai, tab_acreage, tab_lit, tab_data = st.tabs([
-    "Production & Damage Diagnostics",
-    "Stress Determinants (Explainable AI)",
-    "Acreage Scaling & Satellite Integration",
-    "Landmark Scientific Literature",
-    "District Production Benchmark"
+    "Overview",
+    "Stress drivers",
+    "Regional scaling",
+    "Research",
+    "Dataset & models"
 ])
 
 # TAB 1: PRODUCTION & DAMAGE DIAGNOSTICS
 with tab_diag:
-    st.subheader(f"Agronomic Damage Assessment: {selected_district} ({soil_profile['state']})")
+    st.subheader("Field assessment")
     
     col_d1, col_d2 = st.columns([3, 2])
     
@@ -239,7 +271,7 @@ with tab_diag:
         css_class = "diag-box-normal" if damage_report['predicted_loss_pct'] < 10 else ("diag-box-moderate" if damage_report['predicted_loss_pct'] < 25 else "diag-box-severe")
         st.markdown(f"""
         <div class="{css_class}">
-            <h3>{damage_report['damage_severity'].upper()}</h3>
+            <h3>{damage_report['damage_severity']}</h3>
             <p><b>Observation Window:</b> Rabi Sowing to Harvest (2024)</p>
             <p><b>Crop Variety:</b> {selected_variety} | <b>Soil Type:</b> {soil_profile['soil_type']}</p>
             <hr>
@@ -283,10 +315,14 @@ with tab_xai:
             "Baseline Potential": max(0.0, explanation['base_expected_loss_pct'])
         }
         fig, ax = plt.subplots(figsize=(6, 4.5))
-        colors = ["#D9534F", "#F0AD4E", "#0275D8", "#6C757D"]
-        ax.pie(det_data.values(), labels=det_data.keys(), autopct='%1.1f%%', colors=colors, startangle=140)
+        colors = ["#E58A80", "#D9B568", "#68A7CF", "#728197"]
+        ax.pie(det_data.values(), labels=det_data.keys(), autopct='%1.1f%%', colors=colors,
+               startangle=140, wedgeprops={"width": 0.5, "edgecolor": "#111C2E"},
+               textprops={"fontsize": 9})
         ax.axis('equal')
+        fig.tight_layout()
         st.pyplot(fig)
+        plt.close(fig)
 
     with col_xai2:
         st.markdown("##### Top Individual Feature Shapley Values")
@@ -295,10 +331,13 @@ with tab_xai:
         feat_vals = [f[1] for f in top_feats]
         
         fig2, ax2 = plt.subplots(figsize=(7, 4.5))
-        bars = ax2.barh(feat_names[::-1], feat_vals[::-1], color=["#D9534F" if v > 0 else "#5CB85C" for v in feat_vals[::-1]])
+        ax2.barh(feat_names[::-1], feat_vals[::-1], color=["#E58A80" if v > 0 else "#38BDA6" for v in feat_vals[::-1]])
         ax2.set_xlabel("Impact on Predicted Yield Loss (%)")
-        ax2.axvline(0, color="black", linestyle="--", linewidth=0.8)
+        ax2.axvline(0, color="#728197", linestyle="--", linewidth=0.8)
+        ax2.spines[["top", "right"]].set_visible(False)
+        fig2.tight_layout()
         st.pyplot(fig2)
+        plt.close(fig2)
 
 # TAB 3: ACREAGE SCALING & SATELLITE
 with tab_acreage:
