@@ -19,6 +19,7 @@ from src.rice_validation import load_nested_results, run_nested_benchmark
 from src.rice_context import load_context_results, run_context_benchmark
 from src.rice_reliability import load_reliability, run_reliability
 from src.rice_aluminium import load_aluminium_study
+from src.rice_literature import load_literature_results, run_literature_benchmark
 
 st.set_page_config(page_title="Rice Yield Research", layout="wide")
 st.markdown("""<style>
@@ -34,8 +35,9 @@ st.caption("Birla Institute of Technology, Mesra | Department of Quantitative Ec
 st.write("Forecasting yield per hectare at unseen locations using published trials, early-season weather, planting records and genetic markers.")
 with st.sidebar:
     st.header("Research controls")
-    evaluation = st.selectbox("Evaluation method", ["Planting and full-SNP validation", "Nested location validation", "Original fixed baseline"])
+    evaluation = st.selectbox("Evaluation method", ["Planting and full-SNP validation", "Literature-guided validation", "Nested location validation", "Original fixed baseline"])
     contextual = evaluation == "Planting and full-SNP validation"
+    literature = evaluation == "Literature-guided validation"
     nested = evaluation != "Original fixed baseline"
     cutoff = st.selectbox("Forecast date: days after seeding", [60, 30, 45, 75, 90])
     st.caption("Includes weather from seeding day through the selected day. Later observations are excluded.")
@@ -45,7 +47,7 @@ with st.sidebar:
         try:
             with st.spinner("Evaluating held-out locations..."):
                 if nested:
-                    runner = run_context_benchmark if contextual else run_nested_benchmark
+                    runner = run_literature_benchmark if literature else run_context_benchmark if contextual else run_nested_benchmark
                     runner(cutoff, progress=lambda n, total, group: progress.progress(
                         (n - 1) / total, text=f"Location {n}/{total}: {group}"))
                     if contextual:
@@ -67,8 +69,8 @@ with st.sidebar:
     st.divider()
     st.caption("Protein embeddings: pending variety linkage. Aluminium: separate CIRAD study. No causal damage or monetary savings are estimated.")
 
-results = load_context_results(cutoff) if contextual else load_nested_results(cutoff) if nested else load_results(cutoff)
-result_folder = "context" if contextual else "nested" if nested else "baseline"
+results = load_literature_results(cutoff) if literature else load_context_results(cutoff) if contextual else load_nested_results(cutoff) if nested else load_results(cutoff)
+result_folder = "literature" if literature else "context" if contextual else "nested" if nested else "baseline"
 validation, reliability, aluminium, explore, readiness = st.tabs(["Validation results", "Reliability and uncertainty", "Aluminium supporting study", "Trial explorer", "Data readiness"])
 with validation:
     st.subheader("Transfer to unseen locations")
@@ -87,13 +89,24 @@ with validation:
                                     "RMSE_kg_ha":st.column_config.NumberColumn("RMSE (kg/ha)",format="%.1f"),
                                     "R2":st.column_config.NumberColumn("R squared",format="%.3f"),
                                     "bias_kg_ha":st.column_config.NumberColumn("Bias (kg/ha)",format="%.1f")})
-        combined_name = "Context + full-SNP selection" if contextual else "Nested weather + genetics selection" if nested else "Weather + genetics Ridge"
+        combined_name = "Literature full selection" if literature else "Context + full-SNP selection" if contextual else "Nested weather + genetics selection" if nested else "Weather + genetics Ridge"
         combined_rmse = metrics.loc[metrics.model == combined_name, "RMSE_kg_ha"].iloc[0]
         mean_rmse = metrics.loc[metrics.model == "Training mean", "RMSE_kg_ha"].iloc[0]
         if combined_rmse >= mean_rmse:
             st.warning("The procedure with genetics available does not beat the training-mean baseline at unseen locations. These results do not support deployment.")
         else:
             st.info(f"RMSE is {100 * (1 - combined_rmse / mean_rmse):.1f}% lower than the training-mean baseline. This is development validation; external reliability is not established.")
+        if literature:
+            previous = load_context_results(cutoff)
+            if previous is not None:
+                previous_rmse = previous[0].loc[previous[0].model.eq("Context + full-SNP selection"), "RMSE_kg_ha"].iloc[0]
+                st.caption(f"Previous context benchmark RMSE: {previous_rmse:,.1f} kg/ha. Literature experiment RMSE: {combined_rmse:,.1f} kg/ha. The same records and outer locations are used.")
+                with st.expander("Compare each location with the previous benchmark"):
+                    earlier = previous[2].loc[previous[2].model.eq("Context + full-SNP selection"), ["held_out_location", "RMSE_kg_ha"]].rename(columns={"RMSE_kg_ha": "previous_RMSE_kg_ha"})
+                    current = folds.loc[folds.model.eq(combined_name), ["held_out_location", "RMSE_kg_ha"]].rename(columns={"RMSE_kg_ha": "literature_RMSE_kg_ha"})
+                    comparison = earlier.merge(current, on="held_out_location", validate="one_to_one")
+                    comparison["improvement_kg_ha"] = comparison.previous_RMSE_kg_ha - comparison.literature_RMSE_kg_ha
+                    st.dataframe(comparison, hide_index=True, width="stretch")
         if nested:
             st.caption("Candidate choices use inner held-out locations only. The outer test location is excluded from tuning. Each location receives equal weight in selection.")
             original = load_results(cutoff)
@@ -109,10 +122,10 @@ with validation:
         with right:
             st.write("Performance by held-out location")
             display_columns = ["held_out_location","test_records","MAE_kg_ha","bias_kg_ha"]
-            if contextual:
+            if contextual or literature:
                 display_columns.append("Pearson_r")
             st.dataframe(folds.loc[folds.model == model, display_columns], hide_index=True, height=370)
-            if contextual:
+            if contextual or literature:
                 st.caption("Within-location correlation can mix seasons. It does not measure absolute yield accuracy or isolate variety ranking; constant predictions have no defined correlation.")
         st.subheader("Low-yield risk: exploratory")
         st.write(summary['low_yield_definition'])
@@ -121,7 +134,11 @@ with validation:
         b.metric("Training-prevalence Brier score", f"{summary['prevalence_Brier']:.3f}")
         st.caption("Lower Brier scores are better. This is low-yield risk, not observed crop damage. Probabilities have not been externally calibrated.")
         with st.expander("Evaluation assumptions and limitations"):
-            if contextual:
+            if literature:
+                st.write("The declared search preserves all thirteen earlier candidates and adds ten compact weather PLS/Ridge, balanced genomic PLS and centred genomic/reaction-norm candidates. Six weather summaries include diurnal temperature range and approximate VPD. Each transform uses training inputs only; candidate choice uses inner locations.")
+                st.write("These are literature-guided adaptations, not exact published-model replications. The two-stage models learn genetic deviations from observed training environment means; no test environment mean is used. This dataset has already informed development, so the run is not an independent external test.")
+                st.link_button("Rice PLS and reaction-norm study", "https://doi.org/10.1534/g3.119.400064")
+            elif contextual:
                 st.write("The declared search adds observed planting dates/methods, 15-day weather summaries, descriptive heat/rainfall proxies and a full-SNP relationship kernel. All positive genetic kernel components are retained. Penalties and model choices use inner locations only.")
                 st.write("This is a genomic kernel benchmark, not an exact reproduction of the paper's Bayesian GBLUP. Physical planting density is excluded because spacing units and plants per hill are unresolved.")
                 st.write("This development dataset has been inspected previously; external evaluation remains necessary.")
@@ -135,19 +152,26 @@ with validation:
         if nested:
             with st.expander("Location diagnostics and selected candidates"):
                 diagnostics = pd.read_csv(PROJECT_ROOT / f"data/processed/rice/{result_folder}/day_{cutoff}/location_diagnostics.csv")
-                if contextual:
+                if contextual or literature:
                     diagnostics = diagnostics.rename(columns={"weather_features_outside_training_range": "context_features_outside_training_range", "fraction_records_outside_weather_range": "fraction_records_outside_context_range"})
                 st.dataframe(diagnostics, hide_index=True, width="stretch")
                 st.dataframe(folds[["model", "held_out_location", "selected_candidate"]], hide_index=True, width="stretch")
-                if contextual:
+                if contextual or literature:
                     st.write("Variety ranking within each trial environment")
-                    st.dataframe(pd.read_csv(PROJECT_ROOT / f"data/processed/rice/context/day_{cutoff}/environment_ranking.csv"), hide_index=True, width="stretch")
-                    st.caption("The context-only predictions are constant within a trial, so they cannot rank its varieties. A blank correlation means ranking is undefined, not zero measured skill.")
+                    st.dataframe(pd.read_csv(PROJECT_ROOT / f"data/processed/rice/{result_folder}/day_{cutoff}/environment_ranking.csv"), hide_index=True, width="stretch")
+                    st.caption("Environment-only predictions are constant within a trial, so they cannot rank its varieties. A blank correlation means ranking is undefined, not zero measured skill.")
         st.download_button("Download held-out predictions", predictions.to_csv(index=False), "rice_held_out_predictions.csv", "text/csv")
 with reliability:
     st.subheader("How stable are the findings?")
     reliable = load_reliability(cutoff) if contextual else None
-    if not contextual:
+    if literature:
+        if results is None:
+            st.info("Run the literature-guided benchmark for this forecast date first.")
+        else:
+            st.dataframe(pd.read_csv(PROJECT_ROOT / f"data/processed/rice/literature/day_{cutoff}/location_stability.csv"), hide_index=True, width="stretch")
+            st.caption("Paired equal-location improvements against training mean, with descriptive 95% bootstrap ranges. Overlapping folds and prior development prevent treating these as formal significance tests.")
+            st.info("Prediction intervals have not been calibrated for the literature-guided model. The context experiment's separate split intervals do not apply to this model.")
+    elif not contextual:
         st.info("Select Planting and full-SNP validation to inspect its reliability experiment.")
     elif reliable is None:
         st.info("Run the planting benchmark or update its reliability report for this forecast date.")
@@ -218,6 +242,12 @@ with explore:
             st.dataframe(pd.read_csv(feature_folder / "environment_features.csv"), hide_index=True, width="stretch")
             with st.expander("Feature provenance and units"):
                 st.dataframe(pd.read_csv(feature_folder / "feature_catalogue.csv"), hide_index=True, width="stretch")
+        elif literature:
+            feature_folder = PROJECT_ROOT / f"data/processed/rice/literature/day_{cutoff}"
+            st.write("Compact weather inputs added by the literature experiment")
+            st.dataframe(pd.read_csv(feature_folder / "compact_features.csv"), hide_index=True, width="stretch")
+            st.dataframe(pd.read_csv(feature_folder / "compact_feature_catalogue.csv"), hide_index=True, width="stretch")
+            st.caption("VPD is an approximation from daily temperatures and mean humidity. Rainfall is not irrigation. Calendar windows stop at the issue date and do not claim observed reproductive-stage timing.")
 with readiness:
     st.subheader("What the current model uses")
     st.dataframe(pd.DataFrame([

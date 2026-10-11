@@ -1,0 +1,7 @@
+feature,unit,source,window
+lit_mean_min_temperature_c,C,daily_weather.csv,"Seeding day through day 60, inclusive"
+lit_mean_temperature_c,C,daily_weather.csv,"Seeding day through day 60, inclusive"
+lit_mean_diurnal_range_c,C,daily_weather.csv,"Seeding day through day 60, inclusive"
+lit_mean_radiation_mj_m2_day,MJ/m2/day,daily_weather.csv,"Seeding day through day 60, inclusive"
+lit_total_rain_mm,mm,daily_weather.csv,"Seeding day through day 60, inclusive"
+lit_mean_vpd_approx_kpa,kPa,daily_weather.csv,"Seeding day through day 60, inclusive"

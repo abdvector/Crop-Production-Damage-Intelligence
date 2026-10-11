@@ -47,6 +47,8 @@ The default Planting and full-SNP evaluation adds observed planting context, 15-
 
 ## Files
 
+The selectable Literature-guided validation experiment adds compact weather PLS, block-balanced genomic PLS and centred genetic/reaction-norm candidates, motivated by relevant rice studies. Day-60 RMSE is **982.5 kg/ha**, versus 1,004.8 previously and 1,036.5 for training mean. The gain occurs at Los Banos; eleven folds are unchanged, and genetic benefit remains negligible. This is development evidence, not reliable deployment. See [protocol](docs/Rice_Literature_Protocol.md) and [results](docs/Rice_Literature_Results.md). Earlier models and the default context mode remain available.
+
 The Reliability and uncertainty tab reports paired whole-location bootstrap stability, training-only environmental transfer diagnostics, and a separate split prediction-interval experiment. The interval model uses six fitting, four calibration and two assessment locations; it is not the main twelve-fold model. Four calibration locations permit finite 80% intervals but unbounded 90% intervals. Coverage depends on exchangeability of locations, which is not established here. See [the reliability protocol](docs/Rice_Reliability_Protocol.md) and [results](docs/Rice_Reliability_Results.md).
 
 The Aluminium supporting study tab compares 334 paired genetic families from CIRAD, with published soil-condition summaries. It is descriptive, uses a separate population and one site-season, and does not isolate a causal aluminium effect. Neither this study nor the optional restricted IRRI archive is substituted for missing primary-trial inputs.
@@ -57,12 +59,14 @@ The Aluminium supporting study tab compares 334 paired genetic families from CIR
 - `src/rice_context.py`: planting/weather features and full-SNP relationship kernels.
 - `src/rice_reliability.py`: location stability, environmental novelty and separate split intervals.
 - `src/rice_aluminium.py`: paired descriptive comparison of published CIRAD soil-condition yields.
+- `src/rice_literature.py`: compact environmental PLS and centred genomic/reaction-norm adaptations.
 - `data/raw/rice/`: original acquired sources.
 - `data/processed/rice/`: audited tables, linkage maps and baseline results.
 - `data/processed/rice/baseline/day_60/`: predictions, metrics, forecast windows and input SHA-256 hashes.
 - `data/processed/rice/nested/day_60/`: nested results, inner scores, selected candidates, diagnostics and provenance.
 - `data/processed/rice/context/day_60/`: new results, feature catalogue and within-trial rankings.
 - `data/processed/rice/reliability/day_60/`: paired stability ranges, transfer diagnostics, interval split, calibration scores, assessment and hashes.
+- `data/processed/rice/literature/day_60/`: separate literature-guided predictions, candidate selection, compact features and results.
 - `docs/`: research question, audits, linkage boundaries and results.
 - `Research Papers/` and `Presentation_Figures/`: retained documents and figures.
 
