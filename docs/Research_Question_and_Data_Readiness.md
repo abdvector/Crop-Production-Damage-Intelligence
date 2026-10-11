@@ -30,6 +30,8 @@ CIRAD provides genetic families and yield in two soil conditions at one site-sea
 
 ## Readiness decision
 
+The planting/full-SNP experiment now achieves RMSE about 1,005 kg/ha versus 1,037 for training mean, a modest development gain. Genetic candidates add no improvement to context selection, and risk uses prevalence. Additional disease/management observations were acquired but do not add linked yield records. See [Rice_Context_Results.md](Rice_Context_Results.md) and [Rice_Management_Data_Search.md](Rice_Management_Data_Search.md). Primary soil, irrigation, fertiliser, physical density and protein links remain unresolved.
+
 Enough data to start the environmental/genetic benchmark and molecular linkage work. Not enough verified linked data to train the complete protein-embedding extension or an all-variable soil/aluminium/management model. No further indiscriminate downloads are required. The first rice baseline has now been evaluated at a 60-day cutoff with 12 held-out locations. Weather-plus-genetics Ridge did not beat the training-mean comparator, and the low-yield classifier did not beat training prevalence. See [Rice_Baseline_Results.md](Rice_Baseline_Results.md). Matched molecular inputs remain unresolved.
 
 Sources:

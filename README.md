@@ -16,7 +16,7 @@ The current dashboard uses real published rice trials, SNP markers and NASA POWE
 
 Run `python app.py` with the project interpreter. From PowerShell, the existing environment can be used with `.\.venv\Scripts\python.exe app.py`. For a new environment, install `requirements.txt` first. Stop the server with Ctrl+C. The sole application entry point is `app.py`; no separate launcher is required. Restart after source edits because file watching is disabled.
 
-## Current benchmark
+## Data and first baseline
 
 Primary dataset: [Nguyen et al.](https://doi.org/10.1186/s12284-023-00623-6).
 
@@ -37,19 +37,25 @@ The combined model does not beat the mean baseline. Low-yield classifier Brier s
 
 ## Improvement experiment
 
-The dashboard now defaults to nested location validation. A predeclared search tests stronger regularisation, five training-fitted genetic PCs, genetic/weather interactions and environment-level forests. Candidate choices are made using inner held-out locations only. The original fixed baseline remains available through Evaluation method.
+The first improvement used nested location validation. Its predeclared search tested stronger regularisation, five training-fitted genetic PCs, genetic/weather interactions and environment-level forests. Candidate choices used inner held-out locations only. It remains available through Evaluation method alongside the original baseline and latest experiment.
 
 Nested selection reduced RMSE to **1,045.3 kg/ha** from 1,228.9, but the mean baseline is still better at 1,036.5. Risk Brier score improved to **0.174** from 0.306, but prevalence remains better at 0.167. Genetic candidates were never selected. These are development findings, not externally validated forecasting skill. See [the improvement report](docs/Rice_Improvement_Results.md) and [the declared protocol](docs/Rice_Improvement_Protocol.md).
+
+## Latest planting and full-SNP experiment
+
+The default Planting and full-SNP evaluation adds observed planting context, 15-day weather summaries and a relationship benchmark retaining all SNP information. RMSE is **1,004.8 kg/ha**, about **3.1% better** than training mean; eight locations improve and four worsen. Genetics adds no improvement to context selection. Risk falls back to prevalence. Physical density and primary irrigation/fertiliser/soil remain unresolved. See [results](docs/Rice_Context_Results.md), [paper comparison](docs/Rice_Paper_Comparison.md) and [data search](docs/Rice_Management_Data_Search.md). This remains development evidence with substantial errors.
 
 ## Files
 
 - `app.py`: rice dashboard, benchmark controls, trial explorer and readiness status.
 - `src/rice_baseline.py`: cutoff checks, predictor construction, grouped evaluation and result loading.
 - `src/rice_validation.py`: nested candidate selection, training-only genetic compression and location diagnostics.
+- `src/rice_context.py`: planting/weather features and full-SNP relationship kernels.
 - `data/raw/rice/`: original acquired sources.
 - `data/processed/rice/`: audited tables, linkage maps and baseline results.
 - `data/processed/rice/baseline/day_60/`: predictions, metrics, forecast windows and input SHA-256 hashes.
 - `data/processed/rice/nested/day_60/`: nested results, inner scores, selected candidates, diagnostics and provenance.
+- `data/processed/rice/context/day_60/`: new results, feature catalogue and within-trial rankings.
 - `docs/`: research question, audits, linkage boundaries and results.
 - `Research Papers/` and `Presentation_Figures/`: retained documents and figures.
 

@@ -1,0 +1,61 @@
+model,environment_id,test_records,within_environment_Pearson_r,ranking_defined
+Context + full-SNP selection,BD_GZ_19W,88,,False
+Context + full-SNP selection,BD_NM_19W,85,,False
+Context + full-SNP selection,IN_CU_19W,38,,False
+Context + full-SNP selection,IN_HY_18W,37,,False
+Context + full-SNP selection,IN_HY_19D,37,,False
+Context + full-SNP selection,IN_HY_19W,31,,False
+Context + full-SNP selection,IN_MA_19W,38,,False
+Context + full-SNP selection,IN_RP_19W,38,,False
+Context + full-SNP selection,KE_AH_19D,89,,False
+Context + full-SNP selection,KE_MW_20W,89,,False
+Context + full-SNP selection,MZ_CK_20W,88,,False
+Context + full-SNP selection,MZ_MP_20W,88,,False
+Context + full-SNP selection,PH_LB_19D,107,,False
+Context + full-SNP selection,PH_LB_19W,107,,False
+Context + full-SNP selection,TZ_DK_20W,86,,False
+Context selection,BD_GZ_19W,88,,False
+Context selection,BD_NM_19W,85,,False
+Context selection,IN_CU_19W,38,,False
+Context selection,IN_HY_18W,37,,False
+Context selection,IN_HY_19D,37,,False
+Context selection,IN_HY_19W,31,,False
+Context selection,IN_MA_19W,38,,False
+Context selection,IN_RP_19W,38,,False
+Context selection,KE_AH_19D,89,,False
+Context selection,KE_MW_20W,89,,False
+Context selection,MZ_CK_20W,88,,False
+Context selection,MZ_MP_20W,88,,False
+Context selection,PH_LB_19D,107,,False
+Context selection,PH_LB_19W,107,,False
+Context selection,TZ_DK_20W,86,,False
+Full-SNP genomic control,BD_GZ_19W,88,0.13216760583115897,True
+Full-SNP genomic control,BD_NM_19W,85,-0.07377742430415224,True
+Full-SNP genomic control,IN_CU_19W,38,0.24724380660199,True
+Full-SNP genomic control,IN_HY_18W,37,-0.01622735253123467,True
+Full-SNP genomic control,IN_HY_19D,37,-0.006151865515734701,True
+Full-SNP genomic control,IN_HY_19W,31,0.03791303653437806,True
+Full-SNP genomic control,IN_MA_19W,38,-0.011052806131749039,True
+Full-SNP genomic control,IN_RP_19W,38,0.3646527670483543,True
+Full-SNP genomic control,KE_AH_19D,89,-0.01637391518952338,True
+Full-SNP genomic control,KE_MW_20W,89,0.3460933355704352,True
+Full-SNP genomic control,MZ_CK_20W,88,0.37909055122203694,True
+Full-SNP genomic control,MZ_MP_20W,88,0.15737961615100943,True
+Full-SNP genomic control,PH_LB_19D,107,0.1995633819708321,True
+Full-SNP genomic control,PH_LB_19W,107,-0.05448217683099728,True
+Full-SNP genomic control,TZ_DK_20W,86,0.024769540102552987,True
+Training mean,BD_GZ_19W,88,,False
+Training mean,BD_NM_19W,85,,False
+Training mean,IN_CU_19W,38,,False
+Training mean,IN_HY_18W,37,,False
+Training mean,IN_HY_19D,37,,False
+Training mean,IN_HY_19W,31,,False
+Training mean,IN_MA_19W,38,,False
+Training mean,IN_RP_19W,38,,False
+Training mean,KE_AH_19D,89,,False
+Training mean,KE_MW_20W,89,,False
+Training mean,MZ_CK_20W,88,,False
+Training mean,MZ_MP_20W,88,,False
+Training mean,PH_LB_19D,107,,False
+Training mean,PH_LB_19W,107,,False
+Training mean,TZ_DK_20W,86,,False

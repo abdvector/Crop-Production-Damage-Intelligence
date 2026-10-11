@@ -22,7 +22,7 @@ Could you please advise whether the following matched records exist, and provide
 
 2. Trial soil and aluminium: measurements matched to the attached environment IDs, including sample/plot identifiers, dates/depths, units/methods, pH, texture, organic carbon, nutrients and, if measured, exchangeable aluminium or aluminium saturation. Individual samples would be preferable to summaries, but either would help establish availability.
 
-3. Management and forecast timing: fertiliser formulations, amounts and application dates; irrigation regime/amounts; planting/transplanting, sampling and harvest dates; and any field weather observations. These records are needed to distinguish variables available at forecast time from later observations.
+3. Management and forecast timing: fertiliser formulations, amounts and application dates; irrigation regime/amounts; planting/transplanting, sampling and harvest dates; and any field weather observations. Please confirm the units of Table S2 row/hill spacing, plants per hill, and the direct-seeded trial's establishment density or seeding rate. These records are needed to distinguish variables available at forecast time from later observations and avoid inventing physical density.
 
 4. Original outcomes and experimental design: plot-level grain yields, harvested areas, moisture corrections, replicates/blocks and spatial coordinates, plus adjustment methods and uncertainties. If crop stress/disease severity or damage was recorded, its dates, definitions and measurements would help us determine whether a damage target is feasible. We will not equate low yield with measured damage without such evidence.
 

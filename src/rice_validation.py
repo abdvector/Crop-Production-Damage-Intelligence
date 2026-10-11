@@ -83,36 +83,47 @@ def _risk(candidate, training, testing, designs):
     return estimator.fit(xt, labels).predict_proba(xv)[:, 1], threshold
 
 
-def _inner_selection(training, weather, markers):
-    scores = {c["name"]: [] for c in REGRESSION + RISK}
+def _inner_selection(training, weather, markers, regression_candidates=None, risk_candidates=None,
+                     design_builder=_designs, regression_predictor=_regression, risk_predictor=_risk):
+    regression_candidates = REGRESSION if regression_candidates is None else regression_candidates
+    risk_candidates = RISK if risk_candidates is None else risk_candidates
+    scores = {c["name"]: [] for c in regression_candidates + risk_candidates}
     for group in sorted(training.location_group.unique()):
         fit = training.loc[training.location_group.ne(group)]
         validate = training.loc[training.location_group.eq(group)]
         assert set(fit.location_group).isdisjoint(validate.location_group)
-        designs = _designs(fit, validate, weather, markers)
-        for candidate in REGRESSION:
-            pred = _regression(candidate, fit, validate, designs, weather)
+        designs = design_builder(fit, validate, weather, markers)
+        for candidate in regression_candidates:
+            pred = regression_predictor(candidate, fit, validate, designs, weather)
             scores[candidate["name"]].append(float(mean_squared_error(validate.yield_kg_ha, pred)))
-        for candidate in RISK:
-            prob, threshold = _risk(candidate, fit, validate, designs)
+        for candidate in risk_candidates:
+            prob, threshold = risk_predictor(candidate, fit, validate, designs)
             scores[candidate["name"]].append(float(brier_score_loss(validate.yield_kg_ha.lt(threshold), prob)))
     averages = {name: float(np.mean(values)) for name, values in scores.items()}
-    weather_best = min([c for c in REGRESSION if not c["genetics"]], key=lambda c: averages[c["name"]])
-    full_best = min(REGRESSION, key=lambda c: averages[c["name"]])
-    risk_best = min(RISK, key=lambda c: averages[c["name"]])
+    weather_best = min([c for c in regression_candidates if not c["genetics"]], key=lambda c: averages[c["name"]])
+    full_best = min(regression_candidates, key=lambda c: averages[c["name"]])
+    risk_best = min(risk_candidates, key=lambda c: averages[c["name"]])
     return weather_best, full_best, risk_best, averages
 
 
 def _metrics(actual, predicted):
     return {"MAE_kg_ha": float(mean_absolute_error(actual, predicted)),
             "RMSE_kg_ha": float(np.sqrt(mean_squared_error(actual, predicted))),
-            "R2": float(r2_score(actual, predicted)), "bias_kg_ha": float(np.mean(predicted - actual))}
+            "R2": float(r2_score(actual, predicted)), "bias_kg_ha": float(np.mean(predicted - actual)),
+            "Pearson_r": float(np.corrcoef(actual, predicted)[0, 1]) if np.std(actual) > 1e-8 and np.std(predicted) > 1e-8 else np.nan}
 
 
-def run_nested_benchmark(cutoff_days=60, progress=None):
-    frame, windows = prepare_data(cutoff_days)
-    weather = [c for c in frame if c.startswith("weather_")]
+def run_nested_benchmark(cutoff_days=60, progress=None, experiment=None):
+    options = experiment or {}
+    frame, windows = options.get("prepare", prepare_data)(cutoff_days)
+    weather = [c for c in frame if c.startswith(options.get("feature_prefixes", ("weather_",)))]
     markers = [c for c in frame if c.startswith("snp_")]
+    candidates = options.get("regression", REGRESSION)
+    risks_candidates = options.get("risk", RISK)
+    design_builder = options.get("designs", _designs)
+    regression_predictor = options.get("predict", _regression)
+    weather_name = options.get("weather_name", "Nested weather selection")
+    full_name = options.get("full_name", "Nested weather + genetics selection")
     predictions, folds, tuning, diagnostics = [], [], [], []
     groups = sorted(frame.location_group.unique())
     for number, group in enumerate(groups, 1):
@@ -121,18 +132,22 @@ def run_nested_benchmark(cutoff_days=60, progress=None):
         training = frame.loc[frame.location_group.ne(group)]
         testing = frame.loc[frame.location_group.eq(group)]
         assert set(training.location_group).isdisjoint(testing.location_group)
-        weather_best, full_best, risk_best, averages = _inner_selection(training, weather, markers)
-        designs = _designs(training, testing, weather, markers)
-        for candidate in REGRESSION + RISK:
+        weather_best, full_best, risk_best, averages = _inner_selection(
+            training, weather, markers, candidates, risks_candidates, design_builder, regression_predictor)
+        designs = design_builder(training, testing, weather, markers)
+        for candidate in candidates + risks_candidates:
             tuning.append({"held_out_location": group, "candidate": candidate["name"],
-                           "task": "regression" if candidate in REGRESSION else "risk",
+                           "task": "regression" if candidate in candidates else "risk",
                            "inner_mean_location_score": averages[candidate["name"]],
                            "selected_weather": candidate == weather_best,
                            "selected_full": candidate == full_best, "selected_risk": candidate == risk_best,
                            "inner_location_count": training.location_group.nunique()})
-        for name, candidate in [("Training mean", REGRESSION[0]), ("Nested weather selection", weather_best),
-                                ("Nested weather + genetics selection", full_best)]:
-            pred = _regression(candidate, training, testing, designs, weather)
+        procedures = [("Training mean", candidates[0]), (weather_name, weather_best), (full_name, full_best)]
+        if options.get("genetic_control"):
+            genetic_best = min([c for c in candidates if c["kind"] in ["mean", "genomic"]], key=lambda c: averages[c["name"]])
+            procedures.append(("Full-SNP genomic control", genetic_best))
+        for name, candidate in procedures:
+            pred = regression_predictor(candidate, training, testing, designs, weather)
             records = testing[["source_csv_row", "genotype_id", "environment_id", "country", "location", "year", "season"]].copy()
             records["model"], records["held_out_location"], records["selected_candidate"] = name, group, candidate["name"]
             records["observed_yield_kg_ha"] = testing.yield_kg_ha
@@ -151,7 +166,8 @@ def run_nested_benchmark(cutoff_days=60, progress=None):
         risk_rows["predicted_low_yield_probability"] = prob
         risk_rows["training_prevalence_probability"] = prevalence
         predictions.extend(risk_rows.to_dict("records"))
-        outside = (testing[weather] < training[weather].min()) | (testing[weather] > training[weather].max())
+        numeric = training[weather].select_dtypes(include="number").columns
+        outside = (testing[numeric] < training[numeric].min()) | (testing[numeric] > training[numeric].max())
         diagnostics.append({"held_out_location": group, "test_records": len(testing),
                             "weather_features_outside_training_range": int(outside.any().sum()),
                             "fraction_records_outside_weather_range": float(outside.any(axis=1).mean()),
@@ -160,18 +176,18 @@ def run_nested_benchmark(cutoff_days=60, progress=None):
                             "prevalence_Brier": float(brier_score_loss(risk_rows.observed_low_yield, np.full(len(testing), prevalence)))})
     predictions, folds = pd.DataFrame(predictions), pd.DataFrame(folds)
     metrics = []
-    for name in ["Training mean", "Nested weather selection", "Nested weather + genetics selection"]:
+    for name in folds.model.unique():
         rows = predictions.loc[predictions.model.eq(name)]
         per_location = folds.loc[folds.model.eq(name)]
         metrics.append({"model": name, **_metrics(rows.observed_yield_kg_ha.to_numpy(), rows.predicted_yield_kg_ha.to_numpy()),
                         "equal_location_RMSE_kg_ha": float(np.sqrt(np.mean(per_location.RMSE_kg_ha ** 2)))})
     risks = predictions.loc[predictions.model.eq("Nested low-yield risk")]
-    summary = {"version": VERSION, "cutoff_days_after_seeding_inclusive": cutoff_days,
+    summary = {"version": options.get("version", VERSION), "cutoff_days_after_seeding_inclusive": cutoff_days,
                "records": len(frame), "genotypes": int(frame.genotype_id.nunique()),
                "environments": int(frame.environment_id.nunique()), "held_out_locations": len(groups),
                "weather_feature_count": len(weather), "marker_feature_count": len(markers), "genetic_PC_count": 5,
                "selection": "Inner leave-one-location-out; equal-location MSE/Brier; fixed candidate grid",
-               "regression_candidates": REGRESSION, "risk_candidates": RISK,
+               "regression_candidates": candidates, "risk_candidates": risks_candidates,
                "low_yield_definition": "Yield below the 20th percentile of each training split; fold-specific thresholds",
                "risk_Brier": float(brier_score_loss(risks.observed_low_yield, risks.predicted_low_yield_probability)),
                "prevalence_Brier": float(brier_score_loss(risks.observed_low_yield, risks.training_prevalence_probability)),
@@ -184,16 +200,18 @@ def run_nested_benchmark(cutoff_days=60, progress=None):
                           "Repeated genotypes may occur in training and testing at different locations",
                           "No linked soil/Al or verified variety-specific protein inputs",
                           "Low-yield probabilities not externally calibrated; no causal damage or monetary estimate"]}
-    directory = DATA / "nested" / f"day_{cutoff_days}"
+    summary.update(options.get("summary", {}))
+    directory = DATA / options.get("folder", "nested") / f"day_{cutoff_days}"
     directory.mkdir(parents=True, exist_ok=True)
-    pd.DataFrame(metrics).to_csv(directory / "metrics.csv", index=False)
+    metric_table = pd.DataFrame(metrics).rename(columns={"Pearson_r": "pooled_Pearson_r"})
+    metric_table.to_csv(directory / "metrics.csv", index=False)
     predictions.to_csv(directory / "held_out_predictions.csv", index=False)
     folds.to_csv(directory / "location_metrics.csv", index=False)
     pd.DataFrame(tuning).to_csv(directory / "inner_selection_scores.csv", index=False)
     pd.DataFrame(diagnostics).to_csv(directory / "location_diagnostics.csv", index=False)
     windows.to_csv(directory / "forecast_windows.csv", index=False)
     (directory / "summary.json").write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
-    return pd.DataFrame(metrics), predictions, folds, summary
+    return metric_table, predictions, folds, summary
 
 
 def load_nested_results(cutoff_days=60):

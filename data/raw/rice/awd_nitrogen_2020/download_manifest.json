@@ -1,0 +1,87 @@
+{
+  "SourceDoi": "10.5281/zenodo.3889800",
+  "Files": [
+    {
+      "Bytes": 640893,
+      "Url": "https://zenodo.org/api/records/3889800/files/data_descriptor.html/content",
+      "PublisherChecksumMatches": true,
+      "PublisherMd5": "360aee31c7247b127cfe0745b9cb4e71",
+      "Sha256": "c51a6bbafbb7cb0ff7d91dab61afc349df2685c53663071ee798bddb816b70c1",
+      "Filename": "data_descriptor.html"
+    },
+    {
+      "Bytes": 33999,
+      "Url": "https://zenodo.org/api/records/3889800/files/DS2015_Raw_49DAI.csv/content",
+      "PublisherChecksumMatches": true,
+      "PublisherMd5": "2f1fcf9bd2aefb32f5b1c748a8af2911",
+      "Sha256": "48dd697f4ce07c6f39841cc6785185019b8e650def08a7979063b48541cabc46",
+      "Filename": "DS2015_Raw_49DAI.csv"
+    },
+    {
+      "Bytes": 34109,
+      "Url": "https://zenodo.org/api/records/3889800/files/DS2015_Raw_62DAI.csv/content",
+      "PublisherChecksumMatches": true,
+      "PublisherMd5": "f7e657c303e642cb8efc39838cab5930",
+      "Sha256": "0b747e1531f21562fff0e7329808221b84e3f8a5e0e2d350adb154ca3bc76119",
+      "Filename": "DS2015_Raw_62DAI.csv"
+    },
+    {
+      "Bytes": 34149,
+      "Url": "https://zenodo.org/api/records/3889800/files/DS2015_Raw_83DAI.csv/content",
+      "PublisherChecksumMatches": true,
+      "PublisherMd5": "4499d87bb4aa0c75dce3e4a1628bfae2",
+      "Sha256": "dee00046d4d20471f2422bdcdc4449d92f8c713facee9b465841aeee4898a9c3",
+      "Filename": "DS2015_Raw_83DAI.csv"
+    },
+    {
+      "Bytes": 34111,
+      "Url": "https://zenodo.org/api/records/3889800/files/DS2015_Raw_35DAI.csv/content",
+      "PublisherChecksumMatches": true,
+      "PublisherMd5": "d5d2df559cd3c54f9dcea58a01595e3a",
+      "Sha256": "da461146dde2ba5fdba3de028a73e28871aa7de3a7a6dd1e1c7f4064e4b5c448",
+      "Filename": "DS2015_Raw_35DAI.csv"
+    },
+    {
+      "Bytes": 33982,
+      "Url": "https://zenodo.org/api/records/3889800/files/DS2015_Raw_22DAI.csv/content",
+      "PublisherChecksumMatches": true,
+      "PublisherMd5": "238934e86a7f6781307674eecc062f46",
+      "Sha256": "1c6c7cca10dbc726e39506c0a900a18629cf35ccd678f09fce57d58c05dc67c0",
+      "Filename": "DS2015_Raw_22DAI.csv"
+    },
+    {
+      "Bytes": 41058,
+      "Url": "https://zenodo.org/api/records/3889800/files/DS2016_Raw_1.csv/content",
+      "PublisherChecksumMatches": true,
+      "PublisherMd5": "c0593526d93ea09483d1fab4c905a6e3",
+      "Sha256": "88a1b535db48834474aa8bafcb20083688e09337c952c08f0a41a3a8a4e4bfeb",
+      "Filename": "DS2016_Raw_1.csv"
+    },
+    {
+      "Bytes": 41260,
+      "Url": "https://zenodo.org/api/records/3889800/files/DS2016_Raw_2.csv/content",
+      "PublisherChecksumMatches": true,
+      "PublisherMd5": "a779e17f99ce8767d71d94f72326eecc",
+      "Sha256": "2958db0c01271cfd50b2ccbbd63280932e4627d6716c101f3b37a40cb12645d6",
+      "Filename": "DS2016_Raw_2.csv"
+    },
+    {
+      "Bytes": 39822,
+      "Url": "https://zenodo.org/api/records/3889800/files/DS2016_Raw_3.csv/content",
+      "PublisherChecksumMatches": true,
+      "PublisherMd5": "b4e681ff1bb4bb03e15b76fc60ca4d27",
+      "Sha256": "f8823af79c666dc19d6e11c938fa6befbce92e9f862b7b00bf45f48073fa5b81",
+      "Filename": "DS2016_Raw_3.csv"
+    },
+    {
+      "Bytes": 80340,
+      "Url": "https://zenodo.org/api/records/3889800/files/DS2016_Raw_4.csv/content",
+      "PublisherChecksumMatches": true,
+      "PublisherMd5": "c7d7fceabe439a0275830b8f1164330b",
+      "Sha256": "31f15a386ca3106002fc8613af7d420879ddf3fbf24dca1d1f08f1be3db65de2",
+      "Filename": "DS2016_Raw_4.csv"
+    }
+  ],
+  "RequestedRecord": 3889799,
+  "ResolvedRecord": 3889800
+}
