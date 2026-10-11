@@ -35,13 +35,21 @@ Primary dataset: [Nguyen et al.](https://doi.org/10.1186/s12284-023-00623-6).
 
 The combined model does not beat the mean baseline. Low-yield classifier Brier score is 0.306 versus 0.167 for training prevalence; lower is better. These results do not establish reliable forecasting or monetary savings. There are only 15 distinct weather environments despite 1,046 yield records. Genotypes may occur in training and testing at different locations. See [the baseline report](docs/Rice_Baseline_Results.md) for the design and limitations.
 
+## Improvement experiment
+
+The dashboard now defaults to nested location validation. A predeclared search tests stronger regularisation, five training-fitted genetic PCs, genetic/weather interactions and environment-level forests. Candidate choices are made using inner held-out locations only. The original fixed baseline remains available through Evaluation method.
+
+Nested selection reduced RMSE to **1,045.3 kg/ha** from 1,228.9, but the mean baseline is still better at 1,036.5. Risk Brier score improved to **0.174** from 0.306, but prevalence remains better at 0.167. Genetic candidates were never selected. These are development findings, not externally validated forecasting skill. See [the improvement report](docs/Rice_Improvement_Results.md) and [the declared protocol](docs/Rice_Improvement_Protocol.md).
+
 ## Files
 
 - `app.py`: rice dashboard, benchmark controls, trial explorer and readiness status.
 - `src/rice_baseline.py`: cutoff checks, predictor construction, grouped evaluation and result loading.
+- `src/rice_validation.py`: nested candidate selection, training-only genetic compression and location diagnostics.
 - `data/raw/rice/`: original acquired sources.
 - `data/processed/rice/`: audited tables, linkage maps and baseline results.
 - `data/processed/rice/baseline/day_60/`: predictions, metrics, forecast windows and input SHA-256 hashes.
+- `data/processed/rice/nested/day_60/`: nested results, inner scores, selected candidates, diagnostics and provenance.
 - `docs/`: research question, audits, linkage boundaries and results.
 - `Research Papers/` and `Presentation_Figures/`: retained documents and figures.
 

@@ -15,6 +15,7 @@ if __name__ == "__main__":
 import streamlit as st
 import pandas as pd
 from src.rice_baseline import load_results, run_benchmark
+from src.rice_validation import load_nested_results, run_nested_benchmark
 
 st.set_page_config(page_title="Rice Yield Research", layout="wide")
 st.markdown("""<style>
@@ -30,19 +31,30 @@ st.caption("Birla Institute of Technology, Mesra | Department of Quantitative Ec
 st.write("A research benchmark using published rice trials, genetic markers and weather observed before the forecast date.")
 with st.sidebar:
     st.header("Research controls")
+    evaluation = st.selectbox("Evaluation method", ["Nested location validation", "Original fixed baseline"])
+    nested = evaluation == "Nested location validation"
     cutoff = st.selectbox("Forecast date: days after seeding", [60, 30, 45, 75, 90])
     st.caption("Includes weather from seeding day through the selected day. Later observations are excluded.")
     st.write("Validation: hold out one complete location at a time.")
     if st.button("Run verified-data benchmark", type="primary", width="stretch"):
+        progress = st.progress(0.0) if nested else None
         try:
             with st.spinner("Evaluating held-out locations..."):
-                run_benchmark(cutoff)
+                if nested:
+                    run_nested_benchmark(cutoff, progress=lambda n, total, group: progress.progress(
+                        (n - 1) / total, text=f"Location {n}/{total}: {group}"))
+                else:
+                    run_benchmark(cutoff)
         except (ValueError, OSError) as error:
             st.error(str(error))
+        finally:
+            if progress is not None:
+                progress.empty()
     st.divider()
     st.caption("Protein embeddings: pending variety linkage. Aluminium: separate CIRAD study. No causal damage or monetary savings are estimated.")
 
-results = load_results(cutoff)
+results = load_nested_results(cutoff) if nested else load_results(cutoff)
+result_folder = "nested" if nested else "baseline"
 validation, explore, readiness = st.tabs(["Validation results", "Trial explorer", "Data readiness"])
 with validation:
     st.subheader("Transfer to unseen locations")
@@ -61,11 +73,20 @@ with validation:
                                     "RMSE_kg_ha":st.column_config.NumberColumn("RMSE (kg/ha)",format="%.1f"),
                                     "R2":st.column_config.NumberColumn("R squared",format="%.3f"),
                                     "bias_kg_ha":st.column_config.NumberColumn("Bias (kg/ha)",format="%.1f")})
-        combined_rmse = metrics.loc[metrics.model == "Weather + genetics Ridge", "RMSE_kg_ha"].iloc[0]
+        combined_name = "Nested weather + genetics selection" if nested else "Weather + genetics Ridge"
+        combined_rmse = metrics.loc[metrics.model == combined_name, "RMSE_kg_ha"].iloc[0]
         mean_rmse = metrics.loc[metrics.model == "Training mean", "RMSE_kg_ha"].iloc[0]
         if combined_rmse >= mean_rmse:
-            st.warning("The combined model does not beat the training-mean baseline at unseen locations. These results do not support deployment.")
-        model = st.selectbox("Inspect model", metrics.model.tolist(), index=3)
+            st.warning("The procedure with genetics available does not beat the training-mean baseline at unseen locations. These results do not support deployment.")
+        else:
+            st.info(f"RMSE is {100 * (1 - combined_rmse / mean_rmse):.1f}% lower than the training-mean baseline. This is development validation; external reliability is not established.")
+        if nested:
+            st.caption("Candidate choices use inner held-out locations only. The outer test location is excluded from tuning. Each location receives equal weight in selection.")
+            original = load_results(cutoff)
+            if original is not None:
+                original_rmse = original[0].loc[original[0].model == "Weather + genetics Ridge", "RMSE_kg_ha"].iloc[0]
+                st.caption(f"Original fixed combined model RMSE: {original_rmse:,.1f} kg/ha. Original results are preserved separately.")
+        model = st.selectbox("Inspect model", metrics.model.tolist(), index=len(metrics) - 1)
         selected = predictions.loc[predictions.model == model]
         left, right = st.columns([3,2])
         with left:
@@ -81,16 +102,25 @@ with validation:
         b.metric("Training-prevalence Brier score", f"{summary['prevalence_Brier']:.3f}")
         st.caption("Lower Brier scores are better. This is low-yield risk, not observed crop damage. Probabilities have not been externally calibrated.")
         with st.expander("Evaluation assumptions and limitations"):
-            st.write("Ridge alpha is fixed at 100; logistic C is fixed at 0.1. Preprocessing is fitted within each training fold. These first-pass settings were not selected using held-out results.")
+            if nested:
+                st.write("A predeclared candidate set compares stronger Ridge regularisation, five genetic PCs, weather/genetic interactions and environment-level forests. The mean and prevalence baselines can be selected. All scaling and PCA are fitted within training splits.")
+                st.write("The dataset was previously inspected. Nested evaluation controls this parameter search, but is not an independent external test or proof of correct specification.")
+            else:
+                st.write("Ridge alpha is fixed at 100; logistic C is fixed at 0.1. Preprocessing is fitted within each training fold. These first-pass settings were not selected using held-out results.")
             for limitation in summary['limits']:
                 st.write("- " + limitation)
+        if nested:
+            with st.expander("Location diagnostics and selected candidates"):
+                diagnostics = pd.read_csv(PROJECT_ROOT / f"data/processed/rice/nested/day_{cutoff}/location_diagnostics.csv")
+                st.dataframe(diagnostics, hide_index=True, width="stretch")
+                st.dataframe(folds[["model", "held_out_location", "selected_candidate"]], hide_index=True, width="stretch")
         st.download_button("Download held-out predictions", predictions.to_csv(index=False), "rice_held_out_predictions.csv", "text/csv")
 with explore:
     st.subheader("Published rice trials")
     trials = pd.read_csv(PROJECT_ROOT / "data/processed/rice/trial_metadata.csv")
     st.dataframe(trials[["environment_id","country","location","year","season","seeding_date","establishment_date"]], hide_index=True, width="stretch")
     if results is not None:
-        window = pd.read_csv(PROJECT_ROOT / f"data/processed/rice/baseline/day_{cutoff}/forecast_windows.csv")
+        window = pd.read_csv(PROJECT_ROOT / f"data/processed/rice/{result_folder}/day_{cutoff}/forecast_windows.csv")
         st.write("Weather windows used in this benchmark")
         st.dataframe(window, hide_index=True, width="stretch")
 with readiness:

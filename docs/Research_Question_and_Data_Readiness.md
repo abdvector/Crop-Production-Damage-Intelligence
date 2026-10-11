@@ -16,6 +16,8 @@ The Nguyen panel, linked markers and NASA weather support a weather-plus-genetic
 
 ## Molecular extension: still conditional
 
+The subsequent nested improvement experiment reduced the original combined model's RMSE but still did not beat the mean baseline. Compressed genetic candidates were not selected. See [Rice_Improvement_Results.md](Rice_Improvement_Results.md); this is development evidence, not an independent external evaluation.
+
 Ptr supplementary data provide 40 candidate alias matches to the primary panel. These are not yet independently verified sample mappings or complete protein alleles. We now also have the Ptr reference FASTA and JSON for UniProt A0A2U9K3S3. The entry is unreviewed; the sequence download is a reference, not a verified sequence for each matched rice variety. The existing STAR1/STAR2 reference sequences likewise do not supply trial-specific variation.
 
 Next establish accession identity, the correct gene/transcript and coding coordinates, reference orientation, and verified amino-acid variants/full protein sequences for the analysis subset. Two diagnostic SNPs or broad haplotype labels do not automatically recover every amino-acid difference. Do not fabricate complete variety proteins by assigning a reference or a single mutation without supporting evidence.
