@@ -8,9 +8,9 @@ Guide: Dr. Manish Kumar Pandey
 
 ## Research question
 
-Using information available before harvest, how accurately can weather and rice genotype information predict grain yield per hectare and low-yield risk at unseen locations? Does adding verified genotype-linked protein sequence embeddings improve those predictions?
+How accurately can early-season weather, planting information and genetic markers predict rice yield per hectare at unseen locations, and do genetic markers improve prediction beyond environmental inputs?
 
-The current dashboard uses real published rice trials, SNP markers and NASA POWER weather estimates. Protein embeddings await verified variety-to-sequence links. Aluminium data belong to a separate CIRAD study. Low yield is a risk proxy, not measured disease damage.
+The current dashboard uses real published rice trials, SNP markers and NASA POWER weather estimates. Low-yield risk is secondary, not measured disease damage. Protein embeddings are optional future work awaiting verified variety-to-sequence links. Aluminium data belong to a separate CIRAD study. The restricted IRRI archive is not required for this project scope.
 
 ## Run
 
@@ -47,15 +47,22 @@ The default Planting and full-SNP evaluation adds observed planting context, 15-
 
 ## Files
 
+The Reliability and uncertainty tab reports paired whole-location bootstrap stability, training-only environmental transfer diagnostics, and a separate split prediction-interval experiment. The interval model uses six fitting, four calibration and two assessment locations; it is not the main twelve-fold model. Four calibration locations permit finite 80% intervals but unbounded 90% intervals. Coverage depends on exchangeability of locations, which is not established here. See [the reliability protocol](docs/Rice_Reliability_Protocol.md) and [results](docs/Rice_Reliability_Results.md).
+
+The Aluminium supporting study tab compares 334 paired genetic families from CIRAD, with published soil-condition summaries. It is descriptive, uses a separate population and one site-season, and does not isolate a causal aluminium effect. Neither this study nor the optional restricted IRRI archive is substituted for missing primary-trial inputs.
+
 - `app.py`: rice dashboard, benchmark controls, trial explorer and readiness status.
 - `src/rice_baseline.py`: cutoff checks, predictor construction, grouped evaluation and result loading.
 - `src/rice_validation.py`: nested candidate selection, training-only genetic compression and location diagnostics.
 - `src/rice_context.py`: planting/weather features and full-SNP relationship kernels.
+- `src/rice_reliability.py`: location stability, environmental novelty and separate split intervals.
+- `src/rice_aluminium.py`: paired descriptive comparison of published CIRAD soil-condition yields.
 - `data/raw/rice/`: original acquired sources.
 - `data/processed/rice/`: audited tables, linkage maps and baseline results.
 - `data/processed/rice/baseline/day_60/`: predictions, metrics, forecast windows and input SHA-256 hashes.
 - `data/processed/rice/nested/day_60/`: nested results, inner scores, selected candidates, diagnostics and provenance.
 - `data/processed/rice/context/day_60/`: new results, feature catalogue and within-trial rankings.
+- `data/processed/rice/reliability/day_60/`: paired stability ranges, transfer diagnostics, interval split, calibration scores, assessment and hashes.
 - `docs/`: research question, audits, linkage boundaries and results.
 - `Research Papers/` and `Presentation_Figures/`: retained documents and figures.
 

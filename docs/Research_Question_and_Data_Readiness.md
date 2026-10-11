@@ -4,7 +4,9 @@ Updated 11 October 2026.
 
 ## Main question
 
-Using information available before harvest, how accurately can weather and rice genotype information predict grain yield per hectare and the risk of low yield in held-out growing environments, and does adding verified genotype-linked protein sequence embeddings improve those predictions?
+How accurately can early-season weather, planting information and genetic markers predict rice yield per hectare at unseen locations, and do genetic markers improve prediction beyond environmental inputs?
+
+Low-yield risk is a secondary outcome. Verified protein embeddings are an optional extension, not a prerequisite for completing the current research question. Aluminium remains a separate supporting analysis. The restricted IRRI files are optional additional data. See [Rice_Reliability_Protocol.md](Rice_Reliability_Protocol.md) for location-level uncertainty and the separate interval experiment.
 
 Protein embeddings are explanatory inputs. The project does not forecast protein structures. ESM-2 operates on amino-acid sequences; its representations can contain learned structural/functional information, but are not explicit measurements of a variety's three-dimensional structure or resistance.
 

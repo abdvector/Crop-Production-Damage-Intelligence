@@ -1,0 +1,5 @@
+model,selected_candidate,target_coverage,calibration_locations,calibration_rank,finite_interval,radius_kg_ha,mean_width_kg_ha,assessment_records,assessment_locations,row_coverage,whole_location_coverage,MAE_kg_ha,RMSE_kg_ha,R2,bias_kg_ha,Pearson_r
+Split context/full-SNP selection,Context forest leaf=2,0.8,4,4,True,3375.4025002729686,6750.805000545935,177,2,1.0,1.0,821.5556339947426,935.4752913473535,-2.4526442859158966,811.8363228123944,0.44293194503748434
+Split context/full-SNP selection,Context forest leaf=2,0.9,4,5,False,,,177,2,1.0,1.0,821.5556339947426,935.4752913473535,-2.4526442859158966,811.8363228123944,0.44293194503748434
+Split training mean,Training mean,0.8,4,4,True,3290.036378737541,6580.072757475079,177,2,1.0,1.0,796.5908206167758,934.9346122915737,-2.4486543719158567,787.8075651782189,
+Split training mean,Training mean,0.9,4,5,False,,,177,2,1.0,1.0,796.5908206167758,934.9346122915737,-2.4486543719158567,787.8075651782189,

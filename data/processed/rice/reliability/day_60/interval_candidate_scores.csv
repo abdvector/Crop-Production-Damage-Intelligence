@@ -1,0 +1,14 @@
+candidate,inner_mean_location_MSE,selected
+Training mean,1200517.503795174,False
+Context Ridge alpha=100,241132727.34071544,False
+Context Ridge alpha=10000,3265775.5873585255,False
+Context kernel alpha=1,1115860.9641679549,False
+Context kernel alpha=100,1065507.3770590012,False
+Full-SNP genomic kernel alpha=1,1199637.4228251195,False
+Full-SNP genomic kernel alpha=100,1196899.9828397846,False
+Context + genomic kernel weight=0.1 alpha=1,1110895.0011434462,False
+Context + genomic kernel weight=0.1 alpha=100,1065201.3526289284,False
+Context + genomic kernel weight=1 alpha=1,1127216.5355017816,False
+Context + genomic kernel weight=1 alpha=100,1063072.2705658232,False
+Context forest leaf=2,982275.3882378815,True
+Context forest leaf=4,1147645.308473644,False

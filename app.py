@@ -17,6 +17,8 @@ import pandas as pd
 from src.rice_baseline import load_results, run_benchmark
 from src.rice_validation import load_nested_results, run_nested_benchmark
 from src.rice_context import load_context_results, run_context_benchmark
+from src.rice_reliability import load_reliability, run_reliability
+from src.rice_aluminium import load_aluminium_study
 
 st.set_page_config(page_title="Rice Yield Research", layout="wide")
 st.markdown("""<style>
@@ -29,7 +31,7 @@ h1 {letter-spacing:-0.03em;}
 
 st.title("Rice yield and low-yield risk")
 st.caption("Birla Institute of Technology, Mesra | Department of Quantitative Economics and Data Science | Guide: Dr. Manish Kumar Pandey")
-st.write("A research benchmark using published rice trials, genetic markers and weather observed before the forecast date.")
+st.write("Forecasting yield per hectare at unseen locations using published trials, early-season weather, planting records and genetic markers.")
 with st.sidebar:
     st.header("Research controls")
     evaluation = st.selectbox("Evaluation method", ["Planting and full-SNP validation", "Nested location validation", "Original fixed baseline"])
@@ -46,6 +48,8 @@ with st.sidebar:
                     runner = run_context_benchmark if contextual else run_nested_benchmark
                     runner(cutoff, progress=lambda n, total, group: progress.progress(
                         (n - 1) / total, text=f"Location {n}/{total}: {group}"))
+                    if contextual:
+                        run_reliability(cutoff, progress=lambda text: progress.progress(0.95, text=text))
                 else:
                     run_benchmark(cutoff)
         except (ValueError, OSError) as error:
@@ -53,12 +57,19 @@ with st.sidebar:
         finally:
             if progress is not None:
                 progress.empty()
+    if contextual and st.button("Update reliability report", width="stretch",
+                                disabled=load_context_results(cutoff) is None):
+        try:
+            with st.spinner("Evaluating location stability and separate prediction intervals..."):
+                run_reliability(cutoff)
+        except (ValueError, OSError) as error:
+            st.error(str(error))
     st.divider()
     st.caption("Protein embeddings: pending variety linkage. Aluminium: separate CIRAD study. No causal damage or monetary savings are estimated.")
 
 results = load_context_results(cutoff) if contextual else load_nested_results(cutoff) if nested else load_results(cutoff)
 result_folder = "context" if contextual else "nested" if nested else "baseline"
-validation, explore, readiness = st.tabs(["Validation results", "Trial explorer", "Data readiness"])
+validation, reliability, aluminium, explore, readiness = st.tabs(["Validation results", "Reliability and uncertainty", "Aluminium supporting study", "Trial explorer", "Data readiness"])
 with validation:
     st.subheader("Transfer to unseen locations")
     if results is None:
@@ -133,6 +144,66 @@ with validation:
                     st.dataframe(pd.read_csv(PROJECT_ROOT / f"data/processed/rice/context/day_{cutoff}/environment_ranking.csv"), hide_index=True, width="stretch")
                     st.caption("The context-only predictions are constant within a trial, so they cannot rank its varieties. A blank correlation means ranking is undefined, not zero measured skill.")
         st.download_button("Download held-out predictions", predictions.to_csv(index=False), "rice_held_out_predictions.csv", "text/csv")
+with reliability:
+    st.subheader("How stable are the findings?")
+    reliable = load_reliability(cutoff) if contextual else None
+    if not contextual:
+        st.info("Select Planting and full-SNP validation to inspect its reliability experiment.")
+    elif reliable is None:
+        st.info("Run the planting benchmark or update its reliability report for this forecast date.")
+    else:
+        tables, reliability_summary = reliable
+        st.write("Error comparisons resample entire locations, keeping each model paired with the same baseline locations.")
+        st.dataframe(tables["location_stability"], hide_index=True, width="stretch")
+        st.caption("Positive improvement means less error than training mean. A range crossing zero includes both improvement and deterioration. These are descriptive 95% bootstrap ranges over twelve locations, not proof of significance; cross-validation fits overlap.")
+        st.subheader("Separate prediction-interval experiment")
+        st.write("Six complete locations fit and select the model; four separate locations calibrate intervals; two assess them. This model differs from the main twelve-fold benchmark.")
+        interval_metrics = tables["interval_metrics"]
+        st.dataframe(interval_metrics, hide_index=True, width="stretch",
+                     column_config={"target_coverage": st.column_config.NumberColumn("Coverage target (fraction)", format="%.2f"),
+                                    "row_coverage": st.column_config.NumberColumn("Observed row coverage", format="%.3f"),
+                                    "whole_location_coverage": st.column_config.NumberColumn("Whole-location coverage", format="%.3f")})
+        st.warning("Four calibration locations can produce a finite 80% interval. The finite-sample 90% interval is unbounded; blank width/radius values mean no finite bound, not zero uncertainty. Nominal coverage assumes exchangeable locations, which is not established here.")
+        st.caption("Scores use the maximum error within each calibration location. Only two previously inspected locations assess coverage; this is development evidence, not external validation or a guarantee for farms.")
+        finite = tables["interval_predictions"].loc[tables["interval_predictions"].target_coverage.eq(0.8)]
+        interval_model = st.selectbox("Interval model", finite.model.unique().tolist())
+        interval_location = st.selectbox("Assessment location", finite.location_group.unique().tolist())
+        shown = finite.loc[finite.model.eq(interval_model) & finite.location_group.eq(interval_location)]
+        st.write("Assessment yields and 80% interval bounds (kg/ha)")
+        st.line_chart(shown.set_index("source_csv_row")[["observed_yield_kg_ha", "predicted_yield_kg_ha", "lower_kg_ha", "upper_kg_ha"]], height=330)
+        st.caption("The horizontal axis identifies original source rows; connecting lines do not represent time or a biological trend.")
+        with st.expander("Split membership, calibration scores and model choice"):
+            st.dataframe(tables["interval_split"], hide_index=True, width="stretch")
+            st.dataframe(tables["calibration_scores"], hide_index=True, width="stretch")
+            st.dataframe(tables["interval_candidate_scores"], hide_index=True, width="stretch")
+        st.download_button("Download interval assessment", tables["interval_predictions"].to_csv(index=False),
+                           "rice_split_interval_assessment.csv", "text/csv")
+        st.subheader("Where environmental transfer is difficult")
+        st.dataframe(tables["environment_transfer"], hide_index=True, width="stretch")
+        st.caption("Distances, unseen categories and range flags use training inputs only. Largest differences describe a nearby trial; they do not identify causes of yield loss. An unflagged environment is not certified reliable.")
+with aluminium:
+    st.subheader("Rice families in two soil conditions")
+    try:
+        paired, soil_summaries, aluminium_summary = load_aluminium_study()
+    except (ValueError, OSError) as error:
+        st.error(str(error))
+    else:
+        a, b, c = st.columns(3)
+        a.metric("Paired genetic families", aluminium_summary["paired_families"])
+        b.metric("Mean LIM minus ALU", f"{aluminium_summary['mean_LIM_minus_ALU_kg_ha']:,.0f} kg/ha")
+        c.metric("Independent site-seasons", aluminium_summary["independent_site_seasons"])
+        st.write("Published spatially adjusted yields from the separate CIRAD experiment. Each point is the same genetic family observed under ALU and LIM conditions.")
+        st.scatter_chart(paired, x="ALU_yield_kg_ha", y="LIM_yield_kg_ha", height=350)
+        st.caption(f"LIM yield is higher for {aluminium_summary['families_with_higher_LIM_yield']} of {aluminium_summary['paired_families']} families. This describes the condition contrast; it does not isolate an aluminium effect.")
+        st.warning("Liming changes pH and several nutrients as well as aluminium. One site-season cannot establish transfer to new regions. These families and soil measurements are not merged into the main forecasting trials.")
+        st.write("Published soil-condition measurements")
+        st.dataframe(soil_summaries, hide_index=True, width="stretch")
+        st.caption("Condition-level summaries, not individual plot measurements. Published yield scaling is preserved; harvested-area clarification remains pending.")
+        with st.expander("Paired family yields"):
+            st.dataframe(paired, hide_index=True, width="stretch")
+        st.download_button("Download paired condition comparison", paired.to_csv(index=False),
+                           "rice_aluminium_condition_comparison.csv", "text/csv")
+        st.link_button("Supporting study methods", "https://doi.org/10.1371/journal.pone.0307009")
 with explore:
     st.subheader("Published rice trials")
     trials = pd.read_csv(PROJECT_ROOT / "data/processed/rice/trial_metadata.csv")
@@ -160,6 +231,6 @@ with readiness:
         ["Additional disease study", "10 publisher-checksummed irrigation/nitrogen files acquired; no yield labels or primary-trial mapping"],
         ["Additional long-term yields", "IRRI 1974 archive files require permission; metadata acquired only"],
     ], columns=["Component","Status"]), hide_index=True, width="stretch")
-    st.write("Research question: Does verified molecular information improve pre-harvest yield and low-yield-risk predictions beyond environmental and genetic data?")
-    st.caption("The current benchmark establishes the comparison model. The ESM extension remains conditional on confirmed protein-to-variety links.")
+    st.write("Research question: How accurately can early-season weather, planting information and genetic markers predict rice yield per hectare at unseen locations, and do genetic markers improve prediction beyond environmental inputs?")
+    st.caption("Low-yield risk is secondary. Protein embeddings are optional future work requiring verified variety-to-sequence links. Aluminium remains a separate supporting analysis. Restricted IRRI files are not required for the current project.")
     st.link_button("Primary dataset and methods", "https://doi.org/10.1186/s12284-023-00623-6")

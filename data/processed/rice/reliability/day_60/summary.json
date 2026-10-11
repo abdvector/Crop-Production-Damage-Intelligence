@@ -1,0 +1,35 @@
+{
+  "version": "location-reliability-v1",
+  "cutoff_days": 60,
+  "seed": 20261011,
+  "bootstrap_repeats": 10000,
+  "source_and_code_sha256": {
+    "data/processed/rice/yield_observations_audited.csv": "14fcc9757a31c2f632d114652375fb76cd77f11f1dcddc8ca9c59d6a9a122bf7",
+    "data/processed/rice/daily_weather.csv": "1aa01ca8e70ef4ba0325ddf71c43534bac9397a63b2fef4f74cab5567ca09936",
+    "data/processed/rice/genotype_marker_calls.csv": "ee21bb7752280e6ea9ce6f3a6df9778b36da72d7a3b3d993f489e314f03b6580",
+    "data/processed/rice/marker_metadata.csv": "0cbf5905617767ad47a5a6e4336d93719fb6ae2ff7a75d462e33324fa7f11de1",
+    "data/processed/rice/trial_metadata.csv": "c5df8b6ad4d522735c21f78f5a1b2d821005d13d7c8e1bb78577b2a9ac40140e",
+    "data/processed/rice/context/day_60/held_out_predictions.csv": "77ae6c2f38c55ae345143c20c16d81be8c98c76c5ba78af58b1c9b658fb7a2dd",
+    "data/processed/rice/context/day_60/summary.json": "2a27a10f7660f308a4036b7accfb117e0325e08b8809d894b9f1c064aa22b2fd",
+    "src/rice_baseline.py": "443171b4efdf89eadfea26103c0bd0a0368a1778e3aea11fa599f852fd43908f",
+    "src/rice_validation.py": "0d5930b89e0d08e5d9b7253dcb4881440f0083888608b50e5f0c12f2c451d0a6",
+    "src/rice_context.py": "3e59aea69c59132cffe37acc1904fea3aa352de9399d30edb7fbebe36cc8f2e9",
+    "src/rice_reliability.py": "267d3ee652b7c3ece95ee2355f6a3db41101cf5b3aed857768731bc34e0f6d0b"
+  },
+  "fit_locations": 6,
+  "calibration_locations": 4,
+  "assessment_locations": 2,
+  "interval_score": "Maximum absolute residual per calibration location",
+  "coverage_condition": "Exchangeability of whole location datasets; not established for these trials",
+  "assessment_status": "Previously inspected development data; not an independent external test",
+  "prediction_scope": "Separate split model; intervals must not be attached to nested outer predictions",
+  "output_sha256": {
+    "location_stability": "f681eaba88cd2a09670382eb560cfa9ac5c152ed17999ead1f1f4c34b5195c05",
+    "environment_transfer": "7f1481134460a6e25d4d9fce2d53de6cd6b22f2feba1dfed2f4df16f2f0eee10",
+    "interval_split": "1a97897a1562b1e4d912464a46bc764982827b8c4b3ccfad639109e692ebf56c",
+    "calibration_scores": "5a870c7d7577adfceacd1b0831f0fb3df3fe5aa824cd16957ea40d04bf4dc0de",
+    "interval_predictions": "6f57944cc74c5487070c0600f994b9dd89d37906de2956f4be78d64a7b9a00e0",
+    "interval_metrics": "619f8fa8775142a070573dbf224c722e06756ecc1a73e4bb600205df9e31e721",
+    "interval_candidate_scores": "9c8f2d6faa5163036a51ffd3bf3f0f54fe7de49579d6907cc0b55013f232779a"
+  }
+}
