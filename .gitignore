@@ -7,3 +7,5 @@ __pycache__/
 .env.*
 !.env.example
 ~$*
+# Large supporting archive; download URL and checksum are tracked in its manifest.
+data/raw/rice/baap_genetics_2018/Aus_Admix_260_99_bi_01_005_beagle.vcf.gz

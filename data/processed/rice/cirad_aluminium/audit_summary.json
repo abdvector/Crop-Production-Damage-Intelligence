@@ -1,0 +1,72 @@
+{
+  "audited_on": "2026-10-10",
+  "source_doi": "10.18167/DVN1/HSIM8E",
+  "archive_relative_path": "CIRAD_Rice_Aluminium_HSIM8E_Original.zip",
+  "archive_sha256": "dae8536d17c3ebccb33c4a110883a19fb8b2c90fff7400fee2fd9c0bc69d415d",
+  "publisher_md5_checks": {
+    "Omicas_GP_BLUEs.csv": "7566d4c850aa88d715da6e71dcad6c50",
+    "Omicas_GP_genotypes.txt": "e8e7e9a1f61b00d26f4d5c43360a184c",
+    "Omicas_GP_germplasm.csv": "8cb86957afbb749818714f933bfc9d48",
+    "Omicas_GP_phenotypes.csv": "dc3ff60a19e36a35dfaa9e28ca7f8d3e",
+    "Omicas_GP_variables.csv": "3a0da517ce3e511ae26a9caeedd47276",
+    "ReadMe.rtf": "01fefae085b3d45f126ddd738a048c33"
+  },
+  "all_publisher_checksums_match": true,
+  "plot_rows": 1008,
+  "plot_rows_by_soil": {
+    "LIM": 504,
+    "ALU": 504
+  },
+  "plot_missing_values": {
+    "TRIAL": 0,
+    "TRIAL_INSTANCE": 0,
+    "TRT": 0,
+    "PLOT": 0,
+    "SOIL": 0,
+    "ROW": 0,
+    "RANGE": 0,
+    "DESIGN": 0,
+    "TYPE": 0,
+    "RBHV": 0,
+    "FL": 0,
+    "PH": 0,
+    "GRNW": 0,
+    "HUM": 0,
+    "YLD": 0,
+    "ZN": 3
+  },
+  "adjusted_rows": 680,
+  "family_adjusted_rows": 668,
+  "check_adjusted_rows": 12,
+  "families_with_markers": 334,
+  "markers": 9928,
+  "marker_values": [
+    0,
+    1,
+    2
+  ],
+  "marker_missing_count": 0,
+  "constant_marker_count": 11,
+  "raw_family_plot_rows_with_markers": 936,
+  "germplasm_original_rows": 469,
+  "germplasm_fully_blank_rows": 79,
+  "germplasm_nonblank_rows": 390,
+  "genotype_link_method": "Raw family plots join germplasm by DESIGN and TYPE, then DNAID; BLUE family rows join directly by DNAID. Check rows have no marker data; shared LINE placeholder must never become a genetic ID.",
+  "yield_unit": "kg/ha at 14% moisture, per source variable dictionary",
+  "yield_conversion_flag": {
+    "inferred_area_m2_median": 1.5000032892877186,
+    "paper_nominal_area_m2": 1.56,
+    "max_abs_error_using_1_5m2_kg_ha": 0.3790697674421608,
+    "action": "Preserve original YLD; request confirmation of harvested area and scaling."
+  },
+  "independent_site_seasons": 1,
+  "soil_conditions": 2,
+  "no_model_fitted": true,
+  "remaining_gaps": [
+    "plot-level soil/Al variation",
+    "multiple independent site-seasons for environmental generalisation",
+    "verified variety-specific protein sequences or structures",
+    "marker coding/allele interpretation and functional annotations",
+    "exact establishment dates for matching daily weather"
+  ]
+}

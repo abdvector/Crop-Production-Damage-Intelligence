@@ -1,98 +1,50 @@
-# Multi-Scale AI Framework for Wheat Crop Production & Damage Intelligence
+# Rice Yield and Low-Yield Risk Research
 
-**Institution**: Birla Institute of Technology (BIT), Mesra  
-**Department**: Quantitative Economics and Data Science
+Institution: Birla Institute of Technology, Mesra
 
-**Guide**: Dr. Manish Kumar Pandey
+Department: Quantitative Economics and Data Science
 
-**Focus**: Multi-Scale Biophysical Modeling, Soil Aluminium Toxicity, Phenological Climate Stress, and Vast Acreage Yield Prediction  
-**Target Crop**: Wheat (*Triticum aestivum L.*)
+Guide: Dr. Manish Kumar Pandey
 
----
+## Research question
 
-## Research Overview
+Using information available before harvest, how accurately can weather and rice genotype information predict grain yield per hectare and low-yield risk at unseen locations? Does adding verified genotype-linked protein sequence embeddings improve those predictions?
 
-This repository provides an end-to-end multi-modal machine learning pipeline that models wheat crop production and yield damage from the **inside out**:
-1. **Molecular Layer**: Extracts 320-dimensional biological resilience representations from wheat defense proteins (ALMT1 Aluminium transporter and Heat Shock Proteins) using Meta AI's **ESM-2** Protein Language Model.
-2. **Edaphic Soil Layer**: Ingests subsurface soil chemistry (Aluminium saturation %, acidic pH, CEC) to model root stunting in acidic soils (e.g., Jharkhand/Ranchi lateritic soils, pH 4.5–5.5).
-3. **Temporal Phenology Layer**: Aggregates daily weather time-series (NASA POWER) into non-linear growth stage indices (Extreme Degree-Days > 30°C at flowering, terminal heatwave days, consecutive dry days) across the wheat biological calendar (sowing to harvest).
-4. **Predictive Regressors**: Benchmarks Ridge Regression, Random Forest, and **XGBoost** with Spatial-Temporal Cross-Validation ($R^2 \ge 0.78$, $\text{RMSE} < 4\%$).
-5. **Explainable AI (TreeSHAP)**: Decomposes predicted yield loss into cooperative game-theoretic contributions, identifying the primary and secondary limiting environmental determinants.
-6. **Vast Acreage Scaling (ISRO Connection)**: Calibrates the multi-factor baseline on controlled experimental plots and scales predictions across hundreds of thousands of hectares to match satellite radar (NISAR S-band) and optical NDVI biomass trajectories.
-7. **Interactive Dashboard**: Full Streamlit web application with district selection, What-If stress anomaly sliders, biophysical loss diagnostics, and literature deep-dive.
+The current dashboard uses real published rice trials, SNP markers and NASA POWER weather estimates. Protein embeddings await verified variety-to-sequence links. Aluminium data belong to a separate CIRAD study. Low yield is a risk proxy, not measured disease damage.
 
----
+## Run
 
-## Quickstart
+Run `python app.py` with the project interpreter. From PowerShell, the existing environment can be used with `.\.venv\Scripts\python.exe app.py`. For a new environment, install `requirements.txt` first. Stop the server with Ctrl+C. The sole application entry point is `app.py`; no separate launcher is required. Restart after source edits because file watching is disabled.
 
-### Run the app
+## Current benchmark
 
-From the project folder, use the existing virtual environment:
-```powershell
-.\.venv\Scripts\python.exe app.py
-```
+Primary dataset: [Nguyen et al.](https://doi.org/10.1186/s12284-023-00623-6).
 
-If your IDE or terminal already uses the project's `.venv` interpreter:
-```powershell
-python app.py
-```
+- 1,046 eligible yield records, excluding 10 conflicting genotype/environment records.
+- 107 genotypes, 882 SNPs, 15 environments and 12 locations.
+- Default cutoff: 60 days after seeding, including days 0 through 60.
+- Entire locations are held out; preprocessing is fitted inside each training fold.
+- Low-yield thresholds use each training fold's 20th yield percentile.
 
-`app.py` starts the Streamlit server and dashboard itself. Stop it with
-`Ctrl+C` in the terminal. No separate PowerShell, batch, or Python launcher
-is required. Model and dataset paths resolve from the location of `app.py`.
+| Model | MAE (kg/ha) | RMSE (kg/ha) | R squared |
+| --- | ---: | ---: | ---: |
+| Training mean | 840.1 | 1036.5 | -0.164 |
+| Weather Ridge | 1040.8 | 1221.1 | -0.616 |
+| Genetics Ridge | 849.6 | 1051.0 | -0.197 |
+| Weather + genetics Ridge | 1044.5 | 1228.9 | -0.636 |
 
-For a new environment, install dependencies once with
-`python -m pip install -r requirements.txt` using the interpreter you will
-use to run the app.
+The combined model does not beat the mean baseline. Low-yield classifier Brier score is 0.306 versus 0.167 for training prevalence; lower is better. These results do not establish reliable forecasting or monetary savings. There are only 15 distinct weather environments despite 1,046 yield records. Genotypes may occur in training and testing at different locations. See [the baseline report](docs/Rice_Baseline_Results.md) for the design and limitations.
 
-The dashboard uses the project theme in `.streamlit/config.toml`. File watching
-is disabled because inspecting Transformers' lazy modules can import unrelated
-optional vision dependencies and flood the terminal with errors. Sidebar controls
-still update normally. After editing source or theme settings, stop the app and
-run `app.py` again.
+## Files
 
-## Project implementation map
+- `app.py`: rice dashboard, benchmark controls, trial explorer and readiness status.
+- `src/rice_baseline.py`: cutoff checks, predictor construction, grouped evaluation and result loading.
+- `data/raw/rice/`: original acquired sources.
+- `data/processed/rice/`: audited tables, linkage maps and baseline results.
+- `data/processed/rice/baseline/day_60/`: predictions, metrics, forecast windows and input SHA-256 hashes.
+- `docs/`: research question, audits, linkage boundaries and results.
+- `Research Papers/` and `Presentation_Figures/`: retained documents and figures.
 
-- `app.py`: the dashboard and sole application entry point. Sidebar inputs
-  select a district and protein profile and adjust pH, aluminium, heat, and drought.
-- `src/bio_embeddings.py`: loads ESM-2 when available, with a deterministic
-  biophysical projection fallback; provides four protein profiles.
-- `src/edaphic_features.py`: nine district soil profiles and soil stress indices.
-- `src/weather_phenology.py`: simulates a 140-day season and computes
-  growth-stage heat, rainfall, and drought features. A NASA POWER fetch helper
-  exists, but the dashboard currently uses simulated weather.
-- `src/explainability.py`: loads the saved model bundle and XGBoost JSON,
-  falls back to Random Forest, and groups feature contributions into stress drivers.
-- `src/damage_assessment.py`: converts predicted loss into estimated harvested
-  yield, severity, limiting factors, and intervention suggestions.
-- `src/data_pipeline.py` and `src/train_models.py`: offline dataset generation
-  and training utilities. They are not required to launch the dashboard with
-  the supplied artifacts. Training uses a temporal holdout through 2019 versus
-  2020-2023, rather than a spatial cross-validation split.
-- `data/processed/` and `models/`: the dataset and trained artifacts loaded at startup.
-- `Research Papers/`, `Presentation_Figures/`, and the PDF/XLSX:
-  retained research documents, diagrams, and literature review assets.
+Earlier wheat prototype modules and model artifacts are retained for reference and are not used by the rice dashboard. Their simulated benchmarks are not evidence for this rice study. No temporary generation scripts or additional launchers were created.
 
-The current dataset generator synthesizes weather and yield-loss targets;
-the benchmark measures performance on those generated targets. Satellite
-integration is described in the dashboard but is not implemented as a live
-data connection. Benchmark figures displayed by the dashboard are hardcoded.
-
----
-
-## Benchmark Results (Forward Unseen Seasons 2020–2023)
-
-| Model Architecture | $R^2$ Score | Root Mean Squared Error (RMSE) | Mean Absolute Error (MAE) | Status |
-| :--- | :--- | :--- | :--- | :--- |
-| **Ridge Regression (Baseline)** | `0.7935` | `3.84%` | `3.11%` | Linear Lower Bound |
-| **Random Forest Regressor** | `0.7990` | `3.79%` | `2.97%` | Bagging Ensemble |
-| **XGBoost Regressor (Champion)** | `0.7764` | `3.99%` | `3.09%` | **Production Champion (TreeSHAP Compatible)** |
-
----
-
-## Landmark Academic Literature Foundations
-
-1. **van Klompenburg et al. (2020)** — *Crop yield prediction using machine learning: A systematic literature review*. Computers and Electronics in Agriculture. (DOI: `10.1016/j.compag.2020.105709`) — **1,849 citations**
-2. **Kochian et al. (2004)** — *How do crop plants tolerate acid soils? Mechanisms of aluminum tolerance and phosphorous efficiency*. Annual Review of Plant Biology. (DOI: `10.1146/annurev.arplant.55.031903.141655`) — **1,831 citations**
-3. **Schlenker & Roberts (2009)** — *Nonlinear temperature effects indicate severe damages to U.S. crop yields under climate change*. PNAS. (DOI: `10.1073/pnas.0906865106`) — **3,442 citations**
-4. **Lobell et al. (2011)** — *Climate trends and global crop production since 1980*. Science. (DOI: `10.1126/science.1204531`) — **4,622 citations**
+The 89 MB supporting BAAP genetics archive is retained locally and excluded from Git. Its source URL and checksum are recorded in `data/raw/rice/baap_genetics_2018/download_manifest.json`. It is not required to run the primary rice benchmark.

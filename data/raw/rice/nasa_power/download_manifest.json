@@ -1,0 +1,152 @@
+[
+  {
+    "environment_id": "BD_GZ_19W",
+    "file": "BD_GZ_19W.json",
+    "source_url": "https://power.larc.nasa.gov/api/temporal/daily/point?parameters=T2M%2CT2M_MIN%2CT2M_MAX%2CPRECTOTCORR%2CRH2M%2CALLSKY_SFC_SW_DWN%2CWS2M&community=AG&latitude=23.9905&longitude=90.4019&start=20190708&end=20191105&format=JSON&time-standard=LST",
+    "retrieved_utc": "2026-10-09T02:24:00.728593+00:00",
+    "bytes": 15081,
+    "sha256": "5e3320df940f1c9584375da61e52aa55ff55fb17b50cde03ae3646f04a59eb53",
+    "days": 121,
+    "status": "downloaded"
+  },
+  {
+    "environment_id": "BD_NM_19W",
+    "file": "BD_NM_19W.json",
+    "source_url": "https://power.larc.nasa.gov/api/temporal/daily/point?parameters=T2M%2CT2M_MIN%2CT2M_MAX%2CPRECTOTCORR%2CRH2M%2CALLSKY_SFC_SW_DWN%2CWS2M&community=AG&latitude=24.2548&longitude=90.3018&start=20190711&end=20191110&format=JSON&time-standard=LST",
+    "retrieved_utc": "2026-10-09T02:24:00.723590+00:00",
+    "bytes": 15313,
+    "sha256": "8869634f848070054d3cb6d4aed09f18a066cee83c09ab97cee8c21f8d3a0326",
+    "days": 123,
+    "status": "downloaded"
+  },
+  {
+    "environment_id": "IN_HY_18W",
+    "file": "IN_HY_18W.json",
+    "source_url": "https://power.larc.nasa.gov/api/temporal/daily/point?parameters=T2M%2CT2M_MIN%2CT2M_MAX%2CPRECTOTCORR%2CRH2M%2CALLSKY_SFC_SW_DWN%2CWS2M&community=AG&latitude=17.5128&longitude=78.2744&start=20180717&end=20181127&format=JSON&time-standard=LST",
+    "retrieved_utc": "2026-10-09T02:24:00.730587+00:00",
+    "bytes": 16530,
+    "sha256": "78fa292106a5b0562de3e49b35f46503067064400a1dbce7bae9c8e6abfda6ec",
+    "days": 134,
+    "status": "downloaded"
+  },
+  {
+    "environment_id": "IN_CU_19W",
+    "file": "IN_CU_19W.json",
+    "source_url": "https://power.larc.nasa.gov/api/temporal/daily/point?parameters=T2M%2CT2M_MIN%2CT2M_MAX%2CPRECTOTCORR%2CRH2M%2CALLSKY_SFC_SW_DWN%2CWS2M&community=AG&latitude=20.4475&longitude=85.9399&start=20190710&end=20191119&format=JSON&time-standard=LST",
+    "retrieved_utc": "2026-10-09T02:24:02.775013+00:00",
+    "bytes": 16466,
+    "sha256": "ec6a608fe4fe5b41331cec3e100282323985fb99e54ee40b13a7a9c1a2514b5b",
+    "days": 133,
+    "status": "downloaded"
+  },
+  {
+    "environment_id": "IN_HY_19D",
+    "file": "IN_HY_19D.json",
+    "source_url": "https://power.larc.nasa.gov/api/temporal/daily/point?parameters=T2M%2CT2M_MIN%2CT2M_MAX%2CPRECTOTCORR%2CRH2M%2CALLSKY_SFC_SW_DWN%2CWS2M&community=AG&latitude=17.5128&longitude=78.2744&start=20190117&end=20190519&format=JSON&time-standard=LST",
+    "retrieved_utc": "2026-10-09T02:24:02.574578+00:00",
+    "bytes": 15222,
+    "sha256": "ce57991e25d215c427b2d8f16e5d1396c992609cb321cecc36601005e9251695",
+    "days": 123,
+    "status": "downloaded"
+  },
+  {
+    "environment_id": "IN_HY_19W",
+    "file": "IN_HY_19W.json",
+    "source_url": "https://power.larc.nasa.gov/api/temporal/daily/point?parameters=T2M%2CT2M_MIN%2CT2M_MAX%2CPRECTOTCORR%2CRH2M%2CALLSKY_SFC_SW_DWN%2CWS2M&community=AG&latitude=17.5124&longitude=78.2754&start=20190702&end=20191207&format=JSON&time-standard=LST",
+    "retrieved_utc": "2026-10-09T02:24:02.575584+00:00",
+    "bytes": 19457,
+    "sha256": "11f864b9a5b3b629a11827d456704e989060c4b4cc69a70e04f95e7d6ff43b31",
+    "days": 159,
+    "status": "downloaded"
+  },
+  {
+    "environment_id": "IN_MA_19W",
+    "file": "IN_MA_19W.json",
+    "source_url": "https://power.larc.nasa.gov/api/temporal/daily/point?parameters=T2M%2CT2M_MIN%2CT2M_MAX%2CPRECTOTCORR%2CRH2M%2CALLSKY_SFC_SW_DWN%2CWS2M&community=AG&latitude=16.6302&longitude=81.7444&start=20190706&end=20191117&format=JSON&time-standard=LST",
+    "retrieved_utc": "2026-10-09T02:24:04.232559+00:00",
+    "bytes": 16685,
+    "sha256": "6eeb283acfe97eb5514afe23eb7a6800ca42cf95bd9022a8eb7a79e237f1032c",
+    "days": 135,
+    "status": "downloaded"
+  },
+  {
+    "environment_id": "IN_RP_19W",
+    "file": "IN_RP_19W.json",
+    "source_url": "https://power.larc.nasa.gov/api/temporal/daily/point?parameters=T2M%2CT2M_MIN%2CT2M_MAX%2CPRECTOTCORR%2CRH2M%2CALLSKY_SFC_SW_DWN%2CWS2M&community=AG&latitude=21.2514&longitude=81.6296&start=20190715&end=20191203&format=JSON&time-standard=LST",
+    "retrieved_utc": "2026-10-09T02:24:03.714589+00:00",
+    "bytes": 17485,
+    "sha256": "45f1116f33bd0fcb0349b339acfb9d5dabe1e07de71c92879b1651d086ffdce6",
+    "days": 142,
+    "status": "downloaded"
+  },
+  {
+    "environment_id": "KE_AH_19D",
+    "file": "KE_AH_19D.json",
+    "source_url": "https://power.larc.nasa.gov/api/temporal/daily/point?parameters=T2M%2CT2M_MIN%2CT2M_MAX%2CPRECTOTCORR%2CRH2M%2CALLSKY_SFC_SW_DWN%2CWS2M&community=AG&latitude=-0.1388&longitude=34.9379&start=20190821&end=20200104&format=JSON&time-standard=LST",
+    "retrieved_utc": "2026-10-09T02:24:04.441850+00:00",
+    "bytes": 16995,
+    "sha256": "5e009cf46b304c04cc642e2c4df44a52d8e0bd1e5a0c987a5286d1bebae08e4d",
+    "days": 137,
+    "status": "downloaded"
+  },
+  {
+    "environment_id": "KE_MW_20W",
+    "file": "KE_MW_20W.json",
+    "source_url": "https://power.larc.nasa.gov/api/temporal/daily/point?parameters=T2M%2CT2M_MIN%2CT2M_MAX%2CPRECTOTCORR%2CRH2M%2CALLSKY_SFC_SW_DWN%2CWS2M&community=AG&latitude=-0.6489&longitude=37.2841&start=20200224&end=20200719&format=JSON&time-standard=LST",
+    "retrieved_utc": "2026-10-09T02:24:05.535915+00:00",
+    "bytes": 18110,
+    "sha256": "d079cd0111b3070fa048ba2d6fe5ff55dc1d2a4050f1129df4208120c98d2d75",
+    "days": 147,
+    "status": "downloaded"
+  },
+  {
+    "environment_id": "MZ_CK_20W",
+    "file": "MZ_CK_20W.json",
+    "source_url": "https://power.larc.nasa.gov/api/temporal/daily/point?parameters=T2M%2CT2M_MIN%2CT2M_MAX%2CPRECTOTCORR%2CRH2M%2CALLSKY_SFC_SW_DWN%2CWS2M&community=AG&latitude=-24.5261&longitude=33.0083&start=20191105&end=20200409&format=JSON&time-standard=LST",
+    "retrieved_utc": "2026-10-09T02:24:05.552037+00:00",
+    "bytes": 19244,
+    "sha256": "319de51f514ceafa69934ae9b500d6c1bf23ecd2809e99456793e329610f4206",
+    "days": 157,
+    "status": "downloaded"
+  },
+  {
+    "environment_id": "MZ_MP_20W",
+    "file": "MZ_MP_20W.json",
+    "source_url": "https://power.larc.nasa.gov/api/temporal/daily/point?parameters=T2M%2CT2M_MIN%2CT2M_MAX%2CPRECTOTCORR%2CRH2M%2CALLSKY_SFC_SW_DWN%2CWS2M&community=AG&latitude=-26.4694&longitude=32.6372&start=20191121&end=20200411&format=JSON&time-standard=LST",
+    "retrieved_utc": "2026-10-09T02:24:06.252960+00:00",
+    "bytes": 17630,
+    "sha256": "d571cc7ef336649e1da725032362593bcb9b43867b56a7b76743def607f7b6a2",
+    "days": 143,
+    "status": "downloaded"
+  },
+  {
+    "environment_id": "PH_LB_19D",
+    "file": "PH_LB_19D.json",
+    "source_url": "https://power.larc.nasa.gov/api/temporal/daily/point?parameters=T2M%2CT2M_MIN%2CT2M_MAX%2CPRECTOTCORR%2CRH2M%2CALLSKY_SFC_SW_DWN%2CWS2M&community=AG&latitude=14.1687&longitude=121.2554&start=20190115&end=20190513&format=JSON&time-standard=LST",
+    "retrieved_utc": "2026-10-09T02:24:07.591868+00:00",
+    "bytes": 14820,
+    "sha256": "28377bd0326862ca46488addfa098b8d099be0e2ce4dba5a6605588a97212a21",
+    "days": 119,
+    "status": "downloaded"
+  },
+  {
+    "environment_id": "PH_LB_19W",
+    "file": "PH_LB_19W.json",
+    "source_url": "https://power.larc.nasa.gov/api/temporal/daily/point?parameters=T2M%2CT2M_MIN%2CT2M_MAX%2CPRECTOTCORR%2CRH2M%2CALLSKY_SFC_SW_DWN%2CWS2M&community=AG&latitude=14.1687&longitude=121.2554&start=20190620&end=20191017&format=JSON&time-standard=LST",
+    "retrieved_utc": "2026-10-09T02:24:07.590863+00:00",
+    "bytes": 14976,
+    "sha256": "cd5f1336767218d3f3ffefa71c70c65893bacd0287165cc2bd9d269aa5b59781",
+    "days": 120,
+    "status": "downloaded"
+  },
+  {
+    "environment_id": "TZ_DK_20W",
+    "file": "TZ_DK_20W.json",
+    "source_url": "https://power.larc.nasa.gov/api/temporal/daily/point?parameters=T2M%2CT2M_MIN%2CT2M_MAX%2CPRECTOTCORR%2CRH2M%2CALLSKY_SFC_SW_DWN%2CWS2M&community=AG&latitude=-6.4348&longitude=37.538&start=20200316&end=20200801&format=JSON&time-standard=LST",
+    "retrieved_utc": "2026-10-09T02:24:08.203897+00:00",
+    "bytes": 17194,
+    "sha256": "126d814d2c384bfaa5ea5cf66c21d51672f8981087a9a49d9d7bf2f80818d143",
+    "days": 139,
+    "status": "downloaded"
+  }
+]

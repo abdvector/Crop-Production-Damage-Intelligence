@@ -1,0 +1,20 @@
+{
+  "map_date": "2026-10-11",
+  "primary_metadata_genotypes": 111,
+  "primary_yield_genotypes": 107,
+  "primary_yield_records": 1056,
+  "baseline_data_available_records": 1046,
+  "primary_environments": 15,
+  "weather_complete_environments": 15,
+  "ptr_candidate_genotypes_in_metadata": 40,
+  "ptr_candidate_genotypes_in_yield": 38,
+  "eligible_yield_records_with_ptr_candidate": 387,
+  "verified_protein_genotypes": 0,
+  "embedding_ready_records": 0,
+  "juma_shared_gids": 66,
+  "juma_comparable_calls": 44948,
+  "juma_discordant_calls": 0,
+  "ptr_diagnostic_markers_present_in_primary_882": 0,
+  "no_model_trained": true,
+  "identity_caveat": "Candidate names/haplotypes cannot establish full protein identity; source GID concordance is supporting evidence only."
+}

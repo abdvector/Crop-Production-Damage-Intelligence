@@ -1,0 +1,3 @@
+# Preserve exact dataset bytes, publisher checksums and baseline input hashes.
+data/** -text
+*.zip -text

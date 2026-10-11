@@ -1,0 +1,23 @@
+{
+  "retrieved_utc": "2026-10-10T16:58:23.051247+00:00",
+  "files": [
+    {
+      "filename": "data_1e20a1c8-6aeb-4365-866d-71b24c497586.zip",
+      "url": "https://data-package.ceh.ac.uk/data/1e20a1c8-6aeb-4365-866d-71b24c497586.zip",
+      "doi": "10.5285/1e20a1c8-6aeb-4365-866d-71b24c497586",
+      "bytes": 578440,
+      "sha256": "0e23c9863249746f6689a9997e8d2ed938ebab47b7e29d02c87b6ce85186076d",
+      "archive_integrity_passed": true,
+      "publisher_checksum_verification": "No separate publisher checksum identified; SHA256 records local integrity only."
+    },
+    {
+      "filename": "sd_1e20a1c8-6aeb-4365-866d-71b24c497586.zip",
+      "url": "https://data-package.ceh.ac.uk/sd/1e20a1c8-6aeb-4365-866d-71b24c497586.zip",
+      "doi": "10.5285/1e20a1c8-6aeb-4365-866d-71b24c497586",
+      "bytes": 20592,
+      "sha256": "19fecdf3459c00fb3c0a51a39cf435cdd30032f0d4e140b526429deb47f32e5e",
+      "archive_integrity_passed": true,
+      "publisher_checksum_verification": "No separate publisher checksum identified; SHA256 records local integrity only."
+    }
+  ]
+}

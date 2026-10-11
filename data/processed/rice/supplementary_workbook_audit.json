@@ -1,0 +1,16 @@
+{
+  "annotation_marker_coordinate_count": 967,
+  "primary_marker_count": 882,
+  "annotation_coordinate_overlap_only": 863,
+  "juma_marker_coordinate_count": 703,
+  "juma_coordinate_overlap_only": 703,
+  "juma_genotype_count": 76,
+  "primary_genotype_count": 107,
+  "exact_gid_overlap_genotyped": 66,
+  "exact_gid_overlap_breeding_values": 81,
+  "coordinate_overlap_caveat": "Candidate match only; assembly, strand, allele and sample concordance require reconciliation before combining data.",
+  "annotation_table_rows": 995,
+  "annotation_exact_marker_id_overlap": 879,
+  "annotation_trait_rows_missing_position_column": 28,
+  "annotation_trait_marker_id_overlap_only": 18
+}

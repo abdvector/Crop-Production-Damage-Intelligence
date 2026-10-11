@@ -1,0 +1,15 @@
+{
+  "retrieved_utc": "2026-10-10T16:58:23.040722+00:00",
+  "files": [
+    {
+      "filename": "Smart-Valleys dataset.xlsx",
+      "url": "https://zenodo.org/api/records/20345853/files/Smart-Valleys%20dataset.xlsx/content",
+      "doi": "10.5281/zenodo.20345853",
+      "bytes": 137321,
+      "sha256": "a2e967c88faa7fd851df440c32588466b88fc9f78b978339567bfc102cd23600",
+      "archive_integrity_passed": true,
+      "publisher_md5": "bbc00ee476e8d3d7117f53d4823c8f02",
+      "publisher_md5_matches": true
+    }
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "source_doi": "10.5281/zenodo.20025230",
+  "source_article": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13492586/",
+  "files": [
+    {
+      "filename": "Phenotypic data_GWAS.csv",
+      "url": "https://zenodo.org/api/records/20025230/files/Phenotypic%20data_GWAS.csv/content",
+      "bytes": 13849,
+      "publisher_checksum": "md5:c7b3c414170c324045db311dc13d0ac8",
+      "checksum_matches": true,
+      "sha256": "fff3a37ecc43eea534a46cb44b31af2f5ce9a7dd8c0358ba162ab39f50587d1f"
+    },
+    {
+      "filename": "Table S9.csv",
+      "url": "https://zenodo.org/api/records/20025230/files/Table%20S9.csv/content",
+      "bytes": 822,
+      "publisher_checksum": "md5:82e90ed47f995ac923a7ce69a2bce195",
+      "checksum_matches": true,
+      "sha256": "d122bf97b7f0a204192a457c365dbc22b789c9193cad32922acf5e9c9baca961"
+    },
+    {
+      "filename": "Table S6.csv",
+      "url": "https://zenodo.org/api/records/20025230/files/Table%20S6.csv/content",
+      "bytes": 18270,
+      "publisher_checksum": "md5:3b7e234a64505bb847c536e21ac87982",
+      "checksum_matches": true,
+      "sha256": "b0347d4730195f061d18c28716df9132d9c7b1cdc32d7d392ee4b0b2f641ff87"
+    },
+    {
+      "filename": "Table S4.csv",
+      "url": "https://zenodo.org/api/records/20025230/files/Table%20S4.csv/content",
+      "bytes": 454,
+      "publisher_checksum": "md5:56cf17b03cde77f3d5aedc2f523362b4",
+      "checksum_matches": true,
+      "sha256": "8453c3899fe0bbb5daf7a58a874ab54bea436c39dbbb4186163c866db73364f0"
+    },
+    {
+      "filename": "Table S10.csv",
+      "url": "https://zenodo.org/api/records/20025230/files/Table%20S10.csv/content",
+      "bytes": 720,
+      "publisher_checksum": "md5:4ed90539c17b3fdfc35c9b4f00e999a3",
+      "checksum_matches": true,
+      "sha256": "073bfecc2f24636f0785a8e4f3755225912979803ac0a0b948f2aac332d91f01"
+    },
+    {
+      "filename": "Table S1.csv",
+      "url": "https://zenodo.org/api/records/20025230/files/Table%20S1.csv/content",
+      "bytes": 17108,
+      "publisher_checksum": "md5:8cd9a386be460449fbf9362e69531d44",
+      "checksum_matches": true,
+      "sha256": "8e49a05c2c1ddc63d0794a31e509fd817a03cbe0d0c7aa622fce77143d7edc62"
+    },
+    {
+      "filename": "Table S2.csv",
+      "url": "https://zenodo.org/api/records/20025230/files/Table%20S2.csv/content",
+      "bytes": 4001,
+      "publisher_checksum": "md5:f0f4ba912437fe1049621b72e0f82e87",
+      "checksum_matches": true,
+      "sha256": "e8da18c9681c38ceb59723dcc01137c73cbbfbfd10164fd08a1c3dd4e68fa383"
+    },
+    {
+      "filename": "Table S5.csv",
+      "url": "https://zenodo.org/api/records/20025230/files/Table%20S5.csv/content",
+      "bytes": 413,
+      "publisher_checksum": "md5:d48cb4a6cbe7eceb626c34cd8a5a6b1c",
+      "checksum_matches": true,
+      "sha256": "4d31e8e3d2f53bd2acae5e2b9a8db56ce9bfbd962354ffa493691c3fd7831fcd"
+    },
+    {
+      "filename": "Table S8.csv",
+      "url": "https://zenodo.org/api/records/20025230/files/Table%20S8.csv/content",
+      "bytes": 12820,
+      "publisher_checksum": "md5:3327921210f1092bbd2bdc5116d82004",
+      "checksum_matches": true,
+      "sha256": "d3c132daffbd70d53648ee68e35a09074ec2bcc4ad397f2a80025c104660b327"
+    },
+    {
+      "filename": "Table S3.csv",
+      "url": "https://zenodo.org/api/records/20025230/files/Table%20S3.csv/content",
+      "bytes": 703,
+      "publisher_checksum": "md5:62e981e7434d315860be42e915e3e991",
+      "checksum_matches": true,
+      "sha256": "ed62e3120a04bd3def18e7a9df481d9884438dfb8ccd037ae59bd88d81490184"
+    },
+    {
+      "filename": "Table S7.csv",
+      "url": "https://zenodo.org/api/records/20025230/files/Table%20S7.csv/content",
+      "bytes": 988,
+      "publisher_checksum": "md5:b0cdadbe7c85713c3b113c6448dc7c32",
+      "checksum_matches": true,
+      "sha256": "b0e2693633786c1561695fb07a78fc65fb206ff3119fd3e448ccc25884f18664"
+    }
+  ],
+  "expected_file_count": 11,
+  "downloaded_file_count": 11,
+  "s2_accession_rows": 101,
+  "candidate_normalised_alias_matches": 40,
+  "matching_caveat": "Punctuation-insensitive name candidates, not verified GID or sample identity. Do not use until reviewed.",
+  "does_not_provide": "Full variety-specific protein sequences/structures or original yield-trial soil/management."
+}

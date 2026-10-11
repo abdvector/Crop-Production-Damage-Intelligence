@@ -1,0 +1,32 @@
+{
+  "study_doi": "10.1186/s12284-023-00623-6",
+  "yield_rows": 1056,
+  "yield_rows_with_conflicting_repeated_key": 10,
+  "yield_rows_eligible_after_key_audit": 1046,
+  "genotypes": 107,
+  "markers": 882,
+  "environments": 15,
+  "locations": 12,
+  "countries": [
+    "Bangladesh",
+    "India",
+    "Kenya",
+    "Mozambique",
+    "Philippines",
+    "Tanzania"
+  ],
+  "years": [
+    2018,
+    2019,
+    2020
+  ],
+  "daily_weather_rows": 2032,
+  "weather_parameters": 7,
+  "missing_weather_values": 0,
+  "yield_unit": "kg/ha",
+  "yield_moisture_percent": 14,
+  "yield_kind": "published adjusted trial estimates; some unreplicated trial phenotypes",
+  "no_model_fitted": true,
+  "measured_aluminium_available": false,
+  "trial_variety_protein_sequences_available": false
+}
