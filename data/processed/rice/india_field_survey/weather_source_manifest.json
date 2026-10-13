@@ -1,0 +1,1266 @@
+{
+  "endpoint": "https://power.larc.nasa.gov/api/temporal/daily/regional",
+  "time_standard": "LST",
+  "parameters_expected_units": {
+    "T2M_MAX": "C",
+    "T2M_MIN": "C",
+    "PRECTOTCORR": "mm/day",
+    "ALLSKY_SFC_SW_DWN": "MJ/m^2/day",
+    "RH2M": "%"
+  },
+  "planned_requests": 125,
+  "successful_requests": 125,
+  "failures": [],
+  "files": [
+    {
+      "year": 2017,
+      "lat_tile": 24,
+      "lon_tile": 80,
+      "parameter": "ALLSKY_SFC_SW_DWN",
+      "filename": "2017_24_80_ALLSKY_SFC_SW_DWN.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=ALLSKY_SFC_SW_DWN&community=AG&latitude-min=23.5&latitude-max=28.5&longitude-min=79.5&longitude-max=84.5&start=20170528&end=20171019&format=JSON&time-standard=LST",
+      "bytes": 92946,
+      "sha256": "8e86f264add7b3bb857e0f7cb8a4e9f0973c210f352488f906474f32268051d5"
+    },
+    {
+      "year": 2017,
+      "lat_tile": 24,
+      "lon_tile": 80,
+      "parameter": "PRECTOTCORR",
+      "filename": "2017_24_80_PRECTOTCORR.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=PRECTOTCORR&community=AG&latitude-min=23.5&latitude-max=28.5&longitude-min=79.5&longitude-max=84.5&start=20170528&end=20171019&format=JSON&time-standard=LST",
+      "bytes": 215761,
+      "sha256": "48bd44425f0b15d470fd50320803b02e2b9d225a01261a9895ce74ccae4cb2c1"
+    },
+    {
+      "year": 2017,
+      "lat_tile": 24,
+      "lon_tile": 80,
+      "parameter": "RH2M",
+      "filename": "2017_24_80_RH2M.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=RH2M&community=AG&latitude-min=23.5&latitude-max=28.5&longitude-min=79.5&longitude-max=84.5&start=20170528&end=20171019&format=JSON&time-standard=LST",
+      "bytes": 226534,
+      "sha256": "9432a5f1e0bf438c0d47c702e5d80ff6d88666367ca4e62dd709858cb354a2bd"
+    },
+    {
+      "year": 2017,
+      "lat_tile": 24,
+      "lon_tile": 80,
+      "parameter": "T2M_MAX",
+      "filename": "2017_24_80_T2M_MAX.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=T2M_MAX&community=AG&latitude-min=23.5&latitude-max=28.5&longitude-min=79.5&longitude-max=84.5&start=20170528&end=20171019&format=JSON&time-standard=LST",
+      "bytes": 226820,
+      "sha256": "1b7e19e9579d81371c8cf3b912a7da1a0f2bd6cd273a85ab53569f30cc4d83f1"
+    },
+    {
+      "year": 2017,
+      "lat_tile": 24,
+      "lon_tile": 80,
+      "parameter": "T2M_MIN",
+      "filename": "2017_24_80_T2M_MIN.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=T2M_MIN&community=AG&latitude-min=23.5&latitude-max=28.5&longitude-min=79.5&longitude-max=84.5&start=20170528&end=20171019&format=JSON&time-standard=LST",
+      "bytes": 226512,
+      "sha256": "8bd79163efb8f0d4c715dbc11fb12a62b20d23521ba96a31bf20cbbe82e21f8b"
+    },
+    {
+      "year": 2017,
+      "lat_tile": 24,
+      "lon_tile": 84,
+      "parameter": "ALLSKY_SFC_SW_DWN",
+      "filename": "2017_24_84_ALLSKY_SFC_SW_DWN.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=ALLSKY_SFC_SW_DWN&community=AG&latitude-min=23.5&latitude-max=28.5&longitude-min=83.5&longitude-max=88.5&start=20170515&end=20171030&format=JSON&time-standard=LST",
+      "bytes": 107561,
+      "sha256": "ccf9965386ee8376c652047b6ce5432ceaa4e070024ac32ea719c1fa13e8eca4"
+    },
+    {
+      "year": 2017,
+      "lat_tile": 24,
+      "lon_tile": 84,
+      "parameter": "PRECTOTCORR",
+      "filename": "2017_24_84_PRECTOTCORR.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=PRECTOTCORR&community=AG&latitude-min=23.5&latitude-max=28.5&longitude-min=83.5&longitude-max=88.5&start=20170515&end=20171030&format=JSON&time-standard=LST",
+      "bytes": 250265,
+      "sha256": "f7318d94c1c83a7787597f498d44d0a636bab645cfca7459d178bd134d87671e"
+    },
+    {
+      "year": 2017,
+      "lat_tile": 24,
+      "lon_tile": 84,
+      "parameter": "RH2M",
+      "filename": "2017_24_84_RH2M.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=RH2M&community=AG&latitude-min=23.5&latitude-max=28.5&longitude-min=83.5&longitude-max=88.5&start=20170515&end=20171030&format=JSON&time-standard=LST",
+      "bytes": 262196,
+      "sha256": "d7ba38aa03abdf58cf8681afc57c7fcb433ae2ad13daa72e121ac72263f109a6"
+    },
+    {
+      "year": 2017,
+      "lat_tile": 24,
+      "lon_tile": 84,
+      "parameter": "T2M_MAX",
+      "filename": "2017_24_84_T2M_MAX.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=T2M_MAX&community=AG&latitude-min=23.5&latitude-max=28.5&longitude-min=83.5&longitude-max=88.5&start=20170515&end=20171030&format=JSON&time-standard=LST",
+      "bytes": 261920,
+      "sha256": "cac9c709b4408c02e570b39cabe4786af85c67db9189fa73ba9f80bfee8302fb"
+    },
+    {
+      "year": 2017,
+      "lat_tile": 24,
+      "lon_tile": 84,
+      "parameter": "T2M_MIN",
+      "filename": "2017_24_84_T2M_MIN.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=T2M_MIN&community=AG&latitude-min=23.5&latitude-max=28.5&longitude-min=83.5&longitude-max=88.5&start=20170515&end=20171030&format=JSON&time-standard=LST",
+      "bytes": 260911,
+      "sha256": "0115a93eda306890aabe85ebe74662f65b14da13091256341cfd0237b580f141"
+    },
+    {
+      "year": 2017,
+      "lat_tile": 8,
+      "lon_tile": 76,
+      "parameter": "ALLSKY_SFC_SW_DWN",
+      "filename": "2017_8_76_ALLSKY_SFC_SW_DWN.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=ALLSKY_SFC_SW_DWN&community=AG&latitude-min=7.5&latitude-max=12.5&longitude-min=75.5&longitude-max=80.5&start=20170622&end=20170821&format=JSON&time-standard=LST",
+      "bytes": 42098,
+      "sha256": "4e4015fc401af62cf8df8987507f9e6905bfd642bfaa82d573e058a3e91c11f7"
+    },
+    {
+      "year": 2017,
+      "lat_tile": 8,
+      "lon_tile": 76,
+      "parameter": "PRECTOTCORR",
+      "filename": "2017_8_76_PRECTOTCORR.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=PRECTOTCORR&community=AG&latitude-min=7.5&latitude-max=12.5&longitude-min=75.5&longitude-max=80.5&start=20170622&end=20170821&format=JSON&time-standard=LST",
+      "bytes": 97403,
+      "sha256": "5ea5924e1aea0281e2eb55250dd0644fe264b46bf7732718dbc8be37a2ba040f"
+    },
+    {
+      "year": 2017,
+      "lat_tile": 8,
+      "lon_tile": 76,
+      "parameter": "RH2M",
+      "filename": "2017_8_76_RH2M.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=RH2M&community=AG&latitude-min=7.5&latitude-max=12.5&longitude-min=75.5&longitude-max=80.5&start=20170622&end=20170821&format=JSON&time-standard=LST",
+      "bytes": 101479,
+      "sha256": "20a47d1c5773480df05e33b060c31e110c440835fa43bb9c9da75179c461b35a"
+    },
+    {
+      "year": 2017,
+      "lat_tile": 8,
+      "lon_tile": 76,
+      "parameter": "T2M_MAX",
+      "filename": "2017_8_76_T2M_MAX.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=T2M_MAX&community=AG&latitude-min=7.5&latitude-max=12.5&longitude-min=75.5&longitude-max=80.5&start=20170622&end=20170821&format=JSON&time-standard=LST",
+      "bytes": 101730,
+      "sha256": "76ff143888a9f82fa431600ad0ef47ff14a8dec40106f1ccd70001e2a7d44a6c"
+    },
+    {
+      "year": 2017,
+      "lat_tile": 8,
+      "lon_tile": 76,
+      "parameter": "T2M_MIN",
+      "filename": "2017_8_76_T2M_MIN.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=T2M_MIN&community=AG&latitude-min=7.5&latitude-max=12.5&longitude-min=75.5&longitude-max=80.5&start=20170622&end=20170821&format=JSON&time-standard=LST",
+      "bytes": 101755,
+      "sha256": "f6bf7e4b1eca1d108f18e206d7751bc0bfd7cd47066951efe2e15259d5124eb1"
+    },
+    {
+      "year": 2018,
+      "lat_tile": 12,
+      "lon_tile": 76,
+      "parameter": "ALLSKY_SFC_SW_DWN",
+      "filename": "2018_12_76_ALLSKY_SFC_SW_DWN.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=ALLSKY_SFC_SW_DWN&community=AG&latitude-min=11.5&latitude-max=16.5&longitude-min=75.5&longitude-max=80.5&start=20180508&end=20181101&format=JSON&time-standard=LST",
+      "bytes": 113185,
+      "sha256": "d48c39e35c22f4c1b25ecb011cb742bea229cbc90cbacfadbdb5ffea6c3e5fd0"
+    },
+    {
+      "year": 2018,
+      "lat_tile": 12,
+      "lon_tile": 76,
+      "parameter": "PRECTOTCORR",
+      "filename": "2018_12_76_PRECTOTCORR.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=PRECTOTCORR&community=AG&latitude-min=11.5&latitude-max=16.5&longitude-min=75.5&longitude-max=80.5&start=20180508&end=20181101&format=JSON&time-standard=LST",
+      "bytes": 260003,
+      "sha256": "ef9288234d0e7265cf441b10f5bce6f695e403e3e937ec143d60cb345667a09a"
+    },
+    {
+      "year": 2018,
+      "lat_tile": 12,
+      "lon_tile": 76,
+      "parameter": "RH2M",
+      "filename": "2018_12_76_RH2M.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=RH2M&community=AG&latitude-min=11.5&latitude-max=16.5&longitude-min=75.5&longitude-max=80.5&start=20180508&end=20181101&format=JSON&time-standard=LST",
+      "bytes": 275635,
+      "sha256": "e7b3680c673b80a221028c27088dd9e5788e36775e9b4e1b3e1b11ec9903b292"
+    },
+    {
+      "year": 2018,
+      "lat_tile": 12,
+      "lon_tile": 76,
+      "parameter": "T2M_MAX",
+      "filename": "2018_12_76_T2M_MAX.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=T2M_MAX&community=AG&latitude-min=11.5&latitude-max=16.5&longitude-min=75.5&longitude-max=80.5&start=20180508&end=20181101&format=JSON&time-standard=LST",
+      "bytes": 275871,
+      "sha256": "a6c94db394ba0acc73969c650f3cac18dc0c14b8e5ef2665ed7eb8272cd7792b"
+    },
+    {
+      "year": 2018,
+      "lat_tile": 12,
+      "lon_tile": 76,
+      "parameter": "T2M_MIN",
+      "filename": "2018_12_76_T2M_MIN.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=T2M_MIN&community=AG&latitude-min=11.5&latitude-max=16.5&longitude-min=75.5&longitude-max=80.5&start=20180508&end=20181101&format=JSON&time-standard=LST",
+      "bytes": 275822,
+      "sha256": "10e6b0392e15b82952b8243d9cfce4e3109d813c9286ba541b9577e79ea76b7b"
+    },
+    {
+      "year": 2018,
+      "lat_tile": 12,
+      "lon_tile": 80,
+      "parameter": "ALLSKY_SFC_SW_DWN",
+      "filename": "2018_12_80_ALLSKY_SFC_SW_DWN.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=ALLSKY_SFC_SW_DWN&community=AG&latitude-min=11.5&latitude-max=16.5&longitude-min=79.5&longitude-max=84.5&start=20180705&end=20181106&format=JSON&time-standard=LST",
+      "bytes": 80592,
+      "sha256": "78b42db9330c20c96e4c6bed7b77b55345fc2d4e6244422d610cd74f10352495"
+    },
+    {
+      "year": 2018,
+      "lat_tile": 12,
+      "lon_tile": 80,
+      "parameter": "PRECTOTCORR",
+      "filename": "2018_12_80_PRECTOTCORR.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=PRECTOTCORR&community=AG&latitude-min=11.5&latitude-max=16.5&longitude-min=79.5&longitude-max=84.5&start=20180705&end=20181106&format=JSON&time-standard=LST",
+      "bytes": 187379,
+      "sha256": "736506ebdbeb3da01712d1746d66e759817e743b00c3f66cbaa99e0b3a4c4ed0"
+    },
+    {
+      "year": 2018,
+      "lat_tile": 12,
+      "lon_tile": 80,
+      "parameter": "RH2M",
+      "filename": "2018_12_80_RH2M.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=RH2M&community=AG&latitude-min=11.5&latitude-max=16.5&longitude-min=79.5&longitude-max=84.5&start=20180705&end=20181106&format=JSON&time-standard=LST",
+      "bytes": 196600,
+      "sha256": "f0b175e7b65e8ec5f95d1c09954c0c3cc8f0addbf51b7720584b12484e914565"
+    },
+    {
+      "year": 2018,
+      "lat_tile": 12,
+      "lon_tile": 80,
+      "parameter": "T2M_MAX",
+      "filename": "2018_12_80_T2M_MAX.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=T2M_MAX&community=AG&latitude-min=11.5&latitude-max=16.5&longitude-min=79.5&longitude-max=84.5&start=20180705&end=20181106&format=JSON&time-standard=LST",
+      "bytes": 196840,
+      "sha256": "0bc75ad658261c654dde3a6c5546eb78dbad400e937c5526978efce9d9f97485"
+    },
+    {
+      "year": 2018,
+      "lat_tile": 12,
+      "lon_tile": 80,
+      "parameter": "T2M_MIN",
+      "filename": "2018_12_80_T2M_MIN.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=T2M_MIN&community=AG&latitude-min=11.5&latitude-max=16.5&longitude-min=79.5&longitude-max=84.5&start=20180705&end=20181106&format=JSON&time-standard=LST",
+      "bytes": 196832,
+      "sha256": "d34d815c8d9c3a2942e142e22150a709f0e7a8abba3ca9716a9f8f3eb4ce0538"
+    },
+    {
+      "year": 2018,
+      "lat_tile": 16,
+      "lon_tile": 76,
+      "parameter": "ALLSKY_SFC_SW_DWN",
+      "filename": "2018_16_76_ALLSKY_SFC_SW_DWN.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=ALLSKY_SFC_SW_DWN&community=AG&latitude-min=15.5&latitude-max=20.5&longitude-min=75.5&longitude-max=80.5&start=20180810&end=20181029&format=JSON&time-standard=LST",
+      "bytes": 54164,
+      "sha256": "4969a1c72be34f2558b65bf7682f3b030b4381cc7b2299640885f63ae5fb7ab1"
+    },
+    {
+      "year": 2018,
+      "lat_tile": 16,
+      "lon_tile": 76,
+      "parameter": "PRECTOTCORR",
+      "filename": "2018_16_76_PRECTOTCORR.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=PRECTOTCORR&community=AG&latitude-min=15.5&latitude-max=20.5&longitude-min=75.5&longitude-max=80.5&start=20180810&end=20181029&format=JSON&time-standard=LST",
+      "bytes": 123282,
+      "sha256": "339553ebc09f600c2f1d2b11b719b38f99c247ff3ce78725a8dc27da8fbbaaa1"
+    },
+    {
+      "year": 2018,
+      "lat_tile": 16,
+      "lon_tile": 76,
+      "parameter": "RH2M",
+      "filename": "2018_16_76_RH2M.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=RH2M&community=AG&latitude-min=15.5&latitude-max=20.5&longitude-min=75.5&longitude-max=80.5&start=20180810&end=20181029&format=JSON&time-standard=LST",
+      "bytes": 131292,
+      "sha256": "c0979584a9ea28951d791a5b4c01707bff80e62c5327de8f872f7120174a484a"
+    },
+    {
+      "year": 2018,
+      "lat_tile": 16,
+      "lon_tile": 76,
+      "parameter": "T2M_MAX",
+      "filename": "2018_16_76_T2M_MAX.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=T2M_MAX&community=AG&latitude-min=15.5&latitude-max=20.5&longitude-min=75.5&longitude-max=80.5&start=20180810&end=20181029&format=JSON&time-standard=LST",
+      "bytes": 131595,
+      "sha256": "7f69cb65ba3b9529558caf88daad5bdc515c1c4a5198ad13a68ade1ad83b8c0f"
+    },
+    {
+      "year": 2018,
+      "lat_tile": 16,
+      "lon_tile": 76,
+      "parameter": "T2M_MIN",
+      "filename": "2018_16_76_T2M_MIN.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=T2M_MIN&community=AG&latitude-min=15.5&latitude-max=20.5&longitude-min=75.5&longitude-max=80.5&start=20180810&end=20181029&format=JSON&time-standard=LST",
+      "bytes": 131635,
+      "sha256": "04116a6d03dadf66eadd9a8f1d0f1db123c9cc590989b39da817a6dfac002e06"
+    },
+    {
+      "year": 2018,
+      "lat_tile": 16,
+      "lon_tile": 80,
+      "parameter": "ALLSKY_SFC_SW_DWN",
+      "filename": "2018_16_80_ALLSKY_SFC_SW_DWN.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=ALLSKY_SFC_SW_DWN&community=AG&latitude-min=15.5&latitude-max=20.5&longitude-min=79.5&longitude-max=84.5&start=20180604&end=20181104&format=JSON&time-standard=LST",
+      "bytes": 97817,
+      "sha256": "e597877a44072bcf38d4edb8efdc2299e77f710b93c01751ed40090b5d25a1b8"
+    },
+    {
+      "year": 2018,
+      "lat_tile": 16,
+      "lon_tile": 80,
+      "parameter": "PRECTOTCORR",
+      "filename": "2018_16_80_PRECTOTCORR.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=PRECTOTCORR&community=AG&latitude-min=15.5&latitude-max=20.5&longitude-min=79.5&longitude-max=84.5&start=20180604&end=20181104&format=JSON&time-standard=LST",
+      "bytes": 228241,
+      "sha256": "f9455bbe818b12c565a2cb770a5a10100b84ae4b172d5a8547e0bd4592ec1f10"
+    },
+    {
+      "year": 2018,
+      "lat_tile": 16,
+      "lon_tile": 80,
+      "parameter": "RH2M",
+      "filename": "2018_16_80_RH2M.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=RH2M&community=AG&latitude-min=15.5&latitude-max=20.5&longitude-min=79.5&longitude-max=84.5&start=20180604&end=20181104&format=JSON&time-standard=LST",
+      "bytes": 239790,
+      "sha256": "714f9205f1f05fdd1c93b6edbe4b28a580dfc283035daf024de360bfe196556e"
+    },
+    {
+      "year": 2018,
+      "lat_tile": 16,
+      "lon_tile": 80,
+      "parameter": "T2M_MAX",
+      "filename": "2018_16_80_T2M_MAX.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=T2M_MAX&community=AG&latitude-min=15.5&latitude-max=20.5&longitude-min=79.5&longitude-max=84.5&start=20180604&end=20181104&format=JSON&time-standard=LST",
+      "bytes": 240048,
+      "sha256": "964a4c600faa588c19c66b94ef6a3f8cf2065085577c995bdc26cf57d11b4f9d"
+    },
+    {
+      "year": 2018,
+      "lat_tile": 16,
+      "lon_tile": 80,
+      "parameter": "T2M_MIN",
+      "filename": "2018_16_80_T2M_MIN.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=T2M_MIN&community=AG&latitude-min=15.5&latitude-max=20.5&longitude-min=79.5&longitude-max=84.5&start=20180604&end=20181104&format=JSON&time-standard=LST",
+      "bytes": 240131,
+      "sha256": "aaf2d383816e9cfb09c39809e3d774d2949780942a620004e7c0338810b622a7"
+    },
+    {
+      "year": 2018,
+      "lat_tile": 16,
+      "lon_tile": 84,
+      "parameter": "ALLSKY_SFC_SW_DWN",
+      "filename": "2018_16_84_ALLSKY_SFC_SW_DWN.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=ALLSKY_SFC_SW_DWN&community=AG&latitude-min=15.5&latitude-max=20.5&longitude-min=83.5&longitude-max=88.5&start=20180615&end=20181012&format=JSON&time-standard=LST",
+      "bytes": 77101,
+      "sha256": "10c9f2fd0428eb5c7503e32fad076a54b159385df98356760de22a69abc6a552"
+    },
+    {
+      "year": 2018,
+      "lat_tile": 16,
+      "lon_tile": 84,
+      "parameter": "PRECTOTCORR",
+      "filename": "2018_16_84_PRECTOTCORR.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=PRECTOTCORR&community=AG&latitude-min=15.5&latitude-max=20.5&longitude-min=83.5&longitude-max=88.5&start=20180615&end=20181012&format=JSON&time-standard=LST",
+      "bytes": 182153,
+      "sha256": "a84356132d398d501d6a865bdb577421c4c85aa8fae55a9d7bbef07e14f444b9"
+    },
+    {
+      "year": 2018,
+      "lat_tile": 16,
+      "lon_tile": 84,
+      "parameter": "RH2M",
+      "filename": "2018_16_84_RH2M.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=RH2M&community=AG&latitude-min=15.5&latitude-max=20.5&longitude-min=83.5&longitude-max=88.5&start=20180615&end=20181012&format=JSON&time-standard=LST",
+      "bytes": 189089,
+      "sha256": "82962b4822f0340390b72cc58f3ee7224a263385b950cb929b585e4831171f0c"
+    },
+    {
+      "year": 2018,
+      "lat_tile": 16,
+      "lon_tile": 84,
+      "parameter": "T2M_MAX",
+      "filename": "2018_16_84_T2M_MAX.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=T2M_MAX&community=AG&latitude-min=15.5&latitude-max=20.5&longitude-min=83.5&longitude-max=88.5&start=20180615&end=20181012&format=JSON&time-standard=LST",
+      "bytes": 189410,
+      "sha256": "09dd65823e6a32b558eae8a0a7804a04df2843b046de92afb45a57ac1822869f"
+    },
+    {
+      "year": 2018,
+      "lat_tile": 16,
+      "lon_tile": 84,
+      "parameter": "T2M_MIN",
+      "filename": "2018_16_84_T2M_MIN.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=T2M_MIN&community=AG&latitude-min=15.5&latitude-max=20.5&longitude-min=83.5&longitude-max=88.5&start=20180615&end=20181012&format=JSON&time-standard=LST",
+      "bytes": 189386,
+      "sha256": "4444460c8f61515075fe5dd93d57c81063f22fbb99db9faea7e88d37ebdaa0ea"
+    },
+    {
+      "year": 2018,
+      "lat_tile": 20,
+      "lon_tile": 80,
+      "parameter": "ALLSKY_SFC_SW_DWN",
+      "filename": "2018_20_80_ALLSKY_SFC_SW_DWN.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=ALLSKY_SFC_SW_DWN&community=AG&latitude-min=19.5&latitude-max=24.5&longitude-min=79.5&longitude-max=84.5&start=20180607&end=20181019&format=JSON&time-standard=LST",
+      "bytes": 86292,
+      "sha256": "e6992ded70009f8315ddeff272dabf964563364b41674cbdbca72b2abce0bbe0"
+    },
+    {
+      "year": 2018,
+      "lat_tile": 20,
+      "lon_tile": 80,
+      "parameter": "PRECTOTCORR",
+      "filename": "2018_20_80_PRECTOTCORR.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=PRECTOTCORR&community=AG&latitude-min=19.5&latitude-max=24.5&longitude-min=79.5&longitude-max=84.5&start=20180607&end=20181019&format=JSON&time-standard=LST",
+      "bytes": 201687,
+      "sha256": "d21fdc8b001248cd3ddc3df3180ebc76f7fb42ff33ce5892fc194a776b599ae0"
+    },
+    {
+      "year": 2018,
+      "lat_tile": 20,
+      "lon_tile": 80,
+      "parameter": "RH2M",
+      "filename": "2018_20_80_RH2M.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=RH2M&community=AG&latitude-min=19.5&latitude-max=24.5&longitude-min=79.5&longitude-max=84.5&start=20180607&end=20181019&format=JSON&time-standard=LST",
+      "bytes": 211616,
+      "sha256": "d549ab16c6d03d0605976a8f7cb6244e28883770ac09d7354a64aedbb676bf77"
+    },
+    {
+      "year": 2018,
+      "lat_tile": 20,
+      "lon_tile": 80,
+      "parameter": "T2M_MAX",
+      "filename": "2018_20_80_T2M_MAX.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=T2M_MAX&community=AG&latitude-min=19.5&latitude-max=24.5&longitude-min=79.5&longitude-max=84.5&start=20180607&end=20181019&format=JSON&time-standard=LST",
+      "bytes": 211896,
+      "sha256": "7452a0a2b0eb90d731bb60dce35827e6e6a28a328667e286f829b5c48dbe3f88"
+    },
+    {
+      "year": 2018,
+      "lat_tile": 20,
+      "lon_tile": 80,
+      "parameter": "T2M_MIN",
+      "filename": "2018_20_80_T2M_MIN.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=T2M_MIN&community=AG&latitude-min=19.5&latitude-max=24.5&longitude-min=79.5&longitude-max=84.5&start=20180607&end=20181019&format=JSON&time-standard=LST",
+      "bytes": 211968,
+      "sha256": "e251c3957bfac9d98095d7037fe4487082309805c9bc7e38d252cd93d179dd20"
+    },
+    {
+      "year": 2018,
+      "lat_tile": 20,
+      "lon_tile": 84,
+      "parameter": "ALLSKY_SFC_SW_DWN",
+      "filename": "2018_20_84_ALLSKY_SFC_SW_DWN.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=ALLSKY_SFC_SW_DWN&community=AG&latitude-min=19.5&latitude-max=24.5&longitude-min=83.5&longitude-max=88.5&start=20180601&end=20181029&format=JSON&time-standard=LST",
+      "bytes": 96230,
+      "sha256": "9283947111f89d8cee771df915e0fcbb027df2708bd8c9474fd718b95575f161"
+    },
+    {
+      "year": 2018,
+      "lat_tile": 20,
+      "lon_tile": 84,
+      "parameter": "PRECTOTCORR",
+      "filename": "2018_20_84_PRECTOTCORR.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=PRECTOTCORR&community=AG&latitude-min=19.5&latitude-max=24.5&longitude-min=83.5&longitude-max=88.5&start=20180601&end=20181029&format=JSON&time-standard=LST",
+      "bytes": 224557,
+      "sha256": "ec0c574a9e4a9adf37a6b40f551c528983b753aed74acba886fff3190f7214f4"
+    },
+    {
+      "year": 2018,
+      "lat_tile": 20,
+      "lon_tile": 84,
+      "parameter": "RH2M",
+      "filename": "2018_20_84_RH2M.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=RH2M&community=AG&latitude-min=19.5&latitude-max=24.5&longitude-min=83.5&longitude-max=88.5&start=20180601&end=20181029&format=JSON&time-standard=LST",
+      "bytes": 235355,
+      "sha256": "d06e38459d6762243e0d9d61a8327d68bfcffbb0162c8996830af75b56516f67"
+    },
+    {
+      "year": 2018,
+      "lat_tile": 20,
+      "lon_tile": 84,
+      "parameter": "T2M_MAX",
+      "filename": "2018_20_84_T2M_MAX.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=T2M_MAX&community=AG&latitude-min=19.5&latitude-max=24.5&longitude-min=83.5&longitude-max=88.5&start=20180601&end=20181029&format=JSON&time-standard=LST",
+      "bytes": 235596,
+      "sha256": "deadb0238deab9d996a61a2603f9946588f101ab595c83292d9c05a3211a3936"
+    },
+    {
+      "year": 2018,
+      "lat_tile": 20,
+      "lon_tile": 84,
+      "parameter": "T2M_MIN",
+      "filename": "2018_20_84_T2M_MIN.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=T2M_MIN&community=AG&latitude-min=19.5&latitude-max=24.5&longitude-min=83.5&longitude-max=88.5&start=20180601&end=20181029&format=JSON&time-standard=LST",
+      "bytes": 235729,
+      "sha256": "5082fb932d7dc58c6de54ea403cac19eb946039da25006e126bbd21556548443"
+    },
+    {
+      "year": 2018,
+      "lat_tile": 20,
+      "lon_tile": 88,
+      "parameter": "ALLSKY_SFC_SW_DWN",
+      "filename": "2018_20_88_ALLSKY_SFC_SW_DWN.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=ALLSKY_SFC_SW_DWN&community=AG&latitude-min=19.5&latitude-max=24.5&longitude-min=87.5&longitude-max=92.5&start=20180516&end=20181109&format=JSON&time-standard=LST",
+      "bytes": 112535,
+      "sha256": "564a873fa509564753b7e2e91d0a72c2328d69206bfd856855ebf10eca3af804"
+    },
+    {
+      "year": 2018,
+      "lat_tile": 20,
+      "lon_tile": 88,
+      "parameter": "PRECTOTCORR",
+      "filename": "2018_20_88_PRECTOTCORR.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=PRECTOTCORR&community=AG&latitude-min=19.5&latitude-max=24.5&longitude-min=87.5&longitude-max=92.5&start=20180516&end=20181109&format=JSON&time-standard=LST",
+      "bytes": 299761,
+      "sha256": "e23513ab76520fd2904d1c93b5e99a7c145fe9d24910d768831cf1608f2e420b"
+    },
+    {
+      "year": 2018,
+      "lat_tile": 20,
+      "lon_tile": 88,
+      "parameter": "RH2M",
+      "filename": "2018_20_88_RH2M.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=RH2M&community=AG&latitude-min=19.5&latitude-max=24.5&longitude-min=87.5&longitude-max=92.5&start=20180516&end=20181109&format=JSON&time-standard=LST",
+      "bytes": 309818,
+      "sha256": "bd9fd730a312378448d2c06d07b3d214e17205ce0ed08aa4bb6bd5371cb895dd"
+    },
+    {
+      "year": 2018,
+      "lat_tile": 20,
+      "lon_tile": 88,
+      "parameter": "T2M_MAX",
+      "filename": "2018_20_88_T2M_MAX.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=T2M_MAX&community=AG&latitude-min=19.5&latitude-max=24.5&longitude-min=87.5&longitude-max=92.5&start=20180516&end=20181109&format=JSON&time-standard=LST",
+      "bytes": 310087,
+      "sha256": "159098b6430e8112f196b0ba57e27173aea34e833747f3ed02015671f776e851"
+    },
+    {
+      "year": 2018,
+      "lat_tile": 20,
+      "lon_tile": 88,
+      "parameter": "T2M_MIN",
+      "filename": "2018_20_88_T2M_MIN.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=T2M_MIN&community=AG&latitude-min=19.5&latitude-max=24.5&longitude-min=87.5&longitude-max=92.5&start=20180516&end=20181109&format=JSON&time-standard=LST",
+      "bytes": 310101,
+      "sha256": "6ef366254ede98f55740edf2ae47c956176861e0dae4a22fe6a6d34017b78f30"
+    },
+    {
+      "year": 2018,
+      "lat_tile": 24,
+      "lon_tile": 80,
+      "parameter": "ALLSKY_SFC_SW_DWN",
+      "filename": "2018_24_80_ALLSKY_SFC_SW_DWN.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=ALLSKY_SFC_SW_DWN&community=AG&latitude-min=23.5&latitude-max=28.5&longitude-min=79.5&longitude-max=84.5&start=20180603&end=20181011&format=JSON&time-standard=LST",
+      "bytes": 84242,
+      "sha256": "02ce0de33a02f6b59237294aab76690fa576628eda56ef8499ae39af2869f1ae"
+    },
+    {
+      "year": 2018,
+      "lat_tile": 24,
+      "lon_tile": 80,
+      "parameter": "PRECTOTCORR",
+      "filename": "2018_24_80_PRECTOTCORR.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=PRECTOTCORR&community=AG&latitude-min=23.5&latitude-max=28.5&longitude-min=79.5&longitude-max=84.5&start=20180603&end=20181011&format=JSON&time-standard=LST",
+      "bytes": 195982,
+      "sha256": "b838fc8861390283af5f4c4cc3b2aeaa9e69933a42d5ad3baef903c61098316c"
+    },
+    {
+      "year": 2018,
+      "lat_tile": 24,
+      "lon_tile": 80,
+      "parameter": "RH2M",
+      "filename": "2018_24_80_RH2M.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=RH2M&community=AG&latitude-min=23.5&latitude-max=28.5&longitude-min=79.5&longitude-max=84.5&start=20180603&end=20181011&format=JSON&time-standard=LST",
+      "bytes": 205719,
+      "sha256": "42385af3c7587a2d6f217d4a4c5b67fd94bece6879edebc0ef0a0c65cea414c9"
+    },
+    {
+      "year": 2018,
+      "lat_tile": 24,
+      "lon_tile": 80,
+      "parameter": "T2M_MAX",
+      "filename": "2018_24_80_T2M_MAX.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=T2M_MAX&community=AG&latitude-min=23.5&latitude-max=28.5&longitude-min=79.5&longitude-max=84.5&start=20180603&end=20181011&format=JSON&time-standard=LST",
+      "bytes": 205910,
+      "sha256": "798b06cf9c7d1118107bad5bc7bd0ebe75d7f8bcd4090cceba41977e09476422"
+    },
+    {
+      "year": 2018,
+      "lat_tile": 24,
+      "lon_tile": 80,
+      "parameter": "T2M_MIN",
+      "filename": "2018_24_80_T2M_MIN.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=T2M_MIN&community=AG&latitude-min=23.5&latitude-max=28.5&longitude-min=79.5&longitude-max=84.5&start=20180603&end=20181011&format=JSON&time-standard=LST",
+      "bytes": 205785,
+      "sha256": "c19a6e8e726e1c2607ab0ddcdbd79c1375699ac86518dbc86e7767a90ffebfdf"
+    },
+    {
+      "year": 2018,
+      "lat_tile": 24,
+      "lon_tile": 84,
+      "parameter": "ALLSKY_SFC_SW_DWN",
+      "filename": "2018_24_84_ALLSKY_SFC_SW_DWN.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=ALLSKY_SFC_SW_DWN&community=AG&latitude-min=23.5&latitude-max=28.5&longitude-min=83.5&longitude-max=88.5&start=20180523&end=20181016&format=JSON&time-standard=LST",
+      "bytes": 94249,
+      "sha256": "5a498952585b954a4422fa37aecfd9678b1e85298f16242de7dbae2b71278959"
+    },
+    {
+      "year": 2018,
+      "lat_tile": 24,
+      "lon_tile": 84,
+      "parameter": "PRECTOTCORR",
+      "filename": "2018_24_84_PRECTOTCORR.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=PRECTOTCORR&community=AG&latitude-min=23.5&latitude-max=28.5&longitude-min=83.5&longitude-max=88.5&start=20180523&end=20181016&format=JSON&time-standard=LST",
+      "bytes": 218693,
+      "sha256": "f863f1898ad629567c1e327c99b546317fd822fc94c8dea248770f21417d9025"
+    },
+    {
+      "year": 2018,
+      "lat_tile": 24,
+      "lon_tile": 84,
+      "parameter": "RH2M",
+      "filename": "2018_24_84_RH2M.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=RH2M&community=AG&latitude-min=23.5&latitude-max=28.5&longitude-min=83.5&longitude-max=88.5&start=20180523&end=20181016&format=JSON&time-standard=LST",
+      "bytes": 229560,
+      "sha256": "1cebe1061e61f618cd1bae7c4d567bbc2606bb271f4b438ea752b123a9613661"
+    },
+    {
+      "year": 2018,
+      "lat_tile": 24,
+      "lon_tile": 84,
+      "parameter": "T2M_MAX",
+      "filename": "2018_24_84_T2M_MAX.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=T2M_MAX&community=AG&latitude-min=23.5&latitude-max=28.5&longitude-min=83.5&longitude-max=88.5&start=20180523&end=20181016&format=JSON&time-standard=LST",
+      "bytes": 229257,
+      "sha256": "d3a35acf11a1b85d3778ced5e98b6eff94f1290ebf9328f8d9e6de308ceff5e8"
+    },
+    {
+      "year": 2018,
+      "lat_tile": 24,
+      "lon_tile": 84,
+      "parameter": "T2M_MIN",
+      "filename": "2018_24_84_T2M_MIN.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=T2M_MIN&community=AG&latitude-min=23.5&latitude-max=28.5&longitude-min=83.5&longitude-max=88.5&start=20180523&end=20181016&format=JSON&time-standard=LST",
+      "bytes": 228352,
+      "sha256": "04de323925216b9df95b55ce19113225c50c58470656e2b65590f52a83c30008"
+    },
+    {
+      "year": 2018,
+      "lat_tile": 24,
+      "lon_tile": 88,
+      "parameter": "ALLSKY_SFC_SW_DWN",
+      "filename": "2018_24_88_ALLSKY_SFC_SW_DWN.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=ALLSKY_SFC_SW_DWN&community=AG&latitude-min=23.5&latitude-max=28.5&longitude-min=87.5&longitude-max=92.5&start=20180604&end=20181103&format=JSON&time-standard=LST",
+      "bytes": 97844,
+      "sha256": "e3befa4e8322ec7226ea3acbe43ef9ffe234fb7a9d68f32fab7328b89ea42763"
+    },
+    {
+      "year": 2018,
+      "lat_tile": 24,
+      "lon_tile": 88,
+      "parameter": "PRECTOTCORR",
+      "filename": "2018_24_88_PRECTOTCORR.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=PRECTOTCORR&community=AG&latitude-min=23.5&latitude-max=28.5&longitude-min=87.5&longitude-max=92.5&start=20180604&end=20181103&format=JSON&time-standard=LST",
+      "bytes": 256158,
+      "sha256": "be54332fa842afaf882b5230e45dd1653b2ae0354036b885c90b145203564e8d"
+    },
+    {
+      "year": 2018,
+      "lat_tile": 24,
+      "lon_tile": 88,
+      "parameter": "RH2M",
+      "filename": "2018_24_88_RH2M.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=RH2M&community=AG&latitude-min=23.5&latitude-max=28.5&longitude-min=87.5&longitude-max=92.5&start=20180604&end=20181103&format=JSON&time-standard=LST",
+      "bytes": 268247,
+      "sha256": "8f7f087f46faf58149e5635d9ac061b0b6acb6b7469a3c9a7468c62a9549a3f1"
+    },
+    {
+      "year": 2018,
+      "lat_tile": 24,
+      "lon_tile": 88,
+      "parameter": "T2M_MAX",
+      "filename": "2018_24_88_T2M_MAX.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=T2M_MAX&community=AG&latitude-min=23.5&latitude-max=28.5&longitude-min=87.5&longitude-max=92.5&start=20180604&end=20181103&format=JSON&time-standard=LST",
+      "bytes": 267622,
+      "sha256": "775ff8343a524aa941066e4db2c40abdcec15374fb18d965953eb83724b4f80a"
+    },
+    {
+      "year": 2018,
+      "lat_tile": 24,
+      "lon_tile": 88,
+      "parameter": "T2M_MIN",
+      "filename": "2018_24_88_T2M_MIN.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=T2M_MIN&community=AG&latitude-min=23.5&latitude-max=28.5&longitude-min=87.5&longitude-max=92.5&start=20180604&end=20181103&format=JSON&time-standard=LST",
+      "bytes": 265948,
+      "sha256": "dffa129543df231a4a880b0f7b27ad2d44f90043176d9d9c27dc80d73e236397"
+    },
+    {
+      "year": 2018,
+      "lat_tile": 28,
+      "lon_tile": 72,
+      "parameter": "ALLSKY_SFC_SW_DWN",
+      "filename": "2018_28_72_ALLSKY_SFC_SW_DWN.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=ALLSKY_SFC_SW_DWN&community=AG&latitude-min=27.5&latitude-max=32.5&longitude-min=71.5&longitude-max=76.5&start=20180612&end=20180901&format=JSON&time-standard=LST",
+      "bytes": 54969,
+      "sha256": "7e10e2005b064e74f6670e4fc8b41d7292f37f22ffd4e53116897728bc96837b"
+    },
+    {
+      "year": 2018,
+      "lat_tile": 28,
+      "lon_tile": 72,
+      "parameter": "PRECTOTCORR",
+      "filename": "2018_28_72_PRECTOTCORR.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=PRECTOTCORR&community=AG&latitude-min=27.5&latitude-max=32.5&longitude-min=71.5&longitude-max=76.5&start=20180612&end=20180901&format=JSON&time-standard=LST",
+      "bytes": 125635,
+      "sha256": "5d8a33cf875d4d75bc53f492a704f9e46963daf4b125af350cfb29d94c00b5a0"
+    },
+    {
+      "year": 2018,
+      "lat_tile": 28,
+      "lon_tile": 72,
+      "parameter": "RH2M",
+      "filename": "2018_28_72_RH2M.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=RH2M&community=AG&latitude-min=27.5&latitude-max=32.5&longitude-min=71.5&longitude-max=76.5&start=20180612&end=20180901&format=JSON&time-standard=LST",
+      "bytes": 132863,
+      "sha256": "1cfddbe48b7877e854632f0ca1d4f3ef4b5bfe0ea450d673d6aa5393afb1bf32"
+    },
+    {
+      "year": 2018,
+      "lat_tile": 28,
+      "lon_tile": 72,
+      "parameter": "T2M_MAX",
+      "filename": "2018_28_72_T2M_MAX.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=T2M_MAX&community=AG&latitude-min=27.5&latitude-max=32.5&longitude-min=71.5&longitude-max=76.5&start=20180612&end=20180901&format=JSON&time-standard=LST",
+      "bytes": 133141,
+      "sha256": "808300775c5cc4233348535eab9edf5e9f07485ea378de8e28a6cb54f5c3f174"
+    },
+    {
+      "year": 2018,
+      "lat_tile": 28,
+      "lon_tile": 72,
+      "parameter": "T2M_MIN",
+      "filename": "2018_28_72_T2M_MIN.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=T2M_MIN&community=AG&latitude-min=27.5&latitude-max=32.5&longitude-min=71.5&longitude-max=76.5&start=20180612&end=20180901&format=JSON&time-standard=LST",
+      "bytes": 133093,
+      "sha256": "98e181b376c926f4eec1b93d1a27ade2e1f7ab2b5b01e65ae6e0387f2caefd48"
+    },
+    {
+      "year": 2018,
+      "lat_tile": 28,
+      "lon_tile": 76,
+      "parameter": "ALLSKY_SFC_SW_DWN",
+      "filename": "2018_28_76_ALLSKY_SFC_SW_DWN.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=ALLSKY_SFC_SW_DWN&community=AG&latitude-min=27.5&latitude-max=32.5&longitude-min=75.5&longitude-max=80.5&start=20180610&end=20180915&format=JSON&time-standard=LST",
+      "bytes": 64465,
+      "sha256": "d347f7f5cf637a015eca4c59b9ae6c22d1a4a5fc31453403707efb2ce23b6268"
+    },
+    {
+      "year": 2018,
+      "lat_tile": 28,
+      "lon_tile": 76,
+      "parameter": "PRECTOTCORR",
+      "filename": "2018_28_76_PRECTOTCORR.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=PRECTOTCORR&community=AG&latitude-min=27.5&latitude-max=32.5&longitude-min=75.5&longitude-max=80.5&start=20180610&end=20180915&format=JSON&time-standard=LST",
+      "bytes": 150056,
+      "sha256": "ca5755ca7ca3887f1a22459ed3763abb87061333a637387eb5fa4eb60073ef4e"
+    },
+    {
+      "year": 2018,
+      "lat_tile": 28,
+      "lon_tile": 76,
+      "parameter": "RH2M",
+      "filename": "2018_28_76_RH2M.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=RH2M&community=AG&latitude-min=27.5&latitude-max=32.5&longitude-min=75.5&longitude-max=80.5&start=20180610&end=20180915&format=JSON&time-standard=LST",
+      "bytes": 156650,
+      "sha256": "32872425c6e9d393a9b3194e95d8b510264aa7a9be2a0b957f1f7d80ec88ddb5"
+    },
+    {
+      "year": 2018,
+      "lat_tile": 28,
+      "lon_tile": 76,
+      "parameter": "T2M_MAX",
+      "filename": "2018_28_76_T2M_MAX.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=T2M_MAX&community=AG&latitude-min=27.5&latitude-max=32.5&longitude-min=75.5&longitude-max=80.5&start=20180610&end=20180915&format=JSON&time-standard=LST",
+      "bytes": 156684,
+      "sha256": "b0407df6bb5ced18cfb5dd573d93d444886b29d73c772bea5f445343dbe26b32"
+    },
+    {
+      "year": 2018,
+      "lat_tile": 28,
+      "lon_tile": 76,
+      "parameter": "T2M_MIN",
+      "filename": "2018_28_76_T2M_MIN.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=T2M_MIN&community=AG&latitude-min=27.5&latitude-max=32.5&longitude-min=75.5&longitude-max=80.5&start=20180610&end=20180915&format=JSON&time-standard=LST",
+      "bytes": 155516,
+      "sha256": "dea6fd10720038ab7778eb8e6fea70ccf50216dde1e7f2e1824bbbd715c8f205"
+    },
+    {
+      "year": 2019,
+      "lat_tile": 16,
+      "lon_tile": 80,
+      "parameter": "ALLSKY_SFC_SW_DWN",
+      "filename": "2019_16_80_ALLSKY_SFC_SW_DWN.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=ALLSKY_SFC_SW_DWN&community=AG&latitude-min=15.5&latitude-max=20.5&longitude-min=79.5&longitude-max=84.5&start=20190527&end=20191008&format=JSON&time-standard=LST",
+      "bytes": 86339,
+      "sha256": "1deacecbe9a307c678b292f4ec53672658b6f6eece19a5239dc901d9e0e7c269"
+    },
+    {
+      "year": 2019,
+      "lat_tile": 16,
+      "lon_tile": 80,
+      "parameter": "PRECTOTCORR",
+      "filename": "2019_16_80_PRECTOTCORR.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=PRECTOTCORR&community=AG&latitude-min=15.5&latitude-max=20.5&longitude-min=79.5&longitude-max=84.5&start=20190527&end=20191008&format=JSON&time-standard=LST",
+      "bytes": 203074,
+      "sha256": "dab0275efa902f4d332532724ceb4ba2496c39eb2b037a342f51275db211b17e"
+    },
+    {
+      "year": 2019,
+      "lat_tile": 16,
+      "lon_tile": 80,
+      "parameter": "RH2M",
+      "filename": "2019_16_80_RH2M.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=RH2M&community=AG&latitude-min=15.5&latitude-max=20.5&longitude-min=79.5&longitude-max=84.5&start=20190527&end=20191008&format=JSON&time-standard=LST",
+      "bytes": 211554,
+      "sha256": "8f7aaf95a738cbbe54d40c7985babe75bbc785693ac4f9295fffcfe9c4e71498"
+    },
+    {
+      "year": 2019,
+      "lat_tile": 16,
+      "lon_tile": 80,
+      "parameter": "T2M_MAX",
+      "filename": "2019_16_80_T2M_MAX.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=T2M_MAX&community=AG&latitude-min=15.5&latitude-max=20.5&longitude-min=79.5&longitude-max=84.5&start=20190527&end=20191008&format=JSON&time-standard=LST",
+      "bytes": 211831,
+      "sha256": "f69cead10ee5ec83f4b5c6140137e8aab5ea3f3a48d1eb2aa9c28e93de4915fb"
+    },
+    {
+      "year": 2019,
+      "lat_tile": 16,
+      "lon_tile": 80,
+      "parameter": "T2M_MIN",
+      "filename": "2019_16_80_T2M_MIN.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=T2M_MIN&community=AG&latitude-min=15.5&latitude-max=20.5&longitude-min=79.5&longitude-max=84.5&start=20190527&end=20191008&format=JSON&time-standard=LST",
+      "bytes": 211914,
+      "sha256": "cb932a03e36e81d284d4e33f28a5db84b0257b084221dc087479021a86f61c0b"
+    },
+    {
+      "year": 2019,
+      "lat_tile": 20,
+      "lon_tile": 80,
+      "parameter": "ALLSKY_SFC_SW_DWN",
+      "filename": "2019_20_80_ALLSKY_SFC_SW_DWN.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=ALLSKY_SFC_SW_DWN&community=AG&latitude-min=19.5&latitude-max=24.5&longitude-min=79.5&longitude-max=84.5&start=20190526&end=20191016&format=JSON&time-standard=LST",
+      "bytes": 91932,
+      "sha256": "c09d016137d5ad35d00243a1674ec0abb1bcdb985bc9732e537af200ae0d6f8a"
+    },
+    {
+      "year": 2019,
+      "lat_tile": 20,
+      "lon_tile": 80,
+      "parameter": "PRECTOTCORR",
+      "filename": "2019_20_80_PRECTOTCORR.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=PRECTOTCORR&community=AG&latitude-min=19.5&latitude-max=24.5&longitude-min=79.5&longitude-max=84.5&start=20190526&end=20191016&format=JSON&time-standard=LST",
+      "bytes": 215936,
+      "sha256": "b7ef12e8888837d312de556d6378f824b3fddb8bb503daf87cb98e41d525c369"
+    },
+    {
+      "year": 2019,
+      "lat_tile": 20,
+      "lon_tile": 80,
+      "parameter": "RH2M",
+      "filename": "2019_20_80_RH2M.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=RH2M&community=AG&latitude-min=19.5&latitude-max=24.5&longitude-min=79.5&longitude-max=84.5&start=20190526&end=20191016&format=JSON&time-standard=LST",
+      "bytes": 225088,
+      "sha256": "c16bfbd5beac5bc7460c794cec1fec335c6c0328832c1c30a5d649690831671c"
+    },
+    {
+      "year": 2019,
+      "lat_tile": 20,
+      "lon_tile": 80,
+      "parameter": "T2M_MAX",
+      "filename": "2019_20_80_T2M_MAX.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=T2M_MAX&community=AG&latitude-min=19.5&latitude-max=24.5&longitude-min=79.5&longitude-max=84.5&start=20190526&end=20191016&format=JSON&time-standard=LST",
+      "bytes": 225291,
+      "sha256": "7740f825586ef192204d8d93d46c4725b15dc921fa4f7fdb7a126cf5064a588d"
+    },
+    {
+      "year": 2019,
+      "lat_tile": 20,
+      "lon_tile": 80,
+      "parameter": "T2M_MIN",
+      "filename": "2019_20_80_T2M_MIN.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=T2M_MIN&community=AG&latitude-min=19.5&latitude-max=24.5&longitude-min=79.5&longitude-max=84.5&start=20190526&end=20191016&format=JSON&time-standard=LST",
+      "bytes": 225334,
+      "sha256": "04dea24a65261b33122b580dc9d23f5eca3fc081f3351dfe5a806754fa57f9eb"
+    },
+    {
+      "year": 2019,
+      "lat_tile": 20,
+      "lon_tile": 84,
+      "parameter": "ALLSKY_SFC_SW_DWN",
+      "filename": "2019_20_84_ALLSKY_SFC_SW_DWN.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=ALLSKY_SFC_SW_DWN&community=AG&latitude-min=19.5&latitude-max=24.5&longitude-min=83.5&longitude-max=88.5&start=20190605&end=20191018&format=JSON&time-standard=LST",
+      "bytes": 87120,
+      "sha256": "71f23dbb46adbe2f6d910525f28d2e72decee3d86f03283e242df1f0f6725f8a"
+    },
+    {
+      "year": 2019,
+      "lat_tile": 20,
+      "lon_tile": 84,
+      "parameter": "PRECTOTCORR",
+      "filename": "2019_20_84_PRECTOTCORR.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=PRECTOTCORR&community=AG&latitude-min=19.5&latitude-max=24.5&longitude-min=83.5&longitude-max=88.5&start=20190605&end=20191018&format=JSON&time-standard=LST",
+      "bytes": 204775,
+      "sha256": "49418b9dfbb879ad8279ad1a1c486b43646813c24074064432e2636798ff8f2e"
+    },
+    {
+      "year": 2019,
+      "lat_tile": 20,
+      "lon_tile": 84,
+      "parameter": "RH2M",
+      "filename": "2019_20_84_RH2M.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=RH2M&community=AG&latitude-min=19.5&latitude-max=24.5&longitude-min=83.5&longitude-max=88.5&start=20190605&end=20191018&format=JSON&time-standard=LST",
+      "bytes": 213074,
+      "sha256": "b5d58fb1d8d03380e9e6be0559ed16e48829ed4ef4fd7978a9f52d8308000f90"
+    },
+    {
+      "year": 2019,
+      "lat_tile": 20,
+      "lon_tile": 84,
+      "parameter": "T2M_MAX",
+      "filename": "2019_20_84_T2M_MAX.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=T2M_MAX&community=AG&latitude-min=19.5&latitude-max=24.5&longitude-min=83.5&longitude-max=88.5&start=20190605&end=20191018&format=JSON&time-standard=LST",
+      "bytes": 213383,
+      "sha256": "f02a76c2bbcc27c01d248522bb9f3425c5bc3f415720476d4df5cb8c4f7f369d"
+    },
+    {
+      "year": 2019,
+      "lat_tile": 20,
+      "lon_tile": 84,
+      "parameter": "T2M_MIN",
+      "filename": "2019_20_84_T2M_MIN.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=T2M_MIN&community=AG&latitude-min=19.5&latitude-max=24.5&longitude-min=83.5&longitude-max=88.5&start=20190605&end=20191018&format=JSON&time-standard=LST",
+      "bytes": 213340,
+      "sha256": "f0f6e56769d92bdbaf273634e239d25001008b4970d8583d1b1051b4aeca6c6c"
+    },
+    {
+      "year": 2019,
+      "lat_tile": 24,
+      "lon_tile": 76,
+      "parameter": "ALLSKY_SFC_SW_DWN",
+      "filename": "2019_24_76_ALLSKY_SFC_SW_DWN.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=ALLSKY_SFC_SW_DWN&community=AG&latitude-min=23.5&latitude-max=28.5&longitude-min=75.5&longitude-max=80.5&start=20190701&end=20190928&format=JSON&time-standard=LST",
+      "bytes": 59470,
+      "sha256": "58d6c1a98829bdd6db982b6f51ac6784c1e504347d2d0867cea597ed98c62317"
+    },
+    {
+      "year": 2019,
+      "lat_tile": 24,
+      "lon_tile": 76,
+      "parameter": "PRECTOTCORR",
+      "filename": "2019_24_76_PRECTOTCORR.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=PRECTOTCORR&community=AG&latitude-min=23.5&latitude-max=28.5&longitude-min=75.5&longitude-max=80.5&start=20190701&end=20190928&format=JSON&time-standard=LST",
+      "bytes": 139530,
+      "sha256": "15f22a9b9aaffb707c8bdd7a37a1dac9fb8e773a66862049d0e307176601b517"
+    },
+    {
+      "year": 2019,
+      "lat_tile": 24,
+      "lon_tile": 76,
+      "parameter": "RH2M",
+      "filename": "2019_24_76_RH2M.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=RH2M&community=AG&latitude-min=23.5&latitude-max=28.5&longitude-min=75.5&longitude-max=80.5&start=20190701&end=20190928&format=JSON&time-standard=LST",
+      "bytes": 144715,
+      "sha256": "1327bdda389649aafc92807bdb57bc6c4080fbc7172d32267db7bbef32c9953a"
+    },
+    {
+      "year": 2019,
+      "lat_tile": 24,
+      "lon_tile": 76,
+      "parameter": "T2M_MAX",
+      "filename": "2019_24_76_T2M_MAX.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=T2M_MAX&community=AG&latitude-min=23.5&latitude-max=28.5&longitude-min=75.5&longitude-max=80.5&start=20190701&end=20190928&format=JSON&time-standard=LST",
+      "bytes": 145004,
+      "sha256": "4e1adde2912c8f2b769dfb2bfd866a23811f1420c96d6e3a529587b6b76d36f0"
+    },
+    {
+      "year": 2019,
+      "lat_tile": 24,
+      "lon_tile": 76,
+      "parameter": "T2M_MIN",
+      "filename": "2019_24_76_T2M_MIN.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=T2M_MIN&community=AG&latitude-min=23.5&latitude-max=28.5&longitude-min=75.5&longitude-max=80.5&start=20190701&end=20190928&format=JSON&time-standard=LST",
+      "bytes": 145034,
+      "sha256": "99c6eaf1bede99a9b9c8b54f09377aa8e078aec8a739205d0cfce9b64edd8d48"
+    },
+    {
+      "year": 2019,
+      "lat_tile": 24,
+      "lon_tile": 80,
+      "parameter": "ALLSKY_SFC_SW_DWN",
+      "filename": "2019_24_80_ALLSKY_SFC_SW_DWN.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=ALLSKY_SFC_SW_DWN&community=AG&latitude-min=23.5&latitude-max=28.5&longitude-min=79.5&longitude-max=84.5&start=20190520&end=20191014&format=JSON&time-standard=LST",
+      "bytes": 94745,
+      "sha256": "8249bcc22aba80144da855d059d33691d8724c126eb95e371af4299f264c1184"
+    },
+    {
+      "year": 2019,
+      "lat_tile": 24,
+      "lon_tile": 80,
+      "parameter": "PRECTOTCORR",
+      "filename": "2019_24_80_PRECTOTCORR.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=PRECTOTCORR&community=AG&latitude-min=23.5&latitude-max=28.5&longitude-min=79.5&longitude-max=84.5&start=20190520&end=20191014&format=JSON&time-standard=LST",
+      "bytes": 220158,
+      "sha256": "f8ea2aa1ca1608b42cd9e592a503b7a52ce1f92a794a7b358ad3f180fd04c4bb"
+    },
+    {
+      "year": 2019,
+      "lat_tile": 24,
+      "lon_tile": 80,
+      "parameter": "RH2M",
+      "filename": "2019_24_80_RH2M.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=RH2M&community=AG&latitude-min=23.5&latitude-max=28.5&longitude-min=79.5&longitude-max=84.5&start=20190520&end=20191014&format=JSON&time-standard=LST",
+      "bytes": 230948,
+      "sha256": "f163a44533810bcc70af14d6177db3af3d35bb23f50c0d57886d07c481ce8fb1"
+    },
+    {
+      "year": 2019,
+      "lat_tile": 24,
+      "lon_tile": 80,
+      "parameter": "T2M_MAX",
+      "filename": "2019_24_80_T2M_MAX.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=T2M_MAX&community=AG&latitude-min=23.5&latitude-max=28.5&longitude-min=79.5&longitude-max=84.5&start=20190520&end=20191014&format=JSON&time-standard=LST",
+      "bytes": 231208,
+      "sha256": "25f6c10d281e90bf6498f1eedb12781a24ebeab14eddd33af07bb6352413ee30"
+    },
+    {
+      "year": 2019,
+      "lat_tile": 24,
+      "lon_tile": 80,
+      "parameter": "T2M_MIN",
+      "filename": "2019_24_80_T2M_MIN.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=T2M_MIN&community=AG&latitude-min=23.5&latitude-max=28.5&longitude-min=79.5&longitude-max=84.5&start=20190520&end=20191014&format=JSON&time-standard=LST",
+      "bytes": 231043,
+      "sha256": "555392344d36aec70b67e8d4a2ab63c32217cde73dc17243c47195b085d541ad"
+    },
+    {
+      "year": 2019,
+      "lat_tile": 24,
+      "lon_tile": 84,
+      "parameter": "ALLSKY_SFC_SW_DWN",
+      "filename": "2019_24_84_ALLSKY_SFC_SW_DWN.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=ALLSKY_SFC_SW_DWN&community=AG&latitude-min=23.5&latitude-max=28.5&longitude-min=83.5&longitude-max=88.5&start=20190518&end=20191002&format=JSON&time-standard=LST",
+      "bytes": 88701,
+      "sha256": "02764fa307f4ae640f2c0afbb8ba59f44c6f4402d5684c7f1879632e8884411f"
+    },
+    {
+      "year": 2019,
+      "lat_tile": 24,
+      "lon_tile": 84,
+      "parameter": "PRECTOTCORR",
+      "filename": "2019_24_84_PRECTOTCORR.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=PRECTOTCORR&community=AG&latitude-min=23.5&latitude-max=28.5&longitude-min=83.5&longitude-max=88.5&start=20190518&end=20191002&format=JSON&time-standard=LST",
+      "bytes": 206944,
+      "sha256": "0a7c8d32e43b2887e4219b4f78d6fb9a03323231a38e64fbacb2539c7097fc21"
+    },
+    {
+      "year": 2019,
+      "lat_tile": 24,
+      "lon_tile": 84,
+      "parameter": "RH2M",
+      "filename": "2019_24_84_RH2M.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=RH2M&community=AG&latitude-min=23.5&latitude-max=28.5&longitude-min=83.5&longitude-max=88.5&start=20190518&end=20191002&format=JSON&time-standard=LST",
+      "bytes": 216043,
+      "sha256": "a0a16d0536194fc01514e47640fc734014989e845726104ad9f6356fce39f0eb"
+    },
+    {
+      "year": 2019,
+      "lat_tile": 24,
+      "lon_tile": 84,
+      "parameter": "T2M_MAX",
+      "filename": "2019_24_84_T2M_MAX.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=T2M_MAX&community=AG&latitude-min=23.5&latitude-max=28.5&longitude-min=83.5&longitude-max=88.5&start=20190518&end=20191002&format=JSON&time-standard=LST",
+      "bytes": 216040,
+      "sha256": "6156a58d52e3ded58a1bdb4d5e8c400ad5053c241d36debfcad110c401661878"
+    },
+    {
+      "year": 2019,
+      "lat_tile": 24,
+      "lon_tile": 84,
+      "parameter": "T2M_MIN",
+      "filename": "2019_24_84_T2M_MIN.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=T2M_MIN&community=AG&latitude-min=23.5&latitude-max=28.5&longitude-min=83.5&longitude-max=88.5&start=20190518&end=20191002&format=JSON&time-standard=LST",
+      "bytes": 215017,
+      "sha256": "4f9236d2ad16536fac39b5022241c44ae48bd412f1d1b7d8367a83c36567eaeb"
+    },
+    {
+      "year": 2019,
+      "lat_tile": 24,
+      "lon_tile": 88,
+      "parameter": "ALLSKY_SFC_SW_DWN",
+      "filename": "2019_24_88_ALLSKY_SFC_SW_DWN.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=ALLSKY_SFC_SW_DWN&community=AG&latitude-min=23.5&latitude-max=28.5&longitude-min=87.5&longitude-max=92.5&start=20190625&end=20190919&format=JSON&time-standard=LST",
+      "bytes": 57745,
+      "sha256": "cb7ae97fb2ec66e3b99304aaa0ca46236309ec9554cd942373a1d2e53170f0e5"
+    },
+    {
+      "year": 2019,
+      "lat_tile": 24,
+      "lon_tile": 88,
+      "parameter": "PRECTOTCORR",
+      "filename": "2019_24_88_PRECTOTCORR.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=PRECTOTCORR&community=AG&latitude-min=23.5&latitude-max=28.5&longitude-min=87.5&longitude-max=92.5&start=20190625&end=20190919&format=JSON&time-standard=LST",
+      "bytes": 152984,
+      "sha256": "3fdc9cb4483b6c151638f1e4f0de6d7e70d0b1d80062c4cf7df06e0f79f392fa"
+    },
+    {
+      "year": 2019,
+      "lat_tile": 24,
+      "lon_tile": 88,
+      "parameter": "RH2M",
+      "filename": "2019_24_88_RH2M.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=RH2M&community=AG&latitude-min=23.5&latitude-max=28.5&longitude-min=87.5&longitude-max=92.5&start=20190625&end=20190919&format=JSON&time-standard=LST",
+      "bytes": 157729,
+      "sha256": "fe520935a71a3a95b9042f6e5cfaa4032e2e2bebab142d3494746484cd274bd5"
+    },
+    {
+      "year": 2019,
+      "lat_tile": 24,
+      "lon_tile": 88,
+      "parameter": "T2M_MAX",
+      "filename": "2019_24_88_T2M_MAX.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=T2M_MAX&community=AG&latitude-min=23.5&latitude-max=28.5&longitude-min=87.5&longitude-max=92.5&start=20190625&end=20190919&format=JSON&time-standard=LST",
+      "bytes": 157926,
+      "sha256": "13228c78bdb6b80b2b3120380ff274d66b37f623d5b996a5aa88f3663e5dc410"
+    },
+    {
+      "year": 2019,
+      "lat_tile": 24,
+      "lon_tile": 88,
+      "parameter": "T2M_MIN",
+      "filename": "2019_24_88_T2M_MIN.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=T2M_MIN&community=AG&latitude-min=23.5&latitude-max=28.5&longitude-min=87.5&longitude-max=92.5&start=20190625&end=20190919&format=JSON&time-standard=LST",
+      "bytes": 156252,
+      "sha256": "ba123722b0916ab1abb65c0f3b7f18723b61eb1a265af6985ee8f2e3b4b98f38"
+    },
+    {
+      "year": 2019,
+      "lat_tile": 28,
+      "lon_tile": 76,
+      "parameter": "ALLSKY_SFC_SW_DWN",
+      "filename": "2019_28_76_ALLSKY_SFC_SW_DWN.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=ALLSKY_SFC_SW_DWN&community=AG&latitude-min=27.5&latitude-max=32.5&longitude-min=75.5&longitude-max=80.5&start=20190705&end=20190919&format=JSON&time-standard=LST",
+      "bytes": 51879,
+      "sha256": "b132d211a5527b6f8ec5bd6037a42ed649fccd4dababe96c642ef2d27c092eb3"
+    },
+    {
+      "year": 2019,
+      "lat_tile": 28,
+      "lon_tile": 76,
+      "parameter": "PRECTOTCORR",
+      "filename": "2019_28_76_PRECTOTCORR.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=PRECTOTCORR&community=AG&latitude-min=27.5&latitude-max=32.5&longitude-min=75.5&longitude-max=80.5&start=20190705&end=20190919&format=JSON&time-standard=LST",
+      "bytes": 120297,
+      "sha256": "37816399d5795fd8f8a63f585af9f847d70d6777cb3b973e73feaf63ec686643"
+    },
+    {
+      "year": 2019,
+      "lat_tile": 28,
+      "lon_tile": 76,
+      "parameter": "RH2M",
+      "filename": "2019_28_76_RH2M.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=RH2M&community=AG&latitude-min=27.5&latitude-max=32.5&longitude-min=75.5&longitude-max=80.5&start=20190705&end=20190919&format=JSON&time-standard=LST",
+      "bytes": 125464,
+      "sha256": "aee33a2309135df7777abb1466a8e9cb4d4608061f1222a1c8b8ae3fe13979d1"
+    },
+    {
+      "year": 2019,
+      "lat_tile": 28,
+      "lon_tile": 76,
+      "parameter": "T2M_MAX",
+      "filename": "2019_28_76_T2M_MAX.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=T2M_MAX&community=AG&latitude-min=27.5&latitude-max=32.5&longitude-min=75.5&longitude-max=80.5&start=20190705&end=20190919&format=JSON&time-standard=LST",
+      "bytes": 125500,
+      "sha256": "a6d445274b0aeb2d608a7bb9946094f6a2fe61d946aa6b743ac7b4ed3fb9563c"
+    },
+    {
+      "year": 2019,
+      "lat_tile": 28,
+      "lon_tile": 76,
+      "parameter": "T2M_MIN",
+      "filename": "2019_28_76_T2M_MIN.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=T2M_MIN&community=AG&latitude-min=27.5&latitude-max=32.5&longitude-min=75.5&longitude-max=80.5&start=20190705&end=20190919&format=JSON&time-standard=LST",
+      "bytes": 124566,
+      "sha256": "7bab333bccb9b80614623852f72347f5eda41d91751fe124233e2af4378d2de7"
+    },
+    {
+      "year": 2019,
+      "lat_tile": 28,
+      "lon_tile": 80,
+      "parameter": "ALLSKY_SFC_SW_DWN",
+      "filename": "2019_28_80_ALLSKY_SFC_SW_DWN.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=ALLSKY_SFC_SW_DWN&community=AG&latitude-min=27.5&latitude-max=32.5&longitude-min=79.5&longitude-max=84.5&start=20190601&end=20191010&format=JSON&time-standard=LST",
+      "bytes": 85342,
+      "sha256": "fadaa7f4ba9a054200783e03411e2be7dc8bc7cc4c8f05d3ebc4f759fafe13fb"
+    },
+    {
+      "year": 2019,
+      "lat_tile": 28,
+      "lon_tile": 80,
+      "parameter": "PRECTOTCORR",
+      "filename": "2019_28_80_PRECTOTCORR.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=PRECTOTCORR&community=AG&latitude-min=27.5&latitude-max=32.5&longitude-min=79.5&longitude-max=84.5&start=20190601&end=20191010&format=JSON&time-standard=LST",
+      "bytes": 197019,
+      "sha256": "ec65aee388e7c17d9b29db30bce19a29d0eb64143b47062cb7e8b63500f56a0b"
+    },
+    {
+      "year": 2019,
+      "lat_tile": 28,
+      "lon_tile": 80,
+      "parameter": "RH2M",
+      "filename": "2019_28_80_RH2M.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=RH2M&community=AG&latitude-min=27.5&latitude-max=32.5&longitude-min=79.5&longitude-max=84.5&start=20190601&end=20191010&format=JSON&time-standard=LST",
+      "bytes": 207255,
+      "sha256": "97b9c44bdc7b1fd80c5f2534a0e86c3c8a7a4959a1e0a27aebe9deb14eea2ab8"
+    },
+    {
+      "year": 2019,
+      "lat_tile": 28,
+      "lon_tile": 80,
+      "parameter": "T2M_MAX",
+      "filename": "2019_28_80_T2M_MAX.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=T2M_MAX&community=AG&latitude-min=27.5&latitude-max=32.5&longitude-min=79.5&longitude-max=84.5&start=20190601&end=20191010&format=JSON&time-standard=LST",
+      "bytes": 205815,
+      "sha256": "850e5ad07efda32a4edf1589b8ae49d3ec1e0f683d99f7c3da009abc0c1d0785"
+    },
+    {
+      "year": 2019,
+      "lat_tile": 28,
+      "lon_tile": 80,
+      "parameter": "T2M_MIN",
+      "filename": "2019_28_80_T2M_MIN.json",
+      "url": "https://power.larc.nasa.gov/api/temporal/daily/regional?parameters=T2M_MIN&community=AG&latitude-min=27.5&latitude-max=32.5&longitude-min=79.5&longitude-max=84.5&start=20190601&end=20191010&format=JSON&time-standard=LST",
+      "bytes": 204106,
+      "sha256": "d5b5277b5c0823559ab6c3067b16fb01d67eb66eda65788917df73907ba4f9bb"
+    }
+  ]
+}

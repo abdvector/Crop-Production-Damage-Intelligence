@@ -21,6 +21,7 @@ from src.rice_reliability import load_reliability, run_reliability
 from src.rice_aluminium import load_aluminium_study
 from src.rice_literature import load_literature_results, run_literature_benchmark
 from src.rice_field_data import load_field_audit
+from src.rice_field_weather import load_weather_audit
 
 st.set_page_config(page_title="Rice Yield Research", layout="wide")
 st.markdown("""<style>
@@ -273,7 +274,13 @@ with readiness:
         a.metric("Raw survey records", f"{field_summary['raw_rows']:,}")
         b.metric("Candidates for weather linkage", f"{field_summary['candidate_weather_rows']:,}")
         c.metric("Survey years", "2017–2019")
-        st.info("The survey is downloaded and audited. No field-survey forecast model has been trained. Daily weather through day 60 after field establishment and management timing checks are still required.")
+        weather_audit = load_weather_audit()
+        if weather_audit is None:
+            st.info("The survey is downloaded and audited. No field-survey forecast model has been trained. Daily weather through day 60 after field establishment and management timing checks are still required.")
+        else:
+            st.info(f"Daily NASA POWER weather linked to {weather_audit['linked_records']:,} records; {weather_audit['complete_records']:,} have complete day-0-to-60 inputs. Management timing and cohort checks remain pending. No field-survey forecast model has been trained.")
+            st.caption("Weather is estimated on source grids, not measured at each farm. Solar and meteorological inputs use their respective grids. The 61-day windows include establishment day and stop at the forecast date.")
+            st.dataframe(pd.read_csv(PROJECT_ROOT / "data/processed/rice/india_field_survey/weather_coverage.csv"), hide_index=True, width="stretch")
         st.caption("These counts describe the raw archive, not the paper's filtered analysis sample. Repeated coordinates and reported yields require further checks. Candidate counts do not establish model readiness.")
         st.dataframe(field_coverage, hide_index=True, width="stretch")
         with st.expander("Which survey variables can support a forecast?"):

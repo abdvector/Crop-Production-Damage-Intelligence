@@ -12,3 +12,6 @@ data/raw/rice/baap_genetics_2018/Aus_Admix_260_99_bi_01_005_beagle.vcf.gz
 # Field survey originals contain personal identifiers; exact-coordinate tables stay local.
 data/raw/rice/nayak_2024_lcas/
 data/processed/rice/india_field_survey/field_records_local.csv
+data/raw/rice/nayak_2024_lcas_weather/
+data/processed/rice/india_field_survey/weather_features_local.csv
+data/processed/rice/india_field_survey/weather_linkage_local.csv

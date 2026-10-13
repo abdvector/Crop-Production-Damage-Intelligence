@@ -1,0 +1,44 @@
+{
+  "linked_records": 17855,
+  "complete_records": 17855,
+  "physical_check_pass_records": 17855,
+  "missing_parameter_days": 0,
+  "cutoff_day": 60,
+  "inclusive_days": 61,
+  "time_standard": "LST",
+  "new_model_trained": false,
+  "linkage_method": "Nearest returned source grid per parameter; no station measurements",
+  "distance_km_quantiles": {
+    "T2M_MAX": {
+      "0.5": 23.63524880744626,
+      "0.95": 35.34483700367376,
+      "1": 42.39579196149722
+    },
+    "T2M_MIN": {
+      "0.5": 23.63524880744626,
+      "0.95": 35.34483700367376,
+      "1": 42.39579196149722
+    },
+    "PRECTOTCORR": {
+      "0.5": 23.63524880744626,
+      "0.95": 35.34483700367376,
+      "1": 42.39579196149722
+    },
+    "ALLSKY_SFC_SW_DWN": {
+      "0.5": 43.63529400594694,
+      "0.95": 64.54991339927936,
+      "1": 76.09227394604794
+    },
+    "RH2M": {
+      "0.5": 23.63524880744626,
+      "0.95": 35.34483700367376,
+      "1": 42.39579196149722
+    }
+  },
+  "limitations": [
+    "Source field GPS not verified",
+    "Weather grid resolution does not equal field precision",
+    "No management-unit verification or new trained model",
+    "Calendar windows are not observed phenological stages"
+  ]
+}

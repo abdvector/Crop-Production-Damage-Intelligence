@@ -30,7 +30,7 @@ All original rows are retained in the local normalised table with quality flags.
 
 Planting date, establishment method, reported variety, categorical soil texture and irrigation availability are potential early inputs. Application amounts and timing fields exist, but fertiliser units and missing timing require reconciliation before inclusion. Whole-season fertiliser totals, irrigation counts and sowing-to-harvest weather averages are blocked as early predictors. Harvest dates are for audit only. Retrospective drought/flood/weed/insect/disease severity reports are possible separate ordinal outcomes, not measured percentage yield losses; these severity fields are absent in the 2019 object.
 
-Daily weather through the issue date has not yet been acquired for these field records. No new survey model has been trained. There are no verified variety-linked protein alleles/sequences or measured field aluminium/pH inputs in this survey. The existing trial benchmark and separate CIRAD aluminium analysis remain available.
+Daily weather through the issue date has now been acquired and linked for all 17,855 candidates, with 61 complete dates per field and no missing parameter-days. See the separate weather protocol and audit for linkage tests and source-resolution limits. No new survey model has been trained. There are no verified variety-linked protein alleles/sequences or measured field aluminium/pH inputs in this survey. The existing trial benchmark and separate CIRAD aluminium analysis remain available.
 
 ## Privacy and reproducibility
 

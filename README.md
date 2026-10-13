@@ -47,9 +47,9 @@ The default Planting and full-SNP evaluation adds observed planting context, 15-
 
 ## Indian field-survey extension
 
-The proposed field-level extension focuses on rice yield per hectare and low-yield risk at day 60 after field establishment. The Nayak et al. (2024) public archive has been downloaded and checked: **17,862 raw survey records from 2017–2019**, with **17,855 positive rice-yield records** eligible for initial weather-linkage checks. These counts differ from the paper's filtered sample. This is data preparation, not a trained new model: daily weather linkage, management units/timing and repeated-coordinate checks remain pending. Raw personal identifiers and exact field coordinates stay local; GitHub contains aggregate audits and provenance only.
+The proposed field-level extension focuses on rice yield per hectare and low-yield risk at day 60 after field establishment. The Nayak et al. (2024) public archive has been downloaded and checked: **17,862 raw survey records from 2017–2019**, with **17,855 positive rice-yield records** eligible for initial weather-linkage checks. These counts differ from the paper's filtered sample. Daily NASA POWER temperature, rainfall, radiation and humidity are now linked to all 17,855 candidates, with complete inclusive day-0-to-60 windows and no missing parameter-days. This is data preparation, not a trained new model: management units/timing, field GPS and repeated-coordinate checks remain pending. Raw personal identifiers, exact field coordinates and row-level features stay local; GitHub contains aggregate audits and provenance only.
 
-See [the field survey audit](docs/Rice_Field_Survey_Audit.md) and [the forecasting plan and required data](docs/Rice_Field_Forecasting_Plan.md). The existing trials and their reported results remain available.
+See [the field survey audit](docs/Rice_Field_Survey_Audit.md), [the forecasting plan and required data](docs/Rice_Field_Forecasting_Plan.md) and [the daily weather protocol](docs/Rice_Field_Weather_Protocol.md). The existing trials and their reported results remain available.
 
 ## Existing experiment files
 

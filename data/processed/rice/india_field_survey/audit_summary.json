@@ -50,7 +50,7 @@
     "insect": 9252,
     "disease": 7973
   },
-  "daily_weather_acquired": false,
+  "daily_weather_acquired": true,
   "new_model_trained": false,
   "forecast_ready": false,
   "privacy": "Raw identifiers and local field coordinates excluded from GitHub",
@@ -61,5 +61,6 @@
     "Yield moisture convention and crop-cut validation subset need confirmation",
     "Ordinal stress reports are retrospective and absent in 2019",
     "No soil pH/Al measurements or verified protein links"
-  ]
+  ],
+  "weather_linked_records": 17855
 }

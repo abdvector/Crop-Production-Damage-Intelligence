@@ -18,8 +18,8 @@ Actual damage modelling additionally needs observed, consistently defined damage
 | --- | --- | --- |
 | Target and identifiers | Field-season yield, year, district, establishment date, location linkage | Acquired; filtering, repeated coordinates and yield convention need checks |
 | Planting | Calendar timing, establishment method, credible variety categories | Acquired; reconcile category names and unseen-variety handling |
-| Weather | Daily minimum/maximum temperature, rainfall, solar radiation; humidity if defensible, from establishment through day 60 | New field linkage not yet downloaded |
-| Weather features | Predeclared time-window summaries, growing-degree exposure, heat exposure and dry spells | Build after daily data acquisition; rice-specific thresholds require source support and sensitivity checks |
+| Weather | Daily minimum/maximum temperature, rainfall, solar radiation and humidity from establishment through day 60 | Acquired and linked for 17,855 candidates; gridded estimates, not station validation |
+| Weather features | Calendar-window summaries; optional growing-degree exposure, heat exposure and dry spells | Basic means/rain totals built; rice-specific thresholds require source support and sensitivity checks |
 | Water | Irrigation access/source and applications known by day 60 | Access fields acquired; actual application timing unresolved |
 | Fertiliser | Verified nutrient rates in kg/ha and application dates through day 60 | Source fields acquired; units and timing incomplete |
 | Soil | Observed texture; measured pH, organic carbon or nutrients if matched to the field | Texture acquired; measured chemistry absent |
