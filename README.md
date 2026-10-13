@@ -51,6 +51,8 @@ The proposed field-level extension focuses on rice yield per hectare and low-yie
 
 See [the field survey audit](docs/Rice_Field_Survey_Audit.md), [the forecasting plan and required data](docs/Rice_Field_Forecasting_Plan.md) and [the daily weather protocol](docs/Rice_Field_Weather_Protocol.md). The existing trials and their reported results remain available.
 
+The primary field cohort is now **17,836 records** after excluding 19 coordinate/state mismatches from the primary analysis while retaining them locally. Repeated signatures remain flagged, not deleted as presumed duplicate farms. The [cohort and validation protocol](docs/Rice_Field_Cohort_and_Validation.md) reserves 2019 for temporal assessment and uses district folds with shared-weather-cell purging for development. Management diagnostics found 39 positive urea/DAP application entries with missing timing and 4,820 after day 60; product units and timing reference still need a questionnaire check. The core weather/planting cohort is prepared, but no new field model has been trained.
+
 ## Existing experiment files
 
 The selectable Literature-guided validation experiment adds compact weather PLS, block-balanced genomic PLS and centred genetic/reaction-norm candidates, motivated by relevant rice studies. Day-60 RMSE is **982.5 kg/ha**, versus 1,004.8 previously and 1,036.5 for training mean. The gain occurs at Los Banos; eleven folds are unchanged, and genetic benefit remains negligible. This is development evidence, not reliable deployment. See [protocol](docs/Rice_Literature_Protocol.md) and [results](docs/Rice_Literature_Results.md). Earlier models and the default context mode remain available.

@@ -1,0 +1,15 @@
+year,state,temporal_role,records,districts,repeated_signature_rows
+2017,Bihar,development_fit,4657,27,84
+2017,Uttar Pradesh,development_fit,1526,9,22
+2018,Andhra Pradesh,development_validation,1072,9,0
+2018,Bihar,development_validation,2427,14,2
+2018,Chhattisgarh,development_validation,488,2,376
+2018,Odisha,development_validation,747,4,0
+2018,Punjab,development_validation,368,2,0
+2018,Uttar Pradesh,development_validation,957,5,0
+2018,West Bengal,development_validation,1373,10,6
+2019,Bihar,locked_temporal_assessment,531,3,0
+2019,Chhattisgarh,locked_temporal_assessment,646,4,0
+2019,Jharkhand,locked_temporal_assessment,727,4,0
+2019,Odisha,locked_temporal_assessment,26,1,0
+2019,Uttar Pradesh,locked_temporal_assessment,2291,15,0

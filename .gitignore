@@ -15,3 +15,7 @@ data/processed/rice/india_field_survey/field_records_local.csv
 data/raw/rice/nayak_2024_lcas_weather/
 data/processed/rice/india_field_survey/weather_features_local.csv
 data/processed/rice/india_field_survey/weather_linkage_local.csv
+data/raw/rice/india_boundaries/IND_ADM1.geojson
+data/processed/rice/india_field_survey/cohort_local.csv
+data/processed/rice/india_field_survey/geography_flags_local.csv
+data/processed/rice/india_field_survey/development_splits_local.csv

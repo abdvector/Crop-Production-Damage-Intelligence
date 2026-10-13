@@ -22,6 +22,7 @@ from src.rice_aluminium import load_aluminium_study
 from src.rice_literature import load_literature_results, run_literature_benchmark
 from src.rice_field_data import load_field_audit
 from src.rice_field_weather import load_weather_audit
+from src.rice_field_cohort import load_cohort_audit
 
 st.set_page_config(page_title="Rice Yield Research", layout="wide")
 st.markdown("""<style>
@@ -283,6 +284,14 @@ with readiness:
             st.dataframe(pd.read_csv(PROJECT_ROOT / "data/processed/rice/india_field_survey/weather_coverage.csv"), hide_index=True, width="stretch")
         st.caption("These counts describe the raw archive, not the paper's filtered analysis sample. Repeated coordinates and reported yields require further checks. Candidate counts do not establish model readiness.")
         st.dataframe(field_coverage, hide_index=True, width="stretch")
+        cohort_audit = load_cohort_audit()
+        if cohort_audit is not None:
+            st.write(f"Primary modelling cohort: {cohort_audit['primary_records']:,} records after state-boundary checks. {cohort_audit['state_discordant_weather_eligible_records']} coordinate/state mismatches are excluded from the primary analysis and retained locally for review.")
+            st.caption("Repeated signatures are flagged, not treated as proven duplicate farms. District validation removes fitting rows sharing any weather source cell with held-out records. The 2019 cohort is reserved for temporal assessment; no new field model has been trained.")
+            st.dataframe(pd.read_csv(PROJECT_ROOT / "data/processed/rice/india_field_survey/cohort_coverage.csv"), hide_index=True, width="stretch")
+            with st.expander("Management timing and validation splits"):
+                st.dataframe(pd.read_csv(PROJECT_ROOT / "data/processed/rice/india_field_survey/management_timing_audit.csv"), hide_index=True, width="stretch")
+                st.dataframe(pd.read_csv(PROJECT_ROOT / "data/processed/rice/india_field_survey/development_split_counts.csv"), hide_index=True, width="stretch")
         with st.expander("Which survey variables can support a forecast?"):
             st.dataframe(field_policy, hide_index=True, width="stretch")
         st.link_button("Field-survey source and methods", "https://doi.org/10.1038/s41467-024-52448-6")

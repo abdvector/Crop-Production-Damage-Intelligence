@@ -1,0 +1,76 @@
+{
+  "version": "field-cohort-v1",
+  "prepared_on": "2026-10-13",
+  "raw_records": 17862,
+  "weather_eligible_records": 17855,
+  "primary_records": 17836,
+  "state_discordant_raw_records": 19,
+  "state_discordant_weather_eligible_records": 19,
+  "repeated_reduced_signature_rows": 490,
+  "repeated_reduced_signature_extra_rows": 246,
+  "primary_repeated_signature_rows": 490,
+  "primary_district_groups": 92,
+  "primary_year_counts": {
+    "2017": 6183,
+    "2018": 7432,
+    "2019": 4221
+  },
+  "development_geographic_fold_counts": {
+    "0": 2436,
+    "1": 2836,
+    "2": 2851,
+    "3": 2801,
+    "4": 2691
+  },
+  "purged_geographic_splits": [
+    {
+      "fold": 0,
+      "fitting_records": 3650,
+      "validation_records": 2436,
+      "purged_weather_overlap_records": 7529,
+      "held_out_districts": 14
+    },
+    {
+      "fold": 1,
+      "fitting_records": 3213,
+      "validation_records": 2836,
+      "purged_weather_overlap_records": 7566,
+      "held_out_districts": 14
+    },
+    {
+      "fold": 2,
+      "fitting_records": 4280,
+      "validation_records": 2851,
+      "purged_weather_overlap_records": 6484,
+      "held_out_districts": 13
+    },
+    {
+      "fold": 3,
+      "fitting_records": 4140,
+      "validation_records": 2801,
+      "purged_weather_overlap_records": 6674,
+      "held_out_districts": 13
+    },
+    {
+      "fold": 4,
+      "fitting_records": 3991,
+      "validation_records": 2691,
+      "purged_weather_overlap_records": 6933,
+      "held_out_districts": 13
+    }
+  ],
+  "new_model_trained": false,
+  "core_cohort_prepared": true,
+  "management_rates_verified": false,
+  "cohort_sha256": "e7f620c7841044eb888c22c1770aeee7949dc59937622e3100ad8853bfd0b08f",
+  "splits_sha256": "21d56935313a634550e471ddd78ca1b2dcad0e2b09662bd90cbe0f4ecaa4813b",
+  "boundary_sha256": "47aa0acb6f69868daee49143276f3ce323f18905ba7d38d0a86816b405028736",
+  "limitations": [
+    "Boundary concordance is not field GPS verification; source boundaries are not historical district maps",
+    "Repeated signatures retained; not sufficient proof of duplicate farms",
+    "Cross-year farm identity not established",
+    "Only three years and changing state coverage",
+    "Fertiliser and irrigation event rates blocked until questionnaire verification",
+    "Reported yield moisture convention unresolved"
+  ]
+}

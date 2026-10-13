@@ -1,0 +1,129 @@
+{
+  "version": "field-core-benchmark-v1",
+  "declared_on": "2026-10-13",
+  "status": "Declared before new field-model fitting",
+  "seed": 20261013,
+  "target": "yield_kg_ha",
+  "numeric_features": [
+    "T2M_MAX_d0_14_mean",
+    "T2M_MIN_d0_14_mean",
+    "ALLSKY_SFC_SW_DWN_d0_14_mean",
+    "RH2M_d0_14_mean",
+    "T2M_MAX_d15_29_mean",
+    "T2M_MIN_d15_29_mean",
+    "ALLSKY_SFC_SW_DWN_d15_29_mean",
+    "RH2M_d15_29_mean",
+    "T2M_MAX_d30_44_mean",
+    "T2M_MIN_d30_44_mean",
+    "ALLSKY_SFC_SW_DWN_d30_44_mean",
+    "RH2M_d30_44_mean",
+    "T2M_MAX_d45_60_mean",
+    "T2M_MIN_d45_60_mean",
+    "ALLSKY_SFC_SW_DWN_d45_60_mean",
+    "RH2M_d45_60_mean",
+    "rain_d0_14_total_mm",
+    "rain_d15_29_total_mm",
+    "rain_d30_44_total_mm",
+    "rain_d45_60_total_mm",
+    "establishment_day_of_year"
+  ],
+  "categorical_features": [
+    "state",
+    "district_group",
+    "variety_label_source_normalised",
+    "establishment_method_normalised"
+  ],
+  "excluded_predictor_blocks": [
+    "identifiers and coordinates",
+    "year",
+    "harvest and final grain quantities",
+    "full-season weather",
+    "fertiliser and irrigation event totals",
+    "retrospective severity",
+    "unverified soil chemistry and molecular links"
+  ],
+  "categorical_preprocessing": {
+    "unknown": "ignore",
+    "min_frequency": 20,
+    "max_categories": 40,
+    "fit_on_training_only": true
+  },
+  "numeric_preprocessing": "Training median imputation and standardisation",
+  "regression_candidates": [
+    {
+      "name": "Global training mean",
+      "kind": "mean"
+    },
+    {
+      "name": "State training mean",
+      "kind": "state_mean",
+      "fallback": "global_mean"
+    },
+    {
+      "name": "Ridge alpha=100",
+      "kind": "ridge",
+      "alpha": 100
+    },
+    {
+      "name": "Ridge alpha=1000",
+      "kind": "ridge",
+      "alpha": 1000
+    },
+    {
+      "name": "Random Forest leaf=20",
+      "kind": "forest",
+      "min_samples_leaf": 20,
+      "n_estimators": 200,
+      "max_features": 0.7
+    },
+    {
+      "name": "Random Forest leaf=50",
+      "kind": "forest",
+      "min_samples_leaf": 50,
+      "n_estimators": 200,
+      "max_features": 0.7
+    },
+    {
+      "name": "Gradient boosting leaves=15",
+      "kind": "boosting",
+      "max_leaf_nodes": 15,
+      "min_samples_leaf": 30,
+      "max_iter": 150,
+      "learning_rate": 0.05,
+      "early_stopping": false
+    },
+    {
+      "name": "Gradient boosting leaves=31",
+      "kind": "boosting",
+      "max_leaf_nodes": 31,
+      "min_samples_leaf": 30,
+      "max_iter": 150,
+      "learning_rate": 0.05,
+      "early_stopping": false
+    }
+  ],
+  "development": {
+    "temporal_fit_year": 2017,
+    "temporal_validation_year": 2018,
+    "geographic_years": [
+      2017,
+      2018
+    ],
+    "geographic_folds": 5,
+    "geographic_allocation": "Sorted SHA-256 district labels, cyclic fold assignment",
+    "geographic_purge": "Any shared source-grid cell in any weather parameter, across development years",
+    "selection_objective": "0.5 * pooled geographic RMSE/global-mean geographic RMSE + 0.5 * temporal RMSE/global-mean temporal RMSE",
+    "tie_break": "candidate list order"
+  },
+  "assessment": {
+    "year": 2019,
+    "selection_use": false,
+    "report_seen_unseen_state_and_district": true
+  },
+  "risk": {
+    "threshold": "Strictly below training 20th yield percentile, recomputed per fitting split",
+    "baseline": "training prevalence",
+    "first_experiment": "Deferred until regression benchmark is fitted; declare risk candidate list before selection"
+  },
+  "new_model_trained": false
+}
