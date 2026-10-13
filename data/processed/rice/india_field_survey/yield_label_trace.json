@@ -15,7 +15,7 @@
     "assessment_predictions_local.csv": "25dc55a1e722535fa874a231f3ad306869bc71aa27fb747b65dfdcd344f9a01f"
   },
   "raw_identifiers_exported": false,
-  "questionnaire_status": "Public repository identified; documentation not acquired because access failed",
+  "questionnaire_status": "2018 codebook, guide, variable workbook and descriptive HTML acquired; yield-unit and conversion conflicts documented; 2017/2019 definitions unverified",
   "limitations": [
     "Named quintal fields do not prove actual units entered by respondents",
     "2017 quantity scope unresolved; candidate quantity/area formula mostly disagrees with published labels",

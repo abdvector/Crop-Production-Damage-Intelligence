@@ -22,3 +22,4 @@ data/processed/rice/india_field_survey/development_splits_local.csv
 data/processed/rice/india_field_survey/model/development_predictions_local.csv
 data/processed/rice/india_field_survey/model/assessment_predictions_local.csv
 data/processed/rice/india_field_survey/yield_review_local.csv
+data/raw/rice/cimmyt_2018_documentation/

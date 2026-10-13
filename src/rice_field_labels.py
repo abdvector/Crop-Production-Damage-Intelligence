@@ -71,7 +71,7 @@ def trace_source_yields(objects, archive_path):
         "flagged_quantity_at_least_1000_records": int(ledger.reported_quantity_value.ge(1000).sum()),
         "confirmed_corrections": 0, "existing_results_modified": False,
         "preserved_result_hashes": preserved, "raw_identifiers_exported": False,
-        "questionnaire_status": "Public repository identified; documentation not acquired because access failed",
+        "questionnaire_status": "2018 documentation reviewed; yield-unit conflicts and year-specific limits documented" if (FIELD_DATA / "documentation_audit.json").exists() else "Public repository identified; documentation not acquired because access failed",
         "limitations": ["Named quintal fields do not prove actual units entered by respondents",
             "2017 quantity scope unresolved; candidate quantity/area formula mostly disagrees with published labels",
             "Two 2018 per-acre-derived values disagree even allowing one-decimal rounding; author edits or semantics unresolved",
@@ -86,4 +86,9 @@ def trace_source_yields(objects, archive_path):
 
 def load_label_trace():
     path = FIELD_DATA / "yield_label_trace.json"
+    return json.loads(path.read_text(encoding="utf-8")) if path.exists() else None
+
+
+def load_documentation_audit():
+    path = FIELD_DATA / "documentation_audit.json"
     return json.loads(path.read_text(encoding="utf-8")) if path.exists() else None

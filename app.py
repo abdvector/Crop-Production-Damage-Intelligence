@@ -24,7 +24,7 @@ from src.rice_field_data import load_field_audit
 from src.rice_field_weather import load_weather_audit
 from src.rice_field_cohort import load_cohort_audit
 from src.rice_field_model import load_field_results, RESULTS as FIELD_RESULTS
-from src.rice_field_labels import load_label_trace
+from src.rice_field_labels import load_label_trace, load_documentation_audit
 
 st.set_page_config(page_title="Rice Yield Research", layout="wide")
 st.markdown("""<style>
@@ -122,6 +122,11 @@ with field_study:
                     st.write(f"Raw-source tracing checked {label_trace['traced_source_rows']:,} records. Every project yield matches the publisher's tonnes-to-kilograms conversion. All {label_trace['review_records']} flagged yields reconcile with source quantity and acreage, but their actual entered units remain unresolved.")
                     st.caption("Seven flagged quantities are at least 1,000 in a source field labelled quintals. Unit confusion is a hypothesis, not a confirmed correction. The 2017 quantity scope also needs clarification. Original labels, selection and assessment predictions remain unchanged.")
                     st.dataframe(pd.read_csv(PROJECT_ROOT / "data/processed/rice/india_field_survey/yield_trace_by_year.csv"), hide_index=True, width="stretch")
+                documentation_audit = load_documentation_audit()
+                if documentation_audit is not None:
+                    st.write("The 2018 documentation is now reviewed. The codebook specifies quintals for yield quantities; the spreadsheet Unit column says kilograms. Land-conversion descriptions also conflict. These differences do not confirm corrected values for the 2019 records.")
+                    st.caption("The 2018 form documents fertiliser product kg per plot and application days after field sowing/transplanting. Other survey years still need version-specific confirmation. The HTML contains descriptive summaries, not row-level correction evidence.")
+                    st.dataframe(pd.read_csv(PROJECT_ROOT / "data/processed/rice/india_field_survey/documentation_evidence.csv"), hide_index=True, width="stretch")
 with validation:
     st.subheader("Transfer to unseen locations")
     if results is None:

@@ -5,8 +5,8 @@ yield_kg_ha,Target only,Published t/ha multiplied by 1000; moisture basis unreso
 soil_texture_label,Candidate early input,"Survey category; not measured pH, nutrients or aluminium"
 irrigation_availability_reported,Conditional,Confirm it reflects conditions known by issue date
 GPS coordinates,Local linkage only,Needed for weather; not published in aggregate audit
-basal fertiliser amounts,Pending dictionary/units,Check plot versus hectare units and documented application timing
-top-dressing amounts and appDays,Conditional event inputs,Include only verified applications at or before the cutoff; missing timing stays unknown
+basal fertiliser amounts,2018 units documented; preparation pending,"2018 form specifies product kg per plot; verify source mapping, area and other-year definitions"
+top-dressing amounts and appDays,Conditional event inputs,2018 form references field sowing/transplanting; include only verified dated applications by cutoff; missing timing stays unknown
 "Tmax_avg, Tmin_avg, Rain_avg, rad_avg",Blocked for early forecasts,Published sowing-to-harvest weather; acquire daily data and truncate
 "total_N_ha, total_p_ha, total_K_ha, irrigTimes",Blocked as current early inputs,Whole-season totals have unverified availability at the cutoff
 "harvest date, crop duration, grain quantities",Audit/target only,Outcome-period information; never forecast predictors

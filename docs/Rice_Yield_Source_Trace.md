@@ -30,15 +30,9 @@ The local `yield_review_local.csv` contains source-object/row references, numeri
 
 ## What remains unresolved
 
-The [2018 source survey article](https://pmc.ncbi.nlm.nih.gov/articles/PMC9679526/) identifies accompanying variable definitions, ODK Build files and code in the [CIMMYT repository](https://data.cimmyt.org/dataset.xhtml?persistentId=hdl:11529/10548656). Access from this environment failed; documentation has not been acquired. A 2018 form alone would not establish unchanged 2017/2019 definitions or confirm what a respondent entered in an individual record.
+The [2018 source survey article](https://pmc.ncbi.nlm.nih.gov/articles/PMC9679526/) identifies accompanying variable definitions, ODK Build files and code in the [CIMMYT repository](https://data.cimmyt.org/dataset.xhtml?persistentId=hdl:11529/10548656). The user has now supplied the 2018 codebook, guide, variable workbook and descriptive HTML report. The [documentation review](Rice_Survey_Documentation_Review.md) records quintal-versus-kilogram and reciprocal land-conversion conflicts. A 2018 form alone does not establish unchanged 2017/2019 definitions or confirm what a respondent entered in an individual record.
 
-The next useful manual step is to open that repository in a normal browser and download:
-
-1. Variable details or data dictionary.
-2. ODK questionnaire/form or Build file.
-3. Accompanying R processing code, if available.
-
-Place those files in the project root for inspection. Additional precise GPS or another copy of the full farmer dataset is not needed. We need definitions for yield quantity units, field-versus-farm quantity scope, area units/conversion, any documented corrections, and fertiliser application-day reference. To confirm individual errors may ultimately require author-curated corrected records or source-record clarification. No email has been sent.
+The received files are stored in `data/raw/rice/cimmyt_2018_documentation/`. The HTML summarises an existing CSV and contains no complete correction procedure. The remaining evidence needed is year-specific 2017/2019 definitions, the relevant processing/curation code, or author-confirmed corrected records. The 2018 product-amount and timing definitions can support a separately audited 2018 management preparation step. Additional precise GPS or another full dataset copy is not needed for this check. No email has been sent.
 
 Until evidence confirms corrections, retain source labels and the existing results. Any later correction must record source row, old/new value, evidence and rationale. A revised analysis must be identified as a revised analysis of an opened test; the 2019 data cannot become an untouched assessment again. The weaker performance on the unflagged diagnostic subset also remains an unresolved model-transfer problem.
 
