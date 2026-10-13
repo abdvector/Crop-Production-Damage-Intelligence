@@ -1,0 +1,51 @@
+{
+  "source_doi": "10.1038/s41467-024-52448-6",
+  "retrieved_on": "2026-10-13",
+  "files": [
+    {
+      "filename": "Supplementary_Data_1_2.zip",
+      "url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41467-024-52448-6/MediaObjects/41467_2024_52448_MOESM4_ESM.zip",
+      "bytes": 85458275,
+      "sha256": "22152e70566143a196c26660af445c7f4c0a3b342045baaa277d96ee94db63af",
+      "validation": "ZIP CRC passed"
+    },
+    {
+      "filename": "Description_Additional_Files.pdf",
+      "url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41467-024-52448-6/MediaObjects/41467_2024_52448_MOESM3_ESM.pdf",
+      "bytes": 122995,
+      "sha256": "d44e8beacd545d28436d36b8090ae215b870a0a1d04da28262e1fc994802c9d4",
+      "validation": "PDF header verified"
+    },
+    {
+      "filename": "Supplementary_Information.pdf",
+      "url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41467-024-52448-6/MediaObjects/41467_2024_52448_MOESM1_ESM.pdf",
+      "bytes": 645370,
+      "sha256": "b4025fb3eec7656b32cd7a77c96fb2ae05a6204a7cdd8cf316ec35c82f4fb74d",
+      "validation": "PDF header verified"
+    },
+    {
+      "filename": "article.xml",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11436799/fullTextXML",
+      "bytes": 101087,
+      "sha256": "95f9d1aec99efde602008a97c43780d812bf48def1656efe982758da15e82192",
+      "validation": "XML parsed during audit"
+    }
+  ],
+  "archive_members": [
+    {
+      "name": "Data/all_year_data.RData",
+      "bytes": 4112219
+    },
+    {
+      "name": "Data/Data_for_script_3.RData",
+      "bytes": 83188335
+    },
+    {
+      "name": "Data/Note.txt",
+      "bytes": 230
+    }
+  ],
+  "source_code_download": "Not acquired: publisher and PMC requests returned HTML challenge pages, not ZIP files",
+  "raw_data_policy": "Local only: source archive contains personal identifiers; exact coordinates remain local",
+  "license": "Article CC BY 4.0; preserve source attribution and inspect archive terms before redistribution"
+}

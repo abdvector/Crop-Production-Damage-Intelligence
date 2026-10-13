@@ -45,7 +45,13 @@ Nested selection reduced RMSE to **1,045.3 kg/ha** from 1,228.9, but the mean ba
 
 The default Planting and full-SNP evaluation adds observed planting context, 15-day weather summaries and a relationship benchmark retaining all SNP information. RMSE is **1,004.8 kg/ha**, about **3.1% better** than training mean; eight locations improve and four worsen. Genetics adds no improvement to context selection. Risk falls back to prevalence. Physical density and primary irrigation/fertiliser/soil remain unresolved. See [results](docs/Rice_Context_Results.md), [paper comparison](docs/Rice_Paper_Comparison.md) and [data search](docs/Rice_Management_Data_Search.md). This remains development evidence with substantial errors.
 
-## Files
+## Indian field-survey extension
+
+The proposed field-level extension focuses on rice yield per hectare and low-yield risk at day 60 after field establishment. The Nayak et al. (2024) public archive has been downloaded and checked: **17,862 raw survey records from 2017–2019**, with **17,855 positive rice-yield records** eligible for initial weather-linkage checks. These counts differ from the paper's filtered sample. This is data preparation, not a trained new model: daily weather linkage, management units/timing and repeated-coordinate checks remain pending. Raw personal identifiers and exact field coordinates stay local; GitHub contains aggregate audits and provenance only.
+
+See [the field survey audit](docs/Rice_Field_Survey_Audit.md) and [the forecasting plan and required data](docs/Rice_Field_Forecasting_Plan.md). The existing trials and their reported results remain available.
+
+## Existing experiment files
 
 The selectable Literature-guided validation experiment adds compact weather PLS, block-balanced genomic PLS and centred genetic/reaction-norm candidates, motivated by relevant rice studies. Day-60 RMSE is **982.5 kg/ha**, versus 1,004.8 previously and 1,036.5 for training mean. The gain occurs at Los Banos; eleven folds are unchanged, and genetic benefit remains negligible. This is development evidence, not reliable deployment. See [protocol](docs/Rice_Literature_Protocol.md) and [results](docs/Rice_Literature_Results.md). Earlier models and the default context mode remain available.
 

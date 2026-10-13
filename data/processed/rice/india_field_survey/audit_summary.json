@@ -1,0 +1,65 @@
+{
+  "audit_version": "lcas-source-audit-v1",
+  "audited_on": "2026-10-13",
+  "source_doi": "10.1038/s41467-024-52448-6",
+  "archive_sha256": "22152e70566143a196c26660af445c7f4c0a3b342045baaa277d96ee94db63af",
+  "curated_local_sha256": "a4d8bf857dd0029bdaa83fd8a25d611676c05201e091397cd3f63eec0d7c2952",
+  "objects": [
+    {
+      "source_object": "rice_2017",
+      "source_year": 2017,
+      "rows": 6192,
+      "columns": 253,
+      "duplicate_source_identifiers": 0,
+      "reported_variety_count": 121
+    },
+    {
+      "source_object": "data",
+      "source_year": 2018,
+      "rows": 7443,
+      "columns": 302,
+      "duplicate_source_identifiers": 0,
+      "reported_variety_count": 501
+    },
+    {
+      "source_object": "data1",
+      "source_year": 2019,
+      "rows": 4227,
+      "columns": 264,
+      "duplicate_source_identifiers": 0,
+      "reported_variety_count": 76
+    }
+  ],
+  "raw_rows": 17862,
+  "valid_rice_yield_rows": 17855,
+  "unique_district_labels": 92,
+  "candidate_weather_rows": 17855,
+  "candidate_unique_coordinates": 13699,
+  "missing_establishment_dates": 0,
+  "missing_harvest_dates": 0,
+  "invalid_forecast_dates": 0,
+  "invalid_coordinates": 0,
+  "duplicate_source_identifier_rows": 0,
+  "duplicate_coordinate_season_rows": 5845,
+  "yield_above_15000_review_rows": 13,
+  "forecast_cutoff_days_after_field_establishment": 60,
+  "severity_report_counts": {
+    "drought": 7158,
+    "flood": 3532,
+    "weed": 12874,
+    "insect": 9252,
+    "disease": 7973
+  },
+  "daily_weather_acquired": false,
+  "new_model_trained": false,
+  "forecast_ready": false,
+  "privacy": "Raw identifiers and local field coordinates excluded from GitHub",
+  "limitations": [
+    "Source raw counts differ from paper analysis sample; published filters not reproduced",
+    "Full-season weather and management totals blocked at the issue date",
+    "Event amounts/units and missing application timing require validation",
+    "Yield moisture convention and crop-cut validation subset need confirmation",
+    "Ordinal stress reports are retrospective and absent in 2019",
+    "No soil pH/Al measurements or verified protein links"
+  ]
+}

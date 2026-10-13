@@ -20,6 +20,7 @@ from src.rice_context import load_context_results, run_context_benchmark
 from src.rice_reliability import load_reliability, run_reliability
 from src.rice_aluminium import load_aluminium_study
 from src.rice_literature import load_literature_results, run_literature_benchmark
+from src.rice_field_data import load_field_audit
 
 st.set_page_config(page_title="Rice Yield Research", layout="wide")
 st.markdown("""<style>
@@ -264,3 +265,19 @@ with readiness:
     st.write("Research question: How accurately can early-season weather, planting information and genetic markers predict rice yield per hectare at unseen locations, and do genetic markers improve prediction beyond environmental inputs?")
     st.caption("Low-yield risk is secondary. Protein embeddings are optional future work requiring verified variety-to-sequence links. Aluminium remains a separate supporting analysis. Restricted IRRI files are not required for the current project.")
     st.link_button("Primary dataset and methods", "https://doi.org/10.1186/s12284-023-00623-6")
+    st.subheader("Indian field-survey extension: preparation stage")
+    field_audit = load_field_audit()
+    if field_audit is not None:
+        field_summary, field_coverage, field_policy = field_audit
+        a, b, c = st.columns(3)
+        a.metric("Raw survey records", f"{field_summary['raw_rows']:,}")
+        b.metric("Candidates for weather linkage", f"{field_summary['candidate_weather_rows']:,}")
+        c.metric("Survey years", "2017–2019")
+        st.info("The survey is downloaded and audited. No field-survey forecast model has been trained. Daily weather through day 60 after field establishment and management timing checks are still required.")
+        st.caption("These counts describe the raw archive, not the paper's filtered analysis sample. Repeated coordinates and reported yields require further checks. Candidate counts do not establish model readiness.")
+        st.dataframe(field_coverage, hide_index=True, width="stretch")
+        with st.expander("Which survey variables can support a forecast?"):
+            st.dataframe(field_policy, hide_index=True, width="stretch")
+        st.link_button("Field-survey source and methods", "https://doi.org/10.1038/s41467-024-52448-6")
+    else:
+        st.write("Field-survey audit is not available in this checkout.")
