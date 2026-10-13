@@ -53,6 +53,8 @@ The assessment includes 727 records in a state absent from development and 3,882
 
 The findings support a reproducible negative-result benchmark, not a deployment or savings claim. Before improving the model, verify suspect yield units and obtain the survey questionnaire for management definitions. Further model changes must use development data for tuning and need an additional independent season/source for a new final assessment: 2019 is now opened and cannot be called an untouched test again. The original benchmark and this full assessment must remain available.
 
+The subsequent [raw-source trace](Rice_Yield_Source_Trace.md) confirms all project conversions and traces the extremes to the publisher's stored quantities/areas. It does not confirm replacement values. The original assessment remains unchanged; 2017 quantity scope and some 2018 arithmetic differences also need source clarification.
+
 The next low-yield-risk experiment requires a separately declared candidate/validation protocol; the training-only 20th-percentile threshold and prevalence baseline are already planned. No risk accuracy is inferred from regression results. Adding protein/aluminium predictors still requires matched observations.
 
 ## Reproduction and checks

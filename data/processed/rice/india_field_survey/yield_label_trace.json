@@ -1,0 +1,26 @@
+{
+  "version": "source-yield-trace-v1",
+  "audited_on": "2026-10-13",
+  "archive_sha256": "22152e70566143a196c26660af445c7f4c0a3b342045baaa277d96ee94db63af",
+  "traced_source_rows": 17862,
+  "project_conversion_agreement_rows": 17862,
+  "review_records": 13,
+  "flagged_source_formula_agreement_records": 13,
+  "flagged_quantity_at_least_1000_records": 7,
+  "confirmed_corrections": 0,
+  "existing_results_modified": false,
+  "preserved_result_hashes": {
+    "selection.json": "fe2ac728b9fd1153b2b42c4c4a63ce0fe20133dc2932097e476a4e4ccf2fdd9a",
+    "assessment_metrics.csv": "be8f5d7f4b87bb6b3a0a94f3e19c7675d678bc82951823ac29fd48acf1836d45",
+    "assessment_predictions_local.csv": "25dc55a1e722535fa874a231f3ad306869bc71aa27fb747b65dfdcd344f9a01f"
+  },
+  "raw_identifiers_exported": false,
+  "questionnaire_status": "Public repository identified; documentation not acquired because access failed",
+  "limitations": [
+    "Named quintal fields do not prove actual units entered by respondents",
+    "2017 quantity scope unresolved; candidate quantity/area formula mostly disagrees with published labels",
+    "Two 2018 per-acre-derived values disagree even allowing one-decimal rounding; author edits or semantics unresolved",
+    "2019 arithmetic consistency does not establish validity of extreme input quantities",
+    "No automatic division by 100, winsorisation, source-row deletion or model reselection"
+  ]
+}

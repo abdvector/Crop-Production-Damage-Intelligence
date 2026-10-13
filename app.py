@@ -24,6 +24,7 @@ from src.rice_field_data import load_field_audit
 from src.rice_field_weather import load_weather_audit
 from src.rice_field_cohort import load_cohort_audit
 from src.rice_field_model import load_field_results, RESULTS as FIELD_RESULTS
+from src.rice_field_labels import load_label_trace
 
 st.set_page_config(page_title="Rice Yield Research", layout="wide")
 st.markdown("""<style>
@@ -116,6 +117,11 @@ with field_study:
                 st.dataframe(pd.read_csv(FIELD_RESULTS / "assessment_label_sensitivity.csv"), hide_index=True, width="stretch")
                 st.dataframe(pd.read_csv(FIELD_RESULTS / "assessment_label_influence.csv"), hide_index=True, width="stretch")
                 st.caption("Uses the pre-existing 15,000 kg/ha audit flag, without retraining or changing model selection. This is a diagnostic subset of the opened assessment, not a replacement final test or proof that every flagged label is wrong. Original results remain above.")
+                label_trace = load_label_trace()
+                if label_trace is not None:
+                    st.write(f"Raw-source tracing checked {label_trace['traced_source_rows']:,} records. Every project yield matches the publisher's tonnes-to-kilograms conversion. All {label_trace['review_records']} flagged yields reconcile with source quantity and acreage, but their actual entered units remain unresolved.")
+                    st.caption("Seven flagged quantities are at least 1,000 in a source field labelled quintals. Unit confusion is a hypothesis, not a confirmed correction. The 2017 quantity scope also needs clarification. Original labels, selection and assessment predictions remain unchanged.")
+                    st.dataframe(pd.read_csv(PROJECT_ROOT / "data/processed/rice/india_field_survey/yield_trace_by_year.csv"), hide_index=True, width="stretch")
 with validation:
     st.subheader("Transfer to unseen locations")
     if results is None:
