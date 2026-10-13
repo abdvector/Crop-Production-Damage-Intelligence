@@ -23,6 +23,7 @@ from src.rice_literature import load_literature_results, run_literature_benchmar
 from src.rice_field_data import load_field_audit
 from src.rice_field_weather import load_weather_audit
 from src.rice_field_cohort import load_cohort_audit
+from src.rice_field_model import load_field_results, RESULTS as FIELD_RESULTS
 
 st.set_page_config(page_title="Rice Yield Research", layout="wide")
 st.markdown("""<style>
@@ -35,9 +36,10 @@ h1 {letter-spacing:-0.03em;}
 
 st.title("Rice yield and low-yield risk")
 st.caption("Birla Institute of Technology, Mesra | Department of Quantitative Economics and Data Science | Guide: Dr. Manish Kumar Pandey")
-st.write("Forecasting yield per hectare at unseen locations using published trials, early-season weather, planting records and genetic markers.")
+st.write("Evaluating day-60 rice yield forecasts from early-season weather and planting information. The Indian field study and earlier trial/genetic experiments are reported separately.")
 with st.sidebar:
     st.header("Research controls")
+    st.caption("These controls apply to the earlier trial benchmark. The field-study assessment uses a fixed day-60 cutoff.")
     evaluation = st.selectbox("Evaluation method", ["Planting and full-SNP validation", "Literature-guided validation", "Nested location validation", "Original fixed baseline"])
     contextual = evaluation == "Planting and full-SNP validation"
     literature = evaluation == "Literature-guided validation"
@@ -74,7 +76,46 @@ with st.sidebar:
 
 results = load_literature_results(cutoff) if literature else load_context_results(cutoff) if contextual else load_nested_results(cutoff) if nested else load_results(cutoff)
 result_folder = "literature" if literature else "context" if contextual else "nested" if nested else "baseline"
-validation, reliability, aluminium, explore, readiness = st.tabs(["Validation results", "Reliability and uncertainty", "Aluminium supporting study", "Trial explorer", "Data readiness"])
+field_study, validation, reliability, aluminium, explore, readiness = st.tabs(["Indian field study", "Trial validation results", "Reliability and uncertainty", "Aluminium supporting study", "Trial explorer", "Data readiness"])
+field_results = load_field_results()
+with field_study:
+    st.subheader("Rice field yield: reserved 2019 assessment")
+    if field_results is None:
+        st.info("The declared field model comparison has not completed. See Data readiness for the cohort and protocol.")
+    else:
+        field_model_summary, assessment_metrics, development_selection = field_results
+        selected_metrics = assessment_metrics.loc[assessment_metrics.model.eq(field_model_summary["selected_model"])].iloc[0]
+        global_metrics = assessment_metrics.loc[assessment_metrics.model.eq("Global training mean")].iloc[0]
+        gain = 100 * (1 - selected_metrics.rmse_kg_ha / global_metrics.rmse_kg_ha)
+        st.write(f"Selected using 2017–2018 development data: **{field_model_summary['selected_model']}**. Forecast window: establishment day through day 60.")
+        a, b, c, d = st.columns(4)
+        a.metric("2019 assessment records", f"{field_model_summary['assessment_records']:,}")
+        b.metric("MAE", f"{selected_metrics.mae_kg_ha:,.0f} kg/ha")
+        c.metric("RMSE", f"{selected_metrics.rmse_kg_ha:,.0f} kg/ha")
+        d.metric("R squared", f"{selected_metrics.r_squared:.3f}")
+        change = f"{gain:.2f}% lower" if gain >= 0 else f"{-gain:.2f}% higher"
+        st.write(f"RMSE is {change} than global training mean. Compare the state-mean baseline as well.")
+        label_audit = field_model_summary.get("assessment_label_audit")
+        if label_audit is not None:
+            st.warning(f"Forecasting skill is not established. {label_audit['flagged_assessment_records']} previously flagged yields dominate squared error; the source maximum is {label_audit['maximum_source_yield_kg_ha']:,.0f} kg/ha. The unchanged-prediction sensitivity also fails to beat the mean baseline.")
+        st.dataframe(assessment_metrics, hide_index=True, width="stretch")
+        st.bar_chart(assessment_metrics.set_index("model")[["mae_kg_ha", "rmse_kg_ha"]], horizontal=True)
+        st.caption("This is a retrospective backtest on farmer-reported yields. It is not prospective validation or an estimate of causal crop damage or monetary savings. No new field low-yield classifier or calibrated prediction interval is available yet.")
+        st.write(f"Transfer coverage: {field_model_summary['assessment_unseen_state_records']:,} records in a state absent from development, and {field_model_summary['assessment_unseen_district_records']:,} in new district labels.")
+        with st.expander("All development candidates and selection"):
+            st.dataframe(development_selection, hide_index=True, width="stretch")
+            st.dataframe(pd.read_csv(FIELD_RESULTS / "development_metrics.csv"), hide_index=True, width="stretch")
+            st.caption("Selection used an equal-weight combination of geographic and temporal development RMSE, normalised by each global-mean baseline. The 2019 assessment was opened after selection was saved.")
+        with st.expander("Where predictions succeed or fail"):
+            st.dataframe(pd.read_csv(FIELD_RESULTS / "assessment_state_metrics.csv"), hide_index=True, width="stretch")
+            st.dataframe(pd.read_csv(FIELD_RESULTS / "assessment_transfer_metrics.csv"), hide_index=True, width="stretch")
+            st.dataframe(pd.read_csv(FIELD_RESULTS / "assessment_macro_metrics.csv"), hide_index=True, width="stretch")
+            st.write("District-resampling stability versus global mean", field_model_summary["paired_district_stability"])
+        if label_audit is not None:
+            with st.expander("Yield-label quality diagnostic"):
+                st.dataframe(pd.read_csv(FIELD_RESULTS / "assessment_label_sensitivity.csv"), hide_index=True, width="stretch")
+                st.dataframe(pd.read_csv(FIELD_RESULTS / "assessment_label_influence.csv"), hide_index=True, width="stretch")
+                st.caption("Uses the pre-existing 15,000 kg/ha audit flag, without retraining or changing model selection. This is a diagnostic subset of the opened assessment, not a replacement final test or proof that every flagged label is wrong. Original results remain above.")
 with validation:
     st.subheader("Transfer to unseen locations")
     if results is None:
@@ -252,7 +293,7 @@ with explore:
             st.dataframe(pd.read_csv(feature_folder / "compact_feature_catalogue.csv"), hide_index=True, width="stretch")
             st.caption("VPD is an approximation from daily temperatures and mean humidity. Rainfall is not irrigation. Calendar windows stop at the issue date and do not claim observed reproductive-stage timing.")
 with readiness:
-    st.subheader("What the current model uses")
+    st.subheader("What the earlier trial benchmark uses")
     st.dataframe(pd.DataFrame([
         ["Yield", "Published adjusted labels; 10 conflicting records excluded"],
         ["Genetics", "882 SNPs linked to 107 genotypes; full relationship kernel available in the planting experiment"],
@@ -264,10 +305,10 @@ with readiness:
         ["Additional disease study", "10 publisher-checksummed irrigation/nitrogen files acquired; no yield labels or primary-trial mapping"],
         ["Additional long-term yields", "IRRI 1974 archive files require permission; metadata acquired only"],
     ], columns=["Component","Status"]), hide_index=True, width="stretch")
-    st.write("Research question: How accurately can early-season weather, planting information and genetic markers predict rice yield per hectare at unseen locations, and do genetic markers improve prediction beyond environmental inputs?")
+    st.write("Earlier trial question: How accurately can early-season weather, planting information and genetic markers predict rice yield per hectare at unseen locations, and do genetic markers improve prediction beyond environmental inputs?")
     st.caption("Low-yield risk is secondary. Protein embeddings are optional future work requiring verified variety-to-sequence links. Aluminium remains a separate supporting analysis. Restricted IRRI files are not required for the current project.")
     st.link_button("Primary dataset and methods", "https://doi.org/10.1186/s12284-023-00623-6")
-    st.subheader("Indian field-survey extension: preparation stage")
+    st.subheader("Indian field-survey extension")
     field_audit = load_field_audit()
     if field_audit is not None:
         field_summary, field_coverage, field_policy = field_audit
@@ -279,7 +320,8 @@ with readiness:
         if weather_audit is None:
             st.info("The survey is downloaded and audited. No field-survey forecast model has been trained. Daily weather through day 60 after field establishment and management timing checks are still required.")
         else:
-            st.info(f"Daily NASA POWER weather linked to {weather_audit['linked_records']:,} records; {weather_audit['complete_records']:,} have complete day-0-to-60 inputs. Management timing and cohort checks remain pending. No field-survey forecast model has been trained.")
+            model_status = "The core regression comparison is complete; see Indian field study." if field_results is not None else "No field-survey forecast model has been trained."
+            st.info(f"Daily NASA POWER weather linked to {weather_audit['linked_records']:,} records; {weather_audit['complete_records']:,} have complete day-0-to-60 inputs. Management verification remains pending. {model_status}")
             st.caption("Weather is estimated on source grids, not measured at each farm. Solar and meteorological inputs use their respective grids. The 61-day windows include establishment day and stop at the forecast date.")
             st.dataframe(pd.read_csv(PROJECT_ROOT / "data/processed/rice/india_field_survey/weather_coverage.csv"), hide_index=True, width="stretch")
         st.caption("These counts describe the raw archive, not the paper's filtered analysis sample. Repeated coordinates and reported yields require further checks. Candidate counts do not establish model readiness.")
@@ -287,7 +329,8 @@ with readiness:
         cohort_audit = load_cohort_audit()
         if cohort_audit is not None:
             st.write(f"Primary modelling cohort: {cohort_audit['primary_records']:,} records after state-boundary checks. {cohort_audit['state_discordant_weather_eligible_records']} coordinate/state mismatches are excluded from the primary analysis and retained locally for review.")
-            st.caption("Repeated signatures are flagged, not treated as proven duplicate farms. District validation removes fitting rows sharing any weather source cell with held-out records. The 2019 cohort is reserved for temporal assessment; no new field model has been trained.")
+            assessment_status = "The reserved 2019 assessment has now been evaluated once after development selection." if field_results is not None else "The 2019 cohort is reserved for temporal assessment."
+            st.caption(f"Repeated signatures are flagged, not treated as proven duplicate farms. District validation removes fitting rows sharing any weather source cell with held-out records. {assessment_status}")
             st.dataframe(pd.read_csv(PROJECT_ROOT / "data/processed/rice/india_field_survey/cohort_coverage.csv"), hide_index=True, width="stretch")
             with st.expander("Management timing and validation splits"):
                 st.dataframe(pd.read_csv(PROJECT_ROOT / "data/processed/rice/india_field_survey/management_timing_audit.csv"), hide_index=True, width="stretch")

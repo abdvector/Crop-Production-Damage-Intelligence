@@ -19,3 +19,5 @@ data/raw/rice/india_boundaries/IND_ADM1.geojson
 data/processed/rice/india_field_survey/cohort_local.csv
 data/processed/rice/india_field_survey/geography_flags_local.csv
 data/processed/rice/india_field_survey/development_splits_local.csv
+data/processed/rice/india_field_survey/model/development_predictions_local.csv
+data/processed/rice/india_field_survey/model/assessment_predictions_local.csv

@@ -1,0 +1,9 @@
+model,selection_objective
+Ridge alpha=1000,0.933467966378454
+State training mean,0.9720858135119025
+Random Forest leaf=50,0.9803690355377483
+Random Forest leaf=20,0.9843247060549882
+Gradient boosting leaves=15,0.9953159122023931
+Gradient boosting leaves=31,0.9987500505521439
+Ridge alpha=100,0.9990103556540051
+Global training mean,1.0

@@ -1,0 +1,15 @@
+{
+  "selected_candidate": {
+    "name": "Ridge alpha=1000",
+    "kind": "ridge",
+    "alpha": 1000
+  },
+  "selection_objective": 0.933467966378454,
+  "protocol_sha256": "4e345a7677e4cb4e8ced550860cd3c9f73fbc49b94713387ed936ff97919b51c",
+  "cohort_sha256": "e7f620c7841044eb888c22c1770aeee7949dc59937622e3100ad8853bfd0b08f",
+  "development_years": [
+    2017,
+    2018
+  ],
+  "assessment_used_for_selection": false
+}

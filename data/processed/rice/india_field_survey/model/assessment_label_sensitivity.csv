@@ -1,0 +1,4 @@
+model,analysis,records,mae_kg_ha,rmse_kg_ha,r_squared,bias_kg_ha
+Global training mean,"Previously flagged yield records omitted; diagnostic only, predictions unchanged",4208,1074.8365716920473,1418.7050904396203,-0.05095981807805616,312.40142457772976
+Ridge alpha=1000,"Previously flagged yield records omitted; diagnostic only, predictions unchanged",4208,1077.1158327241053,1447.809951591315,-0.09452320269705372,347.9387406490835
+State training mean,"Previously flagged yield records omitted; diagnostic only, predictions unchanged",4208,1057.9069947514943,1412.145865478996,-0.04126429179158175,210.74765912388833

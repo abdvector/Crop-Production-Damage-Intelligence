@@ -4,7 +4,7 @@
 
 How accurately can rice yield per hectare and low-yield risk be forecast 60 days after field establishment using information available by that date, and do verified management and soil inputs improve forecasts beyond weather and planting information across held-out districts and years?
 
-This is the proposed main field-survey study. The existing trial/genetic experiments remain a separate benchmark. No improved forecast accuracy is claimed from acquiring this dataset.
+This is the main field-survey study and its planned verified-management extension. The existing trial/genetic experiments remain a separate benchmark. The [first core regression assessment](Rice_Field_Model_Results.md) is now complete and does not establish reliable temporal forecasting. Acquisition alone does not demonstrate improved accuracy.
 
 ## Targets
 

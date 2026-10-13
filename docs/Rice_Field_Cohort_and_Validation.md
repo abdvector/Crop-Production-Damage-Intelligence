@@ -41,7 +41,7 @@ District strings are normalised labels, not fully verified official district ide
 
 `src/rice_field_cohort.py` contains source management diagnostics, state screening, cohort generation and geographic split masks. Use `prepare_cohort()` after local weather linkage. `audit_management()` accepts the three raw RData objects and writes only aggregate checks. Source boundary metadata and hashes identify the geographical input; the full boundary file, row-level cohort, flags and split assignments stay local. Published coverage/audits contain no exact field coordinates or personal identifiers. The temporary R reader is removed after inspection. `app.py` remains the sole application entry point.
 
-No new field model has been trained in this milestone. The core cohort is prepared for an initial weather/planting comparison; the intended verified-management extension is still incomplete.
+At cohort declaration, no new field model had been trained. The core regression comparison has subsequently completed; see [the full assessment](Rice_Field_Model_Results.md). The intended verified-management extension is still incomplete, and the previously reserved 2019 assessment is now opened.
 
 ## Public questionnaire needed for management verification
 

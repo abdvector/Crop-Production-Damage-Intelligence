@@ -1,0 +1,74 @@
+{
+  "version": "field-core-benchmark-v1",
+  "selected_model": "Ridge alpha=1000",
+  "development_records": 13615,
+  "assessment_records": 4221,
+  "assessment_year": 2019,
+  "assessment_unseen_state_records": 727,
+  "assessment_unseen_district_records": 3882,
+  "numeric_predictors": [
+    "T2M_MAX_d0_14_mean",
+    "T2M_MIN_d0_14_mean",
+    "ALLSKY_SFC_SW_DWN_d0_14_mean",
+    "RH2M_d0_14_mean",
+    "T2M_MAX_d15_29_mean",
+    "T2M_MIN_d15_29_mean",
+    "ALLSKY_SFC_SW_DWN_d15_29_mean",
+    "RH2M_d15_29_mean",
+    "T2M_MAX_d30_44_mean",
+    "T2M_MIN_d30_44_mean",
+    "ALLSKY_SFC_SW_DWN_d30_44_mean",
+    "RH2M_d30_44_mean",
+    "T2M_MAX_d45_60_mean",
+    "T2M_MIN_d45_60_mean",
+    "ALLSKY_SFC_SW_DWN_d45_60_mean",
+    "RH2M_d45_60_mean",
+    "rain_d0_14_total_mm",
+    "rain_d15_29_total_mm",
+    "rain_d30_44_total_mm",
+    "rain_d45_60_total_mm",
+    "establishment_day_of_year"
+  ],
+  "categorical_predictors": [
+    "state",
+    "district_group",
+    "variety_label_source_normalised",
+    "establishment_method_normalised"
+  ],
+  "new_model_trained": true,
+  "risk_model_trained": false,
+  "prospective_validation": false,
+  "protocol_sha256": "4e345a7677e4cb4e8ced550860cd3c9f73fbc49b94713387ed936ff97919b51c",
+  "cohort_sha256": "e7f620c7841044eb888c22c1770aeee7949dc59937622e3100ad8853bfd0b08f",
+  "selection_sha256": "fe2ac728b9fd1153b2b42c4c4a63ce0fe20133dc2932097e476a4e4ccf2fdd9a",
+  "python_version": "3.13.5",
+  "sklearn_version": "1.9.1",
+  "numpy_version": "2.5.3",
+  "pandas_version": "3.0.6",
+  "paired_district_stability": {
+    "district_groups": 27,
+    "bootstrap_repeats": 2000,
+    "rmse_gain_kg_ha_percentile_95_interval": [
+      -17.982332244351557,
+      10.348272055408774
+    ],
+    "fraction_resamples_with_positive_gain": 0.717,
+    "qualification": "Descriptive district resampling; districts are not established independent or exchangeable units"
+  },
+  "limitations": [
+    "Retrospective backtest with farmer-reported yield; moisture convention unresolved",
+    "2019 combines year transfer with new states/districts",
+    "No verified management-rate, aluminium or molecular predictors",
+    "Repeated signatures retained; farm independence not established",
+    "No calibrated prediction intervals or new field risk model",
+    "Single final assessment; future changes cannot reuse 2019 as an untouched test"
+  ],
+  "assessment_label_audit": {
+    "preexisting_review_threshold_kg_ha": 15000,
+    "flagged_assessment_records": 13,
+    "maximum_source_yield_kg_ha": 400000.0,
+    "diagnostic_refitting": false,
+    "assessment_selection_changed": false,
+    "qualification": "Threshold was a source audit flag, not a validated biological exclusion; sensitivity is not a new untouched test"
+  }
+}

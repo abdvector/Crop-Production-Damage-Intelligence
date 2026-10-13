@@ -8,9 +8,9 @@ Guide: Dr. Manish Kumar Pandey
 
 ## Research question
 
-How accurately can early-season weather, planting information and genetic markers predict rice yield per hectare at unseen locations, and do genetic markers improve prediction beyond environmental inputs?
+How accurately can rice yield per hectare be forecast 60 days after field establishment using early-season weather and planting information across different districts and years? Can verified management and soil measurements improve those predictions when matched data become available?
 
-The current dashboard uses real published rice trials, SNP markers and NASA POWER weather estimates. Low-yield risk is secondary, not measured disease damage. Protein embeddings are optional future work awaiting verified variety-to-sequence links. Aluminium data belong to a separate CIRAD study. The restricted IRRI archive is not required for this project scope.
+The dashboard now shows the Indian field-survey regression assessment alongside the earlier published rice-trial/SNP experiments, using NASA POWER weather estimates. Low-yield risk is secondary, not measured disease damage; the new field risk classifier is not yet trained. Protein embeddings remain future work awaiting verified variety-to-sequence links. Aluminium data belong to a separate CIRAD study. The restricted IRRI archive is not required for this project scope.
 
 ## Run
 
@@ -47,11 +47,13 @@ The default Planting and full-SNP evaluation adds observed planting context, 15-
 
 ## Indian field-survey extension
 
-The proposed field-level extension focuses on rice yield per hectare and low-yield risk at day 60 after field establishment. The Nayak et al. (2024) public archive has been downloaded and checked: **17,862 raw survey records from 2017–2019**, with **17,855 positive rice-yield records** eligible for initial weather-linkage checks. These counts differ from the paper's filtered sample. Daily NASA POWER temperature, rainfall, radiation and humidity are now linked to all 17,855 candidates, with complete inclusive day-0-to-60 windows and no missing parameter-days. This is data preparation, not a trained new model: management units/timing, field GPS and repeated-coordinate checks remain pending. Raw personal identifiers, exact field coordinates and row-level features stay local; GitHub contains aggregate audits and provenance only.
+The field-level extension focuses on rice yield per hectare and low-yield risk at day 60 after field establishment. The Nayak et al. (2024) public archive has been downloaded and checked: **17,862 raw survey records from 2017–2019**, with **17,855 positive rice-yield records** eligible for initial weather-linkage checks. These counts differ from the paper's filtered sample. Daily NASA POWER temperature, rainfall, radiation and humidity are linked to all 17,855 candidates, with complete inclusive day-0-to-60 windows and no missing parameter-days. The first core regression comparison is now complete; management units/timing and full field GPS verification remain unresolved. Raw personal identifiers, exact field coordinates, row-level features and predictions stay local; GitHub contains aggregate audits and results.
 
 See [the field survey audit](docs/Rice_Field_Survey_Audit.md), [the forecasting plan and required data](docs/Rice_Field_Forecasting_Plan.md) and [the daily weather protocol](docs/Rice_Field_Weather_Protocol.md). The existing trials and their reported results remain available.
 
-The primary field cohort is now **17,836 records** after excluding 19 coordinate/state mismatches from the primary analysis while retaining them locally. Repeated signatures remain flagged, not deleted as presumed duplicate farms. The [cohort and validation protocol](docs/Rice_Field_Cohort_and_Validation.md) reserves 2019 for temporal assessment and uses district folds with shared-weather-cell purging for development. Management diagnostics found 39 positive urea/DAP application entries with missing timing and 4,820 after day 60; product units and timing reference still need a questionnaire check. The core weather/planting cohort is prepared, but no new field model has been trained.
+The primary field cohort is **17,836 records** after excluding 19 coordinate/state mismatches while retaining them locally. Repeated signatures remain flagged, not deleted as presumed duplicate farms. The [cohort and validation protocol](docs/Rice_Field_Cohort_and_Validation.md) uses district folds with shared-weather-cell purging for development and reserved 2019 for assessment. Management diagnostics found 39 positive urea/DAP application entries with missing timing and 4,820 after day 60; product units and timing reference still need a questionnaire check.
+
+The first comparison trained Ridge, Random Forest and gradient boosting against mean baselines. Development selected **Ridge alpha 1,000**. Its 2019 primary RMSE is **15,224.4 kg/ha**, almost identical to the global mean. Thirteen previously flagged source labels, reaching 400,000 kg/ha, dominate squared error. An unchanged-prediction diagnostic omitting those flags gives RMSE **1,447.8** versus **1,418.7** for the mean; it is not a replacement final test. Reliable forecasting is not established. See [the complete field results and limitations](docs/Rice_Field_Model_Results.md). The 2019 test has now been opened; further model improvements need a new independent assessment. No new field risk classifier has been trained.
 
 ## Existing experiment files
 

@@ -1,0 +1,4 @@
+model,flagged_records,flagged_fraction_of_squared_error
+Global training mean,13,0.991345781105088
+Ridge alpha=1000,13,0.9909842658718601
+State training mean,13,0.9914282543251306

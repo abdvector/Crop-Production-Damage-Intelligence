@@ -1,0 +1,4 @@
+model,macro_district_mae_kg_ha,macro_district_rmse_kg_ha
+Global training mean,1651.301618125642,5664.297580522335
+Ridge alpha=1000,1682.7204084759078,5716.487070682523
+State training mean,1641.1771548309914,5662.935429706453
