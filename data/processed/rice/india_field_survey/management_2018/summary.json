@@ -1,0 +1,31 @@
+{
+  "version": "management-2018-matched-v1",
+  "completed_on": "2026-10-19",
+  "eligible_primary_2018_records": 7432,
+  "matched_records": 4801,
+  "excluded_area_or_incomplete_records": 2631,
+  "district_groups": 45,
+  "folds": 5,
+  "fixed_models": 3,
+  "blocks": 3,
+  "protocol_sha256": "055829b9f8cc4d7bd42de6472a2611556a8b4df6426d94c7c9661a184f1e6c78",
+  "feature_sha256": "764dc65ed3920ea719f7a219ceeb9eadd08b0a5f8b30161643302c2103556736",
+  "record_membership_sha256": "e9f248715543bc7d3aee406cc5956b0462c697c0498a66b827dc6a2b5a37ff5b",
+  "development_only": true,
+  "2019_used": false,
+  "original_assessment_modified": false,
+  "limitations": [
+    "Complete-report cohort is not representative of all farms",
+    "One survey year; no temporal assessment",
+    "Static access and doses reconstructed from a retrospective survey",
+    "Product mass not verified nutrient rates",
+    "District and weather-cell purging does not prove farm independence",
+    "No causal impact or savings claim"
+  ],
+  "preserved_original_result_hashes": {
+    "selection.json": "fe2ac728b9fd1153b2b42c4c4a63ce0fe20133dc2932097e476a4e4ccf2fdd9a",
+    "assessment_metrics.csv": "be8f5d7f4b87bb6b3a0a94f3e19c7675d678bc82951823ac29fd48acf1836d45",
+    "assessment_predictions_local.csv": "25dc55a1e722535fa874a231f3ad306869bc71aa27fb747b65dfdcd344f9a01f"
+  },
+  "source_archive_sha256": "22152e70566143a196c26660af445c7f4c0a3b342045baaa277d96ee94db63af"
+}

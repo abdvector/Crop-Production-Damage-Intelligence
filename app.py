@@ -25,6 +25,7 @@ from src.rice_field_weather import load_weather_audit
 from src.rice_field_cohort import load_cohort_audit
 from src.rice_field_model import load_field_results, RESULTS as FIELD_RESULTS
 from src.rice_field_labels import load_label_trace, load_documentation_audit
+from src.rice_field_management import load_management_results, FOLDER as MANAGEMENT_RESULTS
 
 st.set_page_config(page_title="Rice Yield Research", layout="wide")
 st.markdown("""<style>
@@ -127,6 +128,25 @@ with field_study:
                     st.write("The 2018 documentation is now reviewed. The codebook specifies quintals for yield quantities; the spreadsheet Unit column says kilograms. Land-conversion descriptions also conflict. These differences do not confirm corrected values for the 2019 records.")
                     st.caption("The 2018 form documents fertiliser product kg per plot and application days after field sowing/transplanting. Other survey years still need version-specific confirmation. The HTML contains descriptive summaries, not row-level correction evidence.")
                     st.dataframe(pd.read_csv(PROJECT_ROOT / "data/processed/rice/india_field_survey/documentation_evidence.csv"), hide_index=True, width="stretch")
+    st.subheader("2018 management comparison: development only")
+    management_results = load_management_results()
+    if management_results is None:
+        st.info("The 2018 matched-cohort management comparison is not available in this checkout.")
+    else:
+        management_summary, management_metrics, management_changes = management_results
+        st.write(f"{management_summary['matched_records']:,} records across {management_summary['district_groups']} district groups. Every input block uses the same records and five district folds, with shared weather cells removed from fitting rows.")
+        st.caption("Three fixed models compare weather/planting, added soil texture/irrigation access, and added timed fertiliser-product masses. This is a retrospective 2018 development sensitivity; it does not validate future years or replace the earlier 2019 assessment.")
+        st.dataframe(management_metrics, hide_index=True, width="stretch")
+        model_comparison = management_metrics.loc[management_metrics.block.ne("baseline")].pivot(index="model", columns="block", values="rmse_kg_ha")
+        st.bar_chart(model_comparison, horizontal=True)
+        st.write("Paired changes: positive gain means lower error")
+        st.dataframe(management_changes, hide_index=True, width="stretch")
+        with st.expander("Management data quality and stability"):
+            st.write(f"{management_summary['excluded_area_or_incomplete_records']:,} otherwise eligible 2018 records were excluded for area arithmetic or incomplete management reports. Results apply to the complete-report cohort.")
+            st.caption("Doses are product kg/ha for urea, DAP, MoP, SSP and zinc sulphate, not total nutrient supply. Missing/contradictory selections and undated positive applications stay unknown. No 2017/2019 management inputs were inferred.")
+            st.dataframe(pd.read_csv(MANAGEMENT_RESULTS / "split_counts.csv"), hide_index=True, width="stretch")
+            st.dataframe(pd.read_csv(MANAGEMENT_RESULTS / "paired_stability.csv"), hide_index=True, width="stretch")
+            st.dataframe(pd.read_csv(MANAGEMENT_RESULTS / "state_metrics.csv"), hide_index=True, width="stretch")
 with validation:
     st.subheader("Transfer to unseen locations")
     if results is None:
