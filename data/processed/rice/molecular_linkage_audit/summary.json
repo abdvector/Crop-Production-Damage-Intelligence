@@ -1,0 +1,27 @@
+{
+  "audited_on": "2026-10-20",
+  "primary_trial_metadata_genotypes": 111,
+  "primary_yield_genotypes": 107,
+  "catalogue_rows": {
+    "3k_irri": 2466,
+    "3k_caas": 534
+  },
+  "exact_catalogue_alias_matches": 0,
+  "measured_markers": 882,
+  "reference_compatible_markers": 882,
+  "excluded_markers": 0,
+  "markers_with_amino_acid_annotation": 151,
+  "coding_consequence_counts": {
+    "missense_variant": 85,
+    "missense_variant;splice_region_variant": 3,
+    "splice_region_variant;synonymous_variant": 1,
+    "stop_gained": 2,
+    "synonymous_variant": 61
+  },
+  "canonical_changed_markers": 89,
+  "genotypes_with_changed_variant_calls": 107,
+  "yield_records_with_changed_variant_calls": 1046,
+  "complete_variety_specific_protein_sequences_verified": 0,
+  "interpretation": "Measured variants can carry reference-protein annotations. These are not full cultivar sequences, structural measurements, experimentally measured functional impacts, or evidence of yield forecasting gain.",
+  "predictive_model_changed": false
+}

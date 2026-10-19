@@ -1,0 +1,17 @@
+{
+  "provider_page": "https://iric.irri.org/resources/snp-seek-datasets",
+  "files": [
+    {
+      "name": "3k_irri",
+      "url": "https://docs.google.com/spreadsheets/d/1esF_d7ZMWNQSetzOfgwqfUv4aC6sPfMbgYrbEFf0S40/export?format=csv",
+      "sha256": "9d208d393930d685dcaaf455072bbc7e66c02eefd21791fe4c72ea98624faad6",
+      "bytes": 217149
+    },
+    {
+      "name": "3k_caas",
+      "url": "https://docs.google.com/spreadsheets/d/1R6lbHRhV1C2cBgkcpdNuubXMC-1-WjN0N-Xa38K5W9A/export?format=csv",
+      "sha256": "7e3885f1d08f62df2acab23d13677851f5fc762084454228418cc815e2db6db7",
+      "bytes": 24127
+    }
+  ]
+}

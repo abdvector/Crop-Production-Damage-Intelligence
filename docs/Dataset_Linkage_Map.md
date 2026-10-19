@@ -43,3 +43,8 @@ CIRAD soil summaries can link to its own records by ALU/LIM only. They cannot po
 Use `Consolidated_Rice_Data_Request.md` as the current request. It asks for the unavailable linked records and source crosswalks, and asks providers to identify unmeasured fields. No email has been sent. An author's confirmation or traceable repository mapping is needed before promoting candidates into verified protein inputs.
 
 The benchmark has subsequently been implemented and evaluated at a 60-day cutoff; see [Rice_Baseline_Results.md](Rice_Baseline_Results.md). Its combined model does not beat the mean baseline at held-out locations. The full molecular/soil model remains conditional on the requested links and measurements. Existing structures/sequence embeddings are explanatory features; the project does not forecast protein structure. Low yield, observed disease damage and causal aluminium loss are distinct targets and must not be conflated.
+
+
+## Protein-context update, 20 October 2026
+
+The complete-cultivar-sequence count above remains zero. A new [reference-protein linkage audit](Rice_Molecular_Linkage_Audit.md) now establishes 89 measured canonical protein-altering SNPs linked to all 107 trial genotypes and 1,046 eligible yield rows. Eleven measured markers map exactly to predicted reference structures in a 20-pair sample; six sites have local pLDDT at least 70 and exploratory geometry descriptors. This enables a distinct measured-variant/protein-context experiment without assigning full cultivar sequences. No yield model has yet been trained using these annotations.

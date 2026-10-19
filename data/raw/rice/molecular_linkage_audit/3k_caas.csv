@@ -1,0 +1,535 @@
+Source*,DNA UNIQUE ID,DNA VARNAME source,DNA Othername source,COUNTRY of ORIGIN,Genetic Stock Accno,Variety Group
+MC,B001,黑标,Heibiao,China,I1A12996,temp
+MC,B002,三穗锦,Sansuijin,China,I1A28066,temp
+MC,B003,早生白,Zaoshengbai ,China,I1A28115,japx
+MC,B004,秋光 藤系104号,Qiuguangtengxi 104,Japan,I1A04930,temp
+MC,B005,晚实,Wanshi,Japan,I1A41677,temp
+MC,B006,伊空,Yikong,Vietnam,I1A27501,indx
+MC,B007,田旱稻,Tianhandao,Vietnam,I1A27517,indx
+MC,B008,八香,Baxiang,Vietnam,I1A27586,temp
+MC,B009,越南早稻,Vietnam Zaodao,Vietnam,I1A41640,ind1A
+MC,B010,马来红,Malaihong,Malaysia,I1A46668,ind1A
+MC,B011,CO 22,,India,I1A41692,indx
+MC,B012,2037(Rajahamsal),,India,I1A27755,ind2
+MC,B013,斯里兰卡1号,Sri Lanka 1,Sri lanka,I1A28296,indx
+MC,B014,乌兹罗斯215,Wuziluosi 215,Soviet Union,I1A05065,temp
+MC,B015,卡哈姆,Kahamu,Romania,I1A46860,ind1A
+MC,B016,奥米尔特168,Aomierte 168,Hungary,I1A05091,temp
+MC,B017,阿尔季托,Aerjituo,Bulgaria,I1A05096,temp
+MC,B018,美国黄壳稻,American Huangkedao,United States,I1A55239,trop1
+MC,B019,布雷达A-75,Buleida A-75,Mexico,I1A28381,indx
+MC,B020,几内亚稻,Jineiyadao,Guinea,WD-12858,admix
+MC,B021,Seln 244A6-20,,Australia,I1A27776,indx
+MC,B023,高丽秋,Gaoliqiu,North Korea,I1A41434,temp
+MC,B024,暹罗斯赤,Xianluosichi,Thailand,I1A41974,ind1A
+MC,B025,Djanda Mandja,,Indonesia,I1A42916,trop1
+MC,B026,Padi Ladang Ase Polo Komek,,Indonesia,I1A42965,indx
+MC,B027,C 894-21,,Philippines,I1A42016,ind3
+MC,B028,IR 10179-23-1-3,,Philippines,I1A42280,indx
+MC,B029,Dumai,,India,I1A28981,ind1B
+MC,B030,Jaibattey,,India,I1A43112,indx
+MC,B031,Ngatsin,,India,I1A46617,ind2
+MC,B032,Rohini,,India,I1A42472,ind1B
+MC,B033,BW 293-2,,Sri lanka,I1A42503,ind1B
+MC,B034,阿尔巴尼亚种,Albania Rice,Albania,I1A46282,temp
+MC,B035,美国稻,American Rice,United States,I1A28378,indx
+MC,B036,Jijucas Claro,,Brazil,I1A42751,japx
+MC,B037,Nanoay P.A,,Argentina,I1A42759,trop1
+MC,B038,Nabated A Smar,,Egypt,I1A41795,temp
+MC,B039,IRAT 10,,Ivory Coast,I1A48886,indx
+MC,B040,K 24,,Uganda,I1A41816,indx
+MC,B043,YR 83-23-11,,Australia,I1A42809,trop1
+MC,B044,三田 糯,Santiannuo,Japan,I1A57313,indx
+MC,B045,宫城香,Gongchengxiang,Japan,I1A54970,temp
+MC,B046,秋田小町,Qiutianxiaoting,Japan,I1A50737,temp
+MC,B047,珍富 8,Zhenfu 8,Japan,I1A55148,temp
+MC,B048,CISOKAN,,Indonesia,I1A54812,ind1B
+MC,B049,杂草稻13,Zacaodao 13,Nepal,I1A55059,aus
+MC,B051,GZ 1368-5-4,,Egypt,I1A54288,indx
+MC,B052,J34,,Madagascar,I1A54035,ind2
+MC,B053,80A97YR303-304-1-3,,Australia,I1A55181,trop1
+MC,B054,80050YR72136-43,,Australia,I1A55182,trop1
+MC,B055,YR196,,Australia,I1A57442,temp
+MC,B056,铁秆乌,Tieganwu,China,10-00463,temp
+MC,B057,秀水115,Xiushui 115,China,ZD-01559,temp
+MC,B058,二九南1号,Erjiunan 1,China,ZD-00474,ind1B
+MC,B059,南京11号,Nanjing 11,China,ZD-00560,ind1A
+MC,B060,矮脚南特,Aijiaonante,China,15-02070,ind1A
+MC,B061,广陆矮4号,Guangluai 4,China,I1A49051,ind1A
+MC,B062,南特号,Nantehao,China,I1A43957,ind1A
+MC,B063,桂朝2号,Guizhao 2,China,I1A49054,ind1A
+MC,B064,湘早籼7号,Xiangzaoxian 7,China,ZD-02715,indx
+MC,B065,黄丝桂占,Huangsiguizhan,China,ZD-02431,indx
+MC,B066,光壳香糯,Guangkexiangnuo,China,16-09350,temp
+MC,B067,抚宁紫皮粳子,Funingzipigengzi,China,02-00058,ind1A
+MC,B068,高阳淀稻大红芒,Gaoyangdiandao dahongmang,China,02-00210,temp
+MC,B069,丹东陆稻,Dandongludao,China,05-00052,japx
+MC,B070,老光头83,Laoguangtou 83,China,07-00010,japx
+MC,B071,木樨球,Muxiqiu,China,I1A38083,temp
+MC,B072,秋前白,Qiuqianbai,China,11-00389,ind1A
+MC,B073,金溪白,Jinxibai2,China,12-00589,indx
+MC,B074,台山糯,Taishannuo,China,I1A04613,ind1A
+MC,B075,金包银,Jinbaoyin,China,I1A04260,indx
+MC,B076,闽北晚籼,Minbeiwanxian,China,I1A19605,indx
+MC,B077,一支香,Yizhixiang,China,I1A04432,temp
+MC,B079,饿死牛,Esiniu,China,15-01740,ind1A
+MC,B081,黑督 4,Heidu 4,China,I1A44713,ind1A
+MC,B082,七月籼,Qiyuexian,China,16-06887,indx
+MC,B083,洞庭晚籼,Dongtingwanxian,China,17-00435,ind1A
+MC,B084,霸王鞭1,Bawangbian 1,China,17-01470,admix
+MC,B085,须谷糯,Xugunuo,China,18-01903,ind1A
+MC,B086,木瓜糯,Muguanuo,China,I1A48457,admix
+MC,B087,中农 4号,Zhongnong 4,China,I1A35718,ind2
+MC,B088,三**七十箩,San**Qishiluo,China,21-00529,indx
+MC,B089,齐头白谷,Qitoubaigu3,China,21-00694,indx
+MC,B090,紫米,Zimi,China,21-01106,indx
+MC,B091,小红谷,Xiaohonggu,China,I1A58829,indx
+MC,B092,公居73,Gongju 73,China,21-01899,ind1A
+MC,B093,齐头谷,Qitougu,China,21-02171,ind1A
+MC,B094,紫糯,Zinuo,China,21-02224,ind1A
+MC,B095,魔王谷内杂,Mowangguneiza,China,21-02769,indx
+MC,B096,金枝糯,Jinzhinuo4,China,21-03433,indx
+MC,B097,鸡血糯,Jiienuo,China,21-03781,indx
+MC,B100,红壳折糯,Hongkezhenuo,China,22-01843,temp
+MC,B101,阳壳糯,Yangkenuo,China,22-04053,temp
+MC,B102,麻谷子,Maguzi,China,I1A06732,temp
+MC,B103,老红稻,Laohongdao,China,24-00215,temp
+MC,B104,加巴拉,Jiabala,India,26-00008,ind1A
+MC,B105,包选21号,Baoxuan 21,China,ZD-01195,indx
+MC,B106,文香糯,Wenxiangnuo,China,21-00272,indx
+MC,B107,大弯糯,Dawannuo,China,21-01082,indx
+MC,B108,香谷,Xianggu,China,I1A21188,indx
+MC,B109,冷水谷2,Lengshuigu 2,China,21-01970,japx
+MC,B110,黄皮糯,Huangpinuo,China,21-02619,temp
+MC,B111,紫芒飞蛾,Zimangfeie,China,22-02423,temp
+MC,B112,柳沙1号,Liusha 1,China,I1A16254,ind1A
+MC,B113,郴晚3号,Chenwan 3,China,ZD-00358,indx
+MC,B114,成都矮3号,Chengduai 3,China,ZD-00743,ind1A
+MC,B115,矮麻抗,Aimakang,China,ZD-00747,ind1A
+MC,B116,蜀丰101,Shufeng 101,China,ZD-00760,indx
+MC,B117,立新粳,Lixingeng,China,I1A26043,temp
+MC,B118,二钢矮,Ergangai,China,I1A26204,indx
+MC,B119,广陆矮15-1,Guangluai 15-1,China,I1A41169,ind1A
+MC,B120,红晚1号,Hongwan 1,China,ZD-01328,indx
+MC,B121,泸科3号,Luke 3,China,ZD-02017,ind1A
+MC,B122,辽粳287,Liaogeng 287,China,I1A39194,temp
+MC,B123,早熟香黑米,Zaoshuxiangheimi,China,I1A53782,indx
+MC,B124,粳87-304,Geng 87-304,China,ZD-02685,temp
+MC,B125,湘晚籼3号,Xiangwanxian 3,China,ZD-02694,indx
+MC,B126,早籼240,Zaoxian 240,China,ZD-03104,ind1A
+MC,B127,当育5号,Dangyu 5,China,I1A56800,ind1A
+MC,B128,四倍体朝6,Sibeitizhao 6,China,ZD-03867,indx
+MC,B129,红矮糯,Hongainuo,China,16-05252,indx
+MC,B130,万利籼,Wanlixian,China,I1A02104,ind1A
+MC,B131,矮仔占,Aizizhan,China,I1A27272,indx
+MC,B132,小白米,Xiaobaimi,China,22-04637,indx
+MC,B133,盐水赤,Yanshuichi,China,I1A19911,indx
+MC,B134,西什15,Xishi 15,China,15-04286,trop2
+MC,B135,红粳旱谷,Honggenghangu3,China,16-02459,indx
+MC,B136,鱼眼糯,Yuyannuo,China,21-02235,japx
+MC,B137,80B,,Philippines,A0434,indx
+MC,B138,古154,Gu 154,China,I1A47904,indx
+MC,B139,IR 661-1,,China,R0032,indx
+MC,B140,培C122,Pei C122,China,R0215,ind1A
+MC,B141,粳7623,Geng 7623,China,R0333,admix
+MC,B142,宁恢21,Ninghui 21,China,R0337,admix
+MC,B143,76--1,,China,R0430,temp
+MC,B144,湖恢628,Huhui 628,China,R0447,japx
+MC,B145,特青选恢,Teqingxuanhui,China,R0468,indx
+MC,B146,JWR 221,,China,R0604,ind1B
+MC,B147,白壳旱禾,Baikehanhe,China,22-03232,ind1A
+MC,B148,冷水糯,Lengshuinuo,China,21-01989,japx
+MC,B149,毫香,Haoxiang,China,21-02851,ind1A
+MC,B150,L 301B,,China,A0096,ind1A
+MC,B151,金南特43B,Jinnante 43B,China,A0120,ind1A
+MC,B152,早熟农虎6,Zaoshunonghu 6,China,A0132,temp
+MC,B153,青四矮16B,Qingsiai 16B,China,A0172,indx
+MC,B154,黎明B,Liming B,China,A0386,temp
+MC,B155,包协-7B,Baoxie-7B,China,A0464,indx
+MC,B156,G珍汕97B,G Zhenshan 97B,China,A0596,ind1A
+MC,B157,88B,,China,A0598,ind1A
+MC,B158,台中65号/台中HR539,Taizhong 65/taizhongHR539,China,30-00206,admix
+MC,B159,台中在来1号/台中65,Taizhongzailai 1/taizhong65,China,30-00210,indx
+MC,B160,水原300粒,Shuiyuan 300Li,China,02-00294,temp
+MC,B161,叶里藏花,Yelicanghua,China,02-00295,temp
+MC,B162,百歌稻,Baigedao,China,09-00724,temp
+MC,B163,六十早,Liushizao,China,11-00322,ind1A
+MC,B164,清可,Qingke,China,21-01257,aus
+MC,B165,毫荒腊,Haohuangla,China,21-02852,indx
+MC,B166,江花稻,Jianghuadao,North Korea,WD-10107,temp
+MC,B167,清津早生,Qingjinzaosheng,North Korea,WD-10171,temp
+MC,B168,竹原,Zhuyuan,Japan,WD-10761,temp
+MC,B169,矮陆羽,Ailuyu,Japan,WD-11297,temp
+MC,B170,红色 90,Hongse 90,Russia,WD-12332,temp
+MC,B171,临果,Linguo,Italy,WD-12575,temp
+MC,B173,Tjantajan,,Indonesia,WD-14340,admix
+MC,B176,BRC 25-146-2-1,,Bangladesh,I1A46270,indx
+MC,B179,克罗多B,Keluoduo B,France,I1A41768,temp
+MC,B180,P1790-5-1M-4-5M-1B-3M-B,,Columbia,I1A48871,indx
+MC,B181,71011,,Australia,I1A46313,ind1A
+MC,B182,赤毛,Chimao,Japan,I1A28954,temp
+MC,B183,清 糯 キョハタモチ,Qingnuo Kyohatamochi,Japan,I1A55049,temp
+MC,B184,CHANH 148,,Vietnam,I1A54587,indx
+MC,B185,SLK 2-18-2,,Laos,I1A57256,indx
+MC,B187,RP 1570-44-1,,India,I1A54194,indx
+MC,B188,IRAT 36,,Ivory Coast,I1A53944,trop1
+MC,B189,IRAT 669,,Ivory Coast,I1A57199,trop1
+MC,B190,ITA 221,,Nigeria,I1A54011,trop1
+MC,B191,80A60YR71009-1-5,,Australia,I1A55177,trop1
+MC,B192,R42,,Philippines,I1A54724,admix
+MC,B193,C.MEDIO 7,,Cuba,I1A54382,indx
+MC,B194,ECIA 179-S13,,Cuba,I1A54430,ind1B
+MC,B195,PMS 10B,,India,WD-18937,indx
+MC,B196,台东陆稻,Taidongludao,China,I1A44299,trop1
+MC,B197,台中籼选2,Taizhongxianxuan 2,China,,ind1A
+MC,B198,解放籼,Jiefangxian,China,12-00644,ind1A
+MC,B199,红米三担,Hongmisandan,China,12-02850,temp
+MC,B200,金优1号,Jinyou 1,China,ZD-02605,ind1B
+MC,B201,成农水晶,Chengnongshuijing,China,ZD-03386,ind1B
+MC,B202,包协123B,Baoxie 123B,China,A0430,indx
+MC,B203,秕五升,Biwusheng,China,21-04506,indx
+MC,B204,隆化毛葫,Longhuamaohu,China,02-00133,temp
+MC,B205,寸三粒,Cunsanli,China,I1A08731,japx
+MC,B207,矮禾迟,Aihechi,China,12-02280,indx
+MC,B208,陆财号,Lucaihao,China,I1A46087,ind1A
+MC,B210,南雄早油占,Nanxiongzaoyouzhan,China,15-03057,ind1A
+MC,B212,赤壳糯,Chikenuo,China,I1A04672,temp
+MC,B213,柳叶粘,Liuyenian,China,17-00524,ind1A
+MC,B214,宣恩长坛青粘,Xuanenchangtanqingzhan,China,17-00966,ind1B
+MC,B215,红旗5号,Hongqi 5,China,I1A41295,temp
+MC,B216,旱麻稻,Hanmadao4,China,19-00205,ind1A
+MC,B217,红谷,Honggu,China,I1A24643,ind1B
+MC,B218,五子堆,Wuzidui,China,21-01577,temp
+MC,B219,毫莱,Haolai,China,21-02824,indx
+MC,B221,饭毫皮,Fanhaopi,China,21-03879,ind1A
+MC,B222,背子糯,Beizinuo,China,I1A53128,ind1A
+MC,B223,寸谷糯,Cungunuo,China,I1A47112,temp
+MC,B224,油粘,Younian,China,I1A11073,ind1A
+MC,B225,贯推白禾1,Guantuibaihe 1,China,22-03815,temp
+MC,B226,黑芒稻,Heimangdao,China,28-00005,temp
+MC,B227,闷加高1,Menjiagao 1,China,31-00032,indx
+MC,B228,毫巴永1,Haobayong 1,China,21-01853,japx
+MC,B229,闷加丁2,Menjiading 2,China,31-00042,indx
+MC,B230,半节芒,Banjiemang2,China,21-03879,japx
+MC,B232,湘矮早10号,Xiangaizao 10hao,China,ZD-01402,ind1B
+MC,B233,湘晚籼1号,Xiangwanxian 1,China,ZD-01423,indx
+MC,B234,矮沱谷151,Aituogu 151,China,ZD-02032,ind1A
+MC,B235,中花8号,Zhonghua 8,China,ZD-02261,temp
+MC,B236,晋稻1号,Jindao 1,China,I1A25695,temp
+MC,B238,墨米,Momi,China,I1A22821,indx
+MC,B239,镇籼232,Zhendao 232,China,I1A55331,ind1A
+MC,B240,郑稻5号,Zhengdao 5,China,ZD-03525,temp
+MC,B241,拉木加,Lamujia,China,21-02089,trop2
+MC,B242,圭630,Gui 630,China,R0014,indx
+MC,B243,湘恢91269,Huhui 91269,China,R0515,aus
+MC,B244,香稻,Xiangdao,China,I1A14140,ind1A
+MC,B245,山酒谷,Shanjiugu,China,I1A44229,trop2
+MC,B246,老造谷,Laozaogu,China,21-01744,indx
+MC,B247,金南特B,Jinnante B,China,A0016,indx
+MC,B248,竹珍B,Zhuzhen B,China,A0060,ind1A
+MC,B249,朝阳一号B,Chaoyangyihao B,China,A0086,ind1A
+MC,B250,安农晚粳B,Annongwangeng B,China,A0112,temp
+MC,B252,献改B,Xiangai B,China,A0244,indx
+MC,B253,江农早1号B,Jiangnongzao 1 B,China,A0246,indx
+MC,B254,京虎B,Jinghu3 B,China,A0298,indx
+MC,B255,滇瑞409B,Dianrui 409B,China,A0408,indx
+MC,B258,兴国,Xingguo,China,06-00035,temp
+MC,B259,雷火占,Leihuozhan,China,11-00403,ind1A
+MC,B260,麻麻谷,Mamagu,China,,ind1A
+MC,B261,梅花糯,Meihuanuo,China,20-02073,ind1A
+MC,B263,卫国,Weiguo,China,ZD-00907,temp
+MC,B264,三百粒,Sanbaili,China,I1A04386,ind1A
+MC,B265,乌壳占,Wukezhan,China,13-01006,indx
+MC,B266,毫马克(K),Haomake (K),China,21-00083,trop2
+MC,B267,,,China,,indx
+MC,B268,南高谷,Nangaogu,China,21-03121,indx
+MC,B269,越富,Yuefu,China,I1A04985,temp
+IRMBN,CX10,冈46B,Gang 46B,China,,ind1A
+IRMBN,CX100,Palung 2,,Nepal,,ind1B
+IRMBN,CX101,Hei Mi Chan,,Taiwan,,ind1A
+IRMBN,CX102,Tek Si Chut,,Taiwan,,ind1A
+IRMBN,CX103,Rubio,,Peru,,admix
+IRMBN,CX104,Sadri rice 1,,Iran,,aro
+IRMBN,CX106,SAL BUI BAO,,Vietnam,,trop1
+IRMBN,CX107,Tun Sart,,Vietnam,,ind3
+IRMBN,CX108,Ziri,,India,,admix
+IRMBN,CX109,Dacca6,,Philippines,,japx
+IRMBN,CX11,谷梅2号,Gumei 2,China,I1A52026,japx
+IRMBN,CX110,UP15,,Japan,,aro
+IRMBN,CX111,Giza14,,Egypt,,trop1
+IRMBN,CX112,Ginga,,Japan,,admix
+IRMBN,CX113,Biniapan,,,,trop1
+IRMBN,CX114,广陆矮4号,Guang Lu Ai 4,China,I1A49051,ind1A
+IRMBN,CX115,Yun hui 72,,China,,indx
+IRMBN,CX116,五大稻种,Wudadaozhong,North Korea,I1A50659,temp
+IRMBN,CX117,IR65600-27-1-2-2,,Philippines,,indx
+IRMBN,CX118,爷驼崽,Yetuozai,China,17-00405,indx
+IRMBN,CX119,P59279,,,,indx
+IRMBN,CX12,华粳籼74,Huagengxian 74,China,,indx
+IRMBN,CX120,TKM6,,India,I1A47902,indx
+IRMBN,CX121,Guang122,,China,,ind1B
+IRMBN,CX122,Tai-Zhong-Xian 10,,Taiwan,30-01259,indx
+IRMBN,CX123,鱼鳅谷,Yu Qiu Gu,China,I1A01748,ind1A
+IRMBN,CX124,IR71466-75-3-B-1,,Philippines,,indx
+IRMBN,CX125,CAOZHAO-2,,China,,ind1B
+IRMBN,CX126,IRBB60,,Philippines,,ind1B
+IRMBN,CX128,Gajale,,Nepal,,indx
+IRMBN,CX129,MOLOK,,Indonesia,,trop1
+IRMBN,CX13,R644,,China,,indx
+IRMBN,CX130,CHIPDA,,India,I1A57104,ind2
+IRMBN,CX131,ZALE,,Myanmar,,ind1A
+IRMBN,CX132,AP423,,India,,trop1
+IRMBN,CX133,珍汕97,Zhengshan97,China,ZD-00531,ind1A
+IRMBN,CX134,IRBB7,,Philippines,,ind1B
+IRMBN,CX138,Qd_441,,China,,japx
+IRMBN,CX139,Amareles,,Portugal,,japx
+IRMBN,CX14,沈农 265,Chennong 265,China,ZD-05727,temp
+IRMBN,CX140,Nipponbare,,Japan,I1A13071,temp
+IRMBN,CX141,Padi Siam Kuning,,Malaysia,,ind3
+IRMBN,CX142,Ai Yeh Lu,,China,,japx
+IRMBN,CX143,Khasar,,Iran,,aro
+IRMBN,CX144,Hta7204,,,,indx
+IRMBN,CX145,明恢63,Minghui 63,China,R-000281,indx
+IRMBN,CX146,Co43,,India,,indx
+IRMBN,CX147,Seberang,,,,indx
+IRMBN,CX148,Sri Raja,,Malaysia,,ind3
+IRMBN,CX149,Karnal Local,,India,,aro
+IRMBN,CX15,Y134,,China,,ind1B
+IRMBN,CX150,Chorofa,,Philippines,,ind1B
+IRMBN,CX151,AZUCENA,,Philippines,I1A41685,trop1
+IRMBN,CX152,Cisadane,,,,ind1B
+IRMBN,CX153,Jalmagna,,India,,ind2
+IRMBN,CX154,Khao Dawk Mali 105,,Thailand,,ind3
+IRMBN,CX155,Madhukar,,India,,ind2
+IRMBN,CX156,MR84,,Malaysia,,indx
+IRMBN,CX157,Ptb33,,India,,indx
+IRMBN,CX158,Shwe War Tun,,Vietnam,,ind3
+IRMBN,CX16,Yuan jing 7,,China,,temp
+IRMBN,CX160,W1263,,India,,ind2
+IRMBN,CX161,IR42,,Philippines,I1A46201,ind1B
+IRMBN,CX162,TN1,,Taiwan,,ind1A
+IRMBN,CX165,武育粳3号,Wuyugeng 3,China,ZD-05530,temp
+IRMBN,CX17,粤香占,Yuexiangzhan,China,ZD-04230,indx
+IRMBN,CX18,早籼 14,Zaoxian 14,China,ZD-01524,ind1A
+IRMBN,CX182,SLG1,,Japan,,indx
+IRMBN,CX19,中413,Zhong 413,China,,indx
+IRMBN,CX2,BR11,,Bangladesh,,indx
+IRMBN,CX20,紫恢 100,Zihui 100,China,,indx
+IRMBN,CX205,IR69428-6-1-1-3-3,,Philippines,,japx
+IRMBN,CX206,IR2061-522-6-9,,Philippines,,ind1B
+IRMBN,CX207,高紫,Gaozi,China,,indx
+IRMBN,CX21,Bg90-2,,Sri Lanka,WD-12252,ind1B
+IRMBN,CX210,Qb_604,,China,,admix
+IRMBN,CX211,M3122,,China,,temp
+IRMBN,CX212,农垦58,Nongken 58,Japan,WD-10707,temp
+IRMBN,CX213,沈农89366,Chennong 89366,China,,temp
+IRMBN,CX214,巴西糯稻,Brazil Nuodao,Brazil,,trop1
+IRMBN,CX218,Type3,,India,,ind1B
+IRMBN,CX219,FL478,,Philippines,,indx
+IRMBN,CX22,PR106,,India,,ind1B
+IRMBN,CX220,IRAT109,,Brazil,I1A41789,trop1
+IRMBN,CX221,中优早81,Zhongyouzao 81,China,,indx
+IRMBN,CX225,IR77298-14-1-2,,Philippines,,ind1B
+IRMBN,CX226,IR06G113,,Philippines,,ind1B
+IRMBN,CX227,KASALATH,,Japan,,aus
+IRMBN,CX228,Bala,,India,I1A41689,indx
+IRMBN,CX23,Rasi,,Indonesia,,ind3
+IRMBN,CX230,IR64-IL,,China,,ind1B
+IRMBN,CX231,IR52561-UBN-1-1-2,,Philippines,,indx
+IRMBN,CX232,IR55419-04,,Philippines,,indx
+IRMBN,CX233,IR58821-23-1-3-1,,Philippines,,indx
+IRMBN,CX234,IR62266-42-6-2,,Philippines,,indx
+IRMBN,CX235,NSIC RC9 (APO),,Philippines,,indx
+IRMBN,CX236,Vandana,,,,indx
+IRMBN,CX237,B6136-3-TB-0-1-5,,Philippines,,ind1B
+IRMBN,CX238,BW311-9,,Philippines,,ind1B
+IRMBN,CX24,TKM 9,,India,I1A42476,indx
+IRMBN,CX240,Carijo,,Brazil,,indx
+IRMBN,CX241,IAC47,,Philippines,,trop1
+IRMBN,CX242,IR47686-4-4-B-1,,Philippines,,admix
+IRMBN,CX243,IR47686-6-2-1-1,,Philippines,,trop1
+IRMBN,CX247,IRAT144,,Indonesia,WD-16312,indx
+IRMBN,CX248,KinandangPatong,,Philippines,,trop1
+IRMBN,CX249,2004,,China,,ind1B
+IRMBN,CX25,Cisanggarung,,Indonesia,,ind1B
+IRMBN,CX250,829,,China,,ind1B
+IRMBN,CX251,徐稻4号,Xudao 4,China,ZD-05646,temp
+IRMBN,CX26,Amol3(Sana),,Iran,,ind1B
+IRMBN,CX262,IAC3,,China,,trop1
+IRMBN,CX263,PADISENEMOK,,,,indx
+IRMBN,CX265,MONOLAYA,,United States,,indx
+IRMBN,CX266,DINORADO,,Philippines,,trop1
+IRMBN,CX267,IET1444,,India,,indx
+IRMBN,CX268,ARROZVERMELHO,,Philippines,,indx
+IRMBN,CX269,IAC165,,Brazil,,trop1
+IRMBN,CX27,Khazar,,Iran,,indx
+IRMBN,CX270,台中本地1号,TAICHUNGNATIVE1,Taiwan,30-00233,ind1A
+IRMBN,CX273,NONA BOKRA,,India,I1A48710,indx
+IRMBN,CX274,IR26,,Philippines,I1A28237,indx
+IRMBN,CX275,IR34,,Philippines,,indx
+IRMBN,CX276,IR8192-200-3-3-1-1,,Philippines,,ind1B
+IRMBN,CX277,02428-IL,,China,,japx
+IRMBN,CX278,IR68,,Philippines,,indx
+IRMBN,CX28,Gayabyeo,,Korea,,ind1B
+IRMBN,CX280,Maravilha,,Brazil,WD-20269,admix
+IRMBN,CX281,IR68897B,,Philippines,,ind1B
+IRMBN,CX282,丽江新团黑谷,Lijiangxintuanheigu,China,,japx
+IRMBN,CX284,旱502,Han 502,China,,japx
+IRMBN,CX285,农林糯,Nonglinnuo,China,,trop1
+IRMBN,CX286,C349,,China,,admix
+IRMBN,CX287,C52,,China,,temp
+IRMBN,CX288,D11,,China,,indx
+IRMBN,CX29,Milyang23,,North Korea,I1A41473,admix
+IRMBN,CX290,多57,Duo 57,China,,ind1B
+IRMBN,CX291,D15,,China,,indx
+IRMBN,CX296,IR74,,Philippines,,indx
+IRMBN,CX3,BR24,,Bangladesh,,ind1A
+IRMBN,CX30,MR185,,Malaysia,,ind1B
+IRMBN,CX303,LX2007,,China,,indx
+IRMBN,CX304,陆引46,Luyin 46,China,ZD-06300,indx
+IRMBN,CX305,ZH5,,China,,ind1B
+IRMBN,CX306,蒙古稻,Mongolia Rice,China,I1A28753,temp
+IRMBN,CX307,HP121,,China,,japx
+IRMBN,CX31,Hnankar,,Myanmar,,ind1B
+IRMBN,CX313,R106,,China,,indx
+IRMBN,CX314,117,,China,,ind1B
+IRMBN,CX315,紫稻,Zidao,North Korea,I1A27875,temp
+IRMBN,CX316,MR39,,China,,admix
+IRMBN,CX317,MR19,,China,,temp
+IRMBN,CX318,黑河瑷珲,Heiheaihui,China,,indx
+IRMBN,CX319,孟关大麻谷,Mengguandamagu,China,22-01958,indx
+IRMBN,CX32,Manauthukha,,Myanmar,,japx
+IRMBN,CX328,包选21号,Baoxuan 21,China,ZD-01195,ind1A
+IRMBN,CX329,津川一号,Jinchuanyihao,China,,temp
+IRMBN,CX33,Shwe Thwe Yin Hyv,,Myanmar,,ind1B
+IRMBN,CX330,越光,Yueguang,Japan,I1A13044,temp
+IRMBN,CX34,Bg 300,,Sri Lanka,,indx
+IRMBN,CX340,华564,Hua 564,China,,ind1B
+IRMBN,CX341,华565,Hua 565,China,,indx
+IRMBN,CX342,皖籼763,Wanxian 763,China,,indx
+IRMBN,CX343,皖籼77,Wanxian 77,China,,indx
+IRMBN,CX344,合系41号,Hexi 41,China,ZD-04645,temp
+IRMBN,CX345,云粳23号,Yungeng 23,China,,temp
+IRMBN,CX346,SAGC－4,,China,,indx
+IRMBN,CX347,SAGC－7,,China,,indx
+IRMBN,CX348,中华1号,Zhonghua 1,China,,ind1B
+IRMBN,CX349,KCD1,,,,indx
+IRMBN,CX35,Bg 94-1,,Sri Lanka,I1A42492,indx
+IRMBN,CX350,武育粳20号,Wuyugeng 20,China,,temp
+IRMBN,CX351,053A-3,,China,,temp
+IRMBN,CX352,BD007,,China,,trop1
+IRMBN,CX353,CAU1,,China,,japx
+IRMBN,CX354,CAU2,,China,,japx
+IRMBN,CX355,云陆102,Yunlu 102,China,,trop1
+IRMBN,CX356,盐稻8号,Yandao 8,China,ZD-05651,temp
+IRMBN,CX357,PSBRC80,,Philippines,,ind1B
+IRMBN,CX358,PSBRC82,,Philippines,,ind1B
+IRMBN,CX359,云陆103,Yunlu 103,China,,trop1
+IRMBN,CX360,Y075,,,,ind1B
+IRMBN,CX361,G341,,,,ind1B
+IRMBN,CX362,YZX1,,,,ind1B
+IRMBN,CX363,YZX2,,,,indx
+IRMBN,CX364,42686,,,,ind1B
+IRMBN,CX365,紧凑株型材料,Compact Plant Type Material,China,,admix
+IRMBN,CX366,赣 晚 籼 37 号（926）,Ganwanxian 37 (926),China,ZD-06618,indx
+IRMBN,CX367,豪格劳,Haogelao,China,,trop1
+IRMBN,CX368,N22,,India,I1A46366,aus
+IRMBN,CX369,IRBB62,,Philippines,,ind1B
+IRMBN,CX37,OM997,,Vietnam,,ind1B
+IRMBN,CX370,成恢727,Chenghui 727,China,,ind1B
+IRMBN,CX371,NERICA 1,,Africa,,trop1
+IRMBN,CX372,NERICA 2,,Africa,,trop1
+IRMBN,CX373,NERICA 8,,Africa,,trop1
+IRMBN,CX374,NERICA 9,,Africa,,trop1
+IRMBN,CX375,NERICA-L-1,,Africa,,ind1B
+IRMBN,CX376,NERICA-L-20,,Africa,,ind1B
+IRMBN,CX377,NERICA-L-27,,Africa,,ind1B
+IRMBN,CX378,沪旱15,Huhan 15,China,,ind1B
+IRMBN,CX379,Nionoka,,Mali,,ind1B
+IRMBN,CX380,盐稻9号,Yandao 9,China,,temp
+IRMBN,CX381,Adny 11,,,,ind1B
+IRMBN,CX382,Kogomg 1-1,,,,ind1B
+IRMBN,CX383,红杂,Hongza,China,,temp
+IRMBN,CX384,丰杂,Fengza,China,,temp
+IRMBN,CX385,NPT-100,,China,,ind1B
+IRMBN,CX386,NPT-114,,China,,indx
+IRMBN,CX387,1088,,,,ind1B
+IRMBN,CX388,KR200,,Thailand,,ind1B
+IRMBN,CX389,津原85,Jinyuan 85,China,,temp
+IRMBN,CX390,月亮谷,Yuelianggu,China,21-01232,indx
+IRMBN,CX391,YJ30,,China,,temp
+IRMBN,CX392,SARD,,,,indx
+IRMBN,CX393,黄丝占,Huangsizhan,China,,ind1B
+IRMBN,CX394,茉莉占选,Molizhanxuan,China,,ind1B
+IRMBN,CX395,YSBR1,,China,,admix
+IRMBN,CX396,关东194（软米）,Guandong 194 (Soft Rice),Japan,,temp
+IRMBN,CX397,南粳46（软米）,Nangeng 46 (Soft Rice),China,ZD-06229,temp
+IRMBN,CX399,Matatag2,,Philippines,,ind1B
+IRMBN,CX4,93072,,China,,indx
+IRMBN,CX400,Tog5674,,Africa,,admix
+IRMBN,CX401,Tog7291,,Africa,,indx
+IRMBN,CX402,Tog6542,,Africa,,admix
+IRMBN,CX403,IR64a,,Philippines,I1A42114,ind1B
+IRMBN,CX42,IR68552-55-3-2,,Philippines,,indx
+IRMBN,CX43,IR66897B,,Philippines,,ind1B
+IRMBN,CX431,多系1号,Duoxi 1,China,,indx
+IRMBN,CX44,IR58025B,,Philippines,,ind1B
+IRMBN,CX45,Dhan4,,India,,ind1B
+IRMBN,CX46,Pusa(Basmati 1),,India,,admix
+IRMBN,CX47,滇粳,Diangeng,China,,temp
+IRMBN,CX48,PT60,,China,,indx
+IRMBN,CX49,NAN-29-2,,China,,temp
+IRMBN,CX5,108S,,China,,indx
+IRMBN,CX50,Ai Zi DAO,,China,,ind1B
+IRMBN,CX51,Babaomi,,China,,indx
+IRMBN,CX52,滇囤502,Diandun 502,China,,indx
+IRMBN,CX53,江西丝苗,Jiangxisimiao,China,I1A37154,indx
+IRMBN,CX534,通粘1号,Tongnian 1,China,I1A41010,temp
+IRMBN,CX54,临沂塘稻,Linyitangdao,China,,indx
+IRMBN,CX542,RR2-6,,China,,indx
+IRMBN,CX548,中鉴100,Zhongjian 100,China,,indx
+IRMBN,CX55,彭山铁杆占,Pengshantieganzhan,China,,ind1A
+IRMBN,CX56,云光8号,Yunguang 8,China,,temp
+IRMBN,CX57,中超123,Zhongchao 123,China,,temp
+IRMBN,CX58,Giza159,,Egypt,WD-12780,temp
+IRMBN,CX59,"Milagrosa, Zawa Banday",,Philippines,,aro
+IRMBN,CX6,C418,,China,,admix
+IRMBN,CX60,Basmati,,India,I1A27702,ind1B
+IRMBN,CX61,Bhavani,,India,,ind1A
+IRMBN,CX63,Jhona 349,,India,I1A57301,aus
+IRMBN,CX64,IRAT 352,,Philippines,,ind3
+IRMBN,CX65,Domsiah,,Iran,,aro
+IRMBN,CX66,Tarom molaii,,Iran,,aro
+IRMBN,CX67,Binam,,Iran,WD-18966,aro
+IRMBN,CX68,MR106,,Malaysia,,indx
+IRMBN,CX69,MR167,,Malaysia,,indx
+IRMBN,CX70,MR77(Seberang ),,Malaysia,,indx
+IRMBN,CX71,Innmayebaw,,Malaysia,,ind3
+IRMBN,CX72,Basmati 385,,Pakistan,WD-18962,aro
+IRMBN,CX73,IR6,,Philippines,I1A46330,ind1B
+IRMBN,CX74,JP-5,,Pakistan,,temp
+IRMBN,CX75,At354,,Sri Lanka,,indx
+IRMBN,CX76,BG304,,Sri Lanka,,ind1B
+IRMBN,CX77,Lemont,,United States,I1A55220,trop1
+IRMBN,CX78,M401,,United States,I1A50617,temp
+IRMBN,CX79,Cs94,,Vietnam,,ind1B
+IRMBN,CX8,成恢448,Chenghui 448,China,,indx
+IRMBN,CX80,OM1706,,Vietnam,,ind1B
+IRMBN,CX82,X21,,Vietnam,,ind1B
+IRMBN,CX83,X22,,Vietnam,,ind1B
+IRMBN,CX84,X23,,Vietnam,,indx
+IRMBN,CX85,C71,,Vietnam,,indx
+IRMBN,CX86,C70,,Vietnam,,indx
+IRMBN,CX87,Q5,,Vietnam,,indx
+IRMBN,CX88,缓阳粘,Huanyangnian,China,,ind1A
+IRMBN,CX89,M202,,United States,I1A55077,indx
+IRMBN,CX9,丰矮占,Fengaizhan,China,,ind1B
+IRMBN,CX90,Chhomromg,,Nepal,,ind1B
+IRMBN,CX91,Govind,,India,,ind1B
+IRMBN,CX92,UPR 191-66,,India,,ind1B
+IRMBN,CX93,TGMS29,,India,,indx
+IRMBN,CX94,Swarna,,India,,indx
+IRMBN,CX96,Ajaya,,India,,ind1B
+IRMBN,CX97,Budda,,India,,ind1B
+IRMBN,CX98,Doddabyranella,,India,,ind2
+IRMBN,CX99,Doddi,,India,,ind2

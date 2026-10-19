@@ -1,0 +1,6 @@
+{
+  "url": "https://rest.ensembl.org/info/software?content-type=application/json",
+  "method": "GET",
+  "body": null,
+  "sha256": "2e56831cafd56ff6fa16980aff0e14aaaa928a385465fb48896d2c77ca095374"
+}

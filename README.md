@@ -38,7 +38,13 @@ The approximate 80% interval covers **80.7%** of later-year observations, with m
 
 Low yield means below 80% of the district's historical reference. The exploratory risk score has Brier **0.0994**, versus **0.1002** for development prevalence, but ROC AUC **0.394** shows poor ranking. The main forecast screen therefore withholds operational risk percentages. A predicted yield shortfall is not a diagnosis of disease, aluminium toxicity, causal damage or financial loss.
 
-## Scope
+## Molecular linkage audit
+
+The [20 October molecular audit](docs/Rice_Molecular_Linkage_Audit.md) identifies a feasible trial-level extension: all 882 measured rice SNPs match the reference assembly; 89 markers have canonical protein-altering annotations, linked to 107 trial genotypes and 1,046 eligible yield records. A bounded check maps 11 measured markers to exact reference-sequence-matched public protein structures; six sites have local pLDDT at least 70 and exploratory reference-geometry descriptors. Protein confidence is not a tolerance or damage score.
+
+The dashboard's **Molecular data audit** view exposes these links and downloadable inputs. This is preparation for a controlled forecasting experiment. The selected regional estimator remains unchanged and does not use these protein features. Complete variety-specific protein sequences remain unverified; zero exact alias matches were found in the two published 3K tables checked. The earlier claim that full protein sequences were the only possible molecular route was too restrictive: reference protein context can annotate measured variants without reconstructing full cultivar proteins.
+
+## Forecast scope
 
 The app provides a working **historical forecasting prototype for 2012–2017**. It does not issue a live 2026 forecast from an archive ending in 2017. The target combines rice seasons and refers to historical 1966 districts; it is neither Kharif-only nor an individual field yield prediction.
 

@@ -1,0 +1,14 @@
+{
+  "audited_on": "2026-10-20",
+  "scope": "First 20 distinct protein/UniProt pairs sorted by measured marker ID, independent of yield. Not an exhaustive structure search.",
+  "pairs_checked": 20,
+  "pairs_with_exact_sequence_and_coordinates": 20,
+  "unique_measured_markers_mapped": 11,
+  "residue_mappings": 20,
+  "unique_reference_proteins_mapped": 11,
+  "unique_sites_with_plddt_at_least_70": 6,
+  "structural_descriptors": "Reference C-alpha nonlocal contacts within 8 Angstrom (exclude positions within 2 residues) and radial distance/rg of confident residues. Only sites and neighbors with pLDDT>=70; missing geometry remains missing. Exploratory engineering descriptors, not validated damage or solvent accessibility scores.",
+  "one_model_per_site": "Highest local pLDDT among exactly sequence-matched checked models; ties use UniProt lexical order. Selection is independent of yield.",
+  "full_cultivar_proteins_assigned": 0,
+  "trained_model_changed": false
+}
