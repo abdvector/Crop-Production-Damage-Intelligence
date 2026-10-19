@@ -2,6 +2,8 @@
 
 Audited 20 October 2026 from the current local data. No models were trained, labels repaired, source coordinates changed or old results replaced. The audit recomputes key joins, source yields, five historical lags, all twelve regional weather columns and matched management counts. Only aggregate findings are published; survey records and exact field coordinates remain local.
 
+Subsequent acquisition update: the [official Kharif rice source has now been obtained](Rice_Official_Kharif_Source.md). The audit below preserves the pre-acquisition findings; the new report records actual downloaded scope, units and remaining geographic/timing gaps.
+
 ## Decision
 
 **Keep the annual district rice prototype as the main existing deliverable. Obtain better aligned target and geography data before another training cycle.** It has the strongest existing temporal structure: 1,490 district-years across 50 historical districts, 1987–2017. Its modest forecasting performance remains as previously reported.

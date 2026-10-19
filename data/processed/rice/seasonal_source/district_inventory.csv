@@ -1,0 +1,729 @@
+state_source,district_source,in_five_state_scope,official_district_code_supplied,historical_boundary_crosswalk_verified
+Andaman and Nicobar Islands,Nicobars,False,False,False
+Andaman and Nicobar Islands,North and middle andaman,False,False,False
+Andaman and Nicobar Islands,South andamans,False,False,False
+Andhra Pradesh,Alluri sitharama raju,False,False,False
+Andhra Pradesh,Anakapalli,False,False,False
+Andhra Pradesh,Anantapur,False,False,False
+Andhra Pradesh,Annamayya,False,False,False
+Andhra Pradesh,Bapatla,False,False,False
+Andhra Pradesh,Chittoor,False,False,False
+Andhra Pradesh,East godavari,False,False,False
+Andhra Pradesh,Eluru,False,False,False
+Andhra Pradesh,Guntur,False,False,False
+Andhra Pradesh,Kadapa,False,False,False
+Andhra Pradesh,Kakinada,False,False,False
+Andhra Pradesh,Konaseema,False,False,False
+Andhra Pradesh,Krishna,False,False,False
+Andhra Pradesh,Kurnool,False,False,False
+Andhra Pradesh,Nandyal,False,False,False
+Andhra Pradesh,Ntr,False,False,False
+Andhra Pradesh,Palnadu,False,False,False
+Andhra Pradesh,Parvathipuram manyam,False,False,False
+Andhra Pradesh,Prakasam,False,False,False
+Andhra Pradesh,Spsr nellore,False,False,False
+Andhra Pradesh,Sri sathya sai,False,False,False
+Andhra Pradesh,Srikakulam,False,False,False
+Andhra Pradesh,Tirupati,False,False,False
+Andhra Pradesh,Visakhapatanam,False,False,False
+Andhra Pradesh,Vizianagaram,False,False,False
+Andhra Pradesh,West godavari,False,False,False
+Arunachal Pradesh,Anjaw,False,False,False
+Arunachal Pradesh,Changlang,False,False,False
+Arunachal Pradesh,Dibang valley,False,False,False
+Arunachal Pradesh,East kameng,False,False,False
+Arunachal Pradesh,East siang,False,False,False
+Arunachal Pradesh,Kamle,False,False,False
+Arunachal Pradesh,Kra daadi,False,False,False
+Arunachal Pradesh,Kurung kumey,False,False,False
+Arunachal Pradesh,Leparada,False,False,False
+Arunachal Pradesh,Lohit,False,False,False
+Arunachal Pradesh,Longding,False,False,False
+Arunachal Pradesh,Lower dibang valley,False,False,False
+Arunachal Pradesh,Lower siang,False,False,False
+Arunachal Pradesh,Lower subansiri,False,False,False
+Arunachal Pradesh,Namsai,False,False,False
+Arunachal Pradesh,Pakke kessang,False,False,False
+Arunachal Pradesh,Papum pare,False,False,False
+Arunachal Pradesh,Shi yomi,False,False,False
+Arunachal Pradesh,Siang,False,False,False
+Arunachal Pradesh,Tawang,False,False,False
+Arunachal Pradesh,Tirap,False,False,False
+Arunachal Pradesh,Upper siang,False,False,False
+Arunachal Pradesh,Upper subansiri,False,False,False
+Arunachal Pradesh,West kameng,False,False,False
+Arunachal Pradesh,West siang,False,False,False
+Assam,Baksa,False,False,False
+Assam,Barpeta,False,False,False
+Assam,Biswanath,False,False,False
+Assam,Bongaigaon,False,False,False
+Assam,Cachar,False,False,False
+Assam,Charaideo,False,False,False
+Assam,Chirang,False,False,False
+Assam,Darrang,False,False,False
+Assam,Dhemaji,False,False,False
+Assam,Dhubri,False,False,False
+Assam,Dibrugarh,False,False,False
+Assam,Dima hasao,False,False,False
+Assam,Goalpara,False,False,False
+Assam,Golaghat,False,False,False
+Assam,Hailakandi,False,False,False
+Assam,Hojai,False,False,False
+Assam,Jorhat,False,False,False
+Assam,Kamrup,False,False,False
+Assam,Kamrup metro,False,False,False
+Assam,Karbi anglong,False,False,False
+Assam,Karimganj,False,False,False
+Assam,Kokrajhar,False,False,False
+Assam,Lakhimpur,False,False,False
+Assam,Majuli,False,False,False
+Assam,Marigaon,False,False,False
+Assam,Nagaon,False,False,False
+Assam,Nalbari,False,False,False
+Assam,Sivasagar,False,False,False
+Assam,Sonitpur,False,False,False
+Assam,South salmara mancachar,False,False,False
+Assam,Tinsukia,False,False,False
+Assam,Udalguri,False,False,False
+Assam,West karbi anglong,False,False,False
+Bihar,Araria,True,False,False
+Bihar,Arwal,True,False,False
+Bihar,Aurangabad,True,False,False
+Bihar,Banka,True,False,False
+Bihar,Begusarai,True,False,False
+Bihar,Bhagalpur,True,False,False
+Bihar,Bhojpur,True,False,False
+Bihar,Buxar,True,False,False
+Bihar,Darbhanga,True,False,False
+Bihar,Gaya,True,False,False
+Bihar,Gopalganj,True,False,False
+Bihar,Jamui,True,False,False
+Bihar,Jehanabad,True,False,False
+Bihar,Kaimur (bhabua),True,False,False
+Bihar,Katihar,True,False,False
+Bihar,Khagaria,True,False,False
+Bihar,Kishanganj,True,False,False
+Bihar,Lakhisarai,True,False,False
+Bihar,Madhepura,True,False,False
+Bihar,Madhubani,True,False,False
+Bihar,Munger,True,False,False
+Bihar,Muzaffarpur,True,False,False
+Bihar,Nalanda,True,False,False
+Bihar,Nawada,True,False,False
+Bihar,Pashchim champaran,True,False,False
+Bihar,Patna,True,False,False
+Bihar,Purbi champaran,True,False,False
+Bihar,Purnia,True,False,False
+Bihar,Rohtas,True,False,False
+Bihar,Saharsa,True,False,False
+Bihar,Samastipur,True,False,False
+Bihar,Saran,True,False,False
+Bihar,Sheikhpura,True,False,False
+Bihar,Sheohar,True,False,False
+Bihar,Sitamarhi,True,False,False
+Bihar,Siwan,True,False,False
+Bihar,Supaul,True,False,False
+Bihar,Vaishali,True,False,False
+Chandigarh,Chandigarh,False,False,False
+Chhattisgarh,Balod,True,False,False
+Chhattisgarh,Baloda bazar,True,False,False
+Chhattisgarh,Balrampur,True,False,False
+Chhattisgarh,Bastar,True,False,False
+Chhattisgarh,Bemetara,True,False,False
+Chhattisgarh,Bijapur,True,False,False
+Chhattisgarh,Bilaspur,True,False,False
+Chhattisgarh,Dantewada,True,False,False
+Chhattisgarh,Dhamtari,True,False,False
+Chhattisgarh,Durg,True,False,False
+Chhattisgarh,Gariyaband,True,False,False
+Chhattisgarh,Gaurella-pendra-marwahi,True,False,False
+Chhattisgarh,Janjgir-champa,True,False,False
+Chhattisgarh,Jashpur,True,False,False
+Chhattisgarh,Kabirdham,True,False,False
+Chhattisgarh,Kanker,True,False,False
+Chhattisgarh,Khairgarh chhuikhadan gandai,True,False,False
+Chhattisgarh,Kondagaon,True,False,False
+Chhattisgarh,Korba,True,False,False
+Chhattisgarh,Korea,True,False,False
+Chhattisgarh,Mahasamund,True,False,False
+Chhattisgarh,Manendragarh chirimiri bharatpur,True,False,False
+Chhattisgarh,Mohla manpur ambagarh chouki,True,False,False
+Chhattisgarh,Mungeli,True,False,False
+Chhattisgarh,Narayanpur,True,False,False
+Chhattisgarh,Raigarh,True,False,False
+Chhattisgarh,Raipur,True,False,False
+Chhattisgarh,Rajnandgaon,True,False,False
+Chhattisgarh,Sakti,True,False,False
+Chhattisgarh,Sarangarh bilaigarh,True,False,False
+Chhattisgarh,Sukma,True,False,False
+Chhattisgarh,Surajpur,True,False,False
+Chhattisgarh,Surguja,True,False,False
+The Dadra & Nagar Haveli and Daman and Diu,Dadra and Nagar Haveli,False,False,False
+The Dadra & Nagar Haveli and Daman and Diu,Daman,False,False,False
+Delhi,Delhi_Total,False,False,False
+Goa,North goa,False,False,False
+Goa,South goa,False,False,False
+Gujarat,Ahmadabad,False,False,False
+Gujarat,Amreli,False,False,False
+Gujarat,Anand,False,False,False
+Gujarat,Aravalli,False,False,False
+Gujarat,Banas kantha,False,False,False
+Gujarat,Bharuch,False,False,False
+Gujarat,Bhavnagar,False,False,False
+Gujarat,Botad,False,False,False
+Gujarat,Chhotaudepur,False,False,False
+Gujarat,Dang,False,False,False
+Gujarat,Dohad,False,False,False
+Gujarat,Gandhinagar,False,False,False
+Gujarat,Gir somnath,False,False,False
+Gujarat,Jamnagar,False,False,False
+Gujarat,Junagadh,False,False,False
+Gujarat,Kheda,False,False,False
+Gujarat,Mahesana,False,False,False
+Gujarat,Mahisagar,False,False,False
+Gujarat,Morbi,False,False,False
+Gujarat,Narmada,False,False,False
+Gujarat,Navsari,False,False,False
+Gujarat,Panch mahals,False,False,False
+Gujarat,Patan,False,False,False
+Gujarat,Rajkot,False,False,False
+Gujarat,Sabar kantha,False,False,False
+Gujarat,Surat,False,False,False
+Gujarat,Surendranagar,False,False,False
+Gujarat,Tapi,False,False,False
+Gujarat,Vadodara,False,False,False
+Gujarat,Valsad,False,False,False
+Haryana,Ambala,False,False,False
+Haryana,Bhiwani,False,False,False
+Haryana,Charki dadri,False,False,False
+Haryana,Faridabad,False,False,False
+Haryana,Fatehabad,False,False,False
+Haryana,Gurgaon,False,False,False
+Haryana,Hisar,False,False,False
+Haryana,Jhajjar,False,False,False
+Haryana,Jind,False,False,False
+Haryana,Kaithal,False,False,False
+Haryana,Karnal,False,False,False
+Haryana,Kurukshetra,False,False,False
+Haryana,Mahendragarh,False,False,False
+Haryana,Mewat,False,False,False
+Haryana,Palwal,False,False,False
+Haryana,Panchkula,False,False,False
+Haryana,Panipat,False,False,False
+Haryana,Rewari,False,False,False
+Haryana,Rohtak,False,False,False
+Haryana,Sirsa,False,False,False
+Haryana,Sonipat,False,False,False
+Haryana,Yamunanagar,False,False,False
+Himachal Pradesh,Bilaspur,False,False,False
+Himachal Pradesh,Chamba,False,False,False
+Himachal Pradesh,Hamirpur,False,False,False
+Himachal Pradesh,Kangra,False,False,False
+Himachal Pradesh,Kinnaur,False,False,False
+Himachal Pradesh,Kullu,False,False,False
+Himachal Pradesh,Mandi,False,False,False
+Himachal Pradesh,Shimla,False,False,False
+Himachal Pradesh,Sirmaur,False,False,False
+Himachal Pradesh,Solan,False,False,False
+Himachal Pradesh,Una,False,False,False
+Jammu and Kashmir,Anantnag,False,False,False
+Jammu and Kashmir,Badgam,False,False,False
+Jammu and Kashmir,Bandipora,False,False,False
+Jammu and Kashmir,Baramulla,False,False,False
+Jammu and Kashmir,Doda,False,False,False
+Jammu and Kashmir,Ganderbal,False,False,False
+Jammu and Kashmir,Jammu,False,False,False
+Jammu and Kashmir,Kathua,False,False,False
+Jammu and Kashmir,Kishtwar,False,False,False
+Jammu and Kashmir,Kulgam,False,False,False
+Jammu and Kashmir,Kupwara,False,False,False
+Jammu and Kashmir,Poonch,False,False,False
+Jammu and Kashmir,Pulwama,False,False,False
+Jammu and Kashmir,Rajauri,False,False,False
+Jammu and Kashmir,Ramban,False,False,False
+Jammu and Kashmir,Reasi,False,False,False
+Jammu and Kashmir,Samba,False,False,False
+Jammu and Kashmir,Shopian,False,False,False
+Jammu and Kashmir,Srinagar,False,False,False
+Jammu and Kashmir,Udhampur,False,False,False
+Jharkhand,Bokaro,True,False,False
+Jharkhand,Chatra,True,False,False
+Jharkhand,Deoghar,True,False,False
+Jharkhand,Dhanbad,True,False,False
+Jharkhand,Dumka,True,False,False
+Jharkhand,East singhbum,True,False,False
+Jharkhand,Garhwa,True,False,False
+Jharkhand,Giridih,True,False,False
+Jharkhand,Godda,True,False,False
+Jharkhand,Gumla,True,False,False
+Jharkhand,Hazaribagh,True,False,False
+Jharkhand,Jamtara,True,False,False
+Jharkhand,Khunti,True,False,False
+Jharkhand,Koderma,True,False,False
+Jharkhand,Latehar,True,False,False
+Jharkhand,Lohardaga,True,False,False
+Jharkhand,Pakur,True,False,False
+Jharkhand,Palamu,True,False,False
+Jharkhand,Ramgarh,True,False,False
+Jharkhand,Ranchi,True,False,False
+Jharkhand,Sahebganj,True,False,False
+Jharkhand,Saraikela kharsawan,True,False,False
+Jharkhand,Simdega,True,False,False
+Jharkhand,West singhbhum,True,False,False
+Karnataka,Bagalkot,False,False,False
+Karnataka,Bangalore rural,False,False,False
+Karnataka,Belgaum,False,False,False
+Karnataka,Bellary,False,False,False
+Karnataka,Bengaluru urban,False,False,False
+Karnataka,Bidar,False,False,False
+Karnataka,Bijapur,False,False,False
+Karnataka,Chamarajanagar,False,False,False
+Karnataka,Chikballapur,False,False,False
+Karnataka,Chikmagalur,False,False,False
+Karnataka,Chitradurga,False,False,False
+Karnataka,Dakshin kannad,False,False,False
+Karnataka,Davangere,False,False,False
+Karnataka,Dharwad,False,False,False
+Karnataka,Gadag,False,False,False
+Karnataka,Gulbarga,False,False,False
+Karnataka,Hassan,False,False,False
+Karnataka,Haveri,False,False,False
+Karnataka,Kodagu,False,False,False
+Karnataka,Kolar,False,False,False
+Karnataka,Koppal,False,False,False
+Karnataka,Mandya,False,False,False
+Karnataka,Mysore,False,False,False
+Karnataka,Raichur,False,False,False
+Karnataka,Ramanagara,False,False,False
+Karnataka,Shimoga,False,False,False
+Karnataka,Tumkur,False,False,False
+Karnataka,Udupi,False,False,False
+Karnataka,Uttar kannad,False,False,False
+Karnataka,Vijayanagar,False,False,False
+Karnataka,Yadgir,False,False,False
+Kerala,Alappuzha,False,False,False
+Kerala,Ernakulam,False,False,False
+Kerala,Idukki,False,False,False
+Kerala,Kannur,False,False,False
+Kerala,Kasaragod,False,False,False
+Kerala,Kollam,False,False,False
+Kerala,Kottayam,False,False,False
+Kerala,Kozhikode,False,False,False
+Kerala,Malappuram,False,False,False
+Kerala,Palakkad,False,False,False
+Kerala,Pathanamthitta,False,False,False
+Kerala,Thiruvananthapuram,False,False,False
+Kerala,Thrissur,False,False,False
+Kerala,Wayanad,False,False,False
+Madhya Pradesh,Agar malwa,False,False,False
+Madhya Pradesh,Alirajpur,False,False,False
+Madhya Pradesh,Anuppur,False,False,False
+Madhya Pradesh,Ashoknagar,False,False,False
+Madhya Pradesh,Balaghat,False,False,False
+Madhya Pradesh,Barwani,False,False,False
+Madhya Pradesh,Betul,False,False,False
+Madhya Pradesh,Bhind,False,False,False
+Madhya Pradesh,Bhopal,False,False,False
+Madhya Pradesh,Burhanpur,False,False,False
+Madhya Pradesh,Chhatarpur,False,False,False
+Madhya Pradesh,Chhindwara,False,False,False
+Madhya Pradesh,Damoh,False,False,False
+Madhya Pradesh,Datia,False,False,False
+Madhya Pradesh,Dewas,False,False,False
+Madhya Pradesh,Dhar,False,False,False
+Madhya Pradesh,Dindori,False,False,False
+Madhya Pradesh,Guna,False,False,False
+Madhya Pradesh,Gwalior,False,False,False
+Madhya Pradesh,Harda,False,False,False
+Madhya Pradesh,Hoshangabad,False,False,False
+Madhya Pradesh,Indore,False,False,False
+Madhya Pradesh,Jabalpur,False,False,False
+Madhya Pradesh,Jhabua,False,False,False
+Madhya Pradesh,Katni,False,False,False
+Madhya Pradesh,Khandwa,False,False,False
+Madhya Pradesh,Khargone,False,False,False
+Madhya Pradesh,Mandla,False,False,False
+Madhya Pradesh,Mandsaur,False,False,False
+Madhya Pradesh,Morena,False,False,False
+Madhya Pradesh,Narsinghpur,False,False,False
+Madhya Pradesh,Neemuch,False,False,False
+Madhya Pradesh,Niwari,False,False,False
+Madhya Pradesh,Panna,False,False,False
+Madhya Pradesh,Raisen,False,False,False
+Madhya Pradesh,Rajgarh,False,False,False
+Madhya Pradesh,Ratlam,False,False,False
+Madhya Pradesh,Rewa,False,False,False
+Madhya Pradesh,Sagar,False,False,False
+Madhya Pradesh,Satna,False,False,False
+Madhya Pradesh,Sehore,False,False,False
+Madhya Pradesh,Seoni,False,False,False
+Madhya Pradesh,Shahdol,False,False,False
+Madhya Pradesh,Shajapur,False,False,False
+Madhya Pradesh,Sheopur,False,False,False
+Madhya Pradesh,Shivpuri,False,False,False
+Madhya Pradesh,Sidhi,False,False,False
+Madhya Pradesh,Singrauli,False,False,False
+Madhya Pradesh,Tikamgarh,False,False,False
+Madhya Pradesh,Ujjain,False,False,False
+Madhya Pradesh,Umaria,False,False,False
+Madhya Pradesh,Vidisha,False,False,False
+Maharashtra,Ahilyanagar,False,False,False
+Maharashtra,Akola,False,False,False
+Maharashtra,Amravati,False,False,False
+Maharashtra,Beed,False,False,False
+Maharashtra,Bhandara,False,False,False
+Maharashtra,Buldhana,False,False,False
+Maharashtra,Chandrapur,False,False,False
+Maharashtra,Chhatrapati Sambhajinagar,False,False,False
+Maharashtra,Dharashiv,False,False,False
+Maharashtra,Dhule,False,False,False
+Maharashtra,Gadchiroli,False,False,False
+Maharashtra,Gondia,False,False,False
+Maharashtra,Hingoli,False,False,False
+Maharashtra,Jalgaon,False,False,False
+Maharashtra,Jalna,False,False,False
+Maharashtra,Kolhapur,False,False,False
+Maharashtra,Latur,False,False,False
+Maharashtra,Nagpur,False,False,False
+Maharashtra,Nanded,False,False,False
+Maharashtra,Nandurbar,False,False,False
+Maharashtra,Nashik,False,False,False
+Maharashtra,Palghar,False,False,False
+Maharashtra,Parbhani,False,False,False
+Maharashtra,Pune,False,False,False
+Maharashtra,Raigad,False,False,False
+Maharashtra,Ratnagiri,False,False,False
+Maharashtra,Sangli,False,False,False
+Maharashtra,Satara,False,False,False
+Maharashtra,Sindhudurg,False,False,False
+Maharashtra,Solapur,False,False,False
+Maharashtra,Thane,False,False,False
+Maharashtra,Wardha,False,False,False
+Maharashtra,Washim,False,False,False
+Maharashtra,Yavatmal,False,False,False
+Manipur,Bishnupur,False,False,False
+Manipur,Chandel,False,False,False
+Manipur,Churachandpur,False,False,False
+Manipur,Imphal east,False,False,False
+Manipur,Imphal west,False,False,False
+Manipur,Senapati,False,False,False
+Manipur,Tamenglong,False,False,False
+Manipur,Thoubal,False,False,False
+Manipur,Ukhrul,False,False,False
+Meghalaya,East garo hills,False,False,False
+Meghalaya,East jaintia hills,False,False,False
+Meghalaya,East khasi hills,False,False,False
+Meghalaya,North garo hills,False,False,False
+Meghalaya,Ri bhoi,False,False,False
+Meghalaya,South garo hills,False,False,False
+Meghalaya,South west garo hills,False,False,False
+Meghalaya,South west khasi hills,False,False,False
+Meghalaya,West garo hills,False,False,False
+Meghalaya,West jaintia hills,False,False,False
+Meghalaya,West khasi hills,False,False,False
+Mizoram,Aizawl,False,False,False
+Mizoram,Champhai,False,False,False
+Mizoram,Hnahthial,False,False,False
+Mizoram,Khawzawl,False,False,False
+Mizoram,Kolasib,False,False,False
+Mizoram,Lawngtlai,False,False,False
+Mizoram,Lunglei,False,False,False
+Mizoram,Mamit,False,False,False
+Mizoram,Saiha,False,False,False
+Mizoram,Saitual,False,False,False
+Mizoram,Serchhip,False,False,False
+Nagaland,Chumoukedima,False,False,False
+Nagaland,Dimapur,False,False,False
+Nagaland,Kiphire,False,False,False
+Nagaland,Kohima,False,False,False
+Nagaland,Longleng,False,False,False
+Nagaland,Mokokchung,False,False,False
+Nagaland,Mon,False,False,False
+Nagaland,Noklak,False,False,False
+Nagaland,Nuiland,False,False,False
+Nagaland,Peren,False,False,False
+Nagaland,Phek,False,False,False
+Nagaland,Shamator,False,False,False
+Nagaland,Tseminyu,False,False,False
+Nagaland,Tuensang,False,False,False
+Nagaland,Wokha,False,False,False
+Nagaland,Zunheboto,False,False,False
+Odisha,Anugul,True,False,False
+Odisha,Balangir,True,False,False
+Odisha,Baleshwar,True,False,False
+Odisha,Bargarh,True,False,False
+Odisha,Bhadrak,True,False,False
+Odisha,Boudh,True,False,False
+Odisha,Cuttack,True,False,False
+Odisha,Deogarh,True,False,False
+Odisha,Dhenkanal,True,False,False
+Odisha,Gajapati,True,False,False
+Odisha,Ganjam,True,False,False
+Odisha,Jagatsinghapur,True,False,False
+Odisha,Jajapur,True,False,False
+Odisha,Jharsuguda,True,False,False
+Odisha,Kalahandi,True,False,False
+Odisha,Kandhamal,True,False,False
+Odisha,Kendrapara,True,False,False
+Odisha,Kendujhar,True,False,False
+Odisha,Khordha,True,False,False
+Odisha,Koraput,True,False,False
+Odisha,Malkangiri,True,False,False
+Odisha,Mayurbhanj,True,False,False
+Odisha,Nabarangpur,True,False,False
+Odisha,Nayagarh,True,False,False
+Odisha,Nuapada,True,False,False
+Odisha,Puri,True,False,False
+Odisha,Rayagada,True,False,False
+Odisha,Sambalpur,True,False,False
+Odisha,Sonepur,True,False,False
+Odisha,Sundargarh,True,False,False
+Puducherry,Karaikal,False,False,False
+Puducherry,Mahe,False,False,False
+Puducherry,Pondicherry,False,False,False
+Puducherry,Yanam,False,False,False
+Punjab,Amritsar,False,False,False
+Punjab,Barnala,False,False,False
+Punjab,Bathinda,False,False,False
+Punjab,Faridkot,False,False,False
+Punjab,Fatehgarh sahib,False,False,False
+Punjab,Fazilka,False,False,False
+Punjab,Firozepur,False,False,False
+Punjab,Gurdaspur,False,False,False
+Punjab,Hoshiarpur,False,False,False
+Punjab,Jalandhar,False,False,False
+Punjab,Kapurthala,False,False,False
+Punjab,Ludhiana,False,False,False
+Punjab,Malerkotla,False,False,False
+Punjab,Mansa,False,False,False
+Punjab,Moga,False,False,False
+Punjab,Muktsar,False,False,False
+Punjab,Nawanshahr,False,False,False
+Punjab,Pathankot,False,False,False
+Punjab,Patiala,False,False,False
+Punjab,Rupnagar,False,False,False
+Punjab,S.a.s nagar,False,False,False
+Punjab,Sangrur,False,False,False
+Punjab,Tarn taran,False,False,False
+Rajasthan,Ajmer,False,False,False
+Rajasthan,Alwar,False,False,False
+Rajasthan,Banswara,False,False,False
+Rajasthan,Baran,False,False,False
+Rajasthan,Bharatpur,False,False,False
+Rajasthan,Bhilwara,False,False,False
+Rajasthan,Bikaner,False,False,False
+Rajasthan,Bundi,False,False,False
+Rajasthan,Chittorgarh,False,False,False
+Rajasthan,Dausa,False,False,False
+Rajasthan,Dholpur,False,False,False
+Rajasthan,Dungarpur,False,False,False
+Rajasthan,Ganganagar,False,False,False
+Rajasthan,Hanumangarh,False,False,False
+Rajasthan,Jaipur,False,False,False
+Rajasthan,Jhalawar,False,False,False
+Rajasthan,Jodhpur,False,False,False
+Rajasthan,Karauli,False,False,False
+Rajasthan,Kota,False,False,False
+Rajasthan,Nagaur,False,False,False
+Rajasthan,Pali,False,False,False
+Rajasthan,Pratapgarh,False,False,False
+Rajasthan,Rajsamand,False,False,False
+Rajasthan,Sawai madhopur,False,False,False
+Rajasthan,Sirohi,False,False,False
+Rajasthan,Tonk,False,False,False
+Rajasthan,Udaipur,False,False,False
+Sikkim,Gangtok,False,False,False
+Sikkim,Geyzing,False,False,False
+Sikkim,Mangan,False,False,False
+Sikkim,Namchi,False,False,False
+Sikkim,Pakyong,False,False,False
+Sikkim,Soreng,False,False,False
+Tamil Nadu,Ariyalur,False,False,False
+Tamil Nadu,Chengalpattu,False,False,False
+Tamil Nadu,Chennai,False,False,False
+Tamil Nadu,Coimbatore,False,False,False
+Tamil Nadu,Cuddalore,False,False,False
+Tamil Nadu,Dharmapuri,False,False,False
+Tamil Nadu,Dindigul,False,False,False
+Tamil Nadu,Erode,False,False,False
+Tamil Nadu,Kallakurichi,False,False,False
+Tamil Nadu,Kanchipuram,False,False,False
+Tamil Nadu,Kanniyakumari,False,False,False
+Tamil Nadu,Karur,False,False,False
+Tamil Nadu,Krishnagiri,False,False,False
+Tamil Nadu,Madurai,False,False,False
+Tamil Nadu,Mayiladuthurai,False,False,False
+Tamil Nadu,Nagapattinam,False,False,False
+Tamil Nadu,Namakkal,False,False,False
+Tamil Nadu,Perambalur,False,False,False
+Tamil Nadu,Pudukkottai,False,False,False
+Tamil Nadu,Ramanathapuram,False,False,False
+Tamil Nadu,Ranipet,False,False,False
+Tamil Nadu,Salem,False,False,False
+Tamil Nadu,Sivaganga,False,False,False
+Tamil Nadu,Thanjavur,False,False,False
+Tamil Nadu,The nilgiris,False,False,False
+Tamil Nadu,Theni,False,False,False
+Tamil Nadu,Thenkasi,False,False,False
+Tamil Nadu,Thiruvallur,False,False,False
+Tamil Nadu,Thiruvarur,False,False,False
+Tamil Nadu,Thoothukudi,False,False,False
+Tamil Nadu,Tiruchirappalli,False,False,False
+Tamil Nadu,Tirunelveli,False,False,False
+Tamil Nadu,Tirupathur,False,False,False
+Tamil Nadu,Tiruppur,False,False,False
+Tamil Nadu,Tiruvannamalai,False,False,False
+Tamil Nadu,Vellore,False,False,False
+Tamil Nadu,Villupuram,False,False,False
+Tamil Nadu,Virudhunagar,False,False,False
+Telangana,Adilabad,False,False,False
+Telangana,Bhadradri,False,False,False
+Telangana,Hyderabad,False,False,False
+Telangana,Jagitial,False,False,False
+Telangana,Jangoan,False,False,False
+Telangana,Jayashankar,False,False,False
+Telangana,Jogulamba,False,False,False
+Telangana,Kamareddy,False,False,False
+Telangana,Karimnagar,False,False,False
+Telangana,Khammam,False,False,False
+Telangana,Komaram bheem asifabad,False,False,False
+Telangana,Mahabubabad,False,False,False
+Telangana,Mahbubnagar,False,False,False
+Telangana,Mancherial,False,False,False
+Telangana,Medak,False,False,False
+Telangana,Medchal,False,False,False
+Telangana,Mulugu,False,False,False
+Telangana,Nagarkurnool,False,False,False
+Telangana,Nalgonda,False,False,False
+Telangana,Narayanapet,False,False,False
+Telangana,Nirmal,False,False,False
+Telangana,Nizamabad,False,False,False
+Telangana,Peddapalli,False,False,False
+Telangana,Rajanna,False,False,False
+Telangana,Rangareddi,False,False,False
+Telangana,Sangareddy,False,False,False
+Telangana,Siddipet,False,False,False
+Telangana,Suryapet,False,False,False
+Telangana,Vikarabad,False,False,False
+Telangana,Wanaparthy,False,False,False
+Telangana,Warangal,False,False,False
+Telangana,Warangal urban,False,False,False
+Telangana,Yadadri,False,False,False
+Tripura,Dhalai,False,False,False
+Tripura,Gomati,False,False,False
+Tripura,Khowai,False,False,False
+Tripura,North tripura,False,False,False
+Tripura,Sepahijala,False,False,False
+Tripura,South tripura,False,False,False
+Tripura,Unakoti,False,False,False
+Tripura,West tripura,False,False,False
+Uttar Pradesh,Agra,False,False,False
+Uttar Pradesh,Aligarh,False,False,False
+Uttar Pradesh,Allahabad,False,False,False
+Uttar Pradesh,Ambedkar nagar,False,False,False
+Uttar Pradesh,Amethi,False,False,False
+Uttar Pradesh,Amroha,False,False,False
+Uttar Pradesh,Auraiya,False,False,False
+Uttar Pradesh,Azamgarh,False,False,False
+Uttar Pradesh,Baghpat,False,False,False
+Uttar Pradesh,Bahraich,False,False,False
+Uttar Pradesh,Ballia,False,False,False
+Uttar Pradesh,Balrampur,False,False,False
+Uttar Pradesh,Banda,False,False,False
+Uttar Pradesh,Barabanki,False,False,False
+Uttar Pradesh,Bareilly,False,False,False
+Uttar Pradesh,Basti,False,False,False
+Uttar Pradesh,Bijnor,False,False,False
+Uttar Pradesh,Budaun,False,False,False
+Uttar Pradesh,Bulandshahr,False,False,False
+Uttar Pradesh,Chandauli,False,False,False
+Uttar Pradesh,Chitrakoot,False,False,False
+Uttar Pradesh,Deoria,False,False,False
+Uttar Pradesh,Etah,False,False,False
+Uttar Pradesh,Etawah,False,False,False
+Uttar Pradesh,Faizabad,False,False,False
+Uttar Pradesh,Farrukhabad,False,False,False
+Uttar Pradesh,Fatehpur,False,False,False
+Uttar Pradesh,Firozabad,False,False,False
+Uttar Pradesh,Gautam buddha nagar,False,False,False
+Uttar Pradesh,Ghaziabad,False,False,False
+Uttar Pradesh,Ghazipur,False,False,False
+Uttar Pradesh,Gonda,False,False,False
+Uttar Pradesh,Gorakhpur,False,False,False
+Uttar Pradesh,Hamirpur,False,False,False
+Uttar Pradesh,Hapur,False,False,False
+Uttar Pradesh,Hardoi,False,False,False
+Uttar Pradesh,Hathras,False,False,False
+Uttar Pradesh,Jalaun,False,False,False
+Uttar Pradesh,Jaunpur,False,False,False
+Uttar Pradesh,Jhansi,False,False,False
+Uttar Pradesh,Kannauj,False,False,False
+Uttar Pradesh,Kanpur dehat,False,False,False
+Uttar Pradesh,Kanpur nagar,False,False,False
+Uttar Pradesh,Kasganj,False,False,False
+Uttar Pradesh,Kaushambi,False,False,False
+Uttar Pradesh,Kheri,False,False,False
+Uttar Pradesh,Kushi nagar,False,False,False
+Uttar Pradesh,Lalitpur,False,False,False
+Uttar Pradesh,Lucknow,False,False,False
+Uttar Pradesh,Maharajganj,False,False,False
+Uttar Pradesh,Mahoba,False,False,False
+Uttar Pradesh,Mainpuri,False,False,False
+Uttar Pradesh,Mathura,False,False,False
+Uttar Pradesh,Mau,False,False,False
+Uttar Pradesh,Meerut,False,False,False
+Uttar Pradesh,Mirzapur,False,False,False
+Uttar Pradesh,Moradabad,False,False,False
+Uttar Pradesh,Muzaffarnagar,False,False,False
+Uttar Pradesh,Pilibhit,False,False,False
+Uttar Pradesh,Pratapgarh,False,False,False
+Uttar Pradesh,Rae bareli,False,False,False
+Uttar Pradesh,Rampur,False,False,False
+Uttar Pradesh,Saharanpur,False,False,False
+Uttar Pradesh,Sambhal,False,False,False
+Uttar Pradesh,Sant kabeer nagar,False,False,False
+Uttar Pradesh,Sant ravidas nagar,False,False,False
+Uttar Pradesh,Shahjahanpur,False,False,False
+Uttar Pradesh,Shamli,False,False,False
+Uttar Pradesh,Shravasti,False,False,False
+Uttar Pradesh,Siddharth nagar,False,False,False
+Uttar Pradesh,Sitapur,False,False,False
+Uttar Pradesh,Sonbhadra,False,False,False
+Uttar Pradesh,Sultanpur,False,False,False
+Uttar Pradesh,Unnao,False,False,False
+Uttar Pradesh,Varanasi,False,False,False
+Uttarakhand,Almora,False,False,False
+Uttarakhand,Bageshwar,False,False,False
+Uttarakhand,Chamoli,False,False,False
+Uttarakhand,Champawat,False,False,False
+Uttarakhand,Dehradun,False,False,False
+Uttarakhand,Haridwar,False,False,False
+Uttarakhand,Nainital,False,False,False
+Uttarakhand,Pauri garhwal,False,False,False
+Uttarakhand,Pithoragarh,False,False,False
+Uttarakhand,Rudra prayag,False,False,False
+Uttarakhand,Tehri garhwal,False,False,False
+Uttarakhand,Udam singh nagar,False,False,False
+Uttarakhand,Uttar kashi,False,False,False
+West Bengal,24 paraganas north,True,False,False
+West Bengal,24 paraganas south,True,False,False
+West Bengal,Alipurduar,True,False,False
+West Bengal,Bankura,True,False,False
+West Bengal,Birbhum,True,False,False
+West Bengal,Coochbehar,True,False,False
+West Bengal,Darjeeling,True,False,False
+West Bengal,Dinajpur dakshin,True,False,False
+West Bengal,Dinajpur uttar,True,False,False
+West Bengal,Hooghly,True,False,False
+West Bengal,Howrah,True,False,False
+West Bengal,Jalpaiguri,True,False,False
+West Bengal,Jhargram,True,False,False
+West Bengal,Kalimpong,True,False,False
+West Bengal,Maldah,True,False,False
+West Bengal,Medinipur east,True,False,False
+West Bengal,Medinipur west,True,False,False
+West Bengal,Murshidabad,True,False,False
+West Bengal,Nadia,True,False,False
+West Bengal,Paschim bardhaman,True,False,False
+West Bengal,Purba bardhaman,True,False,False
+West Bengal,Purulia,True,False,False

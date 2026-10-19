@@ -29,3 +29,5 @@ data/processed/rice/india_field_survey/risk_2018/predictions_local.csv
 # Original district API and NASA caches are reproducible via src.rice_regional.
 data/raw/rice/icrisat_district/area_production_yield.json
 data/raw/rice/icrisat_district/nasa_monthly/
+# Original national seasonal report stays local, including reserved newer outcomes.
+data/raw/rice/des_kharif_2026/*.html

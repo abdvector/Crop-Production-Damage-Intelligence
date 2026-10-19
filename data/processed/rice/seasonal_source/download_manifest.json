@@ -1,0 +1,26 @@
+{
+  "retrieved_on": "2026-10-20",
+  "publisher": "Directorate of Economics and Statistics, Ministry of Agriculture and Farmers Welfare, India",
+  "form_url": "https://www.data.desagri.gov.in/website/apy-query-report-web",
+  "endpoint": "https://www.data.desagri.gov.in/report/crop/apy-query-report-show",
+  "request_method": "POST",
+  "request_fields": {
+    "fltrstates[]": "",
+    "fltrdistricts[]": "all",
+    "fltrcrops[]": "1",
+    "fltrseason[]": "K",
+    "fltrstartyear": "1997",
+    "fltrendyear": "2022",
+    "fltrrptformat": "exl",
+    "fltrcontribut": "all"
+  },
+  "session_secrets_retained": false,
+  "relative_file": "data/raw/rice/des_kharif_2026/rice_kharif_1997_2022_report.html",
+  "bytes": 3339804,
+  "sha256": "2da0946976ba22f218928f63e139b16466be96979edf797d8dd47d314722567d",
+  "format": "Original HTML report returned to the website's Excel export; not a native XLSX workbook",
+  "first_acquisition_transport": "Windows Invoke-WebRequest with normal system certificate validation; decoded response stored as UTF-8 without BOM. Python requests/certifi rejected the issuer chain; no TLS verification was disabled.",
+  "scope_evidence": "Rice=1 and Kharif=K in the original public form request; response table does not repeat crop/season in each row.",
+  "unit_evidence": "Every year header explicitly reports hectares, tonnes, tonnes per hectare.",
+  "terms": "Public official report, with publisher attribution. No independent licence or historical release-vintage verification is asserted."
+}

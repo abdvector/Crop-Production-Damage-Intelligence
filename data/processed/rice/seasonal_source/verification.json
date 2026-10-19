@@ -1,0 +1,28 @@
+{
+  "verified_on": "2026-10-20",
+  "exact_report_checksum_matches_receipt": true,
+  "header_year_unit_and_row_width_checks": true,
+  "unique_state_district_rows": true,
+  "reserved_cell_text_access_guard_passed": true,
+  "development_outputs_identical_under_guard": true,
+  "newer_numeric_values_absent_from_development_output": true,
+  "tonnes_per_ha_to_kg_per_ha_conversion_recomputed": true,
+  "unknown_numeric_formats_rejected": true,
+  "no_training_ready_rows_promoted": true,
+  "existing_protected_file_count": 56,
+  "all_existing_models_and_results_preserved": true,
+  "temporary_form_token_file_removed": true,
+  "session_secrets_not_persisted": true,
+  "output_sha256": {
+    "summary.json": "987c2488558a12b962b8577ef30c025ea5cf4f3630504332ddcd55c51fcdc967",
+    "download_manifest.json": "ac4ddd811261626a8c3da889982d4730ea255872514cdbbe07ef4a672a7d5964",
+    "development_labels.csv": "9f8cfcfd759a1dbe2d5502a19c4c94105b069013f4911d35a8b54c9aaf8b0c46",
+    "district_inventory.csv": "91341636d85edf1494c922deb403ac62fe8a76e59d467dadad13bdce33cb09a0",
+    "state_year_coverage.csv": "b8baeb17575ef1e7ebc9070a8b2fcaaafb6ffd6816d2854e7e8aeb945a5591ab"
+  },
+  "module_sha256": "8303f9a5374c728a0a61103d47fab5cbe7090e4faed17fe241b845f9e0de9174",
+  "cached_acquisition_offline_replay": true,
+  "streamlit_historical_forecast_and_source_summary": true,
+  "raw_report_ignored_by_git": true,
+  "official_export_screenshot_sha256": "00f131a78c981aa8e02891bc96f866868620c8eb6b304c911506c3d0cb01b9ff"
+}
