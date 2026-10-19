@@ -26,6 +26,7 @@ from src.rice_field_cohort import load_cohort_audit
 from src.rice_field_model import load_field_results, RESULTS as FIELD_RESULTS
 from src.rice_field_labels import load_label_trace, load_documentation_audit
 from src.rice_field_management import load_management_results, FOLDER as MANAGEMENT_RESULTS
+from src.rice_field_risk import load_risk_results, FOLDER as RISK_RESULTS
 
 st.set_page_config(page_title="Rice Yield Research", layout="wide")
 st.markdown("""<style>
@@ -102,7 +103,7 @@ with field_study:
             st.warning(f"Forecasting skill is not established. {label_audit['flagged_assessment_records']} previously flagged yields dominate squared error; the source maximum is {label_audit['maximum_source_yield_kg_ha']:,.0f} kg/ha. The unchanged-prediction sensitivity also fails to beat the mean baseline.")
         st.dataframe(assessment_metrics, hide_index=True, width="stretch")
         st.bar_chart(assessment_metrics.set_index("model")[["mae_kg_ha", "rmse_kg_ha"]], horizontal=True)
-        st.caption("This is a retrospective backtest on farmer-reported yields. It is not prospective validation or an estimate of causal crop damage or monetary savings. No new field low-yield classifier or calibrated prediction interval is available yet.")
+        st.caption("This is a retrospective backtest on farmer-reported yields. It is not prospective validation or an estimate of causal crop damage or monetary savings. No 2019 risk model or calibrated prediction interval is reported here; the separate 2018 risk development comparison appears below.")
         st.write(f"Transfer coverage: {field_model_summary['assessment_unseen_state_records']:,} records in a state absent from development, and {field_model_summary['assessment_unseen_district_records']:,} in new district labels.")
         with st.expander("All development candidates and selection"):
             st.dataframe(development_selection, hide_index=True, width="stretch")
@@ -147,6 +148,31 @@ with field_study:
             st.dataframe(pd.read_csv(MANAGEMENT_RESULTS / "split_counts.csv"), hide_index=True, width="stretch")
             st.dataframe(pd.read_csv(MANAGEMENT_RESULTS / "paired_stability.csv"), hide_index=True, width="stretch")
             st.dataframe(pd.read_csv(MANAGEMENT_RESULTS / "state_metrics.csv"), hide_index=True, width="stretch")
+    st.subheader("2018 low-yield risk: development only")
+    risk_results = load_risk_results()
+    if risk_results is None:
+        st.info("The declared 2018 low-yield-risk comparison has not completed.")
+    else:
+        risk_summary, risk_metrics_table, risk_changes = risk_results
+        st.write(f"{risk_summary['records']:,} matched 2018 records. Low yield means below the fitting fold's 20th yield percentile, with thresholds ranging from {risk_summary['threshold_min_kg_ha']:,.0f} to {risk_summary['threshold_max_kg_ha']:,.0f} kg/ha.")
+        st.caption("Thresholds and prevalence baselines use fitting data only. This is a relative low-yield event, not measured crop damage. Probabilities have not been independently calibrated for deployment, and no operational decision threshold is selected.")
+        st.dataframe(risk_metrics_table, hide_index=True, width="stretch")
+        ml_risk = risk_metrics_table.loc[risk_metrics_table.block.ne("baseline")]
+        baseline_risk = risk_metrics_table.loc[risk_metrics_table.block.eq("baseline")]
+        if ml_risk.brier_score.min() >= baseline_risk.brier_score.min():
+            st.warning("No tested ML configuration beats the strongest prevalence baseline on the primary Brier metric. Ranking ability and log loss tell different parts of the story; these results do not establish deployment-ready risk probabilities.")
+        st.bar_chart(risk_metrics_table.loc[risk_metrics_table.block.ne("baseline")].pivot(index="model", columns="block", values="brier_score"), horizontal=True)
+        st.caption("Lower Brier score is better. Compare the global and state training-prevalence rows; ROC AUC is averaged within folds because the event thresholds differ.")
+        with st.expander("Risk calibration and paired changes"):
+            st.dataframe(risk_changes, hide_index=True, width="stretch")
+            st.dataframe(pd.read_csv(RISK_RESULTS / "thresholds.csv"), hide_index=True, width="stretch")
+            calibration = pd.read_csv(RISK_RESULTS / "calibration.csv")
+            calibration_model = st.selectbox("Risk model for calibration", sorted(calibration.model.unique()))
+            calibration_block = st.selectbox("Risk input block for calibration", sorted(calibration.loc[calibration.model.eq(calibration_model), "block"].unique()))
+            selected_calibration = calibration.loc[calibration.model.eq(calibration_model) & calibration.block.eq(calibration_block)]
+            st.dataframe(selected_calibration, hide_index=True, width="stretch")
+            st.scatter_chart(selected_calibration, x="mean_probability", y="observed_event_rate", size="records")
+            st.caption("A calibrated model would lie near observed event rate = mean predicted probability. Sparse bins are unstable. These held-out-bin summaries diagnose calibration; they do not fit or verify an operational recalibration.")
 with validation:
     st.subheader("Transfer to unseen locations")
     if results is None:

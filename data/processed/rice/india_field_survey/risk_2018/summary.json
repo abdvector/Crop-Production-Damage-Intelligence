@@ -1,0 +1,31 @@
+{
+  "version": "risk-2018-matched-v1",
+  "completed_on": "2026-10-19",
+  "records": 4801,
+  "district_groups": 45,
+  "folds": 5,
+  "models": 3,
+  "blocks": 3,
+  "threshold_min_kg_ha": 3330.0,
+  "threshold_max_kg_ha": 4000.0,
+  "risk_definition": "Yield below each training fold's 20th percentile; thresholds vary across folds",
+  "protocol_sha256": "7154acf8e1d7855760c57b3c3db1841b8c71dbc415ea45aa57e6f8448fecab74",
+  "membership_sha256": "e9f248715543bc7d3aee406cc5956b0462c697c0498a66b827dc6a2b5a37ff5b",
+  "preserved_result_hashes": {
+    "model/selection.json": "fe2ac728b9fd1153b2b42c4c4a63ce0fe20133dc2932097e476a4e4ccf2fdd9a",
+    "model/assessment_metrics.csv": "be8f5d7f4b87bb6b3a0a94f3e19c7675d678bc82951823ac29fd48acf1836d45",
+    "model/assessment_predictions_local.csv": "25dc55a1e722535fa874a231f3ad306869bc71aa27fb747b65dfdcd344f9a01f",
+    "management_2018/metrics.csv": "c76d3f326a59b8b38534c9f09c7ea73171ec4362d561fffabe61320a734b9a7d"
+  },
+  "development_only": true,
+  "2019_used": false,
+  "probability_recalibration_fitted": false,
+  "operational_threshold_selected": false,
+  "limitations": [
+    "Retrospective, one-year complete-report cohort",
+    "Fold-specific risk thresholds, not one fixed absolute loss threshold",
+    "No new independent-year assessment or calibrated deployment probabilities",
+    "Low yield is not measured crop damage or causal loss",
+    "No prediction intervals or risk-based economic decision evaluation"
+  ]
+}

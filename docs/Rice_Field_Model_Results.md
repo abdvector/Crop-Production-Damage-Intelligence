@@ -1,6 +1,6 @@
 # Rice field regression: first declared comparison
 
-The first field-survey regression experiment is complete. Ridge alpha 1,000 was selected using only 2017–2018 development results. **Reliable temporal forecasting is not established.** The 2019 primary result is almost identical to the mean baseline, and a label-quality diagnostic also fails to improve on that baseline. No new field low-yield classifier was fitted.
+The first field-survey regression experiment is complete. Ridge alpha 1,000 was selected using only 2017–2018 development results. **Reliable temporal forecasting is not established.** The 2019 primary result is almost identical to the mean baseline, and a label-quality diagnostic also fails to improve on that baseline. This regression milestone fitted no classifier; the subsequent [2018 risk comparison](Rice_2018_Low_Yield_Risk.md) is a separate development experiment.
 
 ## Data and design
 
@@ -55,7 +55,7 @@ The findings support a reproducible negative-result benchmark, not a deployment 
 
 The subsequent [raw-source trace](Rice_Yield_Source_Trace.md) confirms all project conversions and traces the extremes to the publisher's stored quantities/areas. It does not confirm replacement values. The original assessment remains unchanged; 2017 quantity scope and some 2018 arithmetic differences also need source clarification.
 
-The next low-yield-risk experiment requires a separately declared candidate/validation protocol; the training-only 20th-percentile threshold and prevalence baseline are already planned. No risk accuracy is inferred from regression results. Adding protein/aluminium predictors still requires matched observations.
+The subsequent [2018 risk comparison](Rice_2018_Low_Yield_Risk.md) uses its own declared candidate/validation protocol, training-only 20th-percentile thresholds and prevalence baselines. No risk accuracy is inferred from these regression results. Adding protein/aluminium predictors still requires matched observations.
 
 ## Reproduction and checks
 

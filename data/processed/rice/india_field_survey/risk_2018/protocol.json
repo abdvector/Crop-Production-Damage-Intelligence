@@ -1,0 +1,151 @@
+{
+  "version": "risk-2018-matched-v1",
+  "declared_on": "2026-10-19",
+  "seed": 20261019,
+  "cohort": "Same complete-report 2018 records and district/weather-purged splits as management comparison",
+  "membership_sha256": "e9f248715543bc7d3aee406cc5956b0462c697c0498a66b827dc6a2b5a37ff5b",
+  "management_protocol_sha256": "055829b9f8cc4d7bd42de6472a2611556a8b4df6426d94c7c9661a184f1e6c78",
+  "feature_sha256": "764dc65ed3920ea719f7a219ceeb9eadd08b0a5f8b30161643302c2103556736",
+  "target": "Yield strictly below each fitting split's 20th percentile; linear quantile; never computed from validation yields",
+  "quantile": 0.2,
+  "blocks": [
+    "weather_planting",
+    "plus_static_context",
+    "plus_static_and_timed_products"
+  ],
+  "input_configuration": {
+    "version": "management-2018-matched-v1",
+    "declared_on": "2026-10-19",
+    "seed": 20261019,
+    "year": 2018,
+    "target": "yield_kg_ha",
+    "core_numeric": [
+      "T2M_MAX_d0_14_mean",
+      "T2M_MIN_d0_14_mean",
+      "ALLSKY_SFC_SW_DWN_d0_14_mean",
+      "RH2M_d0_14_mean",
+      "T2M_MAX_d15_29_mean",
+      "T2M_MIN_d15_29_mean",
+      "ALLSKY_SFC_SW_DWN_d15_29_mean",
+      "RH2M_d15_29_mean",
+      "T2M_MAX_d30_44_mean",
+      "T2M_MIN_d30_44_mean",
+      "ALLSKY_SFC_SW_DWN_d30_44_mean",
+      "RH2M_d30_44_mean",
+      "T2M_MAX_d45_60_mean",
+      "T2M_MIN_d45_60_mean",
+      "ALLSKY_SFC_SW_DWN_d45_60_mean",
+      "RH2M_d45_60_mean",
+      "rain_d0_14_total_mm",
+      "rain_d15_29_total_mm",
+      "rain_d30_44_total_mm",
+      "rain_d45_60_total_mm",
+      "establishment_day_of_year"
+    ],
+    "core_categorical": [
+      "state",
+      "district_group",
+      "variety_label_source_normalised",
+      "establishment_method_normalised"
+    ],
+    "product_numeric": [
+      "Urea_basal_product_kg_ha",
+      "Urea_through_day60_product_kg_ha",
+      "DAP_basal_product_kg_ha",
+      "DAP_through_day60_product_kg_ha",
+      "MoP_basal_product_kg_ha",
+      "MoP_through_day60_product_kg_ha",
+      "SSP_basal_product_kg_ha",
+      "SSP_through_day60_product_kg_ha",
+      "ZnSO4_basal_product_kg_ha",
+      "ZnSO4_through_day60_product_kg_ha"
+    ],
+    "static_categorical": [
+      "soil_texture_label_normalised",
+      "irrigation_availability_reported_normalised"
+    ],
+    "categorical_preprocessing": {
+      "unknown": "ignore",
+      "min_frequency": 20,
+      "max_categories": 40,
+      "fit_on_training_only": true
+    },
+    "models": [
+      {
+        "name": "Ridge alpha=1000",
+        "kind": "ridge",
+        "alpha": 1000
+      },
+      {
+        "name": "Random Forest leaf=50",
+        "kind": "forest",
+        "min_samples_leaf": 50,
+        "n_estimators": 200,
+        "max_features": 0.7
+      },
+      {
+        "name": "Gradient boosting leaves=15",
+        "kind": "boosting",
+        "max_leaf_nodes": 15,
+        "min_samples_leaf": 30,
+        "max_iter": 150,
+        "learning_rate": 0.05,
+        "early_stopping": false
+      }
+    ],
+    "blocks": [
+      "weather_planting",
+      "plus_static_context",
+      "plus_static_and_timed_products"
+    ],
+    "cohort": "2018 primary cohort, positive/consistent area and complete declared management features; matched for all blocks",
+    "folds": "Existing district fold assignments; remove fitting rows sharing any source weather cell with validation",
+    "primary_comparisons": "Paired product/static additions within each fixed model on identical records/splits; no winner-based final claim",
+    "status": "Development sensitivity after earlier development results; no new untouched assessment",
+    "model_search": false,
+    "2019_used": false,
+    "feature_sha256": "764dc65ed3920ea719f7a219ceeb9eadd08b0a5f8b30161643302c2103556736"
+  },
+  "baselines": [
+    "Global training prevalence",
+    "State training prevalence with global fallback"
+  ],
+  "classifiers": [
+    {
+      "name": "Logistic C=1",
+      "kind": "logistic",
+      "C": 1.0,
+      "max_iter": 2000
+    },
+    {
+      "name": "Random Forest leaf=50",
+      "kind": "forest",
+      "n_estimators": 200,
+      "min_samples_leaf": 50,
+      "max_features": 0.7
+    },
+    {
+      "name": "Gradient boosting leaves=15",
+      "kind": "boosting",
+      "max_iter": 150,
+      "max_leaf_nodes": 15,
+      "min_samples_leaf": 30,
+      "learning_rate": 0.05,
+      "early_stopping": false
+    }
+  ],
+  "primary_metric": "Pooled cross-fitted Brier score; compare baselines on identical validation labels",
+  "secondary_metrics": [
+    "log loss",
+    "mean within-fold ROC AUC",
+    "mean within-fold average precision",
+    "probability calibration"
+  ],
+  "calibration": "Raw held-out probabilities; ten fixed equal-width bins, observed event rate versus mean probability",
+  "no_hyperparameter_search": true,
+  "no_resampling_or_class_weights": true,
+  "no_validation_recalibration": true,
+  "no_operational_decision_threshold_selected": true,
+  "2019_used": false,
+  "qualification": "Development comparison on an already studied year; not an independent final assessment"
+}
