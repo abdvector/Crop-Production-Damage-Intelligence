@@ -1,0 +1,15 @@
+{
+  "verified_on": "2026-10-20",
+  "offline_replay_byte_identical": true,
+  "training_functions_disabled_during_replay": true,
+  "network_disabled_during_replay": true,
+  "missing_column_and_null_coverage_checks": true,
+  "streamlit_forecast_and_audit_metrics_checked": true,
+  "regional_model_and_existing_results_preserved": true,
+  "audit_sha256": {
+    "checks.json": "d591033f705285c3eaaaeb78e2f2b835586f5f2f38e310b2b16119c20b4f3c9d",
+    "coverage.csv": "583c80a0f34a8344830a9a1d2c238b0bedcb2ea270725d0d5010d7921603ded6",
+    "summary.json": "085312aff76ccdd652e1c4e8089fbca31bbffe0662c6938d716439fa73e15ad8"
+  },
+  "module_sha256": "33b720b12f16e85c8db45f279c5efba3caf70ef08e42b2c40b9c2d74c8676d1d"
+}

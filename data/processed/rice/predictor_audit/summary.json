@@ -1,0 +1,53 @@
+{
+  "audited_on": "2026-10-20",
+  "scope": "Existing local predictor-target linkage; no fitting, acquisition or label repair.",
+  "regional": {
+    "records": 1490,
+    "districts": 50,
+    "years": [
+      1987,
+      2017
+    ],
+    "year_count": 31,
+    "complete_history_weather_records": 1490,
+    "missing_district_years_inside_observed_span": 60,
+    "target": "Annual agricultural-year rice kg/ha, all seasons; historical 1966 district units.",
+    "supported_use": "Historical annual-yield replay; conditional reporting-delay assumptions.",
+    "live_or_season_specific_ready": false,
+    "flagged_coordinate_count": 4
+  },
+  "field": {
+    "records": 17836,
+    "records_by_year": {
+      "2017": 6183,
+      "2018": 7432,
+      "2019": 4221
+    },
+    "district_label_groups": 92,
+    "same_day_weather_records": 17836,
+    "yield_review_flags_by_year": {
+      "2017": 0,
+      "2018": 0,
+      "2019": 13
+    },
+    "matched_2018_management_records": 4801,
+    "matched_2018_districts": 45,
+    "management_retention_percent_of_eligible_2018": 64.6,
+    "excluded_eligible_2018_for_area_or_management": 2631,
+    "independent_verified_management_years": 1,
+    "label_status": "Year-specific unit/scope conflicts unresolved; 2019 assessment already opened."
+  },
+  "trial": {
+    "records": 1046,
+    "genotypes": 107,
+    "environments": 15,
+    "locations": 12,
+    "protein_coding_dosage_complete_records": 1046,
+    "soil_aluminium_management_complete_records": 0
+  },
+  "decision": "Keep the annual district prototype as the main existing deliverable. For a stronger pre-harvest study, acquire season-specific official rice yields and stable district geography before additional model training. Preserve field and molecular results as separate supporting studies.",
+  "first_data_priority": "Official district x agricultural year x crop x season rice labels, definitions/units, stable geography/crosswalk and release information; preserve post-2017 outcomes unopened until a new protocol is fixed.",
+  "timing_gap": "Weather-date truncation is verified; actual publication availability and historical reanalysis vintages are not. Current NASA guidance reports typical 2-3 day meteorology and 5-7 day solar latency. A future daily-data protocol should leave at least seven days as a planning buffer and verify actual availability; this does not certify monthly products or historical vintages.",
+  "new_training_performed": false,
+  "private_record_exported": false
+}

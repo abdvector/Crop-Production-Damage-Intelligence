@@ -137,3 +137,17 @@ def render_regional():
             st.caption("A modern state-boundary screen flags four source coordinates for review. It does not verify historical district centroids. No source values or test cohort were changed after seeing assessment results.")
             st.dataframe(pd.DataFrame(screen["flagged"]), hide_index=True, width="stretch")
         st.json(json.loads((OUT / "data_audit.json").read_text()))
+        linkage = OUT.parent / "predictor_audit"
+        if (linkage / "summary.json").exists():
+            with st.expander("Predictor linkage audit and next data needs"):
+                audit = json.loads((linkage / "summary.json").read_text(encoding="utf-8"))
+                st.write("The local audit checks source labels, historical lags and weather joins. It does not retrain the forecast or combine farm and district records.")
+                a, b = st.columns(2)
+                a.metric("District rows with matched history and weather", f"{audit['regional']['complete_history_weather_records']:,}")
+                b.metric("Separate 2018 rows with timed management", f"{audit['field']['matched_2018_management_records']:,}")
+                st.warning("Weather dates are truncated, but historical publication availability is unverified. NASA reports typical publication delays; these are retrospective archive studies rather than verified real-time backtests.")
+                st.write("Next priority: official Kharif rice yield records with units, agricultural years and compatible district boundaries. Annual/all-season labels cannot be renamed Kharif. New weather or management features must match those same units and dates.")
+                st.caption("The existing annual-yield model and its saved results are unchanged. Nonmissing values alone do not establish measurement quality or availability before a forecast.")
+                st.dataframe(pd.read_csv(linkage / "coverage.csv").drop(columns="columns"), hide_index=True, width="stretch")
+                st.download_button("Download predictor coverage audit", (linkage / "coverage.csv").read_bytes(), "rice_predictor_coverage.csv", "text/csv")
+                st.markdown("Sources: [NASA publication delays](https://power.larc.nasa.gov/docs/faqs/data/), [official APY query form](https://www.data.desagri.gov.in/website/apy-query-report-web). Export availability and years still require checking; no new yield export was downloaded in this audit.")

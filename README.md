@@ -48,6 +48,8 @@ The selected regional estimator remains unchanged and does not use these protein
 
 ## Forecast scope
 
+The [20 October predictor linkage audit](docs/Rice_Predictor_Linkage_Audit.md) recomputes all regional source-label, five-lag and twelve-weather-column matches and documents separate field/trial coverage. All 1,490 district records have complete history/weather, but soil, management, cultivar adoption and measured aluminium are not linked to those district-year rows. The 4,801 matched 2018 farm management records belong to a different study. Observation-date truncation does not verify data publication timing; weather and yield release vintages remain limitations. The next acquisition priority is official season-specific rice labels, units and compatible district geography before further model training. See the dashboard's **Data and research scope** tab for the audit.
+
 The app provides a working **historical forecasting prototype for 2012–2017**. It does not issue a live 2026 forecast from an archive ending in 2017. The target combines rice seasons and refers to historical 1966 districts; it is neither Kharif-only nor an individual field yield prediction.
 
 For a current-season extension, obtain updated annual rice yield histories for matching geographic units, establish reporting availability, and validate on newer years before opening the forecast period. Weather is needed when retesting weather-based candidates. Verified district-year management/soil measurements can be tested later. Protein sequences and aluminium studies lack that linkage and remain supporting research.
