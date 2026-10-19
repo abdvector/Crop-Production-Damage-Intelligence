@@ -1,0 +1,57 @@
+{
+  "research_question": "Can rainfall, temperature and humidity through August improve annual district rice yield and low-yield-risk outlooks over recent-history baselines in five eastern Indian states?",
+  "scope": [
+    "Bihar",
+    "Jharkhand",
+    "Orissa",
+    "Chhattisgarh",
+    "West Bengal"
+  ],
+  "scope_selection": "At least 14 positive yields during 1981-1997 and median rice area at least 10,000 ha during those years.",
+  "training_start": 1987,
+  "development_years": [
+    1998,
+    1999,
+    2000,
+    2001,
+    2002,
+    2003,
+    2004,
+    2005
+  ],
+  "fit_end": 2004,
+  "calibration_years": [
+    2006,
+    2007,
+    2008,
+    2009,
+    2010,
+    2011
+  ],
+  "assessment_years": [
+    2012,
+    2013,
+    2014,
+    2015,
+    2016,
+    2017
+  ],
+  "validation": "Expanding window; fit only years <= validation year minus 2. One-year embargo for assumed reporting delay.",
+  "candidates": [
+    "Recent mean",
+    "Last available yield",
+    "Historical trend",
+    "History Ridge",
+    "Weather Ridge",
+    "Weather forest",
+    "Weather boosting"
+  ],
+  "selection": "Lowest pooled development MAE; fixed candidates; tie broken in listed order. Assessment and calibration never select or tune model.",
+  "estimators": "Learn residual kg/ha relative to the historical reference. Ridge alpha=100; forest 300 trees, leaf=8, max_features=0.8; boosting 200 iterations, learning_rate=0.05, 7 leaves, min_leaf=15, l2=10, no early stopping. Median imputation/scaling and district/state encoding fit inside each training set. Predicted yields floored at zero.",
+  "forecast": "31 August, annual rice kg/ha, historical 1966 district units. Inputs June-August monthly mean daily maximum/minimum temperature C, mean daily precipitation mm/day and RH percent; Y-2..Y-6 yields kg/ha; year and location.",
+  "prohibited": "Same-year or Y-1 yields, target-year area/production, weather after August, outcome-derived district selection, random splits and retrospective label corrections.",
+  "uncertainty": "Fixed selected estimator fitted through 2004; scaled signed residuals from 2006-2011; empirical 10th/90th quantiles give an approximate 80% interval. Dependence/nonstationarity mean no guaranteed coverage.",
+  "risk": "Yield < 80% of district mean of Y-2..Y-6, probability from signed relative residual CDF with add-one smoothing. Test Brier versus development event prevalence.",
+  "deployment": "Preserve fixed assessment estimator for reproducible historical inference. Do not present 2026 forecasts using old data or auto-refit on assessment.",
+  "seed": 42
+}

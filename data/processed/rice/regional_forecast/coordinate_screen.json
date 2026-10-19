@@ -1,0 +1,34 @@
+{
+  "check": "Source representative points versus geoBoundaries modern state geometry. Diagnostic only, not verification of historical district centroids; cohort and results unchanged.",
+  "boundary_file_sha256": "47aa0acb6f69868daee49143276f3ce323f18905ba7d38d0a86816b405028736",
+  "flagged": [
+    {
+      "district_id": 701,
+      "district": "Balasore",
+      "state": "Orissa",
+      "latitude": 21.1,
+      "longitude": 86.9
+    },
+    {
+      "district_id": 709,
+      "district": "Mayurbhanja",
+      "state": "Orissa",
+      "latitude": 19.1,
+      "longitude": 86.4
+    },
+    {
+      "district_id": 807,
+      "district": "Bankura",
+      "state": "West Bengal",
+      "latitude": 24.4,
+      "longitude": 87.2
+    },
+    {
+      "district_id": 816,
+      "district": "Cooch Behar",
+      "state": "West Bengal",
+      "latitude": 26.0,
+      "longitude": 89.5
+    }
+  ]
+}

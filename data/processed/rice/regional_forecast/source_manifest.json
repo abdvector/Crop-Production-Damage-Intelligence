@@ -1,0 +1,34 @@
+{
+  "retrieved_on": "2026-10-19",
+  "doi": "10.21421/D2/XFB1BZ",
+  "files": [
+    {
+      "filename": "area_production_yield.json",
+      "url": "http://data.icrisat.org/dldAPI/apportioned/area-production-yield",
+      "bytes": 11980616,
+      "sha256": "e06d26c9062c5b9221fd0ac58892ece50d00207118d1f4de073ef2d54e0248e9"
+    },
+    {
+      "filename": "districts.json",
+      "url": "http://data.icrisat.org/dldAPI/apportioned/districts",
+      "bytes": 72163,
+      "sha256": "5125b1f2a43fb8e00a78795381150b5d5c24e895439fda3d5d97a3559610a65f"
+    },
+    {
+      "filename": "catalogue.json",
+      "url": "https://dataverse.icrisat.org/api/datasets/:persistentId/?persistentId=doi:10.21421/D2/XFB1BZ",
+      "bytes": 19410,
+      "sha256": "95be3baed8188aaaee54b213d22211c413625ae8f695a724710c1c65d0cec9db"
+    },
+    {
+      "filename": "DLD_Apportioned_Documentation.pdf",
+      "url": "https://dataverse.icrisat.org/api/access/datafile/8864",
+      "bytes": 1024935,
+      "sha256": "b31833fd9b819dea9c5a4d9e1f2dd7fdba5715902909ddae7c265019e2a0c054"
+    }
+  ],
+  "transport": "The provider's DLD API serves HTTP; HTTPS requests timed out. Checksums identify retrieved bytes; no publisher checksum is available for API JSON.",
+  "source_kind": "Government secondary administrative records compiled by ICRISAT and TCI. No survey PII or synthetic outcomes.",
+  "terms": "ICRISAT Data Sharing Agreement; no CC BY claim. Research/educational use with attribution.",
+  "agreement": "http://data.icrisat.org/document/ICRISAT-Data-Sharing-Agreement.html"
+}

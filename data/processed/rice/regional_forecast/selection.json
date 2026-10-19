@@ -1,0 +1,6 @@
+{
+  "selected_model": "History Ridge",
+  "selection_criterion": "Pooled development MAE only",
+  "protocol_sha256": "e6528af51ce7490e100d7fee89d2b51950d9d73b76fb2c97dc4caefb4904493d",
+  "table_sha256": "77163c0c5ae91565ba087c04ee297edc08989245501658e69d77d4f28dee8d74"
+}

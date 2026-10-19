@@ -1,0 +1,306 @@
+{
+  "files": [
+    {
+      "district_id": 1,
+      "url": "https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=T2M_MAX%2CT2M_MIN%2CPRECTOTCORR%2CRH2M&community=AG&latitude=21.2&longitude=81.3&start=1981&end=2017&format=JSON",
+      "sha256": "63c9d9c35748dad60fbcbaa7323b8d2e68f76fd31ad4c1671ef02c8186a3dcba",
+      "bytes": 28803
+    },
+    {
+      "district_id": 2,
+      "url": "https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=T2M_MAX%2CT2M_MIN%2CPRECTOTCORR%2CRH2M&community=AG&latitude=19.1&longitude=82.0&start=1981&end=2017&format=JSON",
+      "sha256": "ed786fe9ce496cd2a79b20a22dabb1eb95362a730ab171c83032c511559d50ea",
+      "bytes": 28832
+    },
+    {
+      "district_id": 3,
+      "url": "https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=T2M_MAX%2CT2M_MIN%2CPRECTOTCORR%2CRH2M&community=AG&latitude=21.2&longitude=81.7&start=1981&end=2017&format=JSON",
+      "sha256": "6adbf913f2a840f44d322e84fc0cfe01470ba9b9f1f203beb0e43bc1c9ff9713",
+      "bytes": 28803
+    },
+    {
+      "district_id": 4,
+      "url": "https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=T2M_MAX%2CT2M_MIN%2CPRECTOTCORR%2CRH2M&community=AG&latitude=22.1&longitude=82.1&start=1981&end=2017&format=JSON",
+      "sha256": "ca44baa613177377c90f0f1a66fb2812aad3919a8f4b20fbbb464e6e36acf72f",
+      "bytes": 28820
+    },
+    {
+      "district_id": 5,
+      "url": "https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=T2M_MAX%2CT2M_MIN%2CPRECTOTCORR%2CRH2M&community=AG&latitude=21.9&longitude=83.4&start=1981&end=2017&format=JSON",
+      "sha256": "23c6bab2bf5404cc91d7911c1436efab07da6ce088e35f42d66720949850217d",
+      "bytes": 28797
+    },
+    {
+      "district_id": 6,
+      "url": "https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=T2M_MAX%2CT2M_MIN%2CPRECTOTCORR%2CRH2M&community=AG&latitude=23.1&longitude=83.2&start=1981&end=2017&format=JSON",
+      "sha256": "8756e81681ea1a862f4042afa78b26f3a1551886a22f002e44313b1196a4e59f",
+      "bytes": 28794
+    },
+    {
+      "district_id": 701,
+      "url": "https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=T2M_MAX%2CT2M_MIN%2CPRECTOTCORR%2CRH2M&community=AG&latitude=21.1&longitude=86.9&start=1981&end=2017&format=JSON",
+      "sha256": "3e475359f448c18cf16d150dcc609c199a3572c44734976c477aaacab9035918",
+      "bytes": 28982
+    },
+    {
+      "district_id": 702,
+      "url": "https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=T2M_MAX%2CT2M_MIN%2CPRECTOTCORR%2CRH2M&community=AG&latitude=20.3&longitude=83.2&start=1981&end=2017&format=JSON",
+      "sha256": "a75ed89d2633bfc6c74b3b63bbd81bc5e6040ea71a645d8d8ebbb427db794cc1",
+      "bytes": 28855
+    },
+    {
+      "district_id": 703,
+      "url": "https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=T2M_MAX%2CT2M_MIN%2CPRECTOTCORR%2CRH2M&community=AG&latitude=20.8&longitude=85.9&start=1981&end=2017&format=JSON",
+      "sha256": "8d126bd559946175939d94c573576d91794565ef48ee1083efd3276e0cc70c2d",
+      "bytes": 28866
+    },
+    {
+      "district_id": 704,
+      "url": "https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=T2M_MAX%2CT2M_MIN%2CPRECTOTCORR%2CRH2M&community=AG&latitude=20.7&longitude=85.6&start=1981&end=2017&format=JSON",
+      "sha256": "ad915dbdf96d58339521f50de64b6bfbd3d981fc5f6e84ddefdd85f3f0e37a78",
+      "bytes": 28883
+    },
+    {
+      "district_id": 705,
+      "url": "https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=T2M_MAX%2CT2M_MIN%2CPRECTOTCORR%2CRH2M&community=AG&latitude=19.3&longitude=84.9&start=1981&end=2017&format=JSON",
+      "sha256": "2a403cd04de9a14b28c0329654a904c85e6205f5fa7505dfa8d275f20f8d589d",
+      "bytes": 28947
+    },
+    {
+      "district_id": 706,
+      "url": "https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=T2M_MAX%2CT2M_MIN%2CPRECTOTCORR%2CRH2M&community=AG&latitude=19.3&longitude=83.1&start=1981&end=2017&format=JSON",
+      "sha256": "b34adedada54f870ac1e751a050b508ad778573c9c3606ce324fc8ed72c75720",
+      "bytes": 28843
+    },
+    {
+      "district_id": 707,
+      "url": "https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=T2M_MAX%2CT2M_MIN%2CPRECTOTCORR%2CRH2M&community=AG&latitude=21.6&longitude=85.6&start=1981&end=2017&format=JSON",
+      "sha256": "3ada2b84b5915c5855648a31fbdaf21c0c1c9e9fbff51fc2c6cacd6155a4943d",
+      "bytes": 28831
+    },
+    {
+      "district_id": 708,
+      "url": "https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=T2M_MAX%2CT2M_MIN%2CPRECTOTCORR%2CRH2M&community=AG&latitude=18.8&longitude=82.7&start=1981&end=2017&format=JSON",
+      "sha256": "902df34f20168c35b0d873f5ea186f974366926e9e92ed48bff68836b309d1ce",
+      "bytes": 28845
+    },
+    {
+      "district_id": 709,
+      "url": "https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=T2M_MAX%2CT2M_MIN%2CPRECTOTCORR%2CRH2M&community=AG&latitude=19.1&longitude=86.4&start=1981&end=2017&format=JSON",
+      "sha256": "c0becc1fe7bb84643d3dccd8b933a9080a9f50f21a99bec08cfcfe7771530e0e",
+      "bytes": 28923
+    },
+    {
+      "district_id": 710,
+      "url": "https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=T2M_MAX%2CT2M_MIN%2CPRECTOTCORR%2CRH2M&community=AG&latitude=20.1&longitude=84.4&start=1981&end=2017&format=JSON",
+      "sha256": "458554e623556b098962fcd0d03e08dafac691ec8a261a0e405e1a1ff153e697",
+      "bytes": 28856
+    },
+    {
+      "district_id": 711,
+      "url": "https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=T2M_MAX%2CT2M_MIN%2CPRECTOTCORR%2CRH2M&community=AG&latitude=19.8&longitude=85.8&start=1981&end=2017&format=JSON",
+      "sha256": "ac954014c31f1b2bf4d335279c587467b82123e011768ce8470783a7fa95e697",
+      "bytes": 28928
+    },
+    {
+      "district_id": 712,
+      "url": "https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=T2M_MAX%2CT2M_MIN%2CPRECTOTCORR%2CRH2M&community=AG&latitude=21.5&longitude=84.0&start=1981&end=2017&format=JSON",
+      "sha256": "a46672e09f17237973d2a3ca56a273bf28fd0ebaaeccf2d07c1d5bd7ae8cf164",
+      "bytes": 28817
+    },
+    {
+      "district_id": 713,
+      "url": "https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=T2M_MAX%2CT2M_MIN%2CPRECTOTCORR%2CRH2M&community=AG&latitude=21.5&longitude=84.9&start=1981&end=2017&format=JSON",
+      "sha256": "cd8fb8d33f921b27c01b9e33d11baf3e1d5006af18f7cbacffdebaee663e3f72",
+      "bytes": 28817
+    },
+    {
+      "district_id": 800,
+      "url": "https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=T2M_MAX%2CT2M_MIN%2CPRECTOTCORR%2CRH2M&community=AG&latitude=22.4&longitude=88.6&start=1981&end=2017&format=JSON",
+      "sha256": "836d77100f210e41173f8cade0216bd34e1f686607c679299e9c8fd9b1738822",
+      "bytes": 28822
+    },
+    {
+      "district_id": 803,
+      "url": "https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=T2M_MAX%2CT2M_MIN%2CPRECTOTCORR%2CRH2M&community=AG&latitude=23.4&longitude=88.5&start=1981&end=2017&format=JSON",
+      "sha256": "e95c2127cdec6dc4522bacb4b735b1ca5c0e3c1c350530a0a3baa801460d7516",
+      "bytes": 28798
+    },
+    {
+      "district_id": 804,
+      "url": "https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=T2M_MAX%2CT2M_MIN%2CPRECTOTCORR%2CRH2M&community=AG&latitude=24.1&longitude=88.3&start=1981&end=2017&format=JSON",
+      "sha256": "5da0f3a5affdbb53d2d895cb5db81d4aa1fd9c081a9e9659687bd4a0ba227da4",
+      "bytes": 28784
+    },
+    {
+      "district_id": 805,
+      "url": "https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=T2M_MAX%2CT2M_MIN%2CPRECTOTCORR%2CRH2M&community=AG&latitude=23.2&longitude=87.9&start=1981&end=2017&format=JSON",
+      "sha256": "27b6afbf76997dd8ce050007cfa0d3abd54c1192a2d7b471a35fe1769ebd8605",
+      "bytes": 28805
+    },
+    {
+      "district_id": 806,
+      "url": "https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=T2M_MAX%2CT2M_MIN%2CPRECTOTCORR%2CRH2M&community=AG&latitude=23.7&longitude=87.7&start=1981&end=2017&format=JSON",
+      "sha256": "98e34558474e3d036696f411889f83e3e478ebcab66c52d04dce7fc77744d77f",
+      "bytes": 28775
+    },
+    {
+      "district_id": 807,
+      "url": "https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=T2M_MAX%2CT2M_MIN%2CPRECTOTCORR%2CRH2M&community=AG&latitude=24.4&longitude=87.2&start=1981&end=2017&format=JSON",
+      "sha256": "64d247cc4a7bd21f5d5179760e2c03e97914489454b66028186e0815761e8dea",
+      "bytes": 28792
+    },
+    {
+      "district_id": 810,
+      "url": "https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=T2M_MAX%2CT2M_MIN%2CPRECTOTCORR%2CRH2M&community=AG&latitude=22.9&longitude=88.3&start=1981&end=2017&format=JSON",
+      "sha256": "5e0d8efd8d1299def833f3bbe7f2d9ffb39282dbcb4467065ef4851bbdbbffe7",
+      "bytes": 28805
+    },
+    {
+      "district_id": 811,
+      "url": "https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=T2M_MAX%2CT2M_MIN%2CPRECTOTCORR%2CRH2M&community=AG&latitude=22.6&longitude=88.0&start=1981&end=2017&format=JSON",
+      "sha256": "96900fd42839448d3c5bef009d94c30a854a34f07b9bb22783655885d94d9d42",
+      "bytes": 28792
+    },
+    {
+      "district_id": 812,
+      "url": "https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=T2M_MAX%2CT2M_MIN%2CPRECTOTCORR%2CRH2M&community=AG&latitude=26.5&longitude=88.7&start=1981&end=2017&format=JSON",
+      "sha256": "bca753a45a2e1bb50dfd9d7850fb4b81ea07cdcf88518ae687d3bb1426445ee9",
+      "bytes": 28863
+    },
+    {
+      "district_id": 813,
+      "url": "https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=T2M_MAX%2CT2M_MIN%2CPRECTOTCORR%2CRH2M&community=AG&latitude=27.1&longitude=88.3&start=1981&end=2017&format=JSON",
+      "sha256": "0baf376dba8b698f49f7d8bf751b8ca1c455f8c340ffa7ed21eb5cd7302ab42d",
+      "bytes": 28732
+    },
+    {
+      "district_id": 814,
+      "url": "https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=T2M_MAX%2CT2M_MIN%2CPRECTOTCORR%2CRH2M&community=AG&latitude=25.0&longitude=88.1&start=1981&end=2017&format=JSON",
+      "sha256": "19998c53eac67ad059862d002599e9f1fce6aa99422f994565c6d41bc61ae682",
+      "bytes": 28782
+    },
+    {
+      "district_id": 816,
+      "url": "https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=T2M_MAX%2CT2M_MIN%2CPRECTOTCORR%2CRH2M&community=AG&latitude=26.0&longitude=89.5&start=1981&end=2017&format=JSON",
+      "sha256": "0b00f30e14f8de9c2d5dc5290774110634f9a84c7a94a283bcd5b40844b3e903",
+      "bytes": 28840
+    },
+    {
+      "district_id": 817,
+      "url": "https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=T2M_MAX%2CT2M_MIN%2CPRECTOTCORR%2CRH2M&community=AG&latitude=23.0&longitude=86.4&start=1981&end=2017&format=JSON",
+      "sha256": "6bc067852db91cbfe425697494d1fff35ce30607475849eeab4ded9566906037",
+      "bytes": 28787
+    },
+    {
+      "district_id": 818,
+      "url": "https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=T2M_MAX%2CT2M_MIN%2CPRECTOTCORR%2CRH2M&community=AG&latitude=22.4&longitude=87.3&start=1981&end=2017&format=JSON",
+      "sha256": "e08c00f99ebe4ac4a814c577982544a1da8602c2c270dd76459a342b00552ea7",
+      "bytes": 28791
+    },
+    {
+      "district_id": 901,
+      "url": "https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=T2M_MAX%2CT2M_MIN%2CPRECTOTCORR%2CRH2M&community=AG&latitude=26.5&longitude=84.6&start=1981&end=2017&format=JSON",
+      "sha256": "38c061bd7ee1f4ef5b79bde095b3c756ac95c248aa2bc9863754c1e7ed10b209",
+      "bytes": 28760
+    },
+    {
+      "district_id": 902,
+      "url": "https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=T2M_MAX%2CT2M_MIN%2CPRECTOTCORR%2CRH2M&community=AG&latitude=26.1&longitude=85.4&start=1981&end=2017&format=JSON",
+      "sha256": "09d5895b27e96a213a5df0b14dba17719dc5d085962d3b2b7011b3b785926f57",
+      "bytes": 28765
+    },
+    {
+      "district_id": 903,
+      "url": "https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=T2M_MAX%2CT2M_MIN%2CPRECTOTCORR%2CRH2M&community=AG&latitude=26.0&longitude=85.9&start=1981&end=2017&format=JSON",
+      "sha256": "4fe49ae4ca9ec6fab156e07671245b24bc6e03b91f0e59702ad4d43f00687096",
+      "bytes": 28765
+    },
+    {
+      "district_id": 904,
+      "url": "https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=T2M_MAX%2CT2M_MIN%2CPRECTOTCORR%2CRH2M&community=AG&latitude=26.2&longitude=86.8&start=1981&end=2017&format=JSON",
+      "sha256": "87cbf675a42a3ed889ba1b5ff7f46e4f17bf1e5ff23e27736f6564305c3efdb6",
+      "bytes": 28773
+    },
+    {
+      "district_id": 905,
+      "url": "https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=T2M_MAX%2CT2M_MIN%2CPRECTOTCORR%2CRH2M&community=AG&latitude=25.8&longitude=87.5&start=1981&end=2017&format=JSON",
+      "sha256": "4e795c69cfac4d8e9f6f57a332e023c2d7092693aae0395f2fe3d718dde78396",
+      "bytes": 28814
+    },
+    {
+      "district_id": 906,
+      "url": "https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=T2M_MAX%2CT2M_MIN%2CPRECTOTCORR%2CRH2M&community=AG&latitude=26.0&longitude=84.8&start=1981&end=2017&format=JSON",
+      "sha256": "ada725335f83562a8129ba7adc8709a8bdf5eb976bbfc8a734283286a1db3fbd",
+      "bytes": 28764
+    },
+    {
+      "district_id": 907,
+      "url": "https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=T2M_MAX%2CT2M_MIN%2CPRECTOTCORR%2CRH2M&community=AG&latitude=25.6&longitude=85.0&start=1981&end=2017&format=JSON",
+      "sha256": "d14b130e1acb7136a21ba395fa1d032bb71dc53246f01ba7e0e129c663d59a23",
+      "bytes": 28760
+    },
+    {
+      "district_id": 908,
+      "url": "https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=T2M_MAX%2CT2M_MIN%2CPRECTOTCORR%2CRH2M&community=AG&latitude=24.9&longitude=86.2&start=1981&end=2017&format=JSON",
+      "sha256": "64120e0fe00b4853dbf12e32eebea7ad72afb658c3e5d637b3920c0156120be6",
+      "bytes": 28769
+    },
+    {
+      "district_id": 909,
+      "url": "https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=T2M_MAX%2CT2M_MIN%2CPRECTOTCORR%2CRH2M&community=AG&latitude=25.3&longitude=87.0&start=1981&end=2017&format=JSON",
+      "sha256": "8b976ec1b136e94f3a97cfd5c184cb141a59613b9531d10808a9f561648cbfa1",
+      "bytes": 28794
+    },
+    {
+      "district_id": 910,
+      "url": "https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=T2M_MAX%2CT2M_MIN%2CPRECTOTCORR%2CRH2M&community=AG&latitude=24.9&longitude=87.6&start=1981&end=2017&format=JSON",
+      "sha256": "08166d9a8182526f7644152ff8f82afbb0301c2b725fa830cbd2f17baf1d6181",
+      "bytes": 28751
+    },
+    {
+      "district_id": 911,
+      "url": "https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=T2M_MAX%2CT2M_MIN%2CPRECTOTCORR%2CRH2M&community=AG&latitude=25.5&longitude=84.5&start=1981&end=2017&format=JSON",
+      "sha256": "f0e69bd412b8b4f3aebc3d3ca84e280ec4593cb65882b845ffc09bfa51a85c12",
+      "bytes": 28758
+    },
+    {
+      "district_id": 912,
+      "url": "https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=T2M_MAX%2CT2M_MIN%2CPRECTOTCORR%2CRH2M&community=AG&latitude=24.8&longitude=85.0&start=1981&end=2017&format=JSON",
+      "sha256": "045a820277a87ec4e63c0fe8effba83f53cac63ef9104e969f33846e285d12b1",
+      "bytes": 28751
+    },
+    {
+      "district_id": 913,
+      "url": "https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=T2M_MAX%2CT2M_MIN%2CPRECTOTCORR%2CRH2M&community=AG&latitude=24.0&longitude=85.4&start=1981&end=2017&format=JSON",
+      "sha256": "e73d796f3f6e748ca8d76b79ac9864ab18f0606183ff3dd60e4503694e560616",
+      "bytes": 28783
+    },
+    {
+      "district_id": 914,
+      "url": "https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=T2M_MAX%2CT2M_MIN%2CPRECTOTCORR%2CRH2M&community=AG&latitude=23.8&longitude=86.4&start=1981&end=2017&format=JSON",
+      "sha256": "4529f252266a3863ae8f695b854c2f515bc42ad2a3b2028c4c5e6ded3e2d34e7",
+      "bytes": 28790
+    },
+    {
+      "district_id": 915,
+      "url": "https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=T2M_MAX%2CT2M_MIN%2CPRECTOTCORR%2CRH2M&community=AG&latitude=24.1&longitude=84.1&start=1981&end=2017&format=JSON",
+      "sha256": "0b202d88bb02f101534d953e3bb2eaf7056f7f9297aed9e75bd11b3c01a5d891",
+      "bytes": 28773
+    },
+    {
+      "district_id": 916,
+      "url": "https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=T2M_MAX%2CT2M_MIN%2CPRECTOTCORR%2CRH2M&community=AG&latitude=23.4&longitude=85.0&start=1981&end=2017&format=JSON",
+      "sha256": "08caf7c39f19723142312c18304d90f27e76bad25499d816c8cd9cc50aea5229",
+      "bytes": 28743
+    },
+    {
+      "district_id": 917,
+      "url": "https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=T2M_MAX%2CT2M_MIN%2CPRECTOTCORR%2CRH2M&community=AG&latitude=22.7&longitude=86.0&start=1981&end=2017&format=JSON",
+      "sha256": "cb6b398ac23109074643d3b042a2a34ed5721a21fe5cbdc722911290bcc5052d",
+      "bytes": 28818
+    }
+  ],
+  "failures": [],
+  "interpretation": "NASA POWER monthly reanalysis estimates at source district representative coordinates, not district area means or observations available in real time."
+}

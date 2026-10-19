@@ -1,0 +1,19 @@
+{
+  "checked_on": "2026-10-19",
+  "checks_passed": [
+    "Source file and all 50 weather cache hashes",
+    "Protocol, dataset and model artifact hashes",
+    "All 300 saved forecasts reproduce using a seven-column target-free input schema",
+    "Inference needs no original raw caches or network",
+    "Targets, target-year production and area do not affect inference",
+    "History scenario changes prediction",
+    "Temporal development embargo Y-2",
+    "Out-of-scope year/district and incompatible metadata rejected",
+    "Nonfinite and inconsistent history inputs rejected",
+    "Assessment metrics and interval coverage independently recomputed",
+    "Opened-study overwrite refused",
+    "Streamlit default forecast, state selection, harvest reveal and preserved archive smoke tests",
+    "New application sources parse and contain no pictographic emojis"
+  ],
+  "limitations": "Historical replay only; no current-season validation, measured causal damage or reliable low-yield alerts. No independent validation of district point coordinates."
+}

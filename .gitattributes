@@ -1,3 +1,6 @@
 # Preserve exact dataset bytes, publisher checksums and baseline input hashes.
 data/** -text
 *.zip -text
+# Keep preserved source/derived CRLF bytes without treating CR as stray whitespace.
+data/processed/rice/regional_forecast/** whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+data/raw/rice/icrisat_district/** whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

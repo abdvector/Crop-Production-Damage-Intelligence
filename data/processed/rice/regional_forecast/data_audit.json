@@ -1,0 +1,27 @@
+{
+  "original_records": 16146,
+  "scope_districts": 50,
+  "model_records": 1490,
+  "years": [
+    1987,
+    2017
+  ],
+  "states": [
+    "Bihar",
+    "Jharkhand",
+    "Orissa",
+    "Chhattisgarh",
+    "West Bengal"
+  ],
+  "target": "Annual district rice yield kg/ha; agricultural year Y means Y to Y+1. Not Kharif-only or farm yield.",
+  "history_availability": "Use only Y-2 through Y-6; a conservative assumed two-year administrative reporting lag, not verified historical release vintages.",
+  "weather_cutoff": "31 August of agricultural start year Y; June, July and August only.",
+  "boundaries": "ICRISAT apportioned historical 1966 district units, not current district boundaries.",
+  "units": {
+    "T2M_MAX": "C",
+    "T2M_MIN": "C",
+    "PRECTOTCORR": "mm/day",
+    "RH2M": "%"
+  },
+  "source_consistency_max_difference_kg_ha": 15.46698412698413
+}

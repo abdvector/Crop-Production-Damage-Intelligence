@@ -1,0 +1,37 @@
+{
+  "selected_model": "History Ridge",
+  "selection_criterion": "Pooled development MAE only",
+  "protocol_sha256": "e6528af51ce7490e100d7fee89d2b51950d9d73b76fb2c97dc4caefb4904493d",
+  "table_sha256": "77163c0c5ae91565ba087c04ee297edc08989245501658e69d77d4f28dee8d74",
+  "fit_records": 840,
+  "fit_end": 2004,
+  "calibration_records": 300,
+  "assessment_records": 300,
+  "assessment_districts": 50,
+  "assessment_years": [
+    2012,
+    2013,
+    2014,
+    2015,
+    2016,
+    2017
+  ],
+  "regression": {
+    "model": "History Ridge",
+    "records": 300,
+    "mae_kg_ha": 449.9528271796209,
+    "rmse_kg_ha": 577.1774165095107,
+    "r_squared": 0.2759804495929742,
+    "wape_percent": 19.950580652896704
+  },
+  "interval_coverage_80": 0.8066666666666666,
+  "mean_interval_width_kg_ha": 1656.9905886447623,
+  "risk_brier": 0.09943683025598292,
+  "prevalence_brier": 0.10015698636122469,
+  "development_prevalence": 0.18994413407821228,
+  "assessment_low_yield_rate": 0.10333333333333333,
+  "risk_auc": 0.39375224847103973,
+  "risk_beats_prevalence": true,
+  "model_sha256": "726ae2b00085d37c0a80947667dce1a574708846905938f25eea22b19463cd13",
+  "status": "Historical retrospective regional outlook. Not a current-season forecast, farm prediction or causal damage estimate."
+}
