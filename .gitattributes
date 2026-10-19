@@ -7,3 +7,4 @@ data/raw/rice/icrisat_district/** whitespace=blank-at-eol,blank-at-eof,space-bef
 data/raw/rice/molecular_linkage_audit/** whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 # PDB uses fixed-width padded records; preserve source formatting and checksums.
 data/raw/rice/molecular_linkage_audit/*.pdb -diff -whitespace
+data/processed/rice/protein_experiment/** whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

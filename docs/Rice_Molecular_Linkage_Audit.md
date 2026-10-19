@@ -64,7 +64,9 @@ The two existing STAR1/STAR2 reference genes have no coding-consequence marker o
 
 The regional forecasting dataset has annual district yields without cultivar identity or adoption shares. It cannot receive one trial genotype's protein features as if they represented an entire district. A regional molecular extension would additionally need geographically and temporally matched cultivar/adoption data and compatible yield observations.
 
-## Next experiment supported by these inputs
+## Experiment supported by these inputs
+
+Update: the [controlled comparison is now complete](Rice_Protein_Context_Experiment.md). Adding structure context did not improve held-out-location forecasting over ordinary SNPs or matched representation controls. The following rationale was established by the audit; subsequent yield-model training and results are documented in that new report. No ESM computation occurred.
 
 No additional downloads are necessary to start a small trial-level feasibility comparison with the prepared annotations and measured dosages. Before training, freeze a matched-cohort comparison of early-season environment/context alone, environment plus ordinary SNPs, and environment plus a protein-informed representation of the same measured variants. Fit preprocessing and dimensionality reduction inside each training fold. Hold out whole locations/environments; examine genotype transfer separately if claimed. The old trial assessments have already been inspected, so a new analysis on them is development evidence rather than a fresh untouched test.
 
@@ -78,4 +80,4 @@ Functional module: `src/rice_molecular_linkage.py`. `app.py` remains the sole ap
 
 Original public catalogues, reference/API responses, request metadata, reference protein sequences and PDBs are in `data/raw/rice/molecular_linkage_audit/`. Derived outputs are in `data/processed/rice/molecular_linkage_audit/`. Key files are reference_checked_markers.csv, canonical_changed_residues.csv, measured_variant_dosages.csv, genotype_feature_coverage.csv, structure_mapped_variants.csv, reference_structure_features.csv and their JSON summaries. Source responses retain checksums and request bodies.
 
-From a project-root Python session, call `run_linkage_audit()` and `audit_structural_links()` from `src.rice_molecular_linkage`. Cached replay was verified without network access. Missing caches require public API access. The audit changes no forecasting model weights, training cohort, final assessment or regional metrics. No ESM computation or yield-model training occurred.
+From a project-root Python session, call `run_linkage_audit()` and `audit_structural_links()` from `src.rice_molecular_linkage`. Cached replay was verified without network access. Missing caches require public API access. The audit itself changes no forecasting model weights, training cohort, final assessment or regional metrics. Subsequent trial-level model training is recorded in the separate comparison report; the regional model remains unchanged. No ESM computation occurred.

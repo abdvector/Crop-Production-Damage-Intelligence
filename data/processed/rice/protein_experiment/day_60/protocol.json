@@ -1,0 +1,130 @@
+{
+  "version": "protein-context-location-v1",
+  "frozen_on": "2026-10-20",
+  "status": "Development experiment; outcomes in these trials were examined in earlier studies.",
+  "target": "Published adjusted trial grain yield, kg/ha; not direct causal damage or district yield.",
+  "cohort": {
+    "records": 1046,
+    "genotypes": 107,
+    "environments": 15,
+    "location_groups": 12
+  },
+  "forecast_cutoff": "Inclusive days 0..60 after recorded seeding; strictly before harvest.",
+  "environment_columns": [
+    "lit_mean_min_temperature_c",
+    "lit_mean_temperature_c",
+    "lit_mean_diurnal_range_c",
+    "lit_mean_radiation_mj_m2_day",
+    "lit_total_rain_mm",
+    "lit_mean_vpd_approx_kpa",
+    "plant_seeding_sin",
+    "plant_seeding_cos",
+    "plant_established_by_issue",
+    "plant_delay_observed_days",
+    "plant_field_days_observed",
+    "plant_method",
+    "plant_season",
+    "plant_spacing_layout_source"
+  ],
+  "genetic_dimensions": {
+    "all": 882,
+    "coding": 89,
+    "six": 6,
+    "structure": 3,
+    "shuffled": 3
+  },
+  "structure_markers": [
+    "chr01:2865232",
+    "chr01:30341513",
+    "chr01:33695501",
+    "chr02:10555263",
+    "chr02:16919033",
+    "chr02:25415397"
+  ],
+  "shuffle_permutation_seed42": [
+    3,
+    2,
+    5,
+    4,
+    1,
+    0
+  ],
+  "structure_features": "Mean alternate dosage; mean dosage weighted by standardized reference contacts and radial position. Annotation standardization across six fixed sites, independent of trial outcomes.",
+  "pca_control": "Mean six-site dosage plus first two PCs of standardized six SNPs; PCA fitted only to unique training genotypes.",
+  "quality_filter": "Local pLDDT >=70 and both reference geometry descriptors present. Confidence is not function.",
+  "models": {
+    "Training mean": [],
+    "Environment": [
+      "environment"
+    ],
+    "Environment + all SNPs": [
+      "environment",
+      "all"
+    ],
+    "Environment + coding SNPs": [
+      "environment",
+      "coding"
+    ],
+    "Environment + six SNPs": [
+      "environment",
+      "six"
+    ],
+    "Environment + SNP PCA control": [
+      "environment",
+      "pca"
+    ],
+    "Environment + structure": [
+      "environment",
+      "structure"
+    ],
+    "Environment + shuffled structure": [
+      "environment",
+      "shuffled"
+    ],
+    "Environment + all SNPs + structure": [
+      "environment",
+      "all",
+      "structure"
+    ]
+  },
+  "ridge_alpha_grid": [
+    0.1,
+    1.0,
+    10.0,
+    100.0
+  ],
+  "outer_split": "Leave one complete country/location group out; 12 folds.",
+  "inner_split": "Leave one remaining location out; select lowest equal-location macro RMSE; grid-order tie break.",
+  "preprocessing": "Median numeric imputation and standardization, categorical one-hot encoding fitted on unique training environments. Genetic standardization fitted on unique training genotypes. Each block divided by sqrt(its original column count). All-SNP block uses exact positive-eigenvalue training span, with no truncated fitted directions. No post-concatenation scaling.",
+  "training_weights": "Inverse training environment record count, normalized to mean one. Mean baseline uses the same weights.",
+  "primary_comparison": [
+    "Environment + all SNPs + structure",
+    "Environment + all SNPs"
+  ],
+  "primary_metric": "Equal-location macro RMSE = sqrt(mean(location MSE)); positive improvement means lower error.",
+  "secondary_metrics": [
+    "pooled MAE",
+    "pooled RMSE",
+    "pooled R squared",
+    "equal-location MAE",
+    "within-environment genotype Pearson correlation"
+  ],
+  "stability": "5000 paired bootstrap samples of the 12 held-out locations, seed42, percentile95% interval; descriptive development stability only.",
+  "claim_rule": "Primary macro RMSE improvement >0, bootstrap lower bound >0, >=6 locations improve; structure-only representation must also beat both PCA and shuffled-annotation controls on macro RMSE to suggest annotation specificity. No external validation or operational promotion.",
+  "limitations": "Six sites from a bounded structural audit; additive engineered representations only. Locations held out, genotypes may overlap; no claim about unseen cultivars, full cultivar folding, aluminium tolerance, damage causality or temporal forecasting.",
+  "source_sha256": {
+    "data/processed/rice/yield_observations_audited.csv": "14fcc9757a31c2f632d114652375fb76cd77f11f1dcddc8ca9c59d6a9a122bf7",
+    "data/processed/rice/daily_weather.csv": "1aa01ca8e70ef4ba0325ddf71c43534bac9397a63b2fef4f74cab5567ca09936",
+    "data/processed/rice/genotype_marker_calls.csv": "ee21bb7752280e6ea9ce6f3a6df9778b36da72d7a3b3d993f489e314f03b6580",
+    "data/processed/rice/marker_metadata.csv": "0cbf5905617767ad47a5a6e4336d93719fb6ae2ff7a75d462e33324fa7f11de1",
+    "data/processed/rice/trial_metadata.csv": "c5df8b6ad4d522735c21f78f5a1b2d821005d13d7c8e1bb78577b2a9ac40140e",
+    "data/processed/rice/molecular_linkage_audit/measured_variant_dosages.csv": "eb8fd9092a55ce68d7bed98979f448e2f55b415cd8d355d9d513d0f116d91950",
+    "data/processed/rice/molecular_linkage_audit/reference_structure_features.csv": "0790428380f6f275a6db055e063745ec95057891120bee07520ce1c104284026",
+    "src/rice_protein_experiment.py": "f163d948b5387addf8af384f7572a8d24c4e43d4b990731a9f5b86e70fb359aa",
+    "src/rice_baseline.py": "443171b4efdf89eadfea26103c0bd0a0368a1778e3aea11fa599f852fd43908f",
+    "src/rice_context.py": "3e59aea69c59132cffe37acc1904fea3aa352de9399d30edb7fbebe36cc8f2e9",
+    "src/rice_literature.py": "d43391455d68964ccbc62f5a93c5f40a6f63f744b2240848dec811d1d054ea99",
+    "src/rice_validation.py": "0d5930b89e0d08e5d9b7253dcb4881440f0083888608b50e5f0c12f2c451d0a6"
+  },
+  "regional_model_sha256": "726ae2b00085d37c0a80947667dce1a574708846905938f25eea22b19463cd13"
+}

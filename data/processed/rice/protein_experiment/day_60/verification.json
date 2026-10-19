@@ -1,0 +1,35 @@
+{
+  "protocol_and_source_hashes": true,
+  "regional_model_unchanged": true,
+  "identical_cohorts_and_source_targets": true,
+  "all_metrics_recomputed": true,
+  "inner_locations_exclude_outer_location": true,
+  "alpha_selection_recomputed": true,
+  "coding_dosages_match_original_snp_calls": true,
+  "forecast_cutoffs_preharvest_and_complete": true,
+  "one_outer_fold_all_models_independently_refitted": true,
+  "preprocessing_runs_without_outcome_columns": true,
+  "paired_bootstrap_recomputed": true,
+  "pretraining_exact_genetic_kernel_check": true,
+  "versions": {
+    "python": "3.13.5",
+    "numpy": "2.5.3",
+    "pandas": "3.0.6",
+    "scikit_learn": "1.9.1",
+    "scipy": "1.18.1",
+    "streamlit": "1.64.0"
+  },
+  "files_sha256": {
+    "forecast_windows.csv": "e986d04cd7eecd5cfc051fda88c3f4e272fe58ae3cc3c5047a64c9cbca101771",
+    "inner_selection.csv": "5a2fcc864f5970b35c5b8cbdba447781d6795f553e04e06fa83c8dbfebc069ec",
+    "location_results.csv": "feecce97a65b59ccf693580dc4a85aad1b3b6886f283a4c4b698308604b55a8f",
+    "metrics.csv": "ed2d98c9273c7bb33a4aa94de209063e611f3f3a4e0086b5c675d9f476fdc747",
+    "paired_comparisons.csv": "18deb4d6a72d0f18f0f3e34dd6df0d0996cb1b83606fb84d8123c1756e46eeeb",
+    "predictions.csv": "8aad294629d203f98e0ec26a1d249dc932bec8eaadc85787372cf12ea83eb9a6",
+    "protocol.json": "2ec0a53d50f52731ae3441bcd6264122cff22da284f04aaa4e2c8ba9934637cc",
+    "summary.json": "c8161dd869590cc2e0307c94bfdf7c58b7318188178be83318bf7bb5e3b3d922",
+    "within_environment_rankings.csv": "85136d6e75a673bfee31ac8225f2321acee5c8b486f350eb153548bbf1c909ee"
+  },
+  "streamlit_regional_screen": true,
+  "streamlit_molecular_results_screen": true
+}
