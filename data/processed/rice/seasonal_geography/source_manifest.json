@@ -1,0 +1,47 @@
+{
+  "retrieved_on": "2026-10-20",
+  "official_identity_source": "https://censusindia.gov.in/nada/index.php/catalog/6191",
+  "geometry_commit": "5ea90379e67dece749b01448ca438161a3534b79",
+  "geometry_publisher": "DataMeet Community Maps Project",
+  "geometry_licence": "Creative Commons Attribution 2.5 India, per Districts/README.md; do not substitute repository software MIT licence",
+  "files": [
+    {
+      "relative_path": "data/raw/rice/seasonal_geography/census_2011_pca_catalogue.html",
+      "bytes": 805714,
+      "sha256": "64e5c6ff57133cb91d25dfeff2be2228b338f6951bf430ff8bf93b9270d08f3e",
+      "url": "https://censusindia.gov.in/nada/index.php/catalog/6191"
+    },
+    {
+      "relative_path": "data/raw/rice/seasonal_geography/datameet_README.md",
+      "bytes": 659,
+      "sha256": "179605e797b5cfd063bfd03817e11df7465db5a8ad18b2f9e660efe848a7afe7",
+      "url": "https://raw.githubusercontent.com/datameet/maps/5ea90379e67dece749b01448ca438161a3534b79/Districts/README.md"
+    },
+    {
+      "relative_path": "data/raw/rice/seasonal_geography/2011_Dist.shp",
+      "bytes": 10220732,
+      "sha256": "3636e627a519f67b4615b6a97df48c2b279e8c7b2566d3bfbc3eda1d06e33206",
+      "url": "https://raw.githubusercontent.com/datameet/maps/5ea90379e67dece749b01448ca438161a3534b79/Districts/Census_2011/2011_Dist.shp"
+    },
+    {
+      "relative_path": "data/raw/rice/seasonal_geography/2011_Dist.shx",
+      "bytes": 5228,
+      "sha256": "12b6028dfac9e3f20686b3d0a44f9d3989acfdb3f3cda853881d1cf2d8579eab",
+      "url": "https://raw.githubusercontent.com/datameet/maps/5ea90379e67dece749b01448ca438161a3534b79/Districts/Census_2011/2011_Dist.shx"
+    },
+    {
+      "relative_path": "data/raw/rice/seasonal_geography/2011_Dist.dbf",
+      "bytes": 54678,
+      "sha256": "2c7b03578fdf41a4c4e29941a564fa90bf0b0e4f865f5e54481ef7ac8494eb7d",
+      "url": "https://raw.githubusercontent.com/datameet/maps/5ea90379e67dece749b01448ca438161a3534b79/Districts/Census_2011/2011_Dist.dbf"
+    },
+    {
+      "relative_path": "data/raw/rice/seasonal_geography/2011_Dist.prj",
+      "bytes": 145,
+      "sha256": "a02a27b1d1982c8516d83398e85a3c8b1aef1713c13ef4d84d7bde17430c07c4",
+      "url": "https://raw.githubusercontent.com/datameet/maps/5ea90379e67dece749b01448ca438161a3534b79/Districts/Census_2011/2011_Dist.prj"
+    }
+  ],
+  "current_lgd_attempt": "Official DILRMP district roster request timed out after 30 seconds; no LGD codes fabricated.",
+  "centroid_policy": "Representative interior points are diagnostic only; no weather or crop-area weighting is claimed."
+}

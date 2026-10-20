@@ -167,3 +167,20 @@ def render_regional():
                 st.write("Official yield headers are tonnes/ha. Development preparation retains source values and multiplies by 1,000 for kg/ha. Same-year area and production are audit fields, not forecasting inputs.")
                 st.dataframe(pd.DataFrame(list(source["five_state_district_rows"].items()), columns=["State", "Geographic report rows"]), hide_index=True, width="stretch")
                 st.download_button("Download seasonal-source coverage metadata", (seasonal / "state_year_coverage.csv").read_bytes(), "rice_kharif_coverage.csv", "text/csv")
+        geography = OUT.parent / "seasonal_geography"
+        if (geography / "summary.json").exists():
+            with st.expander("Census reference geography and territorial changes"):
+                geo = json.loads((geography / "summary.json").read_text(encoding="utf-8"))
+                counts = geo["source_identity_status_counts"]
+                a, b, c = st.columns(3)
+                a.metric("Exact 2011 reference-name matches", counts["exact_case_punctuation_2011_reference"])
+                b.metric("Reviewed alias candidates", counts["reviewed_alias_to_2011_reference"])
+                c.metric("Units requiring different territorial geometry", counts["post2011_territorial_unit_not_same_geometry"])
+                st.write("The official Census register has 640 unique district codes. A pinned DataMeet-derived map supplies 129 valid reference polygons for the five states. Census identifiers are distinct from current LGD codes, which remain unverified.")
+                st.warning("A matching name or code does not prove unchanged borders. No district has been certified for the entire 1997–2022 span, and no new row is marked weather-ready. The twenty changed units cannot inherit whole old parent polygons.")
+                st.caption("Example: Purba and Paschim Bardhaman are parts of the old Barddhaman district, not two aliases for the same whole polygon. Sarangarh–Bilaigarh has more than one parent lineage.")
+                table = pd.read_csv(geography / "district_crosswalk.csv", dtype={"district_code_census2011_reference": str})
+                st.dataframe(table[["state_source", "district_source", "match_status", "district_code_census2011_reference", "related_2011_ancestor_codes_not_identity", "reviewed_change_years"]], hide_index=True, width="stretch")
+                st.download_button("Download district identity crosswalk", (geography / "district_crosswalk.csv").read_bytes(), "rice_district_crosswalk.csv", "text/csv")
+                st.download_button("Download territorial year flags", (geography / "district_year_flags.csv").read_bytes(), "rice_territorial_flags.csv", "text/csv")
+                st.caption("DataMeet Community Maps Project, CC BY 2.5 India. Geometry is a third-party reference, not an authoritative survey or rice-area weather mask. Newer numeric outcomes were not read in this review.")

@@ -1,0 +1,33 @@
+{
+  "verified_on": "2026-10-20",
+  "numeric_source_file_access_blocked_during_replay": true,
+  "byte_identical_cached_replay": true,
+  "all_147_source_rows_retained": true,
+  "direct_reference_ids_unique_and_state_checked": true,
+  "no_lgd_codes_invented": true,
+  "split_children_not_given_parent_identity": true,
+  "multi_parent_lineage_preserved": true,
+  "unknown_parent_left_unassigned": true,
+  "transition_and_parent_change_flags_checked": true,
+  "all_129_reference_polygons_valid_and_interior_points_checked": true,
+  "global_censuscode_namespace_checked": true,
+  "receipt_mismatch_rejected": true,
+  "old_model_results_and_seasonal_preparation_preserved": true,
+  "versions": {
+    "pyshp": "2.3.1",
+    "shapely": "2.2.0"
+  },
+  "output_sha256": {
+    "change_events.json": "4b4f1bc92a8db24d93c895579cd9cd01adee83ba24e719939300360343fbb23c",
+    "district_crosswalk.csv": "befe81193a43921ea672200ed672989fe2926da17fe8859884f8e052820f96fa",
+    "district_year_flags.csv": "8bab8eaf0d4b7d7cea9f9d3a1fca8a05049587fec718984f8f280d45cd20a4a9",
+    "official_census2011_districts.csv": "e76e127222d6771de3f93497547c2e946667799c11c79828aab690602af0b05f",
+    "reference_geometries.geojson": "ce21d47a8ed1f7bb77a821b224ac95249bafc6dc520f2cb33ed963e04c0f9575",
+    "reference_geometry_audit.csv": "94ef1cd1de9a3a3901334051e975998814d906c178e7665c06d06514da857712",
+    "source_manifest.json": "bb9ce3d05a8ee818bc5b124183cc9618289516f594211abd4bf46bd94d5ce535",
+    "summary.json": "3d574fc17f130cf71b3e52adbaa35206a734f91cb54547c5091b3f5b19982e17"
+  },
+  "module_sha256": "44ccfdb70edee9aeae3e23124125b6c20843e02aa1f7279d40feee027b2223b7",
+  "streamlit_historical_forecast_and_geography_review": true,
+  "original_national_geometry_sources_ignored_by_git": true
+}

@@ -1,0 +1,33 @@
+{
+  "audited_on": "2026-10-20",
+  "source_geographic_rows_reviewed": 147,
+  "official_census2011_district_codes": 640,
+  "reference_map_records": 641,
+  "non_district_code_zero_map_records": 1,
+  "five_state_reference_geometries": 129,
+  "valid_original_reference_geometries": 129,
+  "reference_name_disagreements_after_normalization": 5,
+  "source_identity_status_counts": {
+    "exact_case_punctuation_2011_reference": 103,
+    "post2011_territorial_unit_not_same_geometry": 20,
+    "reviewed_alias_to_2011_reference": 24
+  },
+  "reviewed_change_events": 22,
+  "district_year_metadata_flags": 3822,
+  "districts_verified_for_entire_1997_2022_span": 0,
+  "current_lgd_codes_verified": 0,
+  "all_year_weather_ready_rows": 0,
+  "reserved_numeric_outcomes_read": false,
+  "numeric_label_files_read": false,
+  "model_training_performed": false,
+  "training_ready": false,
+  "decision": "Use the explicit Census2011 reference crosswalk for further geography review. Do not assign old parent polygons to post2011 units or treat matching names/codes as unchanged borders. Resolve source recasting/territorial epochs, or narrow the next study to a documented comparable region, before new weather acquisition.",
+  "low_complexity_candidate": "Odisha has 30 reference districts and a government-documented early-1990s reorganization. This is a candidate narrower scope before scores, not proof of every border's constancy or an automatically selected training cohort.",
+  "limitations": [
+    "Codes are official Census2011 identifiers, not current LGD identifiers.",
+    "24 explicit spelling/translation rules are review candidates, not a source-issued DES code crosswalk.",
+    "Recorded split evidence is not an exhaustive history of intradistrict transfers or boundary corrections.",
+    "Map geometry is derived by DataMeet from taluk sources and Census extent references, under CC BY 2.5 India.",
+    "Raw geometry is neither silently repaired nor reused as crop-masked weather support."
+  ]
+}
