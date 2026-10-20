@@ -14,3 +14,5 @@ data/processed/rice/seasonal_geography/reference_geometries.geojson -diff
 # The Odisha protocol document is pinned by its exact SHA256.
 docs/Rice_Odisha_Seasonal_Protocol.md text eol=lf
 docs/Rice_Odisha_Timing_Amendment.md text eol=lf
+docs/Rice_Odisha_Model_Implementation.md text eol=lf
+src/rice_odisha_model.py text eol=lf

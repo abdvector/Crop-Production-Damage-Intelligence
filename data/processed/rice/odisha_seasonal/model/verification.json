@@ -1,0 +1,22 @@
+{
+  "verified_on": "2026-10-21",
+  "development_report_access_blocked": true,
+  "declared_candidate_count": 13,
+  "development_rows_per_configuration": 120,
+  "calibration_rows": 90,
+  "assessment_rows_per_configuration": 150,
+  "target_area_production_perturbation_does_not_change_predictions": true,
+  "training_cutoffs_end_at_Y_minus_2": true,
+  "same_records_for_all_candidates": true,
+  "frozen_development_choice_preserved": true,
+  "source_unit_conversion_and_all_lag_joins_checked": true,
+  "original_prepared_reserved_targets_still_blank": true,
+  "all_preceding_models_and_results_preserved": true,
+  "completed_rerun_does_not_refit_or_reopen_source": true,
+  "streamlit_annual_and_odisha_views_passed": true,
+  "streamlit_2018_replay_and_outcome_reveal_passed": true,
+  "model_module_sha256": "70429035955ae367617ee6a476fd118e2ba8a98200c4090c6478c283b29b76eb",
+  "execution_manifest_sha256": "3e96f0754b5935d6ecaeda634c0c9f2f3e8f43482009525ebd49b3fafadad8f8",
+  "assessment_manifest_sha256": "997b9a5dc5adcf1eb93e4ceb8342bbb49322d6745e20344f1fa2ea07cf7e55e0",
+  "selection_sha256": "e2b9e16be58ffcb8a3032a4761e358df150fda66cf942a9bab43c78f4937bc26"
+}

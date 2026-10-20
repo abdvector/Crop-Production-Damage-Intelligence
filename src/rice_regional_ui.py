@@ -157,13 +157,16 @@ def render_regional():
         if (seasonal / "summary.json").exists():
             with st.expander("Official Kharif rice source: acquired, awaiting boundary verification"):
                 source = json.loads((seasonal / "summary.json").read_text(encoding="utf-8"))
-                st.write("Official DES report: Rice, Kharif, agricultural years 1997–98 through 2022–23. This is a separate source for a future study; it is not the annual model currently serving forecasts.")
+                st.write("Official DES report: Rice, Kharif, agricultural years 1997–98 through 2022–23. This is a separate source for the seasonal study; it is not the annual model currently serving forecasts.")
                 a, b, c = st.columns(3)
                 a.metric("National geographic report rows", f"{source['national_district_rows']:,}")
                 b.metric("Five-state geographic rows", sum(source["five_state_district_rows"].values()))
                 c.metric("Positive complete development triplets", f"{source['positive_complete_development_triplets']:,}")
                 st.caption("Development years end in 2017–18. The 515 missing/nonpositive combinations are retained with flags. District-name rows are not yet verified stable geographic units.")
-                st.warning("Not ready for model fitting: district codes/boundary histories and new aligned weather are not verified. Start-year 2018–2022 numeric outcomes remain reserved in the local raw report.")
+                if (OUT.parent / "odisha_seasonal/model/summary.json").exists():
+                    st.warning("The full five-state seasonal scope still has unresolved territorial changes. Odisha was studied separately under a fixed 2011-boundary assumption. Only its 2018–2022 outcomes were opened, after selection and calibration were frozen.")
+                else:
+                    st.warning("Not ready for model fitting: district codes/boundary histories and new aligned weather are not verified. Start-year 2018–2022 numeric outcomes remain reserved in the local raw report.")
                 st.write("Official yield headers are tonnes/ha. Development preparation retains source values and multiplies by 1,000 for kg/ha. Same-year area and production are audit fields, not forecasting inputs.")
                 st.dataframe(pd.DataFrame(list(source["five_state_district_rows"].items()), columns=["State", "Geographic report rows"]), hide_index=True, width="stretch")
                 st.download_button("Download seasonal-source coverage metadata", (seasonal / "state_year_coverage.csv").read_bytes(), "rice_kharif_coverage.csv", "text/csv")
@@ -196,10 +199,14 @@ def render_regional():
                     a.metric("Weather district-years", study["weather_district_years"])
                     b.metric("Development rows with yield history", study["development_model_rows_with_history"])
                     c.metric("Fixed weather predictors", study["weather_predictors"])
-                    st.write("Daily weather preparation is complete. The next step is the declared comparison of history baselines, Ridge, Random Forest and histogram gradient boosting. No new forecasting accuracy is claimed yet.")
+                    if (odisha / "model/summary.json").exists():
+                        results = json.loads((odisha / "model/summary.json").read_text(encoding="utf-8"))
+                        st.write(f"The declared model comparison and sequential assessment are complete. Development selected {results['selected_candidate']['id']}. Open the Odisha Kharif study workspace for forecasts, all thirteen comparisons and measured limitations.")
+                    else:
+                        st.write("Daily weather preparation is complete. The next step is the declared comparison of history baselines, Ridge, Random Forest and histogram gradient boosting. No new forecasting accuracy is claimed yet.")
                     st.download_button("Download Odisha prepared inputs", (odisha / "prepared_inputs.csv").read_bytes(), "odisha_kharif_inputs.csv", "text/csv")
                     st.download_button("Download district weather weights", (odisha / "grid_weights.csv").read_bytes(), "odisha_weather_weights.csv", "text/csv")
                 else:
                     st.info("The protocol is frozen; daily weather acquisition and validation are in progress.")
-                st.write("Model selection: 2009–2012. Uncertainty calibration: 2014–2016. Reserved assessment: 2018–2022, with annual refitting using labels only through Y−2. The timing amendment applies the reporting delay to selection and calibration as well as fitting. Reserved numeric outcomes remain unopened during data preparation.")
+                st.write("Model selection: 2009–2012. Uncertainty calibration: 2014–2016. Later-year assessment: 2018–2022, with annual refitting using labels only through Y−2. The timing amendment applies the reporting delay to selection and calibration as well as fitting. Assessment outcomes stayed unopened during data preparation and were opened only after the development choice and interval calibration were frozen.")
                 st.download_button("Download Odisha study protocol", (odisha / "protocol.json").read_bytes(), "odisha_study_protocol.json", "application/json")

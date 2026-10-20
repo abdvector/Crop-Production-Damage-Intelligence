@@ -1,0 +1,26 @@
+[
+  {
+    "model": "History Ridge alpha 10",
+    "reference": "Recent mean",
+    "years": 5,
+    "improvement_kg_ha": 60.8837290238544,
+    "lower_95_kg_ha": -27.148192474627887,
+    "upper_95_kg_ha": 154.02896594920406
+  },
+  {
+    "model": "History Ridge alpha 10",
+    "reference": "Last available yield",
+    "years": 5,
+    "improvement_kg_ha": 44.243729023854414,
+    "lower_95_kg_ha": -26.96913584351621,
+    "upper_95_kg_ha": 132.61753128216566
+  },
+  {
+    "model": "Weather Ridge alpha 100",
+    "reference": "History Ridge alpha 10",
+    "years": 5,
+    "improvement_kg_ha": 20.786216631966255,
+    "lower_95_kg_ha": -68.67453704651,
+    "upper_95_kg_ha": 118.15419862348627
+  }
+]

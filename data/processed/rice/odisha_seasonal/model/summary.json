@@ -1,0 +1,79 @@
+{
+  "selected_candidate": {
+    "id": "History Ridge alpha 10",
+    "algorithm": "ridge",
+    "weather": false,
+    "parameters": {
+      "alpha": 10
+    }
+  },
+  "assessment_records": 150,
+  "assessment_years": [
+    2018,
+    2019,
+    2020,
+    2021,
+    2022
+  ],
+  "configurations_reported": 13,
+  "selected_metrics": {
+    "candidate": "History Ridge alpha 10",
+    "candidate_order": 4,
+    "equal_year_mae_kg_ha": 516.8229376428122,
+    "equal_year_rmse_kg_ha": 622.0094039174392,
+    "records": 150,
+    "mae_kg_ha": 516.8229376428125,
+    "rmse_kg_ha": 634.6167381801364,
+    "bias_kg_ha": -362.3395441639502,
+    "r_squared": -0.04988212578622919,
+    "wape": 0.2094209321044407,
+    "low_yield_count": 9,
+    "flagged_count": 7,
+    "true_positive": 2,
+    "false_positive": 5,
+    "false_negative": 7,
+    "true_negative": 136,
+    "precision": 0.2857142857142857,
+    "recall": 0.2222222222222222,
+    "f1": 0.25,
+    "both_outcome_classes_present": true
+  },
+  "interval_coverage_80": 1.0,
+  "mean_interval_width_kg_ha": 4256.130076864205,
+  "calibration_records": 90,
+  "paired_year_comparisons": [
+    {
+      "model": "History Ridge alpha 10",
+      "reference": "Recent mean",
+      "years": 5,
+      "improvement_kg_ha": 60.8837290238544,
+      "lower_95_kg_ha": -27.148192474627887,
+      "upper_95_kg_ha": 154.02896594920406
+    },
+    {
+      "model": "History Ridge alpha 10",
+      "reference": "Last available yield",
+      "years": 5,
+      "improvement_kg_ha": 44.243729023854414,
+      "lower_95_kg_ha": -26.96913584351621,
+      "upper_95_kg_ha": 132.61753128216566
+    },
+    {
+      "model": "Weather Ridge alpha 100",
+      "reference": "History Ridge alpha 10",
+      "years": 5,
+      "improvement_kg_ha": 20.786216631966255,
+      "lower_95_kg_ha": -68.67453704651,
+      "upper_95_kg_ha": 118.15419862348627
+    }
+  ],
+  "assessment_labels_valid": 150,
+  "assessment_labels_excluded": 0,
+  "forecast_rows_excluded": 0,
+  "assessment_outcomes_opened": true,
+  "selection_changed_after_assessment": false,
+  "latest_fitting_year": 2020,
+  "scope": "sequential historical Kharif replay; fixed 2011 district geography assumed; not live forecasts",
+  "weather_incremental_evidence": "Use the frozen paired Ridge control comparison; a weather tree versus a history baseline also changes algorithm",
+  "no_causal_damage_or_financial_savings_claim": true
+}

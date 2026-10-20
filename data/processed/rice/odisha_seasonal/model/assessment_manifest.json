@@ -1,0 +1,19 @@
+{
+  "source_report_sha256": "2da0946976ba22f218928f63e139b16466be96979edf797d8dd47d314722567d",
+  "frozen_selection_sha256": "e2b9e16be58ffcb8a3032a4761e358df150fda66cf942a9bab43c78f4937bc26",
+  "output_sha256": {
+    "assessment_predictions.csv": "b06816871f9b40d5e26962658b281ff76df67f388e714e5f9dc9501845bc22a4",
+    "selected_assessment_predictions.csv": "9577825e25bededbb6061de423acd35025173bea2bddf9c67e771b7dbc52439b",
+    "assessment_metrics.csv": "e210a87ef85e724afd3cdfc282fd83e549179019f8d225c034067906576eb264",
+    "assessment_year_metrics.csv": "ebcf9a150b5f6d21a53b48c62d0d661039d5655850eff33e1333175e82bf7a2d",
+    "selected_district_metrics.csv": "f1d18854325dbb5e98092c31086ac6cee42d4d1eec0536e86c097782d97c30f6",
+    "interval_year_metrics.csv": "ae112bf551201b7946f16d3d92ce6a8228f4e4ed7531e01efcd780eb840e4595",
+    "assessment_source_labels.csv": "0989a8ae59cf9cd16d8ebcd32327e412db04b7c9f9cb9d71d4e1c41109c511b1",
+    "assessment_inputs.csv": "fc183e5cbedd94f1deda912fe286d51a878decf91830d5c93144365f83c9f4df",
+    "assessment_exclusions.csv": "0eab3acdc60d2232f0929232bfe3bce3bae718de43946298305992380690e396",
+    "summary.json": "c455c94b6cbc41370e06e9fa3453644b34c96c93e66e71826d340659fb82eb5b",
+    "paired_year_comparisons.json": "5b9fc04b59258997c60267e35894ba28d481d9183fd28f8b3c1a8f4416e18efa",
+    "selection.json": "e2b9e16be58ffcb8a3032a4761e358df150fda66cf942a9bab43c78f4937bc26"
+  },
+  "method": "Selection and calibration verified before source unlock; all forecasts trained through Y-2"
+}

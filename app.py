@@ -25,10 +25,10 @@ st.title("Rice Yield Outlook")
 st.caption("Birla Institute of Technology, Mesra | Department of Quantitative Economics and Data Science | Guide: Dr. Manish Kumar Pandey")
 with st.sidebar:
     st.header("Rice forecasting")
-    view = st.radio("Workspace", ["Regional yield forecast", "Molecular data audit", "Earlier research"])
+    view = st.radio("Workspace", ["Regional yield forecast", "Odisha Kharif study", "Molecular data audit", "Earlier research"])
     st.divider()
-    st.write("Annual rice yield per hectare")
-    st.caption("A focused regional forecast with later-year evaluation, historical replay and weather scenarios.")
+    st.write("Rice yield per hectare")
+    st.caption("Historical annual and Kharif studies with later-year evaluation, source checks and explicit limitations.")
     st.caption("Earlier field, genetics and aluminium studies remain available as supporting research.")
 if view == "Regional yield forecast":
     from src.rice_regional_ui import render_regional
@@ -36,6 +36,9 @@ if view == "Regional yield forecast":
 elif view == "Molecular data audit":
     from src.rice_molecular_ui import render_molecular_audit
     render_molecular_audit()
+elif view == "Odisha Kharif study":
+    from src.rice_odisha_ui import render_odisha
+    render_odisha()
 else:
     from src.rice_research_archive import render_research_archive
     render_research_archive()
