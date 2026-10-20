@@ -1,0 +1,58 @@
+{
+  "version": 1,
+  "declared_date": "2026-10-20",
+  "state": "Odisha",
+  "crop": "Rice",
+  "season": "Kharif",
+  "target_unit": "kg/ha",
+  "issue_month_day": "08-31",
+  "observation_start": "06-01",
+  "observation_end": "08-24",
+  "years": [
+    1998,
+    2022
+  ],
+  "history_lags": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "development_validation_years": [
+    2010,
+    2011,
+    2012,
+    2013,
+    2014
+  ],
+  "calibration_years": [
+    2015,
+    2016,
+    2017
+  ],
+  "assessment_years_reserved": [
+    2018,
+    2019,
+    2020,
+    2021,
+    2022
+  ],
+  "rolling_training_end": "Y-2",
+  "spatial_assumption": "fixed 2011 reference; annual equivalence not certified",
+  "spatial_weighting": "whole-district spherical equal-area cell intersection; not crop-area weights",
+  "daily_parameters_units": {
+    "T2M_MAX": "C",
+    "T2M_MIN": "C",
+    "PRECTOTCORR": "mm/day",
+    "RH2M": "%",
+    "ALLSKY_SFC_SW_DWN": "MJ/m^2/day"
+  },
+  "weather_predictor_count": 19,
+  "input_sha256": {
+    "docs/Rice_Odisha_Seasonal_Protocol.md": "dbfba1f30698b6aecaf84384fa167b3cdd9e9e4c554211270f70c7a81ae1998b",
+    "data/processed/rice/seasonal_source/development_labels.csv": "9f8cfcfd759a1dbe2d5502a19c4c94105b069013f4911d35a8b54c9aaf8b0c46",
+    "data/processed/rice/seasonal_geography/district_crosswalk.csv": "befe81193a43921ea672200ed672989fe2926da17fe8859884f8e052820f96fa",
+    "data/processed/rice/seasonal_geography/reference_geometries.geojson": "ce21d47a8ed1f7bb77a821b224ac95249bafc6dc520f2cb33ed963e04c0f9575"
+  }
+}

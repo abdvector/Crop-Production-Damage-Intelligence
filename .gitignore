@@ -33,3 +33,5 @@ data/raw/rice/icrisat_district/nasa_monthly/
 data/raw/rice/des_kharif_2026/*.html
 # Large original geometry/source pages; pinned receipts and derived reference map are tracked.
 data/raw/rice/seasonal_geography/
+# Original daily responses; URLs and checksums are in the Odisha weather manifest.
+data/raw/rice/odisha_seasonal_weather/

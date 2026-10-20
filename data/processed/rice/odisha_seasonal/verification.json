@@ -1,0 +1,35 @@
+{
+  "protocol_document_sha256": "dbfba1f30698b6aecaf84384fa167b3cdd9e9e4c554211270f70c7a81ae1998b",
+  "output_sha256": {
+    "data/processed/rice/odisha_seasonal/protocol_v1.json": "2c93e364f5cad66c90937f62f6229b80ed0b65082d69c02b050426b9816e3ebd",
+    "data/processed/rice/odisha_seasonal/protocol.json": "0e1f2d24c99a0d13c8a31d79a1472399a1d80c2fd27b07299b5db2d7c119e331",
+    "data/processed/rice/odisha_seasonal/weather_manifest.json": "809fe6697787560b615ffcff2931c7dad4181fc53bcf2da165093cde524d6195",
+    "data/processed/rice/odisha_seasonal/daily_weather.csv": "9a3f5a4af55f80348de59e636668130ff5a24ed6e29fbf5f1edb44c5565ab753",
+    "data/processed/rice/odisha_seasonal/grid_weights.csv": "d5a49d8dc0c613915dad2debc3f7f1ad35da1ed520e36945c6b90cdc005af349",
+    "data/processed/rice/odisha_seasonal/prepared_inputs.csv": "87b72b515e23b0870d1d85629a9c42a7f170699172588b335cd86648220ad892",
+    "data/processed/rice/odisha_seasonal/summary.json": "163e250490ba16e31c6a8a5f299dbf16ca2c854febeae3fa45b5a34a669e954a"
+  },
+  "checks": [
+    "30 unique district identities",
+    "native coordinate spacing checked per parameter and time block",
+    "all selected dates complete; no missing-cell renormalization",
+    "polygon coverage and weight sums checked",
+    "physical ranges and Tmin/Tmax consistency checked",
+    "reserved targets absent from prepared inputs"
+  ],
+  "reserved_raw_report_access_guard_passed": true,
+  "all_150_reserved_targets_blank": true,
+  "all_lags_match_open_district_year_labels": true,
+  "previous_56_model_result_files_unchanged": true,
+  "previous_seasonal_and_geography_outputs_unchanged": true,
+  "wrong_units_missing_dates_altered_grid_rejected": true,
+  "changed_receipt_and_protocol_rejected": true,
+  "selection_and_calibration_release_constraints_passed": true,
+  "streamlit_existing_forecast_and_odisha_metrics_passed": true,
+  "versions": {
+    "python": "3.13.5",
+    "numpy": "2.5.3",
+    "pandas": "3.0.6",
+    "shapely": "2.2.0"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "state": "Odisha",
+  "districts": 30,
+  "weather_years": [
+    1998,
+    2022
+  ],
+  "daily_records": 63750,
+  "days_per_district_year": 85,
+  "weather_district_years": 750,
+  "development_labels": 600,
+  "development_model_rows_with_history": 420,
+  "weather_predictors": 19,
+  "reserved_target_values_read": 0,
+  "new_model_fitted": false,
+  "selection_validation_years": [
+    2009,
+    2010,
+    2011,
+    2012
+  ],
+  "calibration_years": [
+    2014,
+    2015,
+    2016
+  ],
+  "reserved_assessment_years": [
+    2018,
+    2019,
+    2020,
+    2021,
+    2022
+  ],
+  "grid_cells_by_parameter": {
+    "T2M_MAX": 168,
+    "T2M_MIN": 168,
+    "PRECTOTCORR": 168,
+    "RH2M": 168,
+    "ALLSKY_SFC_SW_DWN": 56
+  },
+  "spatial_assumption": "fixed 2011 polygons; annual boundary equivalence unverified",
+  "weighting": "whole-district area, not rice-area weights",
+  "issue_date": "31 August",
+  "weather_window": "1 June\u201324 August",
+  "next_step": "frozen development comparison; keep 2018\u20132022 outcomes reserved"
+}

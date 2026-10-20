@@ -184,3 +184,22 @@ def render_regional():
                 st.download_button("Download district identity crosswalk", (geography / "district_crosswalk.csv").read_bytes(), "rice_district_crosswalk.csv", "text/csv")
                 st.download_button("Download territorial year flags", (geography / "district_year_flags.csv").read_bytes(), "rice_territorial_flags.csv", "text/csv")
                 st.caption("DataMeet Community Maps Project, CC BY 2.5 India. Geometry is a third-party reference, not an authoritative survey or rice-area weather mask. Newer numeric outcomes were not read in this review.")
+        odisha = OUT.parent / "odisha_seasonal"
+        if (odisha / "protocol.json").exists():
+            with st.expander("Odisha Kharif study: daily weather and frozen evaluation plan", expanded=True):
+                st.write("The next study focuses on 30 Odisha districts and official Kharif rice yield in kg/ha. It asks whether daily early-season weather improves forecasts over recent-yield baselines.")
+                st.caption("Issue date: 31 August. Weather: 1 June–24 August, allowing a seven-day buffer. Historical yields: Y−2 through Y−6. Neither buffer establishes actual historical release vintages.")
+                st.warning("Spatial assumption: fixed 2011 reference polygons, with whole-district area weights. Annual boundary equivalence is not certified, and these are not rice-area weights. This new study has not replaced the annual forecast.")
+                if (odisha / "summary.json").exists():
+                    study = json.loads((odisha / "summary.json").read_text(encoding="utf-8"))
+                    a, b, c = st.columns(3)
+                    a.metric("Weather district-years", study["weather_district_years"])
+                    b.metric("Development rows with yield history", study["development_model_rows_with_history"])
+                    c.metric("Fixed weather predictors", study["weather_predictors"])
+                    st.write("Daily weather preparation is complete. The next step is the declared comparison of history baselines, Ridge, Random Forest and histogram gradient boosting. No new forecasting accuracy is claimed yet.")
+                    st.download_button("Download Odisha prepared inputs", (odisha / "prepared_inputs.csv").read_bytes(), "odisha_kharif_inputs.csv", "text/csv")
+                    st.download_button("Download district weather weights", (odisha / "grid_weights.csv").read_bytes(), "odisha_weather_weights.csv", "text/csv")
+                else:
+                    st.info("The protocol is frozen; daily weather acquisition and validation are in progress.")
+                st.write("Model selection: 2009–2012. Uncertainty calibration: 2014–2016. Reserved assessment: 2018–2022, with annual refitting using labels only through Y−2. The timing amendment applies the reporting delay to selection and calibration as well as fitting. Reserved numeric outcomes remain unopened during data preparation.")
+                st.download_button("Download Odisha study protocol", (odisha / "protocol.json").read_bytes(), "odisha_study_protocol.json", "application/json")

@@ -11,3 +11,6 @@ data/processed/rice/protein_experiment/** whitespace=blank-at-eol,blank-at-eof,s
 data/processed/rice/predictor_audit/** whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 # Geometry coordinates are audited by source hashes and the readable crosswalk.
 data/processed/rice/seasonal_geography/reference_geometries.geojson -diff
+# The Odisha protocol document is pinned by its exact SHA256.
+docs/Rice_Odisha_Seasonal_Protocol.md text eol=lf
+docs/Rice_Odisha_Timing_Amendment.md text eol=lf
