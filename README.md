@@ -6,7 +6,9 @@ Guide: Dr. Manish Kumar Pandey
 
 A research app for predicting rice yield per hectare and comparing forecasts with recorded harvests. The presentation interface uses four sidebar pages, state/district selectors and vertical results tables.
 
-**Start with [the presentation guide](docs/Project_Guide.md).** It explains the question, data, models, results and what you can honestly claim.
+**Current phase: statistical foundation rebuilt; revised modelling on hold.** Start with the [data audit and revised analysis plan](docs/Statistical_Foundation.md). Existing forecasts below are preserved legacy results, not newly validated models. The 2018–2022 assessment has already been seen and cannot be reused as independent confirmation for revised models.
+
+Run `python app.py --audit-data` to reproduce the development-only audit and figures without training a model. In **Data & methods → Data exploration**, choose among four data graphs; select Odisha Kharif coverage. Detailed diagnostic tables and PNG/SVG figures are saved under `data/processed/rice/foundation/`.
 
 ## Run
 

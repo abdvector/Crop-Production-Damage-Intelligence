@@ -56,7 +56,7 @@ def selectors():
     with st.sidebar:
         st.title("Rice Yield")
         st.caption("Forecasting research")
-        page = st.session_state.setdefault("page", "Forecast")
+        page = st.session_state.setdefault("page", "Data & methods")
         for name in PAGES:
             st.button(name, key="nav_" + name, type="primary" if name == page else "secondary",
                       width="stretch", on_click=navigate, args=(name,))
@@ -154,10 +154,34 @@ def results_page(data, code):
 
 def methods_page(data, code, year):
     with st.sidebar:
-        section = st.selectbox("Topic", ["Study summary", "Predictors", "Validation", "Limitations", "Protein and aluminium"])
+        section = st.selectbox("Topic", ["Data exploration", "Study summary", "Predictors", "Validation", "Limitations", "Protein and aluminium"])
     st.subheader(section)
     kharif = data["season"] == "Kharif rice"
-    if section == "Study summary":
+    if section == "Data exploration":
+        if not kharif:
+            st.info("These development-data graphs describe the main Odisha Kharif study. Select Odisha and Kharif rice to explore them. Annual rice has different geographic units and is not pooled with this data.")
+            return
+        folder = ROOT / "data/processed/rice/foundation"
+        if not (folder / "audit.json").exists():
+            st.info("The development data audit has not been generated yet.")
+            return
+        st.caption("Odisha Kharif · 1998–2017 development data only · 30 districts · 600 records. Graphs describe the data; they do not establish causes or predictive value.")
+        choices = {
+            "Data coverage": ("01_coverage", "Every district has 20 observed development yields. Earlier years without sufficient lag history remain visible here but are excluded from the 420-row modelling cohort."),
+            "Yield over time": ("02_yield_trend", "The line is the median across districts; the band is the middle 50% of districts, not a confidence interval. This is not an area-weighted state yield."),
+            "District distributions": ("03_district_yields", "Each box summarises 20 annual yields. The line marks the median; the box spans the middle 50%. Whiskers use 1.5 IQR; outside points remain in the data."),
+            "Weather relationships": ("04_weather_correlations", "A representative subset of weather predictors. Strong correlations show redundancy, not causation. This pooled district-year plot does not provide independent-observation significance tests.")}
+        choice = st.selectbox("Graph", list(choices))
+        name, explanation = choices[choice]
+        st.image(str(folder / "figures" / (name + ".png")), width="stretch")
+        st.write(explanation)
+        st.download_button("Download graph (SVG)", (folder / "figures" / (name + ".svg")).read_bytes(), name + ".svg", "image/svg+xml")
+        records = pd.read_csv(folder / "development_records.csv", dtype={"district_code_census2011": str})
+        district = records.loc[records.district_code_census2011.eq(str(code))]
+        with st.expander("Selected district: source records"):
+            st.dataframe(district[["district_source", "agricultural_start_year", "yield_kg_ha"]], hide_index=True)
+        st.caption("Revised modelling is on hold. Previously reported forecasts belong to the legacy experiment; the new foundation does not validate them anew.")
+    elif section == "Study summary":
         table([("Crop", "Rice"), ("Target", "Yield per hectare, kg/ha"), ("Coverage", "30 Odisha districts" if kharif else "50 historical districts in five states"),
                ("Season", "Kharif" if kharif else "Annual: combines rice seasons"),
                ("Yield source", "Government DES" if kharif else "ICRISAT District Level Database"),
@@ -222,6 +246,8 @@ def render_dashboard():
     st.caption("Birla Institute of Technology, Mesra · Department of Quantitative Economics and Data Science  \nGuide: Dr. Manish Kumar Pandey")
     st.divider()
     st.caption(f"{state} · {data['season']} · historical assessment {data['dates']}")
+    if page in ("Forecast", "Model results"):
+        st.caption("Legacy experiment: revised modelling is on hold while the statistical foundation is reviewed.")
     if page == "Forecast":
         forecast_page(data, code, year)
     elif page == "Model results":

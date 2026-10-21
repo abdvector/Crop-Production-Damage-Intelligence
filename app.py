@@ -6,6 +6,12 @@ from pathlib import Path
 PROJECT_ROOT = Path(__file__).resolve().parent
 os.chdir(PROJECT_ROOT)
 if __name__ == "__main__":
+    if "--audit-data" in sys.argv:
+        from src.rice_foundation import build
+        report = build()
+        print(report["stage"])
+        print(PROJECT_ROOT / "data/processed/rice/foundation/audit.json")
+        raise SystemExit(0)
     from streamlit.runtime.scriptrunner import get_script_run_ctx
     if get_script_run_ctx(suppress_warning=True) is None:
         from streamlit.web import cli
