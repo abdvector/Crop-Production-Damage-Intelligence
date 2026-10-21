@@ -4,11 +4,11 @@ Birla Institute of Technology, Mesra
 Department of Quantitative Economics and Data Science
 Guide: Dr. Manish Kumar Pandey
 
-A research app for predicting rice yield per hectare and comparing forecasts with recorded harvests. The presentation interface uses four sidebar pages, state/district selectors and vertical results tables.
+A research app for exploring rice yield per hectare, public study data and saved forecasts. Three sidebar sections use interactive charts, state/district selectors and vertical results tables. The interface has a white main area, light-blue navigation and black text; presentation notes and institutional headings are kept out of the user workflow.
 
 **Current phase: revised nested comparison completed, with negative findings.** Read the [revised statistical review and results](docs/Revised_Modelling_Results.md) and [declared comparison protocol](docs/Revised_Modelling_Protocol.md). The new 2012–2017 nested procedure has MAE 780.2 kg/ha versus 684.3 for recent mean; it is not operationally cleared. Existing forecasts below are preserved legacy results, not replaced or newly validated models. The 2018–2022 assessment has already been seen and cannot be reused as independent confirmation for revised models.
 
-Run `python app.py --audit-data` to reproduce the development-only audit and figures without training a model. In **Data & methods → Data exploration**, choose among four data graphs; select Odisha Kharif coverage. Detailed diagnostic tables and PNG/SVG figures are saved under `data/processed/rice/foundation/`.
+Run `python app.py --audit-data` to reproduce the development-only audit and figures without training a model. **Data explorer** offers four interactive graph views for each available state, with district highlighting, year-range filtering and weather-variable controls. Detailed audit tables and static PNG/SVG figures remain under `data/processed/rice/foundation/`.
 
 Run `python app.py --compare-models` for the revised comparison; completed reruns verify receipts without refitting. Results and three diagnostic figures are under `data/processed/rice/revised_modelling/`. Model-specific checks distinguish numerical validity from predictive adequacy; no claim that all assumptions passed is made.
 
@@ -18,10 +18,12 @@ From the project folder, run `python app.py` with the project environment active
 
 ## Use the app
 
-1. Choose a **State**, **Coverage**, **District** and agricultural start year.
-2. **Forecast** shows the estimate in a vertical table. Reveal the recorded outcome when ready.
-3. **Model results** lets you select accuracy, model comparison, uncertainty, low-yield flags or yearly/district results.
-4. **Data & methods** explains inputs and evaluation. **Presentation guide** gives a short speaking outline.
+1. Choose a **State**, **Study** and **District**. Odisha offers the revised Kharif study and two saved forecast studies; other states offer the annual study.
+2. **Yield explorer** lets you select a saved method and harvest year, compare its estimate with recorded yield, inspect the historical inputs and download the record. The outcome toggle controls whether actual yield appears in the table/export.
+3. **Data explorer** shows yield trends, district distributions, weather patterns and data coverage. Change the year range and district; hover over charts for values. Seasonal graphs use the 1998–2017 development observations; annual graphs use the separately prepared annual cohort.
+4. **Model evaluation** provides a sidebar result selector for accuracy, method comparison, yearly errors, low-yield detection, uncertainty and error patterns. Choose state, district or full-study scope. The archived annual all-method comparison always covers the full five-state study, as labelled.
+
+All interactions explore saved records; they do not retrain models or create live forecasts. The revised interval experiment is explicitly separate from the adaptive selection procedure. Detailed methods and source definitions are available in collapsed sections. The local presentation guide remains in `docs/Project_Guide.md` rather than appearing in the app.
 
 Kharif coverage is available for Odisha. All five states remain selectable through the separate annual study. These are historical replays, not live current-season forecasts.
 

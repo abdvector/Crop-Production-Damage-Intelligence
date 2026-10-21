@@ -1,258 +1,292 @@
-"""One presentation interface for the retained annual and Kharif forecasts."""
+"""Interactive exploration of saved rice forecasts and public study observations."""
 import json
 from pathlib import Path
 
+import altair as alt
+import numpy as np
 import pandas as pd
 import streamlit as st
 
 ROOT = Path(__file__).resolve().parents[1]
-ANNUAL = ROOT / "data/processed/rice/regional_forecast"
-KHARIF = ROOT / "data/processed/rice/odisha_seasonal/model"
-PAGES = ["Forecast", "Model results", "Data & methods", "Presentation guide"]
+BASE = ROOT / "data/processed/rice"
+BLUE, LIGHT = "#225b96", "#c9def2"
+PAGES = ["Yield explorer", "Data explorer", "Model evaluation"]
+KINDS = {"Revised Kharif study · 2012–2017": "revised", "Saved Kharif forecasts · 2018–2022": "kharif",
+         "Saved annual forecasts · 2012–2017": "annual"}
+RENAME = {"district_code_census2011": "district_id", "district_source": "district",
+          "agricultural_start_year": "year", "actual_yield_kg_ha": "actual",
+          "predicted_yield_kg_ha": "prediction", "reference_yield_kg_ha": "reference",
+          "low_yield_threshold_kg_ha": "threshold", "candidate": "method"}
+
+
+def read(folder, name):
+    return pd.read_csv(BASE / folder / name, dtype={"district_code_census2011": str, "district_id": str})
 
 
 @st.cache_data
-def study(season):
-    if season == "Kharif rice":
-        summary = json.loads((KHARIF / "summary.json").read_text(encoding="utf-8"))
-        records = pd.read_csv(KHARIF / "selected_assessment_predictions.csv", dtype={"district_code_census2011": str})
-        records = records.rename(columns={"district_code_census2011": "district_id", "district_source": "district",
-            "agricultural_start_year": "year", "actual_yield_kg_ha": "actual", "predicted_yield_kg_ha": "prediction",
-            "reference_yield_kg_ha": "reference", "low_yield_threshold_kg_ha": "threshold"})
-        inputs = pd.read_csv(KHARIF / "assessment_inputs.csv", dtype={"district_code_census2011": str}).rename(
-            columns={"district_code_census2011": "district_id", "agricultural_start_year": "year"})
-        scores = pd.read_csv(KHARIF / "assessment_metrics.csv").sort_values("candidate_order").rename(
-            columns={"candidate": "model", "wape": "wape_fraction"})
-        model = summary["selected_candidate"]["id"]
-        records["state"] = "Odisha"
-        dates = "2018–2022"
-    else:
-        summary = json.loads((ANNUAL / "summary.json").read_text(encoding="utf-8"))
-        records = pd.read_csv(ANNUAL / "assessment_predictions.csv").rename(columns={"yield_kg_ha": "actual",
+def study(kind):
+    folder = {"annual": "regional_forecast", "revised": "revised_modelling", "kharif": "odisha_seasonal/model"}[kind]
+    summary = json.loads((BASE / folder / "summary.json").read_text())
+    if kind == "annual":
+        records = read(folder, "assessment_predictions.csv").rename(columns={"yield_kg_ha": "actual",
             "prediction_kg_ha": "prediction", "reference_yield": "reference", "low_yield_threshold": "threshold"})
-        records["state"] = records.state.replace({"Orissa": "Odisha"})
-        inputs = records.copy()
-        scores = pd.read_csv(ANNUAL / "assessment_metrics.csv")
-        scores["wape_fraction"] = scores.wape_percent / 100
-        model = summary["selected_model"]
-        dates = "2012–2017"
-    return {"summary": summary, "records": records, "inputs": inputs, "scores": scores,
-            "model": model, "dates": dates, "season": season}
+        primary = summary["selected_model"]
+        records["method"] = primary
+        inputs = read(folder, "district_years.csv")
+        history = inputs.copy()
+        scores = read(folder, "assessment_metrics.csv")
+    else:
+        records = read(folder, "nested_predictions.csv" if kind == "revised" else "assessment_predictions.csv").rename(columns=RENAME)
+        records["state"] = "Odisha"
+        inputs = read("odisha_seasonal/model", "assessment_inputs.csv").rename(columns=RENAME)
+        history = read("foundation", "development_records.csv").rename(columns=RENAME)
+        history["state"] = "Odisha"
+        primary = "Nested selection" if kind == "revised" else summary["selected_candidate"]["id"]
+        scores = None
+        if kind == "kharif":
+            intervals = read(folder, "selected_assessment_predictions.csv").rename(columns=RENAME)
+            records = records.merge(intervals[["district_id", "year", "method", "lower_80_kg_ha", "upper_80_kg_ha"]],
+                                    on=["district_id", "year", "method"], how="left", validate="one_to_one")
+    for frame in (records, history, inputs):
+        frame["district_id"] = frame.district_id.astype(str)
+        if "state" in frame:
+            frame["state"] = frame.state.replace({"Orissa": "Odisha"})
+    return dict(kind=kind, records=records, inputs=inputs, history=history, primary=primary, summary=summary,
+                methods=[primary]+sorted(set(records.method)-{primary}), scores=scores)
 
 
-def table(rows, first="Measure", second="Value"):
-    st.table(pd.DataFrame(rows, columns=[first, second]).astype({second: str}).set_index(first))
+def table(rows):
+    st.table(pd.DataFrame(rows, columns=["Measure", "Value"]).astype(str).set_index("Measure"))
 
 
 def percent(value):
     return "Unavailable" if value is None or pd.isna(value) else f"{value:.1%}"
 
 
+def chart(spec, height=320):
+    spec = spec.properties(height=height).configure_view(stroke=None).configure_axis(
+        labelColor="#111111", titleColor="#111111", gridColor="#e6eef7", domainColor="#b6cce3",
+        labelFontSize=12, titleFontSize=12).configure_legend(labelColor="#111111", titleColor="#111111")
+    st.altair_chart(spec, width="stretch")
+
+
 def navigate(page):
     st.session_state["page"] = page
 
 
-def selectors():
+def controls():
     with st.sidebar:
-        st.title("Rice Yield")
-        st.caption("Forecasting research")
-        page = st.session_state.setdefault("page", "Data & methods")
+        st.markdown('<div class="brand-label">RICE YIELD</div>', unsafe_allow_html=True)
+        st.caption("Explore yields, data and evidence")
+        page = st.session_state.setdefault("page", PAGES[0])
+        if page not in PAGES:
+            page = st.session_state["page"] = PAGES[0]
         for name in PAGES:
-            st.button(name, key="nav_" + name, type="primary" if name == page else "secondary",
-                      width="stretch", on_click=navigate, args=(name,))
+            st.button(name, key="nav_"+name, width="stretch", type="primary" if page == name else "secondary",
+                      on_click=navigate, args=(name,))
         st.divider()
-        state = st.selectbox("State", ["Odisha", "Bihar", "Chhattisgarh", "Jharkhand", "West Bengal"])
-        seasons = ["Kharif rice", "Annual rice"] if state == "Odisha" else ["Annual rice"]
-        season = st.selectbox("Coverage", seasons, help="The Kharif study covers Odisha. The annual study covers five states.")
-        data = study(season)
-        available = data["records"].loc[data["records"].state.eq(state)]
-        districts = available[["district_id", "district"]].drop_duplicates().sort_values("district")
-        labels = districts.set_index("district_id").district.to_dict()
-        code = st.selectbox("District", districts.district_id.tolist(), format_func=lambda v: labels[v].title(),
-                            key="district_" + season + "_" + state)
-        years = sorted(available.loc[available.district_id.eq(code), "year"].unique().tolist(), reverse=True)
-        year = st.selectbox("Agricultural start year", years, format_func=lambda v: f"{v}–{str(v+1)[-2:]}", key="year_" + season)
-        st.caption("Historical replay · yield in kg/ha")
-    return page, data, state, code, year
+        state = st.selectbox("State", ["Odisha", "Bihar", "Chhattisgarh", "Jharkhand", "West Bengal"], key="state")
+        options = list(KINDS) if state == "Odisha" else [list(KINDS)[-1]]
+        label = st.selectbox("Study", options, key="study_"+state)
+        data = study(KINDS[label])
+        districts = data["records"].loc[data["records"].state.eq(state), ["district_id", "district"]].drop_duplicates().sort_values("district")
+        names = districts.set_index("district_id").district.to_dict()
+        code = st.selectbox("District", districts.district_id.tolist(), format_func=lambda v: names[v].title(), key="district_"+data["kind"]+state)
+        year = method = None
+        if page != "Data explorer":
+            method = st.selectbox("Method", data["methods"], key="method_"+data["kind"], help="Select saved research results; this does not retrain or deploy a model.")
+        if page == "Yield explorer":
+            years = sorted(data["records"].loc[data["records"].district_id.eq(code), "year"].unique(), reverse=True)
+            year = st.selectbox("Harvest start year", years, format_func=lambda v: f"{v}–{str(v+1)[-2:]}", key="year_"+data["kind"])
+    return page, data, state, code, names[code].title(), year, method
 
 
-def forecast_page(data, code, year):
-    row = data["records"].loc[data["records"].district_id.eq(code) & data["records"].year.eq(year)].iloc[0]
+def selected(data, state, code, method, scope="Full study"):
+    frame = data["records"]
+    if method is not None:
+        frame = frame.loc[frame.method.eq(method)]
+    if scope == "Selected state":
+        frame = frame.loc[frame.state.eq(state)]
+    elif scope == "Selected district":
+        frame = frame.loc[frame.district_id.eq(code)]
+    return frame.copy()
+
+
+def yield_page(data, code, year, method):
+    row = data["records"].loc[data["records"].district_id.eq(code) & data["records"].year.eq(year) & data["records"].method.eq(method)].iloc[0]
     source = data["inputs"].loc[data["inputs"].district_id.eq(code) & data["inputs"].year.eq(year)].iloc[0]
-    st.subheader("Yield forecast")
-    st.caption(f"{row.district.title()} · {year}–{str(year+1)[-2:]} · {data['model']}")
-    reveal = st.checkbox("Show recorded harvest yield", value=False)
-    result = [("Estimated yield", f"{row.prediction:,.0f} kg/ha"),
-              ("Past-yield reference", f"{row.reference:,.0f} kg/ha"),
-              ("Change from reference", f"{100*(row.prediction/row.reference-1):+.1f}%"),
-              ("Approximate 80% interval", f"{row.lower_80_kg_ha:,.0f}–{row.upper_80_kg_ha:,.0f} kg/ha"),
-              ("Low-yield threshold", f"{row.threshold:,.0f} kg/ha"),
-              ("Point forecast below threshold", "Yes" if row.prediction < row.threshold else "No")]
+    reveal = st.toggle("Compare with recorded harvest", value=True)
+    history = pd.DataFrame({"year": [int(year-i) for i in range(6, 1, -1)], "yield": [source[f"yield_lag{i}"] for i in range(6, 1, -1)]})
+    line = alt.Chart(history).mark_line(point=True, color=BLUE, strokeWidth=2.5).encode(
+        x=alt.X("year:Q", title="Agricultural start year", axis=alt.Axis(format="d", tickMinStep=1)),
+        y=alt.Y("yield:Q", title="Yield (kg/ha)", scale=alt.Scale(zero=True)),
+        tooltip=[alt.Tooltip("year:Q", format="d", title="Year"), alt.Tooltip("yield:Q", format=",.0f", title="Historical yield")])
+    values = [{"year": int(year), "yield": row.prediction, "value": "Estimate"}]
     if reveal:
-        result += [("Recorded yield", f"{row.actual:,.0f} kg/ha"),
-                   ("Absolute forecast error", f"{abs(row.actual-row.prediction):,.0f} kg/ha")]
-    table(result)
-    st.caption("Low yield means below 80% of the past-yield reference. This is a research flag, not a measured damage diagnosis.")
-    if data["season"] == "Kharif rice":
-        st.caption("Intervals are wide and low-yield detection is weak; see Model results for the measured performance.")
-    st.subheader("Yield history used")
-    history = pd.DataFrame({"Start year": [int(year-lag) for lag in range(6, 1, -1)],
-                            "Yield (kg/ha)": [source[f"yield_lag{lag}"] for lag in range(6, 1, -1)]})
-    history["Start year"] = history["Start year"].astype(str)
-    st.line_chart(history.set_index("Start year"), color="#245e9d", height=220)
-    st.caption(f"Issue date: 31 August {year}. History: {year-6}–{year-2}. The selected model uses yield history; weather was tested separately.")
-    export = pd.DataFrame({"district": [row.district], "state": [row.state], "start_year": [year],
-        "model": [data["model"]], "forecast_kg_ha": [row.prediction], "reference_kg_ha": [row.reference],
-        "lower_80_kg_ha": [row.lower_80_kg_ha], "upper_80_kg_ha": [row.upper_80_kg_ha]})
+        values.append({"year": int(year), "yield": row.actual, "value": "Recorded harvest"})
+    points = alt.Chart(pd.DataFrame(values)).mark_point(size=140, filled=True).encode(x="year:Q", y="yield:Q",
+        color=alt.Color("value:N", title=None, legend=alt.Legend(orient="top"), scale=alt.Scale(domain=["Estimate", "Recorded harvest"], range=[BLUE, "#111111"])),
+        shape=alt.Shape("value:N", legend=alt.Legend(orient="top", title=None)), tooltip=["value:N", alt.Tooltip("yield:Q", format=",.0f", title="kg/ha")])
+    chart(line+points, 330)
+    st.caption(f"History: {year-6}–{year-2}. Issue date: 31 August {year}. The previous year's yield is excluded under the assumed reporting delay.")
+    rows = [("Estimated yield", f"{row.prediction:,.0f} kg/ha"), ("Past-yield reference", f"{row.reference:,.0f} kg/ha"),
+            ("Change from reference", f"{row.prediction/row.reference-1:+.1%}")]
     if reveal:
-        export["recorded_yield_kg_ha"] = row.actual
-    st.download_button("Download forecast", export.to_csv(index=False), "rice_forecast.csv", "text/csv")
+        rows += [("Recorded harvest", f"{row.actual:,.0f} kg/ha"), ("Absolute error", f"{abs(row.prediction-row.actual):,.0f} kg/ha")]
+    if "lower_80_kg_ha" in row.index and pd.notna(row.lower_80_kg_ha):
+        rows.append(("Approximate 80% interval", f"{row.lower_80_kg_ha:,.0f}–{row.upper_80_kg_ha:,.0f} kg/ha"))
+    if "selected_configuration" in row.index:
+        rows.append(("Configuration used", row.selected_configuration))
+    table(rows)
+    st.caption("A change from historical yield is not a measured damage percentage or calibrated risk alert.")
+    fields = ["district", "state", "year", "method", "prediction", "reference"]+(["actual"] if reveal else [])
+    export = pd.DataFrame([row[fields]]).rename(columns={"prediction": "predicted_yield_kg_ha", "reference": "reference_yield_kg_ha", "actual": "actual_yield_kg_ha"})
+    st.download_button("Download this record", export.to_csv(index=False), "rice_yield_record.csv", "text/csv")
 
 
-def results_page(data, code):
+def data_page(data, state, code):
     with st.sidebar:
-        section = st.selectbox("Result to view", ["Accuracy", "Model comparison", "Uncertainty", "Low-yield flags", "By year", "Selected district"])
-    st.subheader(section)
-    st.caption(f"{data['season']} · all assessment records, {data['dates']} · selected: {data['model']}")
-    summary, records = data["summary"], data["records"]
-    scores = data["scores"]
-    selected = scores.loc[scores.model.eq(data["model"])].iloc[0]
-    if section == "Accuracy":
-        table([("Selected model", data["model"]), ("Assessment records", f"{len(records):,}"),
-            ("Mean absolute error (MAE)", f"{selected.mae_kg_ha:,.1f} kg/ha"),
-            ("Root mean squared error (RMSE)", f"{selected.rmse_kg_ha:,.1f} kg/ha"),
-            ("R squared", f"{selected.r_squared:.3f}"), ("Weighted absolute percentage error", percent(selected.wape_fraction))])
-        st.write("MAE is the average size of a forecast error. Lower is better. The model was chosen on earlier years, not on these results.")
-        if data["season"] == "Kharif rice":
-            st.caption("The error improvement over simple history baselines remains uncertain across five years. Negative R squared and weak low-yield recall limit the findings.")
-    elif section == "Model comparison":
-        display = scores[["model", "mae_kg_ha", "rmse_kg_ha"]].rename(columns={"model": "Configuration", "mae_kg_ha": "MAE (kg/ha)", "rmse_kg_ha": "RMSE (kg/ha)"})
+        view = st.radio("Explore", ["Yield over time", "District comparison", "Weather patterns", "Data coverage"], key="data_view")
+    full = data["history"].loc[data["history"].state.eq(state)].copy()
+    first, last = int(full.year.min()), int(full.year.max())
+    window = st.slider("Data years", first, last, (first, last), key="range_"+data["kind"]+state)
+    frame = full.loc[full.year.between(*window)].copy()
+    st.caption(f"{len(frame):,} prepared district-year records · {frame.district_id.nunique()} districts · {window[0]}–{window[1]} · "+
+               ("development observations" if data["kind"] != "annual" else "annual rice; historical district boundaries"))
+    if view == "Yield over time":
+        summary = frame.groupby("year").yield_kg_ha.agg(median="median", low=lambda x: x.quantile(.25), high=lambda x: x.quantile(.75)).reset_index()
+        base = alt.Chart(summary).encode(x=alt.X("year:Q", title="Agricultural start year", axis=alt.Axis(format="d", tickMinStep=1)))
+        band = base.mark_area(color=LIGHT, opacity=.7).encode(y=alt.Y("low:Q", title="Yield (kg/ha)"), y2="high:Q")
+        median = base.mark_line(color="#7698bc", strokeDash=[5, 4]).encode(y="median:Q", tooltip=["year:Q", alt.Tooltip("median:Q", title="District median", format=",.0f")])
+        district = alt.Chart(frame.loc[frame.district_id.eq(code)]).mark_line(color=BLUE, point=True, strokeWidth=2.5).encode(
+            x="year:Q", y="yield_kg_ha:Q", tooltip=["district:N", alt.Tooltip("year:Q", format="d"), alt.Tooltip("yield_kg_ha:Q", format=",.0f", title="Yield (kg/ha)")])
+        chart(band+median+district)
+        st.caption("Solid blue: selected district. Dashed: district median. Shading: middle 50% of districts, not a confidence interval or area-weighted state yield.")
+    elif view == "District comparison":
+        frame["highlight"] = np.where(frame.district_id.eq(code), "Selected district", "Other districts")
+        chart(alt.Chart(frame).mark_boxplot(extent=1.5, size=12).encode(
+            y=alt.Y("district:N", title=None, sort=frame.groupby("district").yield_kg_ha.median().sort_values(ascending=False).index.tolist()),
+            x=alt.X("yield_kg_ha:Q", title="Yield (kg/ha)"), color=alt.Color("highlight:N", title=None,
+                scale=alt.Scale(domain=["Selected district", "Other districts"], range=[BLUE, LIGHT])), tooltip=["district:N"]), max(320, 23*frame.district_id.nunique()))
+        st.caption("Boxes contain the middle 50% of yields. Outside points are retained; they are not automatically errors.")
+    elif view == "Weather patterns":
+        district = frame.loc[frame.district_id.eq(code)]
+        if district.empty:
+            st.info("No prepared observations for this district in the selected year range. Widen the range to explore its weather.")
+            return
+        weather_year = st.selectbox("Weather year", sorted(district.year.unique(), reverse=True), key="weather_year_"+data["kind"]+state)
+        indicators = {"Rainfall": ("PRECTOTCORR", "Rainfall (mm/day)" if data["kind"] == "annual" else "Total rainfall (mm)"),
+            "Maximum temperature": ("T2M_MAX", "Mean maximum temperature (C)"), "Minimum temperature": ("T2M_MIN", "Mean minimum temperature (C)"),
+            "Humidity": ("RH2M", "Relative humidity (%)")}
+        if data["kind"] != "annual":
+            indicators["Solar energy"] = ("ALLSKY_SFC_SW_DWN", "Mean daily solar energy (MJ/m²/day)")
+        indicator = st.selectbox("Weather variable", list(indicators))
+        variable, unit = indicators[indicator]
+        row = district.loc[district.year.eq(weather_year)].iloc[0]
+        periods = ["June", "July", "August" if data["kind"] == "annual" else "1–24 August"]
+        weather = pd.DataFrame({"Window": periods, "value": [row[f"{variable}_{m:02d}"] for m in (6, 7, 8)]})
+        chart(alt.Chart(weather).mark_bar(color=BLUE, size=65).encode(x=alt.X("Window:N", sort=periods, title=None),
+            y=alt.Y("value:Q", title=unit), tooltip=["Window:N", alt.Tooltip("value:Q", title=unit, format=".2f")]))
+        st.caption("NASA POWER gridded estimates. Weather observations support the research comparisons; they do not change a saved history-only forecast.")
+    else:
+        coverage = frame.assign(available=frame.yield_kg_ha.notna().map({True: "Available", False: "Missing"}))
+        chart(alt.Chart(coverage).mark_rect(stroke="white", strokeWidth=1).encode(x=alt.X("year:O", title="Agricultural start year", axis=alt.Axis(labelAngle=-45)),
+            y=alt.Y("district:N", title=None), color=alt.Color("available:N", title=None, scale=alt.Scale(domain=["Available", "Missing"], range=[BLUE, "#e7edf4"])),
+            tooltip=["district:N", "year:O", "available:N"]), max(320, 23*frame.district_id.nunique()))
+        st.caption("Availability in the prepared cohort does not certify historical publication dates or unchanged boundaries.")
+    with st.expander("View records and definitions"):
+        display = frame.loc[frame.district_id.eq(code), ["district", "year", "yield_kg_ha"]].rename(columns={"yield_kg_ha": "Yield (kg/ha)"})
         st.dataframe(display, hide_index=True, width="stretch")
-        if data["season"] == "Kharif rice":
-            st.caption("Thirteen fixed configurations. Random Forest depth 4 reached MAE 405.3 kg/ha, but was not selected on development years. It remains a secondary finding.")
-    elif section == "Uncertainty":
-        table([("Nominal interval coverage", "80%"), ("Observed coverage", percent(summary["interval_coverage_80"])),
-               ("Average interval width", f"{summary['mean_interval_width_kg_ha']:,.0f} kg/ha")])
-        st.write("Coverage counts how often the recorded yield falls inside the interval. A very wide interval can cover many outcomes while being less useful for decisions.")
-    elif section == "Low-yield flags":
-        actual = records.actual < records.threshold
-        flagged = records.prediction < records.threshold
-        tp, fp, fn, tn = [int(x) for x in [(actual & flagged).sum(), (~actual & flagged).sum(), (actual & ~flagged).sum(), (~actual & ~flagged).sum()]]
-        table([("Observed low-yield records", int(actual.sum())), ("Correct low-yield flags", tp),
-               ("False flags", fp), ("Missed low-yield records", fn), ("Correct normal-yield records", tn),
-               ("Precision", percent(tp/(tp+fp) if tp+fp else None)), ("Recall", percent(tp/(tp+fn) if tp+fn else None))])
-        st.caption("These are point-forecast threshold flags. No calibrated probability or causal crop damage is claimed.")
-    else:
-        group = records if section == "By year" else records.loc[records.district_id.eq(code)]
-        rows = []
-        for year, part in group.groupby("year"):
-            rows.append({"Start year": int(year), "Records": len(part), "MAE (kg/ha)": float(abs(part.prediction-part.actual).mean()),
-                         "Recorded mean (kg/ha)": float(part.actual.mean()), "Forecast mean (kg/ha)": float(part.prediction.mean())})
-        st.dataframe(pd.DataFrame(rows), hide_index=True, width="stretch")
-    st.download_button("Download model comparison", scores.to_csv(index=False), "rice_model_comparison.csv", "text/csv")
+        st.write("Yield = harvested rice per hectare. Annual rice combines seasons; Kharif is season-specific. Studies are not pooled. Missing early lag histories reduce the Kharif modelling cohort from 600 to 420 records.")
+        st.download_button("Download selected district data", display.to_csv(index=False), "district_yield_data.csv", "text/csv")
 
 
-def methods_page(data, code, year):
+def accuracy(frame):
+    error = frame.prediction-frame.actual
+    denominator = ((frame.actual-frame.actual.mean())**2).sum()
+    return [("Records", len(frame)), ("Average absolute error (MAE)", f"{abs(error).mean():,.1f} kg/ha"),
+            ("Root mean squared error (RMSE)", f"{np.sqrt((error**2).mean()):,.1f} kg/ha"), ("Average bias", f"{error.mean():+,.1f} kg/ha"),
+            ("R squared", f"{1-(error**2).sum()/denominator:.3f}" if denominator > 0 else "Unavailable"),
+            ("Weighted absolute percentage error", percent(abs(error).sum()/abs(frame.actual).sum() if abs(frame.actual).sum() else None))]
+
+
+def evaluation_page(data, state, code, method):
     with st.sidebar:
-        section = st.selectbox("Topic", ["Data exploration", "Study summary", "Predictors", "Validation", "Limitations", "Protein and aluminium"])
-    st.subheader(section)
-    kharif = data["season"] == "Kharif rice"
-    if section == "Data exploration":
-        if not kharif:
-            st.info("These development-data graphs describe the main Odisha Kharif study. Select Odisha and Kharif rice to explore them. Annual rice has different geographic units and is not pooled with this data.")
+        view = st.selectbox("Result to view", ["Accuracy", "Compare methods", "Yearly errors", "Low-yield detection", "Uncertainty", "Error patterns"], key="result_view")
+        scope = st.selectbox("Evaluation scope", ["Selected state", "Selected district", "Full study"])
+    frame = selected(data, state, code, method, scope)
+    st.caption(f"{view} · {scope.lower()} · {frame.year.min()}–{frame.year.max()} · {method}")
+    if view == "Accuracy":
+        table(accuracy(frame))
+        st.caption("Lower MAE means smaller typical errors. Bias is prediction minus observed. Negative R squared indicates poor squared-error performance.")
+        if data["kind"] == "revised":
+            st.write("The revised selection procedure did not improve on the historical mean across the full study. It is not cleared for reliable forecasting.")
+    elif view == "Compare methods":
+        if data["kind"] == "annual":
+            comparison = data["scores"][["model", "mae_kg_ha", "rmse_kg_ha"]].rename(columns={"model": "Method", "mae_kg_ha": "MAE (kg/ha)", "rmse_kg_ha": "RMSE (kg/ha)"})
+            st.caption("Archived comparison for the full five-state study. Other methods' district-level predictions were not saved.")
+        else:
+            all_methods = selected(data, state, code, None, scope)
+            comparison = pd.DataFrame([{"Method": name, "MAE (kg/ha)": float(abs(g.prediction-g.actual).mean()),
+                "RMSE (kg/ha)": float(np.sqrt(((g.prediction-g.actual)**2).mean()))} for name, g in all_methods.groupby("method")])
+        chart(alt.Chart(comparison).mark_bar(color=BLUE).encode(y=alt.Y("Method:N", sort=None, title=None),
+            x=alt.X("MAE (kg/ha):Q", title="Average absolute error (kg/ha)"), tooltip=["Method:N", alt.Tooltip("MAE (kg/ha):Q", format=",.1f")]), max(280, 32*len(comparison)))
+        st.dataframe(comparison.round(1), hide_index=True, width="stretch")
+        st.caption("Comparisons do not authorise choosing a new winner from evaluation outcomes. Different studies cover different years and cannot be compared directly.")
+    elif view == "Yearly errors":
+        yearly = frame.assign(error=lambda d: abs(d.prediction-d.actual)).groupby("year").error.mean().reset_index()
+        chart(alt.Chart(yearly).mark_line(point=True, color=BLUE, strokeWidth=2.5).encode(x=alt.X("year:O", title="Agricultural start year"),
+            y=alt.Y("error:Q", title="MAE (kg/ha)"), tooltip=["year:O", alt.Tooltip("error:Q", format=",.1f")]))
+    elif view == "Low-yield detection":
+        actual, flagged = frame.actual < frame.threshold, frame.prediction < frame.threshold
+        tp, fp, fn, tn = [int(v) for v in ((actual & flagged).sum(), (~actual & flagged).sum(), (actual & ~flagged).sum(), (~actual & ~flagged).sum())]
+        table([("Observed low-yield outcomes", int(actual.sum())), ("Correct low-yield flags", tp), ("False flags", fp), ("Missed low-yield outcomes", fn),
+               ("Correct normal-yield outcomes", tn), ("Precision", percent(tp/(tp+fp) if tp+fp else None)), ("Recall", percent(tp/(tp+fn) if tp+fn else None))])
+        st.caption("Low yield is below 80% of the historical reference. These flags are not reliable damage alerts or calibrated probabilities.")
+    elif view == "Uncertainty":
+        if data["kind"] == "revised":
+            intervals = read("revised_modelling", "interval_evaluation.csv").rename(columns=RENAME)
+            if scope == "Selected district":
+                intervals = intervals.loc[intervals.district_id.eq(code)]
+            st.caption("Separate interval experiment: configuration fixed in 2012, evaluated in 2016–2017. These intervals do not belong to the adaptive method selected above.")
+        else:
+            intervals = frame.loc[frame.lower_80_kg_ha.notna()].copy()
+        if intervals.empty:
+            st.info("No interval was saved for this method. Choose the study's primary saved method to view its intervals.")
             return
-        folder = ROOT / "data/processed/rice/foundation"
-        if not (folder / "audit.json").exists():
-            st.info("The development data audit has not been generated yet.")
-            return
-        st.caption("Odisha Kharif · 1998–2017 development data only · 30 districts · 600 records. Graphs describe the data; they do not establish causes or predictive value.")
-        choices = {
-            "Data coverage": ("01_coverage", "Every district has 20 observed development yields. Earlier years without sufficient lag history remain visible here but are excluded from the 420-row modelling cohort."),
-            "Yield over time": ("02_yield_trend", "The line is the median across districts; the band is the middle 50% of districts, not a confidence interval. This is not an area-weighted state yield."),
-            "District distributions": ("03_district_yields", "Each box summarises 20 annual yields. The line marks the median; the box spans the middle 50%. Whiskers use 1.5 IQR; outside points remain in the data."),
-            "Weather relationships": ("04_weather_correlations", "A representative subset of weather predictors. Strong correlations show redundancy, not causation. This pooled district-year plot does not provide independent-observation significance tests.")}
-        choice = st.selectbox("Graph", list(choices))
-        name, explanation = choices[choice]
-        st.image(str(folder / "figures" / (name + ".png")), width="stretch")
-        st.write(explanation)
-        st.download_button("Download graph (SVG)", (folder / "figures" / (name + ".svg")).read_bytes(), name + ".svg", "image/svg+xml")
-        records = pd.read_csv(folder / "development_records.csv", dtype={"district_code_census2011": str})
-        district = records.loc[records.district_code_census2011.eq(str(code))]
-        with st.expander("Selected district: source records"):
-            st.dataframe(district[["district_source", "agricultural_start_year", "yield_kg_ha"]], hide_index=True)
-        st.caption("Previously reported forecasts belong to the legacy experiment. A separate revised nested comparison is documented in docs/Revised_Modelling_Results.md; it did not establish reliable forecasting gains.")
-    elif section == "Study summary":
-        table([("Crop", "Rice"), ("Target", "Yield per hectare, kg/ha"), ("Coverage", "30 Odisha districts" if kharif else "50 historical districts in five states"),
-               ("Season", "Kharif" if kharif else "Annual: combines rice seasons"),
-               ("Yield source", "Government DES" if kharif else "ICRISAT District Level Database"),
-               ("Weather source", "NASA POWER"), ("Issue date", "31 August of the starting year"),
-               ("Assessment years", data["dates"]), ("Selected model", data["model"])])
-        st.markdown("Sources: [DES](https://www.data.desagri.gov.in/website/apy-query-report-web) · [ICRISAT](https://doi.org/10.21421/D2/XFB1BZ) · [NASA POWER](https://power.larc.nasa.gov/)")
-    elif section == "Predictors":
-        table([("Used by the selected model", "Five past yields, their mean/trend and study metadata"),
-               ("Also tested", "Rainfall, maximum/minimum temperature and humidity" + (", solar energy" if kharif else "")),
-               ("Weather observation window", "1 June–24 August; 19 summaries" if kharif else "June–August; 12 monthly variables"),
-               ("Never predictors", "Target-year production, target-year area and harvest yield")])
-        source = data["inputs"].loc[data["inputs"].district_id.eq(code) & data["inputs"].year.eq(year)].iloc[0]
-        rows = []
-        for m in (6, 7, 8):
-            rows.append({"Window": {6: "June", 7: "July", 8: "1–24 August" if kharif else "August"}[m],
-                         "Rain (mm total)" if kharif else "Rain (mm/day)": source[f"PRECTOTCORR_{m:02d}"],
-                         "Mean Tmax (C)": source[f"T2M_MAX_{m:02d}"], "Mean Tmin (C)": source[f"T2M_MIN_{m:02d}"],
-                         "Humidity (%)": source[f"RH2M_{m:02d}"]})
-        st.dataframe(pd.DataFrame(rows), hide_index=True, width="stretch")
-        st.caption("Displayed weather belongs to the selected district/year. Weather candidates were tested, but the selected history model does not use these weather inputs.")
-    elif section == "Validation":
-        table([("Model selection", "2009–2012, expanding windows" if kharif else "1998–2005, expanding windows"),
-               ("Interval calibration", "2014–2016" if kharif else "2006–2011"), ("Later-year assessment", data["dates"]),
-               ("Fitting rule", "Annual refit through Y−2" if kharif else "Frozen estimator fitted through 2004"),
-               ("Yield history", "Y−2 through Y−6; assumed reporting delay"),
-               ("Algorithms compared", "History baselines, Ridge, Random Forest, histogram gradient boosting")])
-        st.write("Training uses earlier years. Model selection and interval calibration were fixed before the assessment outcomes were opened.")
-    elif section == "Limitations":
-        table([("Forecast scope", "Historical replay, not a live current-season service"),
-               ("Geography", "Fixed 2011 reference polygons assumed" if kharif else "Historical 1966-apportioned districts"),
-               ("Weather", "Revised gridded estimates; actual historical release vintages unverified"),
-               ("Reporting dates", "Two-year yield delay assumed, not independently verified"),
-               ("Evidence", "Few assessment years; baseline gains are uncertain"),
-               ("Low-yield flags", "Limited detection; not measured injury or financial loss")])
-        if kharif:
-            st.caption("Map attribution: DataMeet Community Maps Project, CC BY 2.5 India. Weights cover whole districts, not verified rice areas.")
+        covered = intervals.actual.between(intervals.lower_80_kg_ha, intervals.upper_80_kg_ha)
+        table([("Nominal coverage", "80%"), ("Observed coverage", percent(covered.mean())), ("Records", len(intervals)),
+               ("Average interval width", f"{(intervals.upper_80_kg_ha-intervals.lower_80_kg_ha).mean():,.0f} kg/ha")])
+        st.caption("Wide intervals can cover many outcomes while being less useful. Coverage varies by year; future coverage is not guaranteed.")
     else:
-        st.write("Proteins and aluminium are supporting biological research. They are not predictors in either district forecasting model.")
-        table([("Aluminium", "Can harm roots in acidic soil; district-year exposure was not linked"),
-               ("Protein experiment", "Separate rice trials tested genetic variants with reference protein context"),
-               ("Finding", "No reliable protein-context forecasting improvement was established"),
-               ("Presentation claim", "Biological motivation and a separate experiment, not a district model input")])
-
-
-def guide_page():
-    st.subheader("Your presentation in five points")
-    for title, body in [
-        ("1. The question", "Can early-season weather improve rice yield forecasts over a district's recent yield history?"),
-        ("2. The data", "The main seasonal study uses official Kharif rice yields for 30 Odisha districts and NASA daily weather. A separate ICRISAT annual study provides five-state coverage."),
-        ("3. The method", "We compare simple baselines, Ridge, Random Forest and boosting. Models are chosen on earlier years and then evaluated on later years."),
-        ("4. The result", "For the Odisha study, development selected history-only Ridge: MAE 517 kg/ha versus 578 for recent mean. Random Forest reached 405 kg/ha as a secondary finding."),
-        ("5. The conclusion", "This is a completed research prototype with real data and mixed results. Weather's added value is not established, low-yield detection is weak, and uncertainty intervals are wide."),
-    ]:
-        st.markdown(f"**{title}**")
-        st.write(body)
-    st.download_button("Download presentation guide", (ROOT / "docs/Project_Guide.md").read_bytes(), "Rice_Project_Guide.md", "text/markdown")
+        errors = frame.assign(error=lambda d: d.prediction-d.actual)
+        points = alt.Chart(errors).mark_circle(size=55, color=BLUE, opacity=.65).encode(x=alt.X("prediction:Q", title="Predicted yield (kg/ha)"),
+            y=alt.Y("error:Q", title="Predicted minus observed (kg/ha)"), tooltip=["district:N", "year:O", alt.Tooltip("error:Q", format=",.0f")])
+        zero = alt.Chart(pd.DataFrame({"zero": [0]})).mark_rule(color="#111111").encode(y="zero:Q")
+        chart(points+zero)
+        st.caption("Look for bias and changes in error spread. This does not prove independence, correct specification or causal effects.")
+    with st.expander("How this evaluation was conducted"):
+        st.write("Chronological fitting excludes future labels. Revised modelling uses nested selection across 17 configurations; saved Kharif and annual studies retain their original frozen selections. Scaling fits within training data. Publication dates and boundary stability remain assumptions.")
+        st.write("The revised archive was already inspected, so it is exploratory rather than independent confirmation. Protein and aluminium are not district-level predictors.")
+    export = frame[["district", "state", "year", "method", "actual", "prediction", "reference"]].rename(columns={
+        "prediction": "predicted_yield_kg_ha", "actual": "actual_yield_kg_ha", "reference": "reference_yield_kg_ha"})
+    st.download_button("Download evaluation records", export.to_csv(index=False), "rice_evaluation.csv", "text/csv")
 
 
 def render_dashboard():
-    page, data, state, code, year = selectors()
-    st.title("Rice Yield Outlook")
-    st.caption("Birla Institute of Technology, Mesra · Department of Quantitative Economics and Data Science  \nGuide: Dr. Manish Kumar Pandey")
+    page, data, state, code, district, year, method = controls()
+    st.markdown('<div class="eyebrow">RICE YIELD OUTLOOK</div>', unsafe_allow_html=True)
+    st.title({"Yield explorer": "Explore rice yield", "Data explorer": "Understand the data", "Model evaluation": "Evaluate the forecasts"}[page])
+    st.caption(f"{district}, {state} · "+next(name for name, kind in KINDS.items() if kind == data["kind"]))
     st.divider()
-    st.caption(f"{state} · {data['season']} · historical assessment {data['dates']}")
-    if page in ("Forecast", "Model results"):
-        st.caption("Legacy experiment. The separate revised nested comparison did not establish reliable forecasting gains; it has not replaced these saved results.")
-    if page == "Forecast":
-        forecast_page(data, code, year)
-    elif page == "Model results":
-        results_page(data, code)
-    elif page == "Data & methods":
-        methods_page(data, code, year)
+    if page == "Yield explorer":
+        st.caption("Historical research estimates. No live forecast or reliable damage alert is available.")
+        yield_page(data, code, year, method)
+    elif page == "Data explorer":
+        data_page(data, state, code)
     else:
-        guide_page()
+        evaluation_page(data, state, code, method)
+    with st.expander("Data sources and scope"):
+        st.write("Yield: DES (Kharif) or ICRISAT (annual). Weather: NASA POWER. Rice yield is kilograms harvested per hectare. Protein and aluminium are separate supporting research, not district-model inputs.")
+        st.markdown("[DES](https://www.data.desagri.gov.in/website/apy-query-report-web) · [ICRISAT](https://doi.org/10.21421/D2/XFB1BZ) · [NASA POWER](https://power.larc.nasa.gov/)")
+        st.caption("Kharif weather uses fixed 2011 district reference polygons, whole-district weights and revised historical archives. Map: DataMeet Community Maps Project, CC BY 2.5 India. Annual data use historical 1966-apportioned districts; ICRISAT data-sharing terms apply.")
