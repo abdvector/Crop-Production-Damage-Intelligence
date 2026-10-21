@@ -1,0 +1,61 @@
+agricultural_start_year,strategy,selected_configuration,inner_first_year,inner_last_year,timing
+2012,Nested selection,Recent mean,2008,2010,june_july
+2012,Recent mean,Recent mean,2008,2010,june_july
+2012,Last available yield,Last available yield,2008,2010,june_july
+2012,Historical trend,Historical trend,2008,2010,june_july
+2012,History Ridge,History Ridge alpha 100,2008,2010,june_july
+2012,Weather Ridge,Weather Ridge alpha 100,2008,2010,june_july
+2012,History Forest,History Forest depth 8,2008,2010,june_july
+2012,Weather Forest,Weather Forest depth 8,2008,2010,june_july
+2012,History Boosting,History Boosting L2 10,2008,2010,june_july
+2012,Weather Boosting,Weather Boosting L2 1,2008,2010,june_july
+2013,Nested selection,Recent mean,2008,2011,june_july
+2013,Recent mean,Recent mean,2008,2011,june_july
+2013,Last available yield,Last available yield,2008,2011,june_july
+2013,Historical trend,Historical trend,2008,2011,june_july
+2013,History Ridge,History Ridge alpha 100,2008,2011,june_july
+2013,Weather Ridge,Weather Ridge alpha 100,2008,2011,june_july
+2013,History Forest,History Forest depth 8,2008,2011,june_july
+2013,Weather Forest,Weather Forest depth 8,2008,2011,june_july
+2013,History Boosting,History Boosting L2 10,2008,2011,june_july
+2013,Weather Boosting,Weather Boosting L2 1,2008,2011,june_july
+2014,Nested selection,History Ridge alpha 10,2008,2012,june_july
+2014,Recent mean,Recent mean,2008,2012,june_july
+2014,Last available yield,Last available yield,2008,2012,june_july
+2014,Historical trend,Historical trend,2008,2012,june_july
+2014,History Ridge,History Ridge alpha 10,2008,2012,june_july
+2014,Weather Ridge,Weather Ridge alpha 100,2008,2012,june_july
+2014,History Forest,History Forest depth 8,2008,2012,june_july
+2014,Weather Forest,Weather Forest depth 8,2008,2012,june_july
+2014,History Boosting,History Boosting L2 1,2008,2012,june_july
+2014,Weather Boosting,Weather Boosting L2 10,2008,2012,june_july
+2015,Nested selection,Recent mean,2008,2013,june_july
+2015,Recent mean,Recent mean,2008,2013,june_july
+2015,Last available yield,Last available yield,2008,2013,june_july
+2015,Historical trend,Historical trend,2008,2013,june_july
+2015,History Ridge,History Ridge alpha 10,2008,2013,june_july
+2015,Weather Ridge,Weather Ridge alpha 100,2008,2013,june_july
+2015,History Forest,History Forest depth 4,2008,2013,june_july
+2015,Weather Forest,Weather Forest depth 8,2008,2013,june_july
+2015,History Boosting,History Boosting L2 1,2008,2013,june_july
+2015,Weather Boosting,Weather Boosting L2 10,2008,2013,june_july
+2016,Nested selection,Recent mean,2008,2014,june_july
+2016,Recent mean,Recent mean,2008,2014,june_july
+2016,Last available yield,Last available yield,2008,2014,june_july
+2016,Historical trend,Historical trend,2008,2014,june_july
+2016,History Ridge,History Ridge alpha 100,2008,2014,june_july
+2016,Weather Ridge,Weather Ridge alpha 100,2008,2014,june_july
+2016,History Forest,History Forest depth 4,2008,2014,june_july
+2016,Weather Forest,Weather Forest depth 8,2008,2014,june_july
+2016,History Boosting,History Boosting L2 1,2008,2014,june_july
+2016,Weather Boosting,Weather Boosting L2 10,2008,2014,june_july
+2017,Nested selection,Recent mean,2008,2015,june_july
+2017,Recent mean,Recent mean,2008,2015,june_july
+2017,Last available yield,Last available yield,2008,2015,june_july
+2017,Historical trend,Historical trend,2008,2015,june_july
+2017,History Ridge,History Ridge alpha 100,2008,2015,june_july
+2017,Weather Ridge,Weather Ridge alpha 100,2008,2015,june_july
+2017,History Forest,History Forest depth 4,2008,2015,june_july
+2017,Weather Forest,Weather Forest depth 8,2008,2015,june_july
+2017,History Boosting,History Boosting L2 1,2008,2015,june_july
+2017,Weather Boosting,Weather Boosting L2 10,2008,2015,june_july

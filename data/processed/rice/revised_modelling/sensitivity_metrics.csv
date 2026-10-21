@@ -1,0 +1,3 @@
+sensitivity,records,mae_kg_ha,rmse_kg_ha,bias_kg_ha,r_squared,wape,low_yield_count,flagged_count,true_positive,false_positive,false_negative,true_negative,precision,recall,f1,both_outcome_classes_present,mean_abs_prediction_change_kg_ha
+Redundant history representation,180,781.007097290779,953.5814839082054,-354.56265284633446,-0.5931012818517569,0.4481963830655494,52,30,0,30,52,98,0.0,0.0,0.0,True,0.8308969881729875
+Remove unusual training year,180,728.8651957726681,874.0775475658245,-302.4207513282238,-0.3385287297498212,0.41827372071376734,52,16,0,16,52,112,0.0,0.0,0.0,True,51.35479555504155

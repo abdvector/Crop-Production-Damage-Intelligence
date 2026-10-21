@@ -6,6 +6,11 @@ from pathlib import Path
 PROJECT_ROOT = Path(__file__).resolve().parent
 os.chdir(PROJECT_ROOT)
 if __name__ == "__main__":
+    if "--compare-models" in sys.argv:
+        from src.rice_validation import run
+        report = run()
+        print(report)
+        raise SystemExit(0)
     if "--audit-data" in sys.argv:
         from src.rice_foundation import build
         report = build()

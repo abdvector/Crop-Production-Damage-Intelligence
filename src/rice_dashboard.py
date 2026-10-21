@@ -180,7 +180,7 @@ def methods_page(data, code, year):
         district = records.loc[records.district_code_census2011.eq(str(code))]
         with st.expander("Selected district: source records"):
             st.dataframe(district[["district_source", "agricultural_start_year", "yield_kg_ha"]], hide_index=True)
-        st.caption("Revised modelling is on hold. Previously reported forecasts belong to the legacy experiment; the new foundation does not validate them anew.")
+        st.caption("Previously reported forecasts belong to the legacy experiment. A separate revised nested comparison is documented in docs/Revised_Modelling_Results.md; it did not establish reliable forecasting gains.")
     elif section == "Study summary":
         table([("Crop", "Rice"), ("Target", "Yield per hectare, kg/ha"), ("Coverage", "30 Odisha districts" if kharif else "50 historical districts in five states"),
                ("Season", "Kharif" if kharif else "Annual: combines rice seasons"),
@@ -247,7 +247,7 @@ def render_dashboard():
     st.divider()
     st.caption(f"{state} · {data['season']} · historical assessment {data['dates']}")
     if page in ("Forecast", "Model results"):
-        st.caption("Legacy experiment: revised modelling is on hold while the statistical foundation is reviewed.")
+        st.caption("Legacy experiment. The separate revised nested comparison did not establish reliable forecasting gains; it has not replaced these saved results.")
     if page == "Forecast":
         forecast_page(data, code, year)
     elif page == "Model results":

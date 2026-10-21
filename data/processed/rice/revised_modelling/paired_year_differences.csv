@@ -1,0 +1,37 @@
+agricultural_start_year,model,reference,mae_improvement_kg_ha
+2012,Nested selection,Recent mean,0.0
+2013,Nested selection,Recent mean,0.0
+2014,Nested selection,Recent mean,-575.2532812995918
+2015,Nested selection,Recent mean,0.0
+2016,Nested selection,Recent mean,0.0
+2017,Nested selection,Recent mean,0.0
+2012,Nested selection,Last available yield,25.066666666666606
+2013,Nested selection,Last available yield,67.33333333333337
+2014,Nested selection,Last available yield,11.213385367074807
+2015,Nested selection,Last available yield,448.8666666666666
+2016,Nested selection,Last available yield,-338.4000000000001
+2017,Nested selection,Last available yield,113.26666666666665
+2012,Nested selection,Historical trend,82.0666666666666
+2013,Nested selection,Historical trend,126.13333333333333
+2014,Nested selection,Historical trend,72.2133853670748
+2015,Nested selection,Historical trend,469.99999999999994
+2016,Nested selection,Historical trend,-76.53333333333342
+2017,Nested selection,Historical trend,171.33333333333337
+2012,Weather Ridge,History Ridge,-120.36321928726159
+2013,Weather Ridge,History Ridge,18.857790933649767
+2014,Weather Ridge,History Ridge,125.41804209131078
+2015,Weather Ridge,History Ridge,56.51727168673955
+2016,Weather Ridge,History Ridge,106.2469999528571
+2017,Weather Ridge,History Ridge,30.53231164939274
+2012,Weather Forest,History Forest,-260.7142518868005
+2013,Weather Forest,History Forest,-2.0700548848243443
+2014,Weather Forest,History Forest,14.691640912098364
+2015,Weather Forest,History Forest,-88.8593862144283
+2016,Weather Forest,History Forest,-33.6630996861781
+2017,Weather Forest,History Forest,81.70707176677138
+2012,Weather Boosting,History Boosting,-334.8822576755226
+2013,Weather Boosting,History Boosting,-32.36865977839352
+2014,Weather Boosting,History Boosting,25.697389197670418
+2015,Weather Boosting,History Boosting,-63.080024056841125
+2016,Weather Boosting,History Boosting,-39.74531490551982
+2017,Weather Boosting,History Boosting,-57.00499594557033

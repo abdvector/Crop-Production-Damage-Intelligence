@@ -1,0 +1,56 @@
+{
+  "status": "completed exploratory nested comparison; not operationally cleared",
+  "configurations": 17,
+  "outer_years": [
+    2012,
+    2013,
+    2014,
+    2015,
+    2016,
+    2017
+  ],
+  "outer_records_per_strategy": 180,
+  "primary": {
+    "strategy": "Nested selection",
+    "records": 180,
+    "mae_kg_ha": 780.2199913277099,
+    "rmse_kg_ha": 952.2868734706365,
+    "bias_kg_ha": -353.7755468832653,
+    "r_squared": -0.5887785353139514,
+    "wape": 0.4477446867276279,
+    "low_yield_count": 52,
+    "flagged_count": 30,
+    "true_positive": 0,
+    "false_positive": 30,
+    "false_negative": 52,
+    "true_negative": 98,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "both_outcome_classes_present": true,
+    "equal_year_mae_kg_ha": 780.2199913277096
+  },
+  "interval_branch": {
+    "configuration_frozen_in_2012": "Recent mean",
+    "selection_labels": "2008\u20132010",
+    "calibration_years": [
+      2012,
+      2013,
+      2014
+    ],
+    "evaluation_years": [
+      2016,
+      2017
+    ],
+    "calibration_records": 90,
+    "evaluation_records": 60,
+    "relative_half_width": 0.7192268565615463,
+    "coverage_80": 0.7833333333333333,
+    "mean_width_kg_ha": 2221.3081722617835,
+    "mean_interval_score_80": 3096.689657511021,
+    "status": "separate exploratory fixed-configuration branch; no coverage guarantee"
+  },
+  "assumptions_status": "data and chronology enforced; error adequacy measured, not universally passed",
+  "assessment_2018_2022_read": false,
+  "deployment_model_replaced": false
+}

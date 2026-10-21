@@ -1,0 +1,7 @@
+model,reference,mean_mae_improvement_kg_ha,lower_95_exploratory,upper_95_exploratory,years_improved,years
+Nested selection,Recent mean,-95.8755468832653,-287.6266406497959,0.0,0,6
+Nested selection,Last available yield,54.557786450068,-139.62666666666672,247.09135046110632,5,6
+Nested selection,Historical trend,140.8688975611791,23.346675338956874,289.26889756117913,5,6
+Weather Ridge,History Ridge,36.20153283778139,-32.296339101690364,91.86925896794362,5,6
+Weather Forest,History Forest,-48.151346665560254,-140.26981000843884,26.226624899149332,2,6
+Weather Boosting,History Boosting,-83.5639771940295,-191.20290448240812,-13.78969455248667,1,6
