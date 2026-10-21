@@ -6,6 +6,10 @@ from pathlib import Path
 PROJECT_ROOT = Path(__file__).resolve().parent
 os.chdir(PROJECT_ROOT)
 if __name__ == "__main__":
+    if "--compare-annual-models" in sys.argv:
+        from src.rice_annual_comparison import run
+        print(run())
+        raise SystemExit(0)
     if "--compare-models" in sys.argv:
         from src.rice_validation import run
         report = run()

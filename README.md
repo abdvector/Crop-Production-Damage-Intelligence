@@ -21,11 +21,13 @@ From the project folder, run `python app.py` with the project environment active
 1. Choose a **State**, **Study** and **District**. Odisha offers the revised Kharif study and two saved forecast studies; other states offer the annual study.
 2. **Yield explorer** overlays actual and forecast yield lines across the saved years. The top-right **Show forecast** toggle controls the dashed forecast line; the vertical guide marks the harvest year selected for the table. The recorded-harvest toggle controls actual values in the graph/table/export. Historical model inputs remain available in a collapsed section.
 3. **Data explorer** shows yield trends, district distributions, weather patterns and data coverage. Change the year range and district; hover over charts for values. **Show forecast** overlays the primary method's saved predictions when they fall within the displayed range. Seasonal graphs use the 1998–2017 development observations; annual graphs use the separately prepared annual cohort.
-4. **Model evaluation** provides a sidebar result selector for accuracy, method comparison, yearly errors, low-yield detection, uncertainty and error patterns. Choose state, district or full-study scope. The archived annual all-method comparison always covers the full five-state study, as labelled.
+4. **Model evaluation** provides a sidebar result selector for accuracy, method comparison, yearly errors, low-yield detection, uncertainty and error patterns. Choose state, district or full-study scope. All seven annual methods now have saved district-level predictions, so these filters also apply to the annual model comparison.
 
 All interactions explore saved records; they do not retrain models or create live forecasts. The revised interval experiment is explicitly separate from the adaptive selection procedure. Detailed methods and source definitions are available in collapsed sections. The local presentation guide remains in `docs/Project_Guide.md` rather than appearing in the app.
 
 Kharif coverage is available for Odisha. All five states remain selectable through the separate annual study. These are historical replays, not live current-season forecasts.
+
+The annual **Method** dropdown includes History Ridge, Weather Ridge, Weather Random Forest, Weather Gradient Boosting and three historical baselines for all 50 study districts. The added learned comparators use the original fixed settings and fitting cutoff (2004) on the same 2012–2017 assessment records. They are retrospective comparisons, not new independent validation; History Ridge remains the original selected model. Only it retains the original saved prediction intervals. Reproduce/verify this extension with `python app.py --compare-annual-models`; outputs and receipts are under `data/processed/rice/regional_comparison/`. See the [declared annual comparison extension](docs/Annual_Model_Comparison.md).
 
 ## The two studies
 

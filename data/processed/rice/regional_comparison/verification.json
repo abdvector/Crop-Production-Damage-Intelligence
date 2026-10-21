@@ -1,0 +1,28 @@
+{
+  "methods": 7,
+  "records_per_method": 300,
+  "total_records": 2100,
+  "states": [
+    "Bihar",
+    "Chhattisgarh",
+    "Jharkhand",
+    "Orissa",
+    "West Bengal"
+  ],
+  "districts": 50,
+  "original_score_models_reproduced": [
+    "Recent mean",
+    "Last available yield",
+    "Historical trend",
+    "History Ridge"
+  ],
+  "selected_predictions_reproduced": true,
+  "original_files_unchanged": true,
+  "original_selection_preserved": true,
+  "intervals_only_for_original_selected_model": true,
+  "new_retrospective_comparators": [
+    "Weather Ridge",
+    "Weather forest",
+    "Weather boosting"
+  ]
+}

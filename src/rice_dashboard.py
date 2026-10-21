@@ -28,13 +28,17 @@ def study(kind):
     folder = {"annual": "regional_forecast", "revised": "revised_modelling", "kharif": "odisha_seasonal/model"}[kind]
     summary = json.loads((BASE / folder / "summary.json").read_text())
     if kind == "annual":
-        records = read(folder, "assessment_predictions.csv").rename(columns={"yield_kg_ha": "actual",
-            "prediction_kg_ha": "prediction", "reference_yield": "reference", "low_yield_threshold": "threshold"})
         primary = summary["selected_model"]
-        records["method"] = primary
+        expanded = (BASE / "regional_comparison/all_method_predictions.csv").exists()
+        records = read("regional_comparison" if expanded else folder,
+                       "all_method_predictions.csv" if expanded else "assessment_predictions.csv").rename(columns={
+            "yield_kg_ha": "actual", "prediction_kg_ha": "prediction", "reference_yield": "reference",
+            "low_yield_threshold": "threshold", "model": "method"})
+        if not expanded:
+            records["method"] = primary
         inputs = read(folder, "district_years.csv")
         history = inputs.copy()
-        scores = read(folder, "assessment_metrics.csv")
+        scores = read("regional_comparison" if expanded else folder, "all_method_metrics.csv" if expanded else "assessment_metrics.csv")
     else:
         records = read(folder, "nested_predictions.csv" if kind == "revised" else "assessment_predictions.csv").rename(columns=RENAME)
         records["state"] = "Odisha"
@@ -94,7 +98,9 @@ def controls():
         code = st.selectbox("District", districts.district_id.tolist(), format_func=lambda v: names[v].title(), key="district_"+data["kind"]+state)
         year = method = None
         if page != "Data explorer":
-            method = st.selectbox("Method", data["methods"], key="method_"+data["kind"], help="Select saved research results; this does not retrain or deploy a model.")
+            method = st.selectbox("Method", data["methods"], key="method_"+data["kind"],
+                                  format_func=lambda name: {"Weather forest": "Weather Random Forest", "Weather boosting": "Weather Gradient Boosting"}.get(name, name),
+                                  help="Select saved research results; this does not retrain or deploy a model. Annual comparators use the original fixed settings; the selected model remains History Ridge.")
         if page == "Yield explorer":
             years = sorted(data["records"].loc[data["records"].district_id.eq(code), "year"].unique(), reverse=True)
             year = st.selectbox("Harvest start year", years, format_func=lambda v: f"{v}–{str(v+1)[-2:]}", key="year_"+data["kind"])
@@ -255,7 +261,7 @@ def evaluation_page(data, state, code, method):
         if data["kind"] == "revised":
             st.write("The revised selection procedure did not improve on the historical mean across the full study. It is not cleared for reliable forecasting.")
     elif view == "Compare methods":
-        if data["kind"] == "annual":
+        if data["kind"] == "annual" and len(data["methods"]) == 1:
             comparison = data["scores"][["model", "mae_kg_ha", "rmse_kg_ha"]].rename(columns={"model": "Method", "mae_kg_ha": "MAE (kg/ha)", "rmse_kg_ha": "RMSE (kg/ha)"})
             st.caption("Archived comparison for the full five-state study. Other methods' district-level predictions were not saved.")
         else:
@@ -312,6 +318,8 @@ def render_dashboard():
     st.title({"Yield explorer": "Explore rice yield", "Data explorer": "Understand the data", "Model evaluation": "Evaluate the forecasts"}[page])
     st.caption(f"{district}, {state} · "+next(name for name, kind in KINDS.items() if kind == data["kind"]))
     st.divider()
+    if data["kind"] == "annual" and method is not None and method != data["primary"]:
+        st.caption("Fixed-settings annual comparator. The original selected model remains History Ridge; these comparisons are not independent new validation.")
     if page == "Yield explorer":
         st.caption("Historical research estimates. No live forecast or reliable damage alert is available.")
         yield_page(data, code, year, method)
