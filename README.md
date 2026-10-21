@@ -12,6 +12,8 @@ Run `python app.py --audit-data` to reproduce the development-only audit and fig
 
 Run `python app.py --compare-models` for the revised comparison; completed reruns verify receipts without refitting. Results and three diagnostic figures are under `data/processed/rice/revised_modelling/`. Model-specific checks distinguish numerical validity from predictive adequacy; no claim that all assumptions passed is made.
 
+The [crop-state extension and download guide](docs/Crop_State_Extension.md) identifies closely matching published work and prepares vegetation/soil-moisture acquisition. Run `python app.py --prepare-crop-state-export` to generate the Earth Engine export script. The cloud export requires your own registered Earth Engine project. After downloading its four CSVs, `python app.py --check-crop-state-import` validates their district/year join. **New inputs are not yet acquired and no improved model has been trained.** Vegetation is explicitly a mixed-cropland proxy, not a rice-only measurement.
+
 ## Run
 
 From the project folder, run `python app.py` with the project environment active, or `.\.venv\Scripts\python.exe app.py` in PowerShell. `app.py` is the sole launcher. Restart it after edits because file watching is disabled. Dependencies in `requirements.txt` pin the verified environment, recorded with Python 3.13.5; the saved model uses scikit-learn 1.9.1.

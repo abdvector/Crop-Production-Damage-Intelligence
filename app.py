@@ -6,6 +6,18 @@ from pathlib import Path
 PROJECT_ROOT = Path(__file__).resolve().parent
 os.chdir(PROJECT_ROOT)
 if __name__ == "__main__":
+    if "--prepare-crop-state-export" in sys.argv:
+        from src.rice_crop_state import prepare_export
+        print(prepare_export())
+        raise SystemExit(0)
+    if "--check-crop-state-import" in sys.argv:
+        from src.rice_crop_state import check_import
+        try:
+            print(check_import())
+        except ValueError as error:
+            print(f"Crop-state import stopped: {error}")
+            raise SystemExit(1)
+        raise SystemExit(0)
     if "--compare-annual-models" in sys.argv:
         from src.rice_annual_comparison import run
         print(run())

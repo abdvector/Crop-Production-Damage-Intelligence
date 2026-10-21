@@ -1,0 +1,21 @@
+{
+  "status": "prepared_not_executed",
+  "version": 1,
+  "expected_rows": 420,
+  "years": [
+    2004,
+    2017
+  ],
+  "districts": 30,
+  "issue_date": "08-31",
+  "observation_end": "08-24",
+  "mask": "MCD12Q1 LC_Type1 12 or 14 from Y-2; mixed cropland, not rice-specific",
+  "source_sha256": {
+    "data/processed/rice/seasonal_geography/reference_geometries.geojson": "ce21d47a8ed1f7bb77a821b224ac95249bafc6dc520f2cb33ed963e04c0f9575",
+    "data/processed/rice/odisha_seasonal/prepared_inputs.csv": "87b72b515e23b0870d1d85629a9c42a7f170699172588b335cd86648220ad892",
+    "docs/Crop_State_Extension.md": "4faff996b6067abba0cd1c5ebd6852fff44a3a7d589882bf684028249c4a7c47",
+    "src/rice_crop_state.py": "0e1960946eb148cb9d83df0ac557eb322b718bd6c11f6d903aa1e6d27d16d594"
+  },
+  "export_script_sha256": "034eb8ba00777569a2bfa00058bf9e100754dcba3e56a6888fc2318b8189c15d",
+  "requires": "User Earth Engine access and four completed Drive exports"
+}

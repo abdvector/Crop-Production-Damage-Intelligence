@@ -35,3 +35,5 @@ data/raw/rice/des_kharif_2026/*.html
 data/raw/rice/seasonal_geography/
 # Original daily responses; URLs and checksums are in the Odisha weather manifest.
 data/raw/rice/odisha_seasonal_weather/
+# Generated cloud acquisition script embeds the tracked district geometry.
+data/processed/rice/crop_state/Earth_Engine_Export.js
