@@ -14,31 +14,8 @@ if __name__ == "__main__":
 
 import streamlit as st
 
-st.set_page_config(page_title="Rice Yield Outlook", layout="wide")
-st.markdown("""<style>
-.block-container {max-width:1350px;padding-top:2.5rem;}
-[data-testid="stMetric"] {background:#111C2E;border:1px solid #26364C;border-radius:10px;padding:18px;}
-[data-testid="stMetricLabel"] {color:#A9B8CA;}
-h1 {letter-spacing:-0.03em;}
-</style>""", unsafe_allow_html=True)
-st.title("Rice Yield Outlook")
-st.caption("Birla Institute of Technology, Mesra | Department of Quantitative Economics and Data Science | Guide: Dr. Manish Kumar Pandey")
-with st.sidebar:
-    st.header("Rice forecasting")
-    view = st.radio("Workspace", ["Regional yield forecast", "Odisha Kharif study", "Molecular data audit", "Earlier research"])
-    st.divider()
-    st.write("Rice yield per hectare")
-    st.caption("Historical annual and Kharif studies with later-year evaluation, source checks and explicit limitations.")
-    st.caption("Earlier field, genetics and aluminium studies remain available as supporting research.")
-if view == "Regional yield forecast":
-    from src.rice_regional_ui import render_regional
-    render_regional()
-elif view == "Molecular data audit":
-    from src.rice_molecular_ui import render_molecular_audit
-    render_molecular_audit()
-elif view == "Odisha Kharif study":
-    from src.rice_odisha_ui import render_odisha
-    render_odisha()
-else:
-    from src.rice_research_archive import render_research_archive
-    render_research_archive()
+st.set_page_config(page_title="Rice Yield Outlook", layout="wide", initial_sidebar_state="expanded")
+st.markdown("<style>" + (PROJECT_ROOT / "src/dashboard.css").read_text(encoding="utf-8") + "</style>", unsafe_allow_html=True)
+from src.rice_dashboard import render_dashboard
+
+render_dashboard()

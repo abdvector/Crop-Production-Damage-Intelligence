@@ -14,7 +14,7 @@ The panel has 882 measured SNPs. The [molecular audit](Rice_Molecular_Linkage_Au
 
 ## Fixed comparison
 
-The saved [protocol](../data/processed/rice/protein_experiment/day_60/protocol.json) was written before fitting. Every configuration uses the same cohort:
+The saved [protocol](../../data/processed/rice/protein_experiment/day_60/protocol.json) was written before fitting. Every configuration uses the same cohort:
 
 1. Environment-balanced training mean.
 2. Environment and planting context.

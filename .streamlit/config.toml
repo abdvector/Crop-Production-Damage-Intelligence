@@ -1,13 +1,13 @@
 [server]
-# Transformers uses lazy modules; watching them imports unrelated vision models.
+# Keep app.py as the single launcher; restart it after editing.
 fileWatcherType = "none"
 
 [theme]
-base = "dark"
-primaryColor = "#38BDA6"
-backgroundColor = "#0B1220"
-secondaryBackgroundColor = "#111C2E"
-textColor = "#E6EDF5"
+base = "light"
+primaryColor = "#225B96"
+backgroundColor = "#FFFFFF"
+secondaryBackgroundColor = "#EDF4FC"
+textColor = "#111111"
 font = "sans serif"
 
 [browser]

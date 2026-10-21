@@ -2,7 +2,7 @@
 
 Audited 20 October 2026 from the current local data. No models were trained, labels repaired, source coordinates changed or old results replaced. The audit recomputes key joins, source yields, five historical lags, all twelve regional weather columns and matched management counts. Only aggregate findings are published; survey records and exact field coordinates remain local.
 
-Subsequent acquisition update: the [official Kharif rice source has now been obtained](Rice_Official_Kharif_Source.md). The audit below preserves the pre-acquisition findings; the new report records actual downloaded scope, units and remaining geographic/timing gaps.
+Subsequent acquisition update: the [official Kharif rice source has now been obtained](../Rice_Official_Kharif_Source.md). The audit below preserves the pre-acquisition findings; the new report records actual downloaded scope, units and remaining geographic/timing gaps.
 
 ## Decision
 
@@ -24,7 +24,7 @@ The original annual target combines rice seasons, so June–August weather canno
 
 The field cohort contains 6,183 records in 2017, 7,432 in 2018 and 4,221 in 2019. The matched management experiment retains **64.60%** of the eligible 2018 cohort, omitting 2,631 records for area or management completeness. Its results cannot be presented as performance for every surveyed farm. Thirteen 2019 yields retain review flags; no replacement values have been established.
 
-Published aggregate outputs include [block coverage](../data/processed/rice/predictor_audit/coverage.csv), [summary](../data/processed/rice/predictor_audit/summary.json) and [integrity checks and hashes](../data/processed/rice/predictor_audit/checks.json). A complete-record count measures file completeness, not measurement validity, causality or publication availability. District, field and trial observations remain separate cohorts.
+Published aggregate outputs include [block coverage](../../data/processed/rice/predictor_audit/coverage.csv), [summary](../../data/processed/rice/predictor_audit/summary.json) and [integrity checks and hashes](../../data/processed/rice/predictor_audit/checks.json). A complete-record count measures file completeness, not measurement validity, causality or publication availability. District, field and trial observations remain separate cohorts.
 
 The four administrative source files and 50 weather caches match their recorded download checksums. This verifies preserved bytes, not independent measurement accuracy. The full 50-district by 31-year grid has 60 absent combinations; they remain absent rather than becoming invented targets or zero yields.
 

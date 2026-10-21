@@ -1,0 +1,22 @@
+.stApp, [data-testid="stAppViewContainer"], [data-testid="stHeader"] {background:#fff;color:#111;}
+.block-container {max-width:1120px;padding-top:2rem;padding-bottom:3rem;}
+html, body, [class*="css"], .stApp {font-family:"Segoe UI",Arial,sans-serif;}
+h1,h2,h3,h4 {color:#0a0a0a!important;font-weight:700!important;letter-spacing:-.02em;}
+h1 {font-size:2rem!important;} h2 {font-size:1.45rem!important;} h3 {font-size:1.18rem!important;}
+p,li,label,[data-testid="stCaptionContainer"] {color:#171717;}
+[data-testid="stCaptionContainer"] {font-size:.87rem;}
+[data-testid="stCaption"], [data-testid="stCaption"] p,
+[data-testid="stCaptionContainer"], [data-testid="stCaptionContainer"] p {color:#111!important;}
+[data-testid="stSidebar"] {background:#edf4fc;border-right:1px solid #bed1e8;}
+[data-testid="stSidebar"] .stButton button {justify-content:flex-start;border:0;border-left:3px solid transparent;border-radius:3px;background:transparent;color:#111;box-shadow:none;}
+[data-testid="stSidebar"] .stButton button[kind="primary"] {background:#d5e5f8;border-left-color:#225b96;font-weight:700;color:#111;}
+[data-testid="stSidebar"] .stButton button:hover {background:#dfeaf8;color:#111;}
+[data-testid="stSidebar"] .stButton button p {font-size:1rem;}
+[data-testid="stSidebar"] .stButton button [data-testid="stMarkdownContainer"] p {text-align:left;}
+hr {border-color:#c3d7ee!important;}
+[data-testid="stTable"] th {font-weight:600;background:#eff5fc;color:#111;}
+[data-testid="stTable"] td {color:#111;background:#fff;}
+[data-testid="stTable"] th,[data-testid="stTable"] td {border-bottom:1px solid #d4e1f1;padding:.62rem .8rem;text-align:left;}
+[data-testid="stTable"] table {width:100%;font-size:.96rem;}
+[data-testid="stAppDeployButton"] {display:none;}
+a {color:#174f8b;}

@@ -1,6 +1,6 @@
 # Official Kharif rice source obtained
 
-Downloaded and structurally checked 20 October 2026. This completes the official season-specific label acquisition requested after the [predictor audit](Rice_Predictor_Linkage_Audit.md). It does not complete district-boundary verification or supply new matched weather/management observations. No model was fitted and no old forecast results were changed.
+Downloaded and structurally checked 20 October 2026. This completes the official season-specific label acquisition requested after the [predictor audit](research_notes/Rice_Predictor_Linkage_Audit.md). It does not complete district-boundary verification or supply new matched weather/management observations. No model was fitted and no old forecast results were changed.
 
 Subsequent step: the [district identity and dated reference-geometry review](Rice_Seasonal_Geography.md) now provides a crosswalk, documented split flags and a reference map, while keeping unresolved temporal equivalence explicit.
 

@@ -1,6 +1,3 @@
-"""
-Multi-Modal Wheat Production & Crop Damage Analytics Package
-Birla Institute of Technology, Mesra
-"""
+"""Rice yield forecasting, data preparation and presentation interface."""
 
 __version__ = "1.0.0"

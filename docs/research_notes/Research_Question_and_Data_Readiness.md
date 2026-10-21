@@ -1,4 +1,4 @@
-> Current primary workflow: [regional annual rice yield forecasting](Rice_Regional_Forecast.md). This page preserves the earlier field/trial research scope and readiness findings; those studies remain supporting evidence.
+> Current primary workflow: [regional annual rice yield forecasting](../Rice_Regional_Forecast.md). This page preserves the earlier field/trial research scope and readiness findings; those studies remain supporting evidence.
 
 # Research question and data readiness
 
