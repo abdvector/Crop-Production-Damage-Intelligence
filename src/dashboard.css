@@ -26,4 +26,10 @@ hr {border-color:#c8daee!important;margin:1rem 0 1.4rem!important;}
 [data-testid="stAppDeployButton"] {display:none;}
 [data-testid="stDownloadButton"] button {border:1px solid #bdd0e5;background:#f7faff;color:#111;box-shadow:none;}
 a {color:#174f8b;}
+.st-key-yield_chart_controls [data-testid="stHorizontalBlock"],
+.st-key-data_chart_controls [data-testid="stHorizontalBlock"] {flex-wrap:nowrap!important;}
+.st-key-yield_chart_controls [data-testid="stColumn"]:first-child,
+.st-key-data_chart_controls [data-testid="stColumn"]:first-child {flex:1 1 0!important;width:auto!important;min-width:0!important;}
+.st-key-yield_chart_controls [data-testid="stColumn"]:last-child,
+.st-key-data_chart_controls [data-testid="stColumn"]:last-child {flex:0 0 150px!important;width:150px!important;min-width:150px!important;}
 @media(max-width:760px) {.block-container {padding:1.6rem 1rem;} h1 {font-size:1.85rem!important;}}

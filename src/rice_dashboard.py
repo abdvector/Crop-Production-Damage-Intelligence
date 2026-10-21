@@ -112,23 +112,46 @@ def selected(data, state, code, method, scope="Full study"):
     return frame.copy()
 
 
+def yield_lines(actual, predicted, show_actual=True, show_forecast=True):
+    """Overlay only saved observations/predictions; never interpolate forecasts."""
+    parts = []
+    if show_actual and not actual.empty:
+        parts.append(actual[["year", "yield"]].assign(Series="Actual yield"))
+    if show_forecast and not predicted.empty:
+        parts.append(predicted[["year", "yield"]].assign(Series="Forecast yield"))
+    if not parts:
+        return None
+    values = pd.concat(parts, ignore_index=True)
+    shown = values.Series.unique().tolist()
+    return alt.Chart(values).mark_line(point=True, strokeWidth=2.5).encode(
+        x=alt.X("year:Q", title="Agricultural start year", axis=alt.Axis(format="d", tickMinStep=1)),
+        y=alt.Y("yield:Q", title="Yield (kg/ha)", scale=alt.Scale(zero=True)),
+        color=alt.Color("Series:N", title=None, legend=alt.Legend(orient="top"),
+                        scale=alt.Scale(domain=shown, range=[BLUE if name == "Actual yield" else "#527ca8" for name in shown])),
+        strokeDash=alt.StrokeDash("Series:N", title=None, legend=alt.Legend(orient="top"),
+                                 scale=alt.Scale(domain=shown, range=[[1, 0] if name == "Actual yield" else [7, 4] for name in shown])),
+        tooltip=["Series:N", alt.Tooltip("year:Q", format="d", title="Year"),
+                 alt.Tooltip("yield:Q", format=",.0f", title="Yield (kg/ha)")])
+
+
 def yield_page(data, code, year, method):
     row = data["records"].loc[data["records"].district_id.eq(code) & data["records"].year.eq(year) & data["records"].method.eq(method)].iloc[0]
     source = data["inputs"].loc[data["inputs"].district_id.eq(code) & data["inputs"].year.eq(year)].iloc[0]
-    reveal = st.toggle("Compare with recorded harvest", value=True)
+    with st.container(key="yield_chart_controls"):
+        left, right = st.columns([3, 1])
+        with left:
+            reveal = st.toggle("Show actual yield", value=True)
+        with right:
+            show_forecast = st.toggle("Show forecast", value=True, key="forecast_line_yield")
     history = pd.DataFrame({"year": [int(year-i) for i in range(6, 1, -1)], "yield": [source[f"yield_lag{i}"] for i in range(6, 1, -1)]})
-    line = alt.Chart(history).mark_line(point=True, color=BLUE, strokeWidth=2.5).encode(
-        x=alt.X("year:Q", title="Agricultural start year", axis=alt.Axis(format="d", tickMinStep=1)),
-        y=alt.Y("yield:Q", title="Yield (kg/ha)", scale=alt.Scale(zero=True)),
-        tooltip=[alt.Tooltip("year:Q", format="d", title="Year"), alt.Tooltip("yield:Q", format=",.0f", title="Historical yield")])
-    values = [{"year": int(year), "yield": row.prediction, "value": "Estimate"}]
-    if reveal:
-        values.append({"year": int(year), "yield": row.actual, "value": "Recorded harvest"})
-    points = alt.Chart(pd.DataFrame(values)).mark_point(size=140, filled=True).encode(x="year:Q", y="yield:Q",
-        color=alt.Color("value:N", title=None, legend=alt.Legend(orient="top"), scale=alt.Scale(domain=["Estimate", "Recorded harvest"], range=[BLUE, "#111111"])),
-        shape=alt.Shape("value:N", legend=alt.Legend(orient="top", title=None)), tooltip=["value:N", alt.Tooltip("yield:Q", format=",.0f", title="kg/ha")])
-    chart(line+points, 330)
-    st.caption(f"History: {year-6}–{year-2}. Issue date: 31 August {year}. The previous year's yield is excluded under the assumed reporting delay.")
+    district = data["records"].loc[data["records"].district_id.eq(code) & data["records"].method.eq(method)].sort_values("year")
+    lines = yield_lines(district.rename(columns={"actual": "yield"}), district.rename(columns={"prediction": "yield"}), reveal, show_forecast)
+    if lines is not None:
+        marker = alt.Chart(pd.DataFrame({"year": [int(year)]})).mark_rule(color="#b6cce3", strokeDash=[3, 3]).encode(x="year:Q")
+        chart(lines+marker, 330)
+    else:
+        st.info("Turn on actual yield or forecast yield to display the comparison.")
+    st.caption("Solid line: actual yield. Dashed line: saved forecast. The vertical guide marks the year selected in the sidebar; the table below refers to that year.")
     rows = [("Estimated yield", f"{row.prediction:,.0f} kg/ha"), ("Past-yield reference", f"{row.reference:,.0f} kg/ha"),
             ("Change from reference", f"{row.prediction/row.reference-1:+.1%}")]
     if reveal:
@@ -138,6 +161,9 @@ def yield_page(data, code, year, method):
     if "selected_configuration" in row.index:
         rows.append(("Configuration used", row.selected_configuration))
     table(rows)
+    with st.expander("Historical inputs used for this estimate"):
+        st.dataframe(history.rename(columns={"year": "Start year", "yield": "Yield (kg/ha)"}), hide_index=True)
+        st.caption(f"History: {year-6}–{year-2}. Issue date: 31 August {year}. The previous year's yield is excluded under the assumed reporting delay.")
     st.caption("A change from historical yield is not a measured damage percentage or calibrated risk alert.")
     fields = ["district", "state", "year", "method", "prediction", "reference"]+(["actual"] if reveal else [])
     export = pd.DataFrame([row[fields]]).rename(columns={"prediction": "predicted_yield_kg_ha", "reference": "reference_yield_kg_ha", "actual": "actual_yield_kg_ha"})
@@ -154,14 +180,21 @@ def data_page(data, state, code):
     st.caption(f"{len(frame):,} prepared district-year records · {frame.district_id.nunique()} districts · {window[0]}–{window[1]} · "+
                ("development observations" if data["kind"] != "annual" else "annual rice; historical district boundaries"))
     if view == "Yield over time":
+        with st.container(key="data_chart_controls"):
+            _, forecast_control = st.columns([3, 1])
+            with forecast_control:
+                show_forecast = st.toggle("Show forecast", value=False, key="forecast_line_data")
         summary = frame.groupby("year").yield_kg_ha.agg(median="median", low=lambda x: x.quantile(.25), high=lambda x: x.quantile(.75)).reset_index()
         base = alt.Chart(summary).encode(x=alt.X("year:Q", title="Agricultural start year", axis=alt.Axis(format="d", tickMinStep=1)))
         band = base.mark_area(color=LIGHT, opacity=.7).encode(y=alt.Y("low:Q", title="Yield (kg/ha)"), y2="high:Q")
         median = base.mark_line(color="#7698bc", strokeDash=[5, 4]).encode(y="median:Q", tooltip=["year:Q", alt.Tooltip("median:Q", title="District median", format=",.0f")])
-        district = alt.Chart(frame.loc[frame.district_id.eq(code)]).mark_line(color=BLUE, point=True, strokeWidth=2.5).encode(
-            x="year:Q", y="yield_kg_ha:Q", tooltip=["district:N", alt.Tooltip("year:Q", format="d"), alt.Tooltip("yield_kg_ha:Q", format=",.0f", title="Yield (kg/ha)")])
-        chart(band+median+district)
-        st.caption("Solid blue: selected district. Dashed: district median. Shading: middle 50% of districts, not a confidence interval or area-weighted state yield.")
+        forecasts = data["records"].loc[data["records"].district_id.eq(code) & data["records"].method.eq(data["primary"]) & data["records"].year.between(*window)]
+        district = yield_lines(frame.loc[frame.district_id.eq(code)].rename(columns={"yield_kg_ha": "yield"}),
+                               forecasts.rename(columns={"prediction": "yield"}), show_forecast=show_forecast)
+        chart(band+median if district is None else band+median+district)
+        st.caption("Solid blue: actual district yield. When enabled, the forecast line uses the study's primary method and only years with saved predictions. The pale dashed line is the district median; shading is the middle 50%, not a confidence interval or area-weighted state yield.")
+        if show_forecast and forecasts.empty:
+            st.info("No saved forecasts fall in this data-year range. Use Yield explorer to compare the study's forecast years.")
     elif view == "District comparison":
         frame["highlight"] = np.where(frame.district_id.eq(code), "Selected district", "Other districts")
         chart(alt.Chart(frame).mark_boxplot(extent=1.5, size=12).encode(
