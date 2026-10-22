@@ -54,6 +54,8 @@ The forest has lower error in this comparison, but this does not establish high 
 
 ## What was simplified
 
+For the separate seasonal research dataset, open **`data/rice_yield_master.csv`**: one Odisha Kharif table with 570 district-year records, yield as the label and 30 candidate predictors, including soil moisture and NDVI. See [column meanings, joins and missingness](docs/Dataset.md). This file does not replace the active annual model's input or mix the two targets.
+
 Earlier annual, seasonal, satellite and statistical experiments are preserved in [one archive](archive/README.md), including their original code, protocols and model. Their datasets and saved results remain in `data/`. They are not loaded as competing application workflows. The active app uses only `data/processed/rice/regional_forecast/district_years.csv` and `models/input_model/`.
 
 Papers, diagrams, the literature matrix and local mentor materials are preserved. Some earlier wheat diagrams describe the original proposal, not the current rice model. Local mentor materials are excluded from Git.
