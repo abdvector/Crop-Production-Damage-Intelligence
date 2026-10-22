@@ -55,6 +55,16 @@ function sums(image, geometry, projection) {
   return image.reduceRegion({reducer: ee.Reducer.sum(), geometry: geometry,
     crs: projection, scale: projection.nominalScale(), maxPixels: 1e9, tileScale: 4});
 }
+function sumOrZero(dictionary, key) {
+  // Empty regional reductions can contain an explicit null, not just no key.
+  var value = dictionary.get(key, 0);
+  return ee.Number(ee.Algorithms.If(ee.Algorithms.IsEqual(value, null), 0, value));
+}
+function meanOrMissing(total, validArea) {
+  // -9999 is an explicit CSV missing-value code. Import converts it to NaN.
+  // Never put a null into Dictionary.set or substitute a measured zero.
+  return ee.Number(ee.Algorithms.If(validArea.gt(0), total.divide(validArea.max(1e-30)), -9999));
+}
 function goodNDVI(image) {
   var raw = image.select('NDVI');
   var good = image.select('SummaryQA').eq(0)
@@ -62,7 +72,7 @@ function goodNDVI(image) {
   return raw.multiply(0.0001).updateMask(good).rename('ndvi')
     .copyProperties(image, ['system:time_start']);
 }
-function yearRows(y) {
+function yearRows(y, selectedDistricts) {
     var land = ee.Image(landSource.filterDate((y-2)+'-01-01', (y-1)+'-01-01').first())
       .select('LC_Type1');
     var crop = land.eq(12).or(land.eq(14)); // cropland and cropland/natural mosaics
@@ -82,32 +92,32 @@ function yearRows(y) {
       monthly.push({month: month, vi: viMean, viCount: viCount, soil: soilMean,
         viDates: vi.size(), soilDays: soil.size(), expectedDays: selected.expectedDays});
     });
-    var rows = districts.map(function(feature) {
+    var rows = (selectedDistricts || districts).map(function(feature) {
       var geometry = feature.geometry();
-      var cropArea = ee.Number(sums(area.updateMask(crop).rename('a'), geometry, ndviProjection).get('a'));
-      var districtArea = ee.Number(sums(area.rename('a'), geometry, soilProjection).get('a'));
+      var cropArea = sumOrZero(sums(area.updateMask(crop).rename('a'), geometry, ndviProjection), 'a');
+      var districtArea = sumOrZero(sums(area.rename('a'), geometry, soilProjection), 'a');
       var properties = feature.toDictionary([__CODE__, 'district_source']);
       properties = properties.set(__YEAR__, y).set('mask_year', y-2)
         .set('crop_proxy_area_m2', cropArea).set('observation_end', y+'-08-24')
-        .set('export_version', 2);
+        .set('export_version', 3);
       monthly.forEach(function(m) {
         var suffix = ('0'+m.month).slice(-2);
         var n = sums(m.vi.unmask(0).updateMask(crop).multiply(area).rename('value')
           .addBands(m.vi.mask().unmask(0).updateMask(crop).multiply(area).rename('valid'))
           .addBands(m.viCount.multiply(area).rename('count')), geometry, ndviProjection);
-        var valid = ee.Number(n.get('valid'));
+        var valid = sumOrZero(n, 'valid');
         var s = sums(m.soil.unmask(0).multiply(area).rename('value')
           .addBands(m.soil.mask().unmask(0).multiply(area).rename('valid')), geometry, soilProjection);
-        var soilValid = ee.Number(s.get('valid'));
-        properties = properties.set('ndvi_'+suffix,
-          ee.Algorithms.If(valid.gt(0), ee.Number(n.get('value')).divide(valid), null))
-          .set('ndvi_coverage_'+suffix, ee.Algorithms.If(cropArea.gt(0), valid.divide(cropArea), 0))
+        var soilValid = sumOrZero(s, 'valid');
+        properties = properties.set('ndvi_'+suffix, meanOrMissing(sumOrZero(n, 'value'), valid))
+          .set('ndvi_valid_'+suffix, valid.gt(0).int())
+          .set('ndvi_coverage_'+suffix, ee.Algorithms.If(cropArea.gt(0), valid.divide(cropArea.max(1e-30)), 0))
           .set('ndvi_mean_observations_'+suffix,
-            ee.Algorithms.If(cropArea.gt(0), ee.Number(n.get('count')).divide(cropArea), 0))
+            ee.Algorithms.If(cropArea.gt(0), sumOrZero(n, 'count').divide(cropArea.max(1e-30)), 0))
           .set('ndvi_composites_'+suffix, m.viDates)
-          .set('soil_moisture_'+suffix,
-            ee.Algorithms.If(soilValid.gt(0), ee.Number(s.get('value')).divide(soilValid), null))
-          .set('soil_coverage_'+suffix, soilValid.divide(districtArea))
+          .set('soil_moisture_'+suffix, meanOrMissing(sumOrZero(s, 'value'), soilValid))
+          .set('soil_valid_'+suffix, soilValid.gt(0).int())
+          .set('soil_coverage_'+suffix, soilValid.divide(districtArea.max(1e-30)))
           .set('soil_days_'+suffix, m.soilDays).set('expected_days_'+suffix, m.expectedDays);
       });
       return ee.Feature(null, properties); // CSV only; no geometry repeated per row
@@ -132,15 +142,20 @@ ee.FeatureCollection(checks).evaluate(function(result, error) {
     return p.ndvi_composites < 1 || p.ndvi_composites > 2 || p.soil_days !== p.expected_days;
   });
   if (bad.length) { print('Source dates missing; no export tasks created.', bad); return; }
-  print('Source checks passed: 42 year/month selections. Creating four v2 tasks.');
+  print('Source dates passed. Testing district index 24 in 2004 before creating tasks.');
+  var probeDistrict = ee.FeatureCollection([districts.toList(30).get(24)]);
+  yearRows(2004, probeDistrict).evaluate(function(probe, probeError) {
+    if (probeError) { print('District computation failed; no tasks created.', probeError); return; }
+    print('District computation passed; missing values use -9999 with validity flags.', probe);
   [[2004, 2007], [2008, 2011], [2012, 2014], [2015, 2017]].forEach(function(block) {
     var tables = [];
     for (var year = block[0]; year <= block[1]; year++) { tables.push(yearRows(year)); }
     Export.table.toDrive({collection: ee.FeatureCollection(tables).flatten(),
-      description: 'Odisha_Crop_State_'+block[0]+'_'+block[1]+'_v2',
-      fileNamePrefix: 'Odisha_Crop_State_'+block[0]+'_'+block[1]+'_v2', fileFormat: 'CSV'});
+      description: 'Odisha_Crop_State_'+block[0]+'_'+block[1]+'_v3',
+      fileNamePrefix: 'Odisha_Crop_State_'+block[0]+'_'+block[1]+'_v3', fileFormat: 'CSV'});
   });
-  print('Start the four v2 tasks; do not restart old failed tasks.');
+  print('Start the four v3 tasks; do not restart old failed tasks.');
+  });
 });
 Map.centerObject(districts, 7);
 Map.addLayer(districts, {color: '245d92'}, 'Study districts');
@@ -178,7 +193,7 @@ def prepare_export():
     path = OUT / "Earth_Engine_Export.js"
     path.write_text(script, encoding="utf-8", newline="\n")
     write_json(OUT / "export_plan.json", {
-        "status": "prepared_not_executed", "version": 2, "expected_rows": 420,
+        "status": "prepared_not_executed", "version": 3, "expected_rows": 420,
         "years": [2004, 2017], "districts": 30, "issue_date": "08-31", "observation_end": "08-24",
         "mask": "MCD12Q1 LC_Type1 12 or 14 from Y-2; mixed cropland, not rice-specific",
         "source_sha256": {str(p.relative_to(ROOT)).replace('\\', '/'): digest(p)
@@ -203,10 +218,10 @@ def check_import():
             raise ValueError("Export plan inputs changed; review and regenerate before importing")
     if digest(OUT / "Earth_Engine_Export.js") != plan["export_script_sha256"]:
         raise ValueError("Export script changed")
-    files = sorted(RAW.glob("Odisha_Crop_State_*_v2.csv"))
+    files = sorted(RAW.glob("Odisha_Crop_State_*_v3.csv"))
     if len(files) != 4:
         raise ValueError(f"Expected four Earth Engine export CSVs in {RAW}; found {len(files)}")
-    frame = pd.concat([pd.read_csv(p, dtype={CODE: str}) for p in files], ignore_index=True)
+    frame = pd.concat([pd.read_csv(p, dtype={CODE: str}, na_values=[-9999]) for p in files], ignore_index=True)
     source = pd.read_csv(INPUT, dtype={CODE: str})
     source = source.loc[source[YEAR].between(2004, 2017)].copy()
     keys = [CODE, YEAR]
@@ -214,7 +229,7 @@ def check_import():
         raise ValueError("Expected 420 unique district-years; no silent dropping or deduplication")
     if set(map(tuple, frame[keys].to_numpy())) != set(map(tuple, source[keys].to_numpy())):
         raise ValueError("District-year key set does not match the fixed cohort")
-    if not frame.mask_year.eq(frame[YEAR]-2).all() or not frame.export_version.eq(2).all():
+    if not frame.mask_year.eq(frame[YEAR]-2).all() or not frame.export_version.eq(3).all():
         raise ValueError("Wrong land-cover timing or export version")
     if not frame.observation_end.eq(frame[YEAR].astype(str)+"-08-24").all():
         raise ValueError("Unexpected observation cutoff")
@@ -235,10 +250,16 @@ def check_import():
         if not np.isfinite(counts).all() or not counts.between(0, frame["ndvi_composites_"+suffix]+1e-6).all():
             raise ValueError("Invalid NDVI observation counts")
         ndvi = frame["ndvi_"+suffix]
+        for flag in ("ndvi_valid_"+suffix, "soil_valid_"+suffix):
+            if not frame[flag].isin([0, 1]).all():
+                raise ValueError("Invalid observation validity flag")
+        if not frame["ndvi_valid_"+suffix].eq(ndvi.notna().astype(int)).all():
+            raise ValueError("NDVI missing value disagrees with validity flag")
         if not ndvi.dropna().between(-.2, 1).all():
             raise ValueError("Unscaled, nonfinite or invalid NDVI")
         soil = frame["soil_moisture_"+suffix]
-        if not np.isfinite(soil).all() or not soil.between(0, 1).all() or (frame["soil_coverage_"+suffix] < .5).any():
+        if (not frame["soil_valid_"+suffix].eq(1).all() or not np.isfinite(soil).all()
+                or not soil.between(0, 1).all() or (frame["soil_coverage_"+suffix] < .5).any()):
             raise ValueError("Incomplete soil coverage or invalid volumetric soil water")
         low = frame["ndvi_coverage_"+suffix] < .25
         frame.loc[low, "ndvi_"+suffix] = np.nan

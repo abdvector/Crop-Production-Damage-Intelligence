@@ -1,6 +1,6 @@
 {
   "status": "prepared_not_executed",
-  "version": 2,
+  "version": 3,
   "expected_rows": 420,
   "years": [
     2004,
@@ -13,9 +13,9 @@
   "source_sha256": {
     "data/processed/rice/seasonal_geography/reference_geometries.geojson": "ce21d47a8ed1f7bb77a821b224ac95249bafc6dc520f2cb33ed963e04c0f9575",
     "data/processed/rice/odisha_seasonal/prepared_inputs.csv": "87b72b515e23b0870d1d85629a9c42a7f170699172588b335cd86648220ad892",
-    "docs/Crop_State_Extension.md": "c898941dcbd7d2907ff2afa37925f32e77aa68732f94e3fa3463538ed369e43b",
-    "src/rice_crop_state.py": "8ec0fe3810b87457f50589bb243c80338424e3aa26596bd6ac24fd84b853ada9"
+    "docs/Crop_State_Extension.md": "7d8673442f28969cd25ba0a955b4e2d2e1af7b38ceb441e7eadd789538bc2ccf",
+    "src/rice_crop_state.py": "812fe9a2cf932d9d9040ddb8936b62cff81581bb3a53afe6a4497faa7628a758"
   },
-  "export_script_sha256": "d4b0edfd74811866cd42368f78ab672eaf068db8d654ca47ea784cc7c456a2d2",
+  "export_script_sha256": "9c0abe84f5b5a817621daca88e16d4147be25cd4369a34829dacb51b1344c054",
   "requires": "User Earth Engine access and four completed Drive exports"
 }
