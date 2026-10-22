@@ -1,0 +1,179 @@
+{
+  "status": "two_composite_probe_only_not_training_ready",
+  "composites": [
+    {
+      "status": "sample_probe_only_not_training_ready",
+      "item_id": "MCD15A2H.A2010217.h25v06.061.2021168125717",
+      "collection": "modis-15A2H-061",
+      "composite_start": "2010-08-05T00:00:00Z",
+      "composite_end": "2010-08-12T23:59:59Z",
+      "lai_scale_factor": 0.1,
+      "quality_rule": "Raw LAI <=100; MODLAND bit0=0; SCF bits5-7 <=1; dead-detector bit2=0; strict additionally cloud bits3-4=0.",
+      "mask": {
+        "product": "APRA500",
+        "doi": "10.5281/zenodo.5557022",
+        "license": "CC BY 4.0",
+        "mask_year": 2008,
+        "rice_class": 1,
+        "non_rice_class": 0,
+        "nodata": 3,
+        "purpose": "Prior-year binary paddy extent proxy; annual mask is not Kharif-specific. Classification accuracy is not independently validated in this probe."
+      },
+      "files": [
+        {
+          "name": "APRA500_paddyRice2008.tif",
+          "source_url": "https://zenodo.org/api/records/5557022/files/paddyRice2008.tif/content",
+          "bytes": 3646365,
+          "sha256": "0c10c6b0b3583a414c9b767afb62f20b034d95ea279147a4978e6b2af30438f6",
+          "publisher_md5": "42e13d4fbbc6bc664b913b2a944bf7e4"
+        },
+        {
+          "name": "MCD15A2H_20100805_h25v06_LAI.tif",
+          "source_url": "https://modiseuwest.blob.core.windows.net/modis-061-cogs/MCD15A2H/25/06/2010217/MCD15A2H.A2010217.h25v06.061.2021168125717_Lai_500m.tif",
+          "bytes": 4297551,
+          "sha256": "f38c54baa087332d3dfbb7fac9d4d48146c007d2c723288283e244decab583f2",
+          "publisher_md5": null
+        },
+        {
+          "name": "MCD15A2H_20100805_h25v06_QC.tif",
+          "source_url": "https://modiseuwest.blob.core.windows.net/modis-061-cogs/MCD15A2H/25/06/2010217/MCD15A2H.A2010217.h25v06.061.2021168125717_FparLai_QC.tif",
+          "bytes": 3041548,
+          "sha256": "b8caac2e4f4a3e75d598a2a0e6bdb73397044f2efc849908255d8fe7f60a9f45",
+          "publisher_md5": null
+        }
+      ],
+      "districts": [
+        {
+          "district": "Bargarh",
+          "district_code_census2011": "370",
+          "yield_year": 2010,
+          "mask_year": 2008,
+          "full_district_in_tile": true,
+          "district_pixel_count": 27065,
+          "rice_pixel_count": 3844,
+          "rice_map_values": [
+            0,
+            1
+          ],
+          "main_algorithm_valid_rice_pixels": 3840,
+          "strict_clear_valid_rice_pixels": 41,
+          "strict_coverage_fraction": 0.010665972944849115,
+          "strict_mean_lai_m2_m2": 1.0
+        },
+        {
+          "district": "Sambalpur",
+          "district_code_census2011": "372",
+          "yield_year": 2010,
+          "mask_year": 2008,
+          "full_district_in_tile": true,
+          "district_pixel_count": 31419,
+          "rice_pixel_count": 1002,
+          "rice_map_values": [
+            0,
+            1
+          ],
+          "main_algorithm_valid_rice_pixels": 987,
+          "strict_clear_valid_rice_pixels": 41,
+          "strict_coverage_fraction": 0.04091816367265469,
+          "strict_mean_lai_m2_m2": 0.7902439024390244
+        }
+      ],
+      "rasterio_version": "1.5.2",
+      "geography_sha256": "ce21d47a8ed1f7bb77a821b224ac95249bafc6dc520f2cb33ed963e04c0f9575",
+      "limitations": [
+        "Two districts and one composite only; no multi-year coverage claim.",
+        "Valid zero non-rice values preserved using explicit source/destination nodata; two raster reprojection routes agree.",
+        "Archive availability is not proof of operational historical availability.",
+        "No yield label was used to select pixels or evaluate quality.",
+        "Not appended to the master table and no model was retrained."
+      ]
+    },
+    {
+      "status": "sample_probe_only_not_training_ready",
+      "item_id": "MCD15A2H.A2010281.h25v06.061.2021176062244",
+      "collection": "modis-15A2H-061",
+      "composite_start": "2010-10-08T00:00:00Z",
+      "composite_end": "2010-10-15T23:59:59Z",
+      "lai_scale_factor": 0.1,
+      "quality_rule": "Raw LAI <=100; MODLAND bit0=0; SCF bits5-7 <=1; dead-detector bit2=0; strict additionally cloud bits3-4=0.",
+      "mask": {
+        "product": "APRA500",
+        "doi": "10.5281/zenodo.5557022",
+        "license": "CC BY 4.0",
+        "mask_year": 2008,
+        "rice_class": 1,
+        "non_rice_class": 0,
+        "nodata": 3,
+        "purpose": "Prior-year binary paddy extent proxy; annual mask is not Kharif-specific. Classification accuracy is not independently validated in this probe."
+      },
+      "files": [
+        {
+          "name": "APRA500_paddyRice2008.tif",
+          "source_url": "https://zenodo.org/api/records/5557022/files/paddyRice2008.tif/content",
+          "bytes": 3646365,
+          "sha256": "0c10c6b0b3583a414c9b767afb62f20b034d95ea279147a4978e6b2af30438f6",
+          "publisher_md5": "42e13d4fbbc6bc664b913b2a944bf7e4"
+        },
+        {
+          "name": "MCD15A2H_20101008_h25v06_LAI.tif",
+          "source_url": "https://modiseuwest.blob.core.windows.net/modis-061-cogs/MCD15A2H/25/06/2010281/MCD15A2H.A2010281.h25v06.061.2021176062244_Lai_500m.tif",
+          "bytes": 4241103,
+          "sha256": "1c51f078e42f81f6c1eb836259271ec3f917d9e9b58216efe7c1850332cf5daa",
+          "publisher_md5": null
+        },
+        {
+          "name": "MCD15A2H_20101008_h25v06_QC.tif",
+          "source_url": "https://modiseuwest.blob.core.windows.net/modis-061-cogs/MCD15A2H/25/06/2010281/MCD15A2H.A2010281.h25v06.061.2021176062244_FparLai_QC.tif",
+          "bytes": 2504681,
+          "sha256": "1f49068145fa9a133d5b4d26a68162dc409dc472c651ec69d4c8b924bcb2e77a",
+          "publisher_md5": null
+        }
+      ],
+      "districts": [
+        {
+          "district": "Bargarh",
+          "district_code_census2011": "370",
+          "yield_year": 2010,
+          "mask_year": 2008,
+          "full_district_in_tile": true,
+          "district_pixel_count": 27065,
+          "rice_pixel_count": 3844,
+          "rice_map_values": [
+            0,
+            1
+          ],
+          "main_algorithm_valid_rice_pixels": 3842,
+          "strict_clear_valid_rice_pixels": 3700,
+          "strict_coverage_fraction": 0.9625390218522373,
+          "strict_mean_lai_m2_m2": 2.817864864864865
+        },
+        {
+          "district": "Sambalpur",
+          "district_code_census2011": "372",
+          "yield_year": 2010,
+          "mask_year": 2008,
+          "full_district_in_tile": true,
+          "district_pixel_count": 31419,
+          "rice_pixel_count": 1002,
+          "rice_map_values": [
+            0,
+            1
+          ],
+          "main_algorithm_valid_rice_pixels": 987,
+          "strict_clear_valid_rice_pixels": 931,
+          "strict_coverage_fraction": 0.9291417165668663,
+          "strict_mean_lai_m2_m2": 2.346186895810956
+        }
+      ],
+      "rasterio_version": "1.5.2",
+      "geography_sha256": "ce21d47a8ed1f7bb77a821b224ac95249bafc6dc520f2cb33ed963e04c0f9575",
+      "limitations": [
+        "Two districts and one composite only; no multi-year coverage claim.",
+        "Valid zero non-rice values preserved using explicit source/destination nodata; two raster reprojection routes agree.",
+        "Archive availability is not proof of operational historical availability.",
+        "No yield label was used to select pixels or evaluate quality.",
+        "Not appended to the master table and no model was retrained."
+      ]
+    }
+  ]
+}

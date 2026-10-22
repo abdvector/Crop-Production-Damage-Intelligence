@@ -57,3 +57,27 @@ Consolidated CSV SHA256: `828e3775d198fb0e6d39f2b1884ec5c8b0f5ed8915a5e17f776912
 To reconstruct, read the base and crop-state inputs with district codes as strings, filter the base to 2004-2022, select the five lags, 19 weather columns, label and keys, and perform the one-to-one left join described above. Rename `agricultural_start_year` to `year` and `district_source` to `district`, add `state=Odisha` and `season=Kharif`, then sort by district code and year. Exclude derived reference/trend, predictions, current acreage/production and modelling-role columns. Preserve floating-point precision and write missing values as empty CSV fields.
 
 Sources: [Official DES area/production/yield records](https://www.data.desagri.gov.in/website/apy-query-report-web), [NASA POWER](https://power.larc.nasa.gov/), [MODIS vegetation indices](https://developers.google.com/earth-engine/datasets/catalog/MODIS_061_MOD13Q1), [MODIS land cover](https://developers.google.com/earth-engine/datasets/catalog/MODIS_061_MCD12Q1), [ERA5-Land](https://developers.google.com/earth-engine/datasets/catalog/ECMWF_ERA5_LAND_DAILY_AGGR). Detailed source receipts remain with the original files. The cloud export was user-executed; consolidation verifies the downloaded records and their consistency, not independent cloud execution.
+
+## LAI acquisition feasibility check, 22 October 2026
+
+A small satellite-data check is stored in `data/raw/rice/lai_feasibility/`. These files are separate from the master CSV and the active annual model. They do not constitute a completed multi-year dataset, model comparison or replication of a paper.
+
+Downloaded directly without a paid account or Earth Engine export:
+
+- APRA500 paddy extent for **2008**, from [the authors' Zenodo record](https://doi.org/10.5281/zenodo.5557022), CC BY 4.0. The publisher's MD5 was verified. This is an annual paddy mask, not a Kharif-only mask or a map of all upland rice.
+- Combined Terra+Aqua **MCD15A2H Collection 6.1**, LAI and quality layers, tile h25v06, for **5-12 August 2010** and **8-15 October 2010**. Accessed through the [Microsoft Planetary Computer MODIS catalogue](https://planetarycomputer.microsoft.com/dataset/group/modis). NASA's [product catalogue](https://ladsweb.modaps.eosdis.nasa.gov/missions-and-measurements/products/MCD15A2H) describes the 500 m, eight-day product. This is a newer collection than the paper's Collection 6.
+
+Both Bargarh (Census code 370) and Sambalpur (372) are fully within the sample tile and match the existing district geography. The 2008 mask is a Y-2 paddy extent proxy for the 2010 observations. Its historical operational availability is not established by this retrospective download.
+
+| District | 2008 mapped paddy pixels on LAI grid | Strictly clear, valid LAI coverage in August | Strictly clear, valid LAI coverage in October |
+| --- | ---: | ---: | ---: |
+| Bargarh | 3,844 | 1.1% | 96.3% |
+| Sambalpur | 1,002 | 4.1% | 92.9% |
+
+Procedure: project the existing fixed-2011 district polygons into the native MODIS sinusoidal grid, clip LAI and QC using pixel-centre inclusion, and reproject the paddy map with nearest-neighbour resampling onto that exact grid. Preserve valid non-rice zero values and explicitly use source/destination no-data code 3 for the rice map. Verify that direct warp and a virtual warped raster produce identical mask arrays. The mask has binary values 0/1; mapped paddy uses value 1. Pixel counts are raster-proxy counts, not ground-verified rice acreage.
+
+The strict quality rule requires raw LAI <=100, MODLAND bit 0 = 0, SCF bits 5-7 <=1, dead-detector bit 2 = 0 and cloud-state bits 3-4 = 0. Scale LAI by 0.1 to m2/m2. The report also retains main-algorithm counts before the strict cloud filter, so the effect of filtering is visible. Do not interpret an average from 1% clear coverage as a reliable district estimate or relax the rule after seeing yield accuracy.
+
+`sample_check.json` contains counts, quality settings, source hashes and limitations; `source_item.json` preserves the two catalogue items. No temporary signed access URLs are required for subsequent inspection. Rasterio 1.5.2 was used in a temporary dependency folder, which was removed after checking.
+
+**Finding:** direct access and spatial matching are feasible. This sample demonstrates strong seasonal variation in strict cloud-free coverage, not complete coverage across districts or years. A larger seasonal coverage audit, an explicit prediction date, an assessment of paddy-mask representativeness and a declared evaluation protocol are still required before training. October observations cannot be used for an August forecast. The choice of these two pilot districts does not restrict the eventual geographic scope to Odisha.

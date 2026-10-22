@@ -1,0 +1,514 @@
+{
+  "items": [
+    {
+      "id": "MCD15A2H.A2010217.h25v06.061.2021168125717",
+      "bbox": [
+        74.2179978544028,
+        19.8968271260537,
+        92.39172194296,
+        30.0384277080736
+      ],
+      "type": "Feature",
+      "links": [
+        {
+          "rel": "collection",
+          "type": "application/json",
+          "href": "https://planetarycomputer.microsoft.com/api/stac/v1/collections/modis-15A2H-061"
+        },
+        {
+          "rel": "parent",
+          "type": "application/json",
+          "href": "https://planetarycomputer.microsoft.com/api/stac/v1/collections/modis-15A2H-061"
+        },
+        {
+          "rel": "root",
+          "type": "application/json",
+          "href": "https://planetarycomputer.microsoft.com/api/stac/v1/"
+        },
+        {
+          "rel": "self",
+          "type": "application/geo+json",
+          "href": "https://planetarycomputer.microsoft.com/api/stac/v1/collections/modis-15A2H-061/items/MCD15A2H.A2010217.h25v06.061.2021168125717"
+        },
+        {
+          "rel": "preview",
+          "href": "https://planetarycomputer.microsoft.com/api/data/v1/item/map?collection=modis-15A2H-061&item=MCD15A2H.A2010217.h25v06.061.2021168125717",
+          "title": "Map of item",
+          "type": "text/html"
+        }
+      ],
+      "assets": {
+        "hdf": {
+          "href": "https://modiseuwest.blob.core.windows.net/modis-061/MCD15A2H/25/06/2010217/MCD15A2H.A2010217.h25v06.061.2021168125717.hdf",
+          "type": "application/x-hdf",
+          "roles": [
+            "data"
+          ],
+          "title": "Source data containing all bands"
+        },
+        "Lai_500m": {
+          "href": "https://modiseuwest.blob.core.windows.net/modis-061-cogs/MCD15A2H/25/06/2010217/MCD15A2H.A2010217.h25v06.061.2021168125717_Lai_500m.tif",
+          "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+          "roles": [
+            "data"
+          ],
+          "title": "Leaf Area Index",
+          "description": "The one-sided green leaf area per unit ground area in broadleaf canopies and as one-half the total needle surface area per unit ground area in coniferous canopies",
+          "raster:bands": [
+            {
+              "unit": "m^2/m^2",
+              "scale": 0.1,
+              "data_type": "uint8",
+              "spatial_resolution": 500
+            }
+          ]
+        },
+        "metadata": {
+          "href": "https://modiseuwest.blob.core.windows.net/modis-061/MCD15A2H/25/06/2010217/MCD15A2H.A2010217.h25v06.061.2021168125717.hdf.xml",
+          "type": "application/xml",
+          "roles": [
+            "metadata"
+          ],
+          "title": "Federal Geographic Data Committee (FGDC) Metadata"
+        },
+        "Fpar_500m": {
+          "href": "https://modiseuwest.blob.core.windows.net/modis-061-cogs/MCD15A2H/25/06/2010217/MCD15A2H.A2010217.h25v06.061.2021168125717_Fpar_500m.tif",
+          "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+          "roles": [
+            "data"
+          ],
+          "title": "Fraction of Photosynthetically Active Radiation",
+          "description": "The fraction of incident photosynthetically active radiation (400-700 nm) absorbed by the green elements of a vegetation canopy.",
+          "raster:bands": [
+            {
+              "unit": "Percent",
+              "scale": 0.01,
+              "data_type": "uint8",
+              "spatial_resolution": 500
+            }
+          ]
+        },
+        "FparLai_QC": {
+          "href": "https://modiseuwest.blob.core.windows.net/modis-061-cogs/MCD15A2H/25/06/2010217/MCD15A2H.A2010217.h25v06.061.2021168125717_FparLai_QC.tif",
+          "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+          "roles": [
+            "data"
+          ],
+          "title": "Quality for FPAR and LAI",
+          "raster:bands": [
+            {
+              "data_type": "uint8",
+              "spatial_resolution": 500
+            }
+          ]
+        },
+        "FparExtra_QC": {
+          "href": "https://modiseuwest.blob.core.windows.net/modis-061-cogs/MCD15A2H/25/06/2010217/MCD15A2H.A2010217.h25v06.061.2021168125717_FparExtra_QC.tif",
+          "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+          "roles": [
+            "data"
+          ],
+          "title": "Extra detail Quality for FPAR and LAI",
+          "raster:bands": [
+            {
+              "data_type": "uint8",
+              "spatial_resolution": 500
+            }
+          ]
+        },
+        "LaiStdDev_500m": {
+          "href": "https://modiseuwest.blob.core.windows.net/modis-061-cogs/MCD15A2H/25/06/2010217/MCD15A2H.A2010217.h25v06.061.2021168125717_LaiStdDev_500m.tif",
+          "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+          "roles": [
+            "data"
+          ],
+          "title": "Standard deviation of LAI",
+          "raster:bands": [
+            {
+              "unit": "m^2/m^2",
+              "scale": 0.1,
+              "data_type": "uint8",
+              "spatial_resolution": 500
+            }
+          ]
+        },
+        "FparStdDev_500m": {
+          "href": "https://modiseuwest.blob.core.windows.net/modis-061-cogs/MCD15A2H/25/06/2010217/MCD15A2H.A2010217.h25v06.061.2021168125717_FparStdDev_500m.tif",
+          "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+          "roles": [
+            "data"
+          ],
+          "title": "Standard deviation of FPAR",
+          "raster:bands": [
+            {
+              "unit": "Percent",
+              "scale": 0.01,
+              "data_type": "uint8",
+              "spatial_resolution": 500
+            }
+          ]
+        },
+        "tilejson": {
+          "title": "TileJSON with default rendering",
+          "href": "https://planetarycomputer.microsoft.com/api/data/v1/item/tilejson.json?collection=modis-15A2H-061&item=MCD15A2H.A2010217.h25v06.061.2021168125717&assets=Fpar_500m&tile_format=png&colormap_name=modis-15A2H%7CA3H&format=png",
+          "type": "application/json",
+          "roles": [
+            "tiles"
+          ]
+        },
+        "rendered_preview": {
+          "title": "Rendered preview",
+          "rel": "preview",
+          "href": "https://planetarycomputer.microsoft.com/api/data/v1/item/preview.png?collection=modis-15A2H-061&item=MCD15A2H.A2010217.h25v06.061.2021168125717&assets=Fpar_500m&tile_format=png&colormap_name=modis-15A2H%7CA3H&format=png",
+          "roles": [
+            "overview"
+          ],
+          "type": "image/png"
+        }
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              74.2179978544028,
+              19.9340873467462
+            ],
+            [
+              80.5381230425356,
+              30.0384277080736
+            ],
+            [
+              92.39172194296,
+              29.9992439210911
+            ],
+            [
+              85.1321831541614,
+              19.8968271260537
+            ],
+            [
+              74.2179978544028,
+              19.9340873467462
+            ]
+          ]
+        ]
+      },
+      "collection": "modis-15A2H-061",
+      "properties": {
+        "created": "2021-06-17T12:57:17Z",
+        "updated": "2021-06-17T10:10:17.719000Z",
+        "datetime": null,
+        "platform": "terra,aqua",
+        "proj:epsg": null,
+        "proj:wkt2": "PROJCS[\"unnamed\",GEOGCS[\"Unknown datum based upon the custom spheroid\",DATUM[\"Not specified (based on custom spheroid)\",SPHEROID[\"Custom spheroid\",6371007.181,0]],PRIMEM[\"Greenwich\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Sinusoidal\"],PARAMETER[\"longitude_of_center\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"Meter\",1],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+        "proj:shape": [
+          2400,
+          2400
+        ],
+        "instruments": [
+          "modis"
+        ],
+        "end_datetime": "2010-08-12T23:59:59Z",
+        "modis:tile-id": "51025006",
+        "proj:geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                8895604.157333,
+                2223901.039333
+              ],
+              [
+                8895604.157333,
+                3335851.559
+              ],
+              [
+                7783653.637667,
+                3335851.559
+              ],
+              [
+                7783653.637667,
+                2223901.039333
+              ],
+              [
+                8895604.157333,
+                2223901.039333
+              ]
+            ]
+          ]
+        },
+        "proj:transform": [
+          463.31271652749973,
+          0.0,
+          7783653.637667,
+          0.0,
+          -463.3127165279167,
+          3335851.559
+        ],
+        "start_datetime": "2010-08-05T00:00:00Z",
+        "modis:vertical-tile": 6,
+        "modis:horizontal-tile": 25
+      },
+      "stac_extensions": [
+        "https://stac-extensions.github.io/projection/v1.1.0/schema.json",
+        "https://stac-extensions.github.io/raster/v1.1.0/schema.json"
+      ],
+      "stac_version": "1.0.0"
+    },
+    {
+      "id": "MCD15A2H.A2010281.h25v06.061.2021176062244",
+      "bbox": [
+        74.2179978544028,
+        19.8968271260537,
+        92.39172194296,
+        30.0384277080736
+      ],
+      "type": "Feature",
+      "links": [
+        {
+          "rel": "collection",
+          "type": "application/json",
+          "href": "https://planetarycomputer.microsoft.com/api/stac/v1/collections/modis-15A2H-061"
+        },
+        {
+          "rel": "parent",
+          "type": "application/json",
+          "href": "https://planetarycomputer.microsoft.com/api/stac/v1/collections/modis-15A2H-061"
+        },
+        {
+          "rel": "root",
+          "type": "application/json",
+          "href": "https://planetarycomputer.microsoft.com/api/stac/v1/"
+        },
+        {
+          "rel": "self",
+          "type": "application/geo+json",
+          "href": "https://planetarycomputer.microsoft.com/api/stac/v1/collections/modis-15A2H-061/items/MCD15A2H.A2010281.h25v06.061.2021176062244"
+        },
+        {
+          "rel": "preview",
+          "href": "https://planetarycomputer.microsoft.com/api/data/v1/item/map?collection=modis-15A2H-061&item=MCD15A2H.A2010281.h25v06.061.2021176062244",
+          "title": "Map of item",
+          "type": "text/html"
+        }
+      ],
+      "assets": {
+        "hdf": {
+          "href": "https://modiseuwest.blob.core.windows.net/modis-061/MCD15A2H/25/06/2010281/MCD15A2H.A2010281.h25v06.061.2021176062244.hdf",
+          "type": "application/x-hdf",
+          "roles": [
+            "data"
+          ],
+          "title": "Source data containing all bands"
+        },
+        "Lai_500m": {
+          "href": "https://modiseuwest.blob.core.windows.net/modis-061-cogs/MCD15A2H/25/06/2010281/MCD15A2H.A2010281.h25v06.061.2021176062244_Lai_500m.tif",
+          "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+          "roles": [
+            "data"
+          ],
+          "title": "Leaf Area Index",
+          "description": "The one-sided green leaf area per unit ground area in broadleaf canopies and as one-half the total needle surface area per unit ground area in coniferous canopies",
+          "raster:bands": [
+            {
+              "unit": "m^2/m^2",
+              "scale": 0.1,
+              "data_type": "uint8",
+              "spatial_resolution": 500
+            }
+          ]
+        },
+        "metadata": {
+          "href": "https://modiseuwest.blob.core.windows.net/modis-061/MCD15A2H/25/06/2010281/MCD15A2H.A2010281.h25v06.061.2021176062244.hdf.xml",
+          "type": "application/xml",
+          "roles": [
+            "metadata"
+          ],
+          "title": "Federal Geographic Data Committee (FGDC) Metadata"
+        },
+        "Fpar_500m": {
+          "href": "https://modiseuwest.blob.core.windows.net/modis-061-cogs/MCD15A2H/25/06/2010281/MCD15A2H.A2010281.h25v06.061.2021176062244_Fpar_500m.tif",
+          "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+          "roles": [
+            "data"
+          ],
+          "title": "Fraction of Photosynthetically Active Radiation",
+          "description": "The fraction of incident photosynthetically active radiation (400-700 nm) absorbed by the green elements of a vegetation canopy.",
+          "raster:bands": [
+            {
+              "unit": "Percent",
+              "scale": 0.01,
+              "data_type": "uint8",
+              "spatial_resolution": 500
+            }
+          ]
+        },
+        "FparLai_QC": {
+          "href": "https://modiseuwest.blob.core.windows.net/modis-061-cogs/MCD15A2H/25/06/2010281/MCD15A2H.A2010281.h25v06.061.2021176062244_FparLai_QC.tif",
+          "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+          "roles": [
+            "data"
+          ],
+          "title": "Quality for FPAR and LAI",
+          "raster:bands": [
+            {
+              "data_type": "uint8",
+              "spatial_resolution": 500
+            }
+          ]
+        },
+        "FparExtra_QC": {
+          "href": "https://modiseuwest.blob.core.windows.net/modis-061-cogs/MCD15A2H/25/06/2010281/MCD15A2H.A2010281.h25v06.061.2021176062244_FparExtra_QC.tif",
+          "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+          "roles": [
+            "data"
+          ],
+          "title": "Extra detail Quality for FPAR and LAI",
+          "raster:bands": [
+            {
+              "data_type": "uint8",
+              "spatial_resolution": 500
+            }
+          ]
+        },
+        "LaiStdDev_500m": {
+          "href": "https://modiseuwest.blob.core.windows.net/modis-061-cogs/MCD15A2H/25/06/2010281/MCD15A2H.A2010281.h25v06.061.2021176062244_LaiStdDev_500m.tif",
+          "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+          "roles": [
+            "data"
+          ],
+          "title": "Standard deviation of LAI",
+          "raster:bands": [
+            {
+              "unit": "m^2/m^2",
+              "scale": 0.1,
+              "data_type": "uint8",
+              "spatial_resolution": 500
+            }
+          ]
+        },
+        "FparStdDev_500m": {
+          "href": "https://modiseuwest.blob.core.windows.net/modis-061-cogs/MCD15A2H/25/06/2010281/MCD15A2H.A2010281.h25v06.061.2021176062244_FparStdDev_500m.tif",
+          "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+          "roles": [
+            "data"
+          ],
+          "title": "Standard deviation of FPAR",
+          "raster:bands": [
+            {
+              "unit": "Percent",
+              "scale": 0.01,
+              "data_type": "uint8",
+              "spatial_resolution": 500
+            }
+          ]
+        },
+        "tilejson": {
+          "title": "TileJSON with default rendering",
+          "href": "https://planetarycomputer.microsoft.com/api/data/v1/item/tilejson.json?collection=modis-15A2H-061&item=MCD15A2H.A2010281.h25v06.061.2021176062244&assets=Fpar_500m&tile_format=png&colormap_name=modis-15A2H%7CA3H&format=png",
+          "type": "application/json",
+          "roles": [
+            "tiles"
+          ]
+        },
+        "rendered_preview": {
+          "title": "Rendered preview",
+          "rel": "preview",
+          "href": "https://planetarycomputer.microsoft.com/api/data/v1/item/preview.png?collection=modis-15A2H-061&item=MCD15A2H.A2010281.h25v06.061.2021176062244&assets=Fpar_500m&tile_format=png&colormap_name=modis-15A2H%7CA3H&format=png",
+          "roles": [
+            "overview"
+          ],
+          "type": "image/png"
+        }
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              74.2179978544028,
+              19.9340873467462
+            ],
+            [
+              80.5381230425356,
+              30.0384277080736
+            ],
+            [
+              92.39172194296,
+              29.9992439210911
+            ],
+            [
+              85.1321831541614,
+              19.8968271260537
+            ],
+            [
+              74.2179978544028,
+              19.9340873467462
+            ]
+          ]
+        ]
+      },
+      "collection": "modis-15A2H-061",
+      "properties": {
+        "created": "2021-06-25T06:22:44Z",
+        "updated": "2021-06-25T14:17:00.933000Z",
+        "datetime": null,
+        "platform": "terra,aqua",
+        "proj:epsg": null,
+        "proj:wkt2": "PROJCS[\"unnamed\",GEOGCS[\"Unknown datum based upon the custom spheroid\",DATUM[\"Not specified (based on custom spheroid)\",SPHEROID[\"Custom spheroid\",6371007.181,0]],PRIMEM[\"Greenwich\",0],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]]],PROJECTION[\"Sinusoidal\"],PARAMETER[\"longitude_of_center\",0],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"Meter\",1],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+        "proj:shape": [
+          2400,
+          2400
+        ],
+        "instruments": [
+          "modis"
+        ],
+        "end_datetime": "2010-10-15T23:59:59Z",
+        "modis:tile-id": "51025006",
+        "proj:geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                8895604.157333,
+                2223901.039333
+              ],
+              [
+                8895604.157333,
+                3335851.559
+              ],
+              [
+                7783653.637667,
+                3335851.559
+              ],
+              [
+                7783653.637667,
+                2223901.039333
+              ],
+              [
+                8895604.157333,
+                2223901.039333
+              ]
+            ]
+          ]
+        },
+        "proj:transform": [
+          463.31271652749973,
+          0.0,
+          7783653.637667,
+          0.0,
+          -463.3127165279167,
+          3335851.559
+        ],
+        "start_datetime": "2010-10-08T00:00:00Z",
+        "modis:vertical-tile": 6,
+        "modis:horizontal-tile": 25
+      },
+      "stac_extensions": [
+        "https://stac-extensions.github.io/projection/v1.1.0/schema.json",
+        "https://stac-extensions.github.io/raster/v1.1.0/schema.json"
+      ],
+      "stac_version": "1.0.0"
+    }
+  ]
+}
