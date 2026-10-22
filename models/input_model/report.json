@@ -1,0 +1,91 @@
+{
+  "contract": {
+    "source_sha256": "77163c0c5ae91565ba087c04ee297edc08989245501658e69d77d4f28dee8d74",
+    "features": [
+      "yield_lag2",
+      "yield_lag3",
+      "yield_lag4",
+      "yield_lag5",
+      "yield_lag6",
+      "T2M_MAX_06",
+      "T2M_MAX_07",
+      "T2M_MAX_08",
+      "T2M_MIN_06",
+      "T2M_MIN_07",
+      "T2M_MIN_08",
+      "PRECTOTCORR_06",
+      "PRECTOTCORR_07",
+      "PRECTOTCORR_08",
+      "RH2M_06",
+      "RH2M_07",
+      "RH2M_08"
+    ],
+    "parameters": {
+      "n_estimators": 300,
+      "max_depth": 4,
+      "min_samples_leaf": 10,
+      "random_state": 42,
+      "n_jobs": 2
+    },
+    "code_sha256": {
+      "data.py": "d14a7efb89e92db88c0cd89cdb87b2ecbb9f64f2d6c3b648316d4d8f21cd1ea4",
+      "model.py": "234b3c474027675ed57270eac2f3d0daf11816804d8a29aae7000dc708648546",
+      "Method.md": "9d675fef71311203e07d091e862dd18ea80ba1554589654223c919b5b82d28fc"
+    },
+    "versions": {
+      "python": "3.13.5",
+      "numpy": "2.5.3",
+      "pandas": "3.0.6",
+      "sklearn": "1.9.1"
+    }
+  },
+  "training_rows": 840,
+  "training_years": [
+    1987,
+    2004
+  ],
+  "predictor_count": 17,
+  "scores": [
+    {
+      "Period": "Earlier check: 2006-2011",
+      "Method": "Numerical Random Forest",
+      "Rows": 300,
+      "MAE (kg/ha)": 325.8591981943155,
+      "RMSE (kg/ha)": 482.0379124177269,
+      "R squared": 0.5336769301812948,
+      "Mean error (kg/ha)": -45.242644182830134
+    },
+    {
+      "Period": "Earlier check: 2006-2011",
+      "Method": "Recent mean baseline",
+      "Rows": 300,
+      "MAE (kg/ha)": 347.06677333333334,
+      "RMSE (kg/ha)": 497.53026811092946,
+      "R squared": 0.5032206656244309,
+      "Mean error (kg/ha)": -155.36867999999998
+    },
+    {
+      "Period": "Later check: 2012-2017",
+      "Method": "Numerical Random Forest",
+      "Rows": 300,
+      "MAE (kg/ha)": 414.4565593947702,
+      "RMSE (kg/ha)": 535.7343946781374,
+      "R squared": 0.3762210824302529,
+      "Mean error (kg/ha)": -181.71916142812864
+    },
+    {
+      "Period": "Later check: 2012-2017",
+      "Method": "Recent mean baseline",
+      "Rows": 300,
+      "MAE (kg/ha)": 461.00775333333326,
+      "RMSE (kg/ha)": 584.1207679497451,
+      "R squared": 0.2584559942733755,
+      "Mean error (kg/ha)": -295.2280999999999
+    }
+  ],
+  "interpretation": "Retrospective comparison on previously examined years; no independent new test or operational damage validation.",
+  "artifact_sha256": {
+    "forest.joblib": "a32379d6711b47378a711d94c9ec29556e22281a6d5eef240a6594a7419222bd",
+    "evaluation.csv": "d291eccdc54bd418eae0ccccf13f473e23493bed66524356920c69989e668c7a"
+  }
+}

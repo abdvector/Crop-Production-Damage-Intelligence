@@ -6,13 +6,8 @@ data/processed/rice/regional_forecast/** whitespace=blank-at-eol,blank-at-eof,sp
 data/raw/rice/icrisat_district/** whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 # Geometry coordinates are audited by source hashes and the readable crosswalk.
 data/processed/rice/seasonal_geography/reference_geometries.geojson -diff
-# The Odisha protocol document is pinned by its exact SHA256.
-docs/Rice_Odisha_Seasonal_Protocol.md text eol=lf
-docs/Rice_Odisha_Timing_Amendment.md text eol=lf
-docs/Rice_Odisha_Model_Implementation.md text eol=lf
-src/rice_odisha_model.py text eol=lf
-# Exact bytes are pinned by the new crop-state acquisition plan.
-docs/Crop_State_Extension.md text eol=lf
-src/rice_crop_state.py text eol=lf
-src/rice_crop_state_model.py text eol=lf
-docs/Crop_State_Comparison_Protocol.md text eol=lf
+# Preserve the new model's code and artifact hashes on Windows checkouts.
+src/*.py text eol=lf
+docs/Method.md text eol=lf
+models/** -text
+app.py text eol=lf

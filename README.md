@@ -1,84 +1,63 @@
-# Rice Yield Outlook
+# Rice yield from predictor inputs
 
-Birla Institute of Technology, Mesra
-Department of Quantitative Economics and Data Science
-Guide: Dr. Manish Kumar Pandey
+Enter five past rice yields and June-August weather values to estimate **annual rice yield in kg/ha**. A state/district/year selector can load real historical examples; area names are not predictors. All values can be edited before estimating.
 
-A research app for exploring rice yield per hectare, public study data and saved forecasts. Three sidebar sections use interactive charts, state/district selectors and vertical results tables. The interface has a white main area, light-blue navigation and black text; presentation notes and institutional headings are kept out of the user workflow.
-
-**Current phase: revised nested comparison completed, with negative findings.** Read the [revised statistical review and results](docs/Revised_Modelling_Results.md) and [declared comparison protocol](docs/Revised_Modelling_Protocol.md). The new 2012–2017 nested procedure has MAE 780.2 kg/ha versus 684.3 for recent mean; it is not operationally cleared. Existing forecasts below are preserved legacy results, not replaced or newly validated models. The 2018–2022 assessment has already been seen and cannot be reused as independent confirmation for revised models.
-
-Run `python app.py --audit-data` to reproduce the development-only audit and figures without training a model. **Data explorer** offers four interactive graph views for each available state, with district highlighting, year-range filtering and weather-variable controls. Detailed audit tables and static PNG/SVG figures remain under `data/processed/rice/foundation/`.
-
-Run `python app.py --compare-models` for the revised comparison; completed reruns verify receipts without refitting. Results and three diagnostic figures are under `data/processed/rice/revised_modelling/`. Model-specific checks distinguish numerical validity from predictive adequacy; no claim that all assumptions passed is made.
-
-The [crop-state extension and download guide](docs/Crop_State_Extension.md) identifies closely matching published work. **The four v3 exports are now imported and the fixed comparison is complete.** All 420 district-years join correctly; soil moisture is complete, while quality-filtered NDVI is available for 375 June, 62 July and 29 August rows. Vegetation is a mixed-cropland proxy, not a rice-only measurement. In the exploratory 2012–2017 comparison, adding crop state does not improve the history/weather forest: MAE 798.8 versus 796.6 kg/ha; recent mean is 684.3. Existing dashboard forecasts are preserved. See [the results and limitations](docs/Crop_State_Results.md) and [fixed comparison protocol](docs/Crop_State_Comparison_Protocol.md).
-
-Run `python app.py --compare-crop-state-models` to reproduce/verify the separate experiment; completed reruns verify receipts without refitting. `--prepare-crop-state-export` regenerates the authenticated Earth Engine acquisition script, and `--check-crop-state-import` checks the four downloaded v3 CSVs. Original CSVs are retained under `data/raw/rice/crop_state/`; joined inputs/audit are under `data/processed/rice/crop_state/`; comparison results and figures are under `data/processed/rice/crop_state_model/`.
+This is a historical research model, not a validated farm forecast or crop-damage service. The interface reports measured error beside the estimate. Numerical inputs do not establish transferability to any location or a causal effect of changing weather.
 
 ## Run
 
-From the project folder, run `python app.py` with the project environment active, or `.\.venv\Scripts\python.exe app.py` in PowerShell. `app.py` is the sole launcher. Restart it after edits because file watching is disabled. Dependencies in `requirements.txt` pin the verified environment, recorded with Python 3.13.5; the saved model uses scikit-learn 1.9.1.
+Use Python 3.13 and the pinned dependencies in `requirements.txt`:
 
-## Use the app
+```powershell
+.\.venv\Scripts\python.exe app.py
+```
 
-1. Choose a **State**, **Study** and **District**. Odisha offers the revised Kharif study and two saved forecast studies; other states offer the annual study.
-2. **Yield explorer** overlays actual and forecast yield lines across the saved years. The top-right **Show forecast** toggle controls the dashed forecast line; the vertical guide marks the harvest year selected for the table. The recorded-harvest toggle controls actual values in the graph/table/export. Historical model inputs remain available in a collapsed section.
-3. **Data explorer** shows yield trends, district distributions, weather patterns and data coverage. Change the year range and district; hover over charts for values. **Show forecast** overlays the primary method's saved predictions when they fall within the displayed range. Seasonal graphs use the 1998–2017 development observations; annual graphs use the separately prepared annual cohort.
-4. **Model evaluation** provides a sidebar result selector for accuracy, method comparison, yearly errors, low-yield detection, uncertainty and error patterns. Choose state, district or full-study scope. All seven annual methods now have saved district-level predictions, so these filters also apply to the annual model comparison.
+To build or verify the model and evaluation artifacts:
 
-All interactions explore saved records; they do not retrain models or create live forecasts. The revised interval experiment is explicitly separate from the adaptive selection procedure. Detailed methods and source definitions are available in collapsed sections. The local presentation guide remains in `docs/Project_Guide.md` rather than appearing in the app.
+```powershell
+.\.venv\Scripts\python.exe app.py --train
+```
 
-Kharif coverage is available for Odisha. All five states remain selectable through the separate annual study. These are historical replays, not live current-season forecasts.
+The checked-in model is the exact fit used in evaluation. Completed builds verify hashes and environment rather than silently retraining changed code.
 
-The annual **Method** dropdown includes History Ridge, Weather Ridge, Weather Random Forest, Weather Gradient Boosting and three historical baselines for all 50 study districts. The added learned comparators use the original fixed settings and fitting cutoff (2004) on the same 2012–2017 assessment records. They are retrospective comparisons, not new independent validation; History Ridge remains the original selected model. Only it retains the original saved prediction intervals. Reproduce/verify this extension with `python app.py --compare-annual-models`; outputs and receipts are under `data/processed/rice/regional_comparison/`. See the [declared annual comparison extension](docs/Annual_Model_Comparison.md).
+## The project in four parts
 
-## The two studies
+| File | Responsibility |
+| --- | --- |
+| `app.py` | Sole launcher |
+| `src/data.py` | Load and validate the prepared data; define predictor names and units |
+| `src/model.py` | Fit one Random Forest, evaluate against one baseline, predict from numerical X |
+| `src/interface.py` | Editable input form, four data graphs, results |
 
-| | Main seasonal study | Additional annual study |
-| --- | --- | --- |
-| Coverage | 30 Odisha districts | 50 historical districts across Bihar, Chhattisgarh, Jharkhand, Odisha and West Bengal |
-| Target | Kharif rice yield, kg/ha | Annual rice yield, kg/ha |
-| Yield source | Official DES | ICRISAT District Level Database |
-| Weather | NASA daily weather; 19 summaries | NASA monthly weather; 12 variables |
-| Later-year assessment | 2018-2022; 150 records | 2012-2017; 300 records |
-| Selected configuration | History Ridge, alpha 10 | History Ridge |
-| MAE | 516.8 kg/ha | 450.0 kg/ha |
+`src/dashboard.css` holds the white-and-blue interface style. There are three pages: **Estimate yield**, **Explore data**, and **Model and results**. The estimate appears in a vertical table. No model-selection menu is needed.
 
-Both selected configurations use yield history. Weather candidates were tested but did not win development selection. Current-year production and area are never predictors. The studies use different targets, periods and geographic units; their errors are not a head-to-head comparison.
+## Data and model
 
-## Main findings
+- **Y:** annual rice yield, kg/ha, all seasons combined.
+- **17 X variables:** yields Y-2 through Y-6, and maximum/minimum temperature, rainfall (mm/day) and relative humidity for June, July and August.
+- **Sources:** ICRISAT District Level Database administrative yields and NASA POWER monthly reanalysis at district representative coordinates.
+- **Coverage:** 1,490 complete district-year records, 1987-2017; 50 historical districts across Bihar, Chhattisgarh, Jharkhand, Odisha and West Bengal.
+- **Model:** fixed Random Forest, 300 trees, depth 4, minimum leaf size 10. It estimates a departure from the five-past-yield mean.
+- **Baseline:** mean of those same five yields.
+- **Excluded from X:** state, district, coordinates, year, current acreage, current production, actual target yield, protein and aluminium.
 
-The Odisha study compares **13 configurations**: three historical baselines, six Ridge configurations, two Random Forest configurations and two histogram gradient-boosting configurations. Earlier-year selection and interval calibration precede later-year assessment.
+The model is fitted through 2004 and evaluated separately on 2006-2011 and 2012-2017. Those years have been seen in earlier studies, so this is a **retrospective comparison**, not a new independent test. Results are in `models/input_model/report.json` and the app. Read [the full method](docs/Method.md) for validation, reporting-delay assumptions and limits.
 
-The selected Ridge has MAE **516.8 kg/ha**, versus **577.7** for recent mean. Random Forest depth 4 achieves **405.3 kg/ha** as a secondary finding; it was not promoted after seeing assessment. Baseline gains remain uncertain across years. Low-yield detection is weak and uncertainty intervals are wide. This is a completed research prototype with mixed findings, not a high-precision operational service.
+Later-period results (300 district-year records, 2012-2017):
 
-Protein and aluminium are background topics from the initial proposal, not inputs to the district forecasts. Their unused datasets and retired experiments have been removed. See [the full Kharif results](docs/Rice_Odisha_Model_Results.md).
+| Method | MAE (kg/ha) | RMSE (kg/ha) | R squared |
+| --- | ---: | ---: | ---: |
+| Numerical Random Forest | 414.5 | 535.7 | 0.376 |
+| Five-past-yield mean | 461.0 | 584.1 | 0.258 |
 
-## Code and data
+The forest has lower error in this comparison, but this does not establish high precision, independent confirmation or reliable damage prediction.
 
-- `app.py`: sole launcher.
-- `src/rice_dashboard.py` and `src/dashboard.css`: the presentation interface.
-- `src/rice_regional.py`: annual data, modelling and inference.
-- `src/rice_seasonal_data.py`: official Kharif source parsing.
-- `src/rice_geography.py`: district reference geography checks.
-- `src/rice_odisha_seasonal.py`: daily weather and history preparation.
-- `src/rice_odisha_model.py`: frozen model comparison, calibration and assessment.
-- `src/rice_foundation.py`, `src/rice_validation.py` and `src/rice_annual_comparison.py`: data audit and reproducible saved comparisons.
-- `src/rice_crop_state.py` and `src/rice_crop_state_model.py`: completed vegetation/soil acquisition and comparison.
-- `data/`: inputs, source receipts and outputs needed for the retained rice studies. Large original raw caches remain local and ignored by Git.
-- `models/rice_regional.joblib`: the retained annual model artifact.
-- `docs/`: current guide, results, methods, frozen protocols and cleanup record.
-- `Presentation_Figures/`, `Research Papers/` and the literature matrix: preserved supporting materials. Earlier wheat illustrations describe the initial proposal, not the implemented rice pipeline.
+## What was simplified
 
-The current source reproduces the annual and Odisha district studies, their revised comparisons and the completed crop-state experiment. Unused molecular/genetic, aluminium, farm-survey and trial datasets, abandoned replication examples, obsolete model artifacts and archived notes were removed. See [the cleanup record](docs/Codebase_Cleanup.md). Local mentor materials remain local and ignored.
+Earlier annual, seasonal, satellite and statistical experiments are preserved in [one archive](archive/README.md), including their original code, protocols and model. Their datasets and saved results remain in `data/`. They are not loaded as competing application workflows. The active app uses only `data/processed/rice/regional_forecast/district_years.csv` and `models/input_model/`.
 
-## Sources and method records
+Papers, diagrams, the literature matrix and local mentor materials are preserved. Some earlier wheat diagrams describe the original proposal, not the current rice model. Local mentor materials are excluded from Git.
 
-[Official DES](https://www.data.desagri.gov.in/website/apy-query-report-web) · [ICRISAT DLD](https://doi.org/10.21421/D2/XFB1BZ) · [NASA POWER](https://power.larc.nasa.gov/)
+## Attribution
 
-[Original seasonal protocol](docs/Rice_Odisha_Seasonal_Protocol.md) · [Timing amendment](docs/Rice_Odisha_Timing_Amendment.md) · [Implementation rules](docs/Rice_Odisha_Model_Implementation.md) · [Annual report](docs/Rice_Regional_Forecast.md)
-
-Map attribution: DataMeet Community Maps Project, [CC BY 2.5 India](https://creativecommons.org/licenses/by/2.5/in/). Fixed 2011 boundaries and historical publication availability remain assumptions. The annual source uses historical 1966-apportioned units.
-
-ICRISAT data attribution: Swamikannu et al. (2021), District Level Data and Dashboard for Agriculture and Allied-sectors in India. ICRISAT bears no responsibility or liability for these analyses or interpretations. Source terms are the ICRISAT Data Sharing Agreement; no CC BY claim is made for those data.
+[ICRISAT DLD](https://doi.org/10.21421/D2/XFB1BZ): Swamikannu et al. (2021), District Level Data and Dashboard for Agriculture and Allied-sectors in India. ICRISAT bears no responsibility for these analyses. Data are subject to its Data Sharing Agreement; no CC BY claim is made. [NASA POWER](https://power.larc.nasa.gov/) provides reanalysis inputs. Earlier retained maps use DataMeet Community Maps, CC BY 2.5 India.
