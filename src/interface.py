@@ -92,16 +92,80 @@ def inputs(frame, bundle, report):
                            "rice_yield_estimate.json", "application/json")
 
 
+@st.cache_data
+def india_outlines():
+    return json.loads((ROOT / "data/india_states.geojson").read_text(encoding="utf-8"))["features"]
+
+
+def map_chart(observations, measure, focus=None):
+    """Context outlines and source coordinates, without inventing district polygons."""
+    outlines = india_outlines()
+    fitted = [feature for feature in outlines if feature["properties"]["state"] == focus] if focus else outlines
+    background = alt.Chart(alt.Data(values=outlines)).mark_geoshape(
+        fill="#edf4fc", stroke="#9bb7d5", strokeWidth=.7, clip=True)
+    pick = alt.selection_point(name="district_pick", fields=["district_id"], on="click", clear="dblclick", toggle=False, empty=False)
+    labels = {TARGET: "Annual rice yield (kg/ha)", **LABELS}
+    points = alt.Chart(observations).mark_circle(clip=True).encode(
+        longitude=alt.Longitude("longitude:Q"), latitude=alt.Latitude("latitude:Q"),
+        color=alt.Color(f"{measure}:Q", title=labels[measure], scale=alt.Scale(scheme="blues"),
+                        legend=alt.Legend(orient="bottom", gradientLength=250)),
+        size=alt.condition(pick, alt.value(180), alt.value(105)),
+        stroke=alt.condition(pick, alt.value("#111111"), alt.value("#225b96")),
+        strokeWidth=alt.condition(pick, alt.value(2.5), alt.value(1)),
+        tooltip=[alt.Tooltip("district:N", title="District"), alt.Tooltip("state:N", title="State"),
+                 alt.Tooltip("year:Q", title="Year", format="d"),
+                 alt.Tooltip(f"{measure}:Q", title=labels[measure], format=",.2f")]).add_params(pick)
+    return alt.layer(background, points).project(
+        type="mercator", fit={"type": "FeatureCollection", "features": fitted or outlines}
+    ).properties(height=470).configure_view(stroke=None).configure_legend(labelColor="#111111", titleColor="#111111")
+
+
 def data_view(frame):
     st.title("Explore the data")
     st.caption("Annual administrative rice yields and NASA monthly weather, 1987-2017. Historical district boundaries apply.")
     state = st.selectbox("Show state", ["All states"]+sorted(frame.state.unique()), key="data_state")
     part = frame if state == "All states" else frame.loc[frame.state.eq(state)]
+    names = part[["district_id", "district", "state"]].drop_duplicates().set_index("district_id")
+    district_ids = st.multiselect("Districts", names.index.tolist(), key="data_districts",
+                                 format_func=lambda code: f"{names.loc[code, 'district']}, {names.loc[code, 'state']}",
+                                 placeholder="All available districts")
+    if district_ids:
+        part = part.loc[part.district_id.isin(district_ids)]
+    first_year, last_year = int(frame.year.min()), int(frame.year.max())
+    start, end = st.slider("Year range", first_year, last_year, (first_year, last_year), key="data_year_range")
+    part = part.loc[part.year.between(start, end)]
+    if part.empty:
+        st.info("No observations for these districts and years. Change the filters.")
+        return
+    st.subheader("India map")
+    left, right = st.columns(2)
+    year = left.selectbox("Map year", sorted(part.year.unique(), reverse=True), key="map_year")
+    measure = right.selectbox("Map measure", [TARGET]+FEATURES, key="map_measure",
+                              format_func=lambda name: "Annual rice yield (kg/ha)" if name == TARGET else LABELS[name])
+    focus = state if state != "All states" and st.checkbox("Focus map on selected state", key="map_focus") else None
+    mapped = part.loc[part.year.eq(year)]
+    event = st.altair_chart(map_chart(mapped, measure, focus), key="india_map", width="stretch",
+                           on_select="rerun", selection_mode=["district_pick"])
+    picked = event.get("selection", {}).get("district_pick", [])
+    selected_ids = [row["district_id"] for row in picked if row.get("district_id") in mapped.district_id.values]
+    if selected_ids:
+        part = part.loc[part.district_id.isin(selected_ids)]
+        st.write("Showing plots for: "+", ".join(part.district.unique())+". Double-click the map to clear the selection.")
+    st.caption(f"{len(mapped)} available district observations in {year}. Click a marker to filter the plots below. "
+               "Markers are representative coordinates, not district boundaries or field locations. "
+               "Only the five study states have data; other states are shown for context.")
+    with st.expander("Map values and source"):
+        columns = list(dict.fromkeys(["state", "district", "year", TARGET, measure]))
+        st.dataframe(mapped[columns].sort_values(["state", "district"]), hide_index=True)
+        st.markdown("2011 state outlines: [DataMeet Community Maps](https://github.com/datameet/maps), "
+                    "[CC BY 2.5 India](https://creativecommons.org/licenses/by/2.5/in/). "
+                    "These are historical outlines, not current administrative boundaries.")
     st.subheader("1. Yield over time")
-    trend = part.groupby(["state", "year"], as_index=False)[TARGET].mean()
+    group = "district" if district_ids or selected_ids else "state"
+    trend = part.groupby([group, "year"], as_index=False)[TARGET].mean()
     chart(alt.Chart(trend).mark_line().encode(x=alt.X("year:Q", title="Agricultural start year", axis=alt.Axis(format="d")),
         y=alt.Y(f"{TARGET}:Q", title="Unweighted district mean yield (kg/ha)"),
-        color=alt.Color("state:N", scale=alt.Scale(scheme="blues")), tooltip=["state", "year", TARGET]))
+        color=alt.Color(f"{group}:N", scale=alt.Scale(scheme="blues")), tooltip=[group, "year", TARGET]))
     st.subheader("2. Yield variation")
     chart(alt.Chart(part).mark_boxplot(color="#225b96").encode(x=alt.X("state:N", title=None),
         y=alt.Y(f"{TARGET}:Q", title="Annual yield (kg/ha)")))

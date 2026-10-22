@@ -31,6 +31,8 @@ The checked-in model is the exact fit used in evaluation. Completed builds verif
 
 `src/dashboard.css` holds the white-and-blue interface style. There are three pages: **Estimate yield**, **Explore data**, and **Model and results**. The estimate appears in a vertical table. No model-selection menu is needed.
 
+**Explore data** includes an India map with year and measure selectors, state and district filters, a year range and an option to focus on a selected state. Hover over a district marker for its observed value; click a marker to filter the plots below and double-click to clear it. The map uses representative source coordinates rather than reconstructed historical district polygons. Only the five study states have observations. Outlines are simplified 2011 state boundaries derived from the retained DataMeet source; their provenance and licence are embedded in `data/india_states.geojson`. The map loads locally without a map-service token.
+
 ## Data and model
 
 - **Y:** annual rice yield, kg/ha, all seasons combined.
