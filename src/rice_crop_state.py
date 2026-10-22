@@ -32,6 +32,24 @@ var ndviProjection = ee.Image(ndviSource.first()).select('NDVI').projection();
 var soilProjection = ee.Image(soilSource.first())
     .select('volumetric_soil_water_layer_1').projection();
 var area = ee.Image.pixelArea();
+var emptyVI = ee.Image.constant(0).rename('ndvi').updateMask(ee.Image.constant(0));
+var emptySoil = ee.Image.constant(0).rename('volumetric_soil_water_layer_1')
+  .updateMask(ee.Image.constant(0));
+
+function monthSelection(year, month) {
+  // Resolve boundaries to literal ISO dates on the client. No shared loop-date
+  // state or computed timestamp comparison enters a server-side filter.
+  function iso(date) { return date.toISOString().slice(0, 10); }
+  var start = iso(new Date(Date.UTC(year, month-1, 1)));
+  var end = month === 8 ? year+'-08-25' : iso(new Date(Date.UTC(year, month, 1)));
+  // Group by completion month: source start +16 days is the exclusive end.
+  // No August-start composite finishes by Aug24. Late-July starts do finish.
+  var viStart = iso(new Date(Date.parse(start)-16*86400000));
+  var viEnd = iso(new Date(Date.parse(end)-16*86400000));
+  return {month: month, vi: ndviSource.filterDate(viStart, viEnd).map(goodNDVI),
+    soil: soilSource.filterDate(start, end).select('volumetric_soil_water_layer_1'),
+    expectedDays: month === 6 ? 30 : (month === 7 ? 31 : 24)};
+}
 
 function sums(image, geometry, projection) {
   return image.reduceRegion({reducer: ee.Reducer.sum(), geometry: geometry,
@@ -44,30 +62,25 @@ function goodNDVI(image) {
   return raw.multiply(0.0001).updateMask(good).rename('ndvi')
     .copyProperties(image, ['system:time_start']);
 }
-// Four independent exports avoid a single large regional aggregation task.
-[[2004, 2007], [2008, 2011], [2012, 2014], [2015, 2017]].forEach(function(block) {
-  var tables = [];
-  for (var year = block[0]; year <= block[1]; year++) {
-    var y = year; // client-side loop; all server computations declared immediately
-    var observationEnd = ee.Date.fromYMD(y, 8, 25); // exclusive: through 24 August
+function yearRows(y) {
     var land = ee.Image(landSource.filterDate((y-2)+'-01-01', (y-1)+'-01-01').first())
       .select('LC_Type1');
     var crop = land.eq(12).or(land.eq(14)); // cropland and cropland/natural mosaics
     var monthly = [];
     [6, 7, 8].forEach(function(month) {
-      var start = ee.Date.fromYMD(y, month, 1);
-      var end = month === 8 ? observationEnd : start.advance(1, 'month');
-      // Composite START belongs to month. Entire 16-day support must end by Aug24.
+      // Composite COMPLETION belongs to month; support can start in prior month.
       // This is not a daily/month-boundary-exact vegetation average.
-      var vi = ndviSource.filterDate(start, end)
-        .filter(ee.Filter.lte('system:time_start', observationEnd.advance(-16, 'day').millis()))
-        .map(goodNDVI);
-      var viMean = vi.mean().updateMask(crop);
-      var viCount = vi.count().unmask(0).updateMask(crop);
-      var soil = soilSource.filterDate(start, end).select('volumetric_soil_water_layer_1');
-      var soilMean = soil.mean();
+      var selected = monthSelection(y, month);
+      var vi = selected.vi;
+      // Fully masked named seeds provide a stable band schema even for an
+      // empty source selection. They add no observations or measured values.
+      var safeVI = vi.merge(ee.ImageCollection.fromImages([emptyVI]));
+      var viMean = safeVI.mean().updateMask(crop);
+      var viCount = safeVI.count().unmask(0).updateMask(crop);
+      var soil = selected.soil;
+      var soilMean = soil.merge(ee.ImageCollection.fromImages([emptySoil])).mean();
       monthly.push({month: month, vi: viMean, viCount: viCount, soil: soilMean,
-        viDates: vi.size(), soilDays: soil.size(), expectedDays: end.difference(start, 'day')});
+        viDates: vi.size(), soilDays: soil.size(), expectedDays: selected.expectedDays});
     });
     var rows = districts.map(function(feature) {
       var geometry = feature.geometry();
@@ -76,15 +89,15 @@ function goodNDVI(image) {
       var properties = feature.toDictionary([__CODE__, 'district_source']);
       properties = properties.set(__YEAR__, y).set('mask_year', y-2)
         .set('crop_proxy_area_m2', cropArea).set('observation_end', y+'-08-24')
-        .set('export_version', 1);
+        .set('export_version', 2);
       monthly.forEach(function(m) {
         var suffix = ('0'+m.month).slice(-2);
-        var n = sums(m.vi.multiply(area).rename('value')
-          .addBands(area.updateMask(m.vi.mask()).rename('valid'))
+        var n = sums(m.vi.unmask(0).updateMask(crop).multiply(area).rename('value')
+          .addBands(m.vi.mask().unmask(0).updateMask(crop).multiply(area).rename('valid'))
           .addBands(m.viCount.multiply(area).rename('count')), geometry, ndviProjection);
         var valid = ee.Number(n.get('valid'));
-        var s = sums(m.soil.multiply(area).rename('value')
-          .addBands(area.updateMask(m.soil.mask()).rename('valid')), geometry, soilProjection);
+        var s = sums(m.soil.unmask(0).multiply(area).rename('value')
+          .addBands(m.soil.mask().unmask(0).multiply(area).rename('valid')), geometry, soilProjection);
         var soilValid = ee.Number(s.get('valid'));
         properties = properties.set('ndvi_'+suffix,
           ee.Algorithms.If(valid.gt(0), ee.Number(n.get('value')).divide(valid), null))
@@ -99,15 +112,39 @@ function goodNDVI(image) {
       });
       return ee.Feature(null, properties); // CSV only; no geometry repeated per row
     });
-    tables.push(rows);
-  }
-  Export.table.toDrive({collection: ee.FeatureCollection(tables).flatten(),
-    description: 'Odisha_Crop_State_'+block[0]+'_'+block[1],
-    fileNamePrefix: 'Odisha_Crop_State_'+block[0]+'_'+block[1], fileFormat: 'CSV'});
+    return rows;
+}
+// Check source image counts before creating tasks. Never export an empty
+// selection as if it were genuine satellite observations.
+var checks = [];
+for (var checkYear = 2004; checkYear <= 2017; checkYear++) {
+  [6, 7, 8].forEach(function(month) {
+    var selected = monthSelection(checkYear, month);
+    checks.push(ee.Feature(null, {year: checkYear, month: month,
+      ndvi_composites: selected.vi.size(), soil_days: selected.soil.size(),
+      expected_days: selected.expectedDays}));
+  });
+}
+ee.FeatureCollection(checks).evaluate(function(result, error) {
+  if (error) { print('Source check failed; no export tasks created.', error); return; }
+  var bad = result.features.filter(function(f) {
+    var p = f.properties;
+    return p.ndvi_composites < 1 || p.ndvi_composites > 2 || p.soil_days !== p.expected_days;
+  });
+  if (bad.length) { print('Source dates missing; no export tasks created.', bad); return; }
+  print('Source checks passed: 42 year/month selections. Creating four v2 tasks.');
+  [[2004, 2007], [2008, 2011], [2012, 2014], [2015, 2017]].forEach(function(block) {
+    var tables = [];
+    for (var year = block[0]; year <= block[1]; year++) { tables.push(yearRows(year)); }
+    Export.table.toDrive({collection: ee.FeatureCollection(tables).flatten(),
+      description: 'Odisha_Crop_State_'+block[0]+'_'+block[1]+'_v2',
+      fileNamePrefix: 'Odisha_Crop_State_'+block[0]+'_'+block[1]+'_v2', fileFormat: 'CSV'});
+  });
+  print('Start the four v2 tasks; do not restart old failed tasks.');
 });
 Map.centerObject(districts, 7);
 Map.addLayer(districts, {color: '245d92'}, 'Study districts');
-print('Four exports created. Start them in Tasks, then download the four CSVs.');
+print('Checking source dates. Tasks will appear only after checks pass.');
 '''
 
 
@@ -141,7 +178,7 @@ def prepare_export():
     path = OUT / "Earth_Engine_Export.js"
     path.write_text(script, encoding="utf-8", newline="\n")
     write_json(OUT / "export_plan.json", {
-        "status": "prepared_not_executed", "version": 1, "expected_rows": 420,
+        "status": "prepared_not_executed", "version": 2, "expected_rows": 420,
         "years": [2004, 2017], "districts": 30, "issue_date": "08-31", "observation_end": "08-24",
         "mask": "MCD12Q1 LC_Type1 12 or 14 from Y-2; mixed cropland, not rice-specific",
         "source_sha256": {str(p.relative_to(ROOT)).replace('\\', '/'): digest(p)
@@ -166,7 +203,7 @@ def check_import():
             raise ValueError("Export plan inputs changed; review and regenerate before importing")
     if digest(OUT / "Earth_Engine_Export.js") != plan["export_script_sha256"]:
         raise ValueError("Export script changed")
-    files = sorted(RAW.glob("Odisha_Crop_State_*.csv"))
+    files = sorted(RAW.glob("Odisha_Crop_State_*_v2.csv"))
     if len(files) != 4:
         raise ValueError(f"Expected four Earth Engine export CSVs in {RAW}; found {len(files)}")
     frame = pd.concat([pd.read_csv(p, dtype={CODE: str}) for p in files], ignore_index=True)
@@ -177,7 +214,7 @@ def check_import():
         raise ValueError("Expected 420 unique district-years; no silent dropping or deduplication")
     if set(map(tuple, frame[keys].to_numpy())) != set(map(tuple, source[keys].to_numpy())):
         raise ValueError("District-year key set does not match the fixed cohort")
-    if not frame.mask_year.eq(frame[YEAR]-2).all() or not frame.export_version.eq(1).all():
+    if not frame.mask_year.eq(frame[YEAR]-2).all() or not frame.export_version.eq(2).all():
         raise ValueError("Wrong land-cover timing or export version")
     if not frame.observation_end.eq(frame[YEAR].astype(str)+"-08-24").all():
         raise ValueError("Unexpected observation cutoff")
