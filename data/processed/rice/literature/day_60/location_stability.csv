@@ -1,9 +1,0 @@
-model,metric,equal_location_improvement_kg_ha,bootstrap_95_lower_kg_ha,bootstrap_95_upper_kg_ha,locations_improved,locations,bootstrap_repeats
-Full-SNP genomic control,MAE,1.2638681925795936,-1.4029838817346916,4.27699598831309,7,12,10000
-Full-SNP genomic control,RMSE,1.112639023479801,-1.3208936864142913,3.94347013290002,7,12,10000
-Literature environment selection,MAE,56.31248027850529,-73.86718545671006,198.05019835607533,8,12,10000
-Literature environment selection,RMSE,41.88670480186761,-105.79099291908862,180.40692017547659,8,12,10000
-Literature full selection,MAE,56.434643344240044,-73.86566873526293,198.05325243271866,8,12,10000
-Literature full selection,RMSE,41.94013539143941,-105.78981817746336,180.56895089987017,8,12,10000
-Training mean,MAE,0.0,0.0,0.0,0,12,10000
-Training mean,RMSE,0.0,0.0,0.0,0,12,10000

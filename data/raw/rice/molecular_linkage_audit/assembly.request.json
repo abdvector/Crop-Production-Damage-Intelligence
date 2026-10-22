@@ -1,6 +1,0 @@
-{
-  "url": "https://rest.ensembl.org/info/assembly/oryza_sativa?content-type=application/json",
-  "method": "GET",
-  "body": null,
-  "sha256": "b09a41ca539e51ef426a69f897911680340981bf234e80d3998c3c2a75706bd8"
-}

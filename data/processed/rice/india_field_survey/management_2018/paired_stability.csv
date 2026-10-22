@@ -1,7 +1,0 @@
-model,comparison,districts,folds_with_lower_rmse,district_bootstrap_gain_low_kg_ha,district_bootstrap_gain_high_kg_ha,qualification
-Gradient boosting leaves=15,all_context_added,45,4,-6.819886752517402,58.537327638380745,Descriptive paired district resampling; independence/exchangeability not established
-Gradient boosting leaves=15,timed_products_added,45,3,-37.6306536193875,40.053180601461584,Descriptive paired district resampling; independence/exchangeability not established
-Random Forest leaf=50,all_context_added,45,4,-0.763607758919511,29.24288922760117,Descriptive paired district resampling; independence/exchangeability not established
-Random Forest leaf=50,timed_products_added,45,3,-1.2637553765702136,43.92428333648613,Descriptive paired district resampling; independence/exchangeability not established
-Ridge alpha=1000,all_context_added,45,4,17.55993147904838,49.68563491666845,Descriptive paired district resampling; independence/exchangeability not established
-Ridge alpha=1000,timed_products_added,45,4,10.281544660728589,41.95450939887381,Descriptive paired district resampling; independence/exchangeability not established

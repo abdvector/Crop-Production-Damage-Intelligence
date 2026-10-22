@@ -6,6 +6,8 @@ Guide: Dr. Manish Kumar Pandey
 
 ## What to present
 
+This guide describes the original annual and 2018–2022 Kharif studies. For the later revised 2012–2017 comparison and the completed crop-state experiment, use the README and their results notes. Both later experiments have negative findings; completion of an experiment does not establish reliable forecasting.
+
 **Question:** Can weather observed before harvest improve district rice-yield predictions over recent-yield history?
 
 **Main research study:** Kharif rice in 30 Odisha districts. We use real government yield records and NASA weather, compare methods on earlier years, and evaluate the preselected method on later years. The app also retains a separate five-state annual study so users can select Bihar, Chhattisgarh, Jharkhand, Odisha and West Bengal. Annual and Kharif forecasts are different studies and must not be presented as the same target or boundary system.
@@ -63,14 +65,14 @@ The errors concern different records and targets. Do not compare them as a head-
 
 ## Protein and aluminium — the precise claim
 
-They are not inputs to either district forecast. Aluminium toxicity motivates biological research because it can harm roots in acidic soil. Separate trial experiments explored measured genetic variants annotated with reference protein context; they did not establish a reliable added forecasting benefit. Verified district-year exposure/variety links were unavailable. Keep this as supporting research, not a claim that the district model uses protein structures.
+They are not inputs to either district forecast. They were background topics in the initial proposal. Verified district-year exposure/variety links were unavailable, and the separate unused biological/trial datasets have been removed from the current project. Do not claim that the district model uses protein structures or measures aluminium damage.
 
 ## Demonstrating the app
 
-1. Start `app.py`. Choose a state, coverage, district and year in the sidebar.
-2. In **Forecast**, explain the vertical yield table, then reveal the recorded outcome.
-3. In **Model results**, show Accuracy and Model comparison. Identify the development-selected configuration before discussing the secondary forest result.
-4. In **Data & methods**, show the data summary and validation rules.
+1. Start `app.py`. For the original seasonal study described above, choose Odisha and **Saved Kharif forecasts · 2018–2022**, then a district, method and year.
+2. In **Yield explorer**, explain the actual/forecast lines and vertical yield table.
+3. In **Model evaluation**, show Accuracy and Compare methods. Identify the development-selected configuration before discussing the secondary forest result.
+4. In **Data explorer**, show the data summary and graphs; detailed source/validation notes are collapsed below the main content.
 
 ## Files you need to understand
 
@@ -87,7 +89,7 @@ They are not inputs to either district forecast. Aluminium toxicity motivates bi
 | `data/` | Preserved raw datasets, processed inputs, results and receipts. |
 | `models/` | Preserved model artifacts; `rice_regional.joblib` serves annual inference. |
 
-Read [the complete seasonal results](Rice_Odisha_Model_Results.md) for exact metrics. Original protocols and their timing amendment remain intact. Earlier exploratory documentation is under `research_notes/`; diagrams, papers and local mentor materials are retained. Earlier illustrations may describe the initial wheat/protein proposal and should not be presented as the implemented rice forecasting pipeline.
+Read [the complete seasonal results](Rice_Odisha_Model_Results.md) for exact metrics. Original protocols and their timing amendment remain intact. Unused exploratory datasets and archived notes have been removed; diagrams, papers and local mentor materials are retained. Earlier illustrations may describe the initial wheat/protein proposal and should not be presented as the implemented rice forecasting pipeline.
 
 ## Current pipeline
 

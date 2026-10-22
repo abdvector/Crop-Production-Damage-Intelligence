@@ -1,6 +1,0 @@
-{
-  "url": "https://rest.ensembl.org/sequence/id/Os02t0601600-01?type=protein;content-type=application/json",
-  "method": "GET",
-  "body": null,
-  "sha256": "37357ccaf248bd205288b6c7d7c21d767defec397d1a80a14a0fa8dc79cae7a6"
-}

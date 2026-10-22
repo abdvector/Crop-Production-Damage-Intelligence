@@ -1,9 +1,0 @@
-model,location_group,maximum_absolute_error_kg_ha
-Split context/full-SNP selection,India / Hyderabad,3375.4025002729686
-Split context/full-SNP selection,India / Maruteru,2081.6396979822875
-Split context/full-SNP selection,India / Raipur,1534.0757128246723
-Split context/full-SNP selection,Tanzania / Dakawa,1877.1078602497073
-Split training mean,India / Hyderabad,3290.036378737541
-Split training mean,India / Maruteru,2166.9363787375405
-Split training mean,India / Raipur,1111.2363787375416
-Split training mean,Tanzania / Dakawa,1898.4363787375405

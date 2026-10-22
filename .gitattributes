@@ -4,11 +4,6 @@ data/** -text
 # Keep preserved source/derived CRLF bytes without treating CR as stray whitespace.
 data/processed/rice/regional_forecast/** whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 data/raw/rice/icrisat_district/** whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
-data/raw/rice/molecular_linkage_audit/** whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
-# PDB uses fixed-width padded records; preserve source formatting and checksums.
-data/raw/rice/molecular_linkage_audit/*.pdb -diff -whitespace
-data/processed/rice/protein_experiment/** whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
-data/processed/rice/predictor_audit/** whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 # Geometry coordinates are audited by source hashes and the readable crosswalk.
 data/processed/rice/seasonal_geography/reference_geometries.geojson -diff
 # The Odisha protocol document is pinned by its exact SHA256.
@@ -21,5 +16,3 @@ docs/Crop_State_Extension.md text eol=lf
 src/rice_crop_state.py text eol=lf
 src/rice_crop_state_model.py text eol=lf
 docs/Crop_State_Comparison_Protocol.md text eol=lf
-# Verbatim author release: preserve its checked bytes and original whitespace.
-data/raw/rice/bowden_2023/RF_tune_run.R -whitespace

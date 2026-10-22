@@ -1,5 +1,0 @@
-candidate,control,macro_rmse_improvement_kg_ha,bootstrap_lower_95,bootstrap_upper_95,locations_improved
-Environment + all SNPs + structure,Environment + all SNPs,-1.3488167418206558,-3.8323436934037347,0.9925197035105269,5
-Environment + structure,Environment + SNP PCA control,-0.5147458675924099,-2.1921407902863708,1.453258898888714,5
-Environment + structure,Environment + shuffled structure,-0.6173744445262628,-2.1880683252888957,1.2921548878537514,4
-Environment + structure,Environment + six SNPs,-0.20366821296818216,-1.6183897337875237,1.696066596808701,3

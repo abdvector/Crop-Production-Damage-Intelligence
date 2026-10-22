@@ -53,7 +53,7 @@ The Odisha study compares **13 configurations**: three historical baselines, six
 
 The selected Ridge has MAE **516.8 kg/ha**, versus **577.7** for recent mean. Random Forest depth 4 achieves **405.3 kg/ha** as a secondary finding; it was not promoted after seeing assessment. Baseline gains remain uncertain across years. Low-yield detection is weak and uncertainty intervals are wide. This is a completed research prototype with mixed findings, not a high-precision operational service.
 
-Protein and aluminium work is supporting research. Neither is an input to the district forecasts. See [the full Kharif results](docs/Rice_Odisha_Model_Results.md).
+Protein and aluminium are background topics from the initial proposal, not inputs to the district forecasts. Their unused datasets and retired experiments have been removed. See [the full Kharif results](docs/Rice_Odisha_Model_Results.md).
 
 ## Code and data
 
@@ -64,15 +64,16 @@ Protein and aluminium work is supporting research. Neither is an input to the di
 - `src/rice_geography.py`: district reference geography checks.
 - `src/rice_odisha_seasonal.py`: daily weather and history preparation.
 - `src/rice_odisha_model.py`: frozen model comparison, calibration and assessment.
-- `data/` and `models/`: all datasets, recorded results, receipts and model artifacts are preserved. Some raw/private caches are intentionally ignored by Git.
-- `docs/`: current guide, results, methods and original protocols. Earlier documentation is in `docs/research_notes/`.
+- `src/rice_foundation.py`, `src/rice_validation.py` and `src/rice_annual_comparison.py`: data audit and reproducible saved comparisons.
+- `src/rice_crop_state.py` and `src/rice_crop_state_model.py`: completed vegetation/soil acquisition and comparison.
+- `data/`: inputs, source receipts and outputs needed for the retained rice studies. Large original raw caches remain local and ignored by Git.
+- `models/rice_regional.joblib`: the retained annual model artifact.
+- `docs/`: current guide, results, methods, frozen protocols and cleanup record.
 - `Presentation_Figures/`, `Research Papers/` and the literature matrix: preserved supporting materials. Earlier wheat illustrations describe the initial proposal, not the implemented rice pipeline.
 
-The current source reproduces the two district studies. Retired exploratory runners and duplicate dashboards were removed; their datasets and recorded findings remain. See [the cleanup record](docs/Codebase_Cleanup.md). Local mentor materials remain local and ignored.
+The current source reproduces the annual and Odisha district studies, their revised comparisons and the completed crop-state experiment. Unused molecular/genetic, aluminium, farm-survey and trial datasets, abandoned replication examples, obsolete model artifacts and archived notes were removed. See [the cleanup record](docs/Codebase_Cleanup.md). Local mentor materials remain local and ignored.
 
 ## Sources and method records
-
-The [free-study feasibility check](docs/Bowden_Replication_Feasibility.md) inspects Bowden et al. (2023), its published R code and real 355-row sample. This is preserved reference material, not a new forecasting model. The sample alone cannot reproduce the full paper or demonstrate an August-issued forecast.
 
 [Official DES](https://www.data.desagri.gov.in/website/apy-query-report-web) · [ICRISAT DLD](https://doi.org/10.21421/D2/XFB1BZ) · [NASA POWER](https://power.larc.nasa.gov/)
 
