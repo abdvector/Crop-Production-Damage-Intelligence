@@ -72,6 +72,8 @@ The current source reproduces the two district studies. Retired exploratory runn
 
 ## Sources and method records
 
+The [free-study feasibility check](docs/Bowden_Replication_Feasibility.md) inspects Bowden et al. (2023), its published R code and real 355-row sample. This is preserved reference material, not a new forecasting model. The sample alone cannot reproduce the full paper or demonstrate an August-issued forecast.
+
 [Official DES](https://www.data.desagri.gov.in/website/apy-query-report-web) · [ICRISAT DLD](https://doi.org/10.21421/D2/XFB1BZ) · [NASA POWER](https://power.larc.nasa.gov/)
 
 [Original seasonal protocol](docs/Rice_Odisha_Seasonal_Protocol.md) · [Timing amendment](docs/Rice_Odisha_Timing_Amendment.md) · [Implementation rules](docs/Rice_Odisha_Model_Implementation.md) · [Annual report](docs/Rice_Regional_Forecast.md)

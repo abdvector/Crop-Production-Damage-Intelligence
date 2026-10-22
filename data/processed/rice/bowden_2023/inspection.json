@@ -1,0 +1,77 @@
+{
+  "status": "source_and_sample_inspected_not_modelled",
+  "rows": 355,
+  "columns": [
+    "year",
+    "state",
+    "year_state_mean",
+    "district",
+    "dswrf_sum",
+    "mean_tmin",
+    "mean_tmax",
+    "mean_tavg",
+    "total_p",
+    "onset_allYears_dev",
+    "rice_irri_prop",
+    "rice_yield_kgha",
+    "cold_days",
+    "hot_days",
+    "wet_days",
+    "low_rad_days",
+    "season_length",
+    "rainy_prop",
+    "agdd",
+    "rice_area_kha",
+    "rice_prod_kt",
+    "lowess_pred_rice_yield_kgha",
+    "dt_norm_rice_yield_kgha",
+    "lowess_pred_rice_area_kha",
+    "dt_norm_rice_area_kha",
+    "lowess_pred_rice_prod_kt",
+    "dt_norm_rice_prod_kt"
+  ],
+  "years": [
+    1980,
+    1981,
+    1982,
+    1983,
+    1984
+  ],
+  "states": [
+    "Bihar",
+    "Haryana",
+    "Punjab",
+    "Uttar Pradesh"
+  ],
+  "districts": 71,
+  "unique_keys": [
+    "state",
+    "district",
+    "year"
+  ],
+  "missing_cells": 0,
+  "predictors_in_author_code": [
+    "mean_tmin",
+    "mean_tmax",
+    "agdd",
+    "dswrf_sum",
+    "total_p",
+    "rainy_prop",
+    "onset_allYears_dev",
+    "rice_irri_prop",
+    "season_length"
+  ],
+  "target_in_author_code": "dt_norm_rice_yield_kgha",
+  "normalization_verified": "(rice_yield_kgha - lowess_pred_rice_yield_kgha) / lowess_pred_rice_yield_kgha",
+  "source_sha256": {
+    "RF_tune_run.R": "11e0141f8a4d3c0fd2c6bf62f912126eb2083d6d70db29f2380cd2ae5bb86a90",
+    "sample_data": "1a8521f5dd39393e4a0d2abec440b7a0951b6004ec6ca6bc685478f8c13ce95b"
+  },
+  "csv_sha256": "c92b7e182e75efedbe52156c2b6f17d609e62e5bd7cc7bc4f5c65ce91aee690f",
+  "limitations": [
+    "Only 1980-1984 sample, not complete study inputs",
+    "Code starts with already processed/detrended data",
+    "No later-year forecast test in shared script",
+    "No R runtime found; original script not executed"
+  ]
+}

@@ -1,0 +1,107 @@
+{
+  "files": [
+    {
+      "id": 38023320,
+      "name": "RF_tune_run.R",
+      "size": 23834,
+      "is_link_only": false,
+      "download_url": "https://ndownloader.figshare.com/files/38023320",
+      "supplied_md5": "f2cf832fd55a3b374d33394000351893",
+      "computed_md5": "f2cf832fd55a3b374d33394000351893",
+      "mimetype": "text/plain"
+    }
+  ],
+  "folder_structure": {},
+  "authors": [
+    {
+      "id": 8319018,
+      "full_name": "Christopher Bowden",
+      "first_name": "Christopher",
+      "last_name": "Bowden",
+      "is_active": true,
+      "url_name": "Christopher_Bowden",
+      "orcid_id": ""
+    }
+  ],
+  "custom_fields": [],
+  "figshare_url": "https://figshare.com/articles/software/RF_code/21371625",
+  "download_disabled": false,
+  "description": "<p>Code detailing the random forest model tuning, running, and results parsing for the manuscript \"Identifying links between monsoon variability and rice production in India through machine learning\".</p>\n<p><br></p>\n<p>N.B. code requires two sub-directories to run: 'vars' and 'plots'. The 'vars' sub-directory must contain the 'sample_data'.</p>",
+  "funding": null,
+  "funding_list": [],
+  "version": 3,
+  "status": "public",
+  "size": 23834,
+  "created_date": "2022-10-28T16:30:27Z",
+  "modified_date": "2022-10-28T16:30:28Z",
+  "is_public": true,
+  "is_confidential": false,
+  "is_metadata_record": false,
+  "confidential_reason": "",
+  "metadata_reason": "",
+  "license": {
+    "value": 1,
+    "name": "CC BY 4.0",
+    "url": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "tags": [
+    "R",
+    "random forest",
+    "Climate Science",
+    "Environmental Science"
+  ],
+  "keywords": [
+    "R",
+    "random forest",
+    "Climate Science",
+    "Environmental Science"
+  ],
+  "categories": [
+    {
+      "id": 25759,
+      "title": "Climatology",
+      "parent_id": 25753,
+      "path": "/25717/25753/25759",
+      "source_id": "370202",
+      "taxonomy_id": 100
+    },
+    {
+      "id": 26998,
+      "title": "Other environmental sciences not elsewhere classified",
+      "parent_id": 26995,
+      "path": "/26863/26995/26998",
+      "source_id": "419999",
+      "taxonomy_id": 100
+    }
+  ],
+  "references": [],
+  "has_linked_file": false,
+  "citation": "Bowden, Christopher (2022). RF code. figshare. Software. https://doi.org/10.6084/m9.figshare.21371625.v3",
+  "related_materials": [],
+  "is_embargoed": false,
+  "embargo_date": null,
+  "embargo_type": "file",
+  "embargo_title": "",
+  "embargo_reason": "",
+  "embargo_options": [],
+  "id": 21371625,
+  "title": "RF code",
+  "doi": "10.6084/m9.figshare.21371625.v3",
+  "handle": "",
+  "url": "https://api.figshare.com/v2/articles/21371625",
+  "published_date": "2022-10-28T16:30:27Z",
+  "thumb": "",
+  "defined_type": 9,
+  "defined_type_name": "software",
+  "group_id": null,
+  "url_private_api": "https://api.figshare.com/v2/account/articles/21371625",
+  "url_public_api": "https://api.figshare.com/v2/articles/21371625",
+  "url_private_html": "https://figshare.com/account/articles/21371625",
+  "url_public_html": "https://figshare.com/articles/software/RF_code/21371625",
+  "timeline": {
+    "posted": "2022-10-28T16:30:27",
+    "firstOnline": "2022-10-25"
+  },
+  "resource_title": null,
+  "resource_doi": null
+}

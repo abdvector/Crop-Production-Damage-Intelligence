@@ -21,3 +21,5 @@ docs/Crop_State_Extension.md text eol=lf
 src/rice_crop_state.py text eol=lf
 src/rice_crop_state_model.py text eol=lf
 docs/Crop_State_Comparison_Protocol.md text eol=lf
+# Verbatim author release: preserve its checked bytes and original whitespace.
+data/raw/rice/bowden_2023/RF_tune_run.R -whitespace
