@@ -1,0 +1,24 @@
+{
+  "status": "coverage_audit_incomplete",
+  "plan_sha256": "9909d00aa3b08948c8e3d7e49f9fd4bedd48d313e2cdad3b09d43a073ae2885f",
+  "expected_composites": 66,
+  "catalogue_composites": 65,
+  "successful_composites": 65,
+  "district_composite_rows": 390,
+  "failures": [],
+  "catalogue_missing": [
+    {
+      "year": 2022,
+      "composite_start": "2022-10-16T00:00:00+00:00",
+      "status": "catalogue_missing"
+    }
+  ],
+  "source_manifest_sha256": "ea761b28553bbe461ad0963546b52090190656d5486ee1f5f9ac18bafde1e9c2",
+  "window_archive_sha256": "efda286c98382935b8f1f1db6ef142594f4be11ec116fafc5a30b6ed93229b9a",
+  "outputs_sha256": {
+    "coverage.csv": "2f7fdc43ffd8ebaf31c4a41c5cdfa243558b2ddd15cdcf7796d536f8d536a650",
+    "cutoff_summary.csv": "de6d7d3bda7bc28b5c12359022f6381f612838d2356c161d2bf19d98c8e2a4e9"
+  },
+  "scope": "Purposive six-district sample fully contained by h25v06; not representative of India or all study districts.",
+  "no_model_or_master_change": true
+}

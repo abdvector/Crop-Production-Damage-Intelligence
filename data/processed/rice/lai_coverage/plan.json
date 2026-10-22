@@ -1,0 +1,68 @@
+{
+  "declared_date": "2026-10-22",
+  "status": "coverage_only_not_modelling",
+  "years": [
+    2004,
+    2013,
+    2022
+  ],
+  "districts": [
+    {
+      "code": "370",
+      "district": "Bargarh",
+      "state": "Odisha"
+    },
+    {
+      "code": "372",
+      "district": "Sambalpur",
+      "state": "Odisha"
+    },
+    {
+      "code": "230",
+      "district": "Patna",
+      "state": "Bihar"
+    },
+    {
+      "code": "364",
+      "district": "Ranchi",
+      "state": "Jharkhand"
+    },
+    {
+      "code": "409",
+      "district": "Durg",
+      "state": "Chhattisgarh"
+    },
+    {
+      "code": "340",
+      "district": "Puruliya",
+      "state": "West Bengal"
+    }
+  ],
+  "scope": "Purposive six-district sample fully contained by h25v06; not representative of India or all study districts.",
+  "product": "MCD15A2H Collection 6.1",
+  "collection": "modis-15A2H-061",
+  "tile": "h25v06",
+  "season": "Composite start >=June 1 and full 8-day interval completed by December 1 exclusive.",
+  "mask": "APRA500 Y-2; rice=1, non-rice=0, nodata=3. Annual paddy extent proxy, not season-specific.",
+  "quality": "raw LAI<=100; bit0=0; SCF bits5-7<=1; dead-detector bit2=0; strict additionally cloud bits3-4=0.",
+  "coverage_threshold": 0.5,
+  "threshold_role": "Fixed descriptive coverage screen, not proof of representative yield inputs.",
+  "cutoffs": {
+    "August issue": "composite exclusive end <=August 25",
+    "October issue": "composite exclusive end <=October 25"
+  },
+  "geography_sha256": "ce21d47a8ed1f7bb77a821b224ac95249bafc6dc520f2cb33ed963e04c0f9575",
+  "runtime": {
+    "rasterio": "1.5.2",
+    "numpy": "2.5.3"
+  },
+  "label_access": "No yield file read; dates/districts/quality fixed without outcome selection.",
+  "script_sha256": "7192bf7df9b3506e58dbd16e6cdb623181ba4691ae8c65aad8382c25716516f8",
+  "execution_revisions": [
+    {
+      "previous_script_sha256": "6f0d77c0acc69a3fd7161473ff15a4f2be4f5afabbf60b3b2cd24ac9fc0ecb54",
+      "new_script_sha256": "7192bf7df9b3506e58dbd16e6cdb623181ba4691ae8c65aad8382c25716516f8",
+      "reason": "Transport only: reuse one container token to avoid per-file signing rate limits. Scientific scope and rules unchanged; completed windows reused."
+    }
+  ]
+}

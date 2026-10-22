@@ -81,3 +81,32 @@ The strict quality rule requires raw LAI <=100, MODLAND bit 0 = 0, SCF bits 5-7 
 `sample_check.json` contains counts, quality settings, source hashes and limitations; `source_item.json` preserves the two catalogue items. No temporary signed access URLs are required for subsequent inspection. Rasterio 1.5.2 was used in a temporary dependency folder, which was removed after checking.
 
 **Finding:** direct access and spatial matching are feasible. This sample demonstrates strong seasonal variation in strict cloud-free coverage, not complete coverage across districts or years. A larger seasonal coverage audit, an explicit prediction date, an assessment of paddy-mask representativeness and a declared evaluation protocol are still required before training. October observations cannot be used for an August forecast. The choice of these two pilot districts does not restrict the eventual geographic scope to Odisha.
+
+## Broader seasonal LAI coverage audit
+
+The bounded follow-up checks **six fixed districts across all five study states**: Bargarh and Sambalpur (Odisha), Patna (Bihar), Ranchi (Jharkhand), Durg (Chhattisgarh) and Puruliya (West Bengal). Years **2004, 2013 and 2022** sample the earlier, middle and later parts of the seasonal data period. This is a purposive feasibility sample, chosen for complete coverage within tile h25v06. It is not a representative assessment of India or a complete training dataset.
+
+The plan was written before extraction. No yield file was read, and the same quality definition was applied throughout. All complete eight-day intervals starting on or after June 1 and finishing by December 1 were sought. Of **66 expected composites**, **65** were available in the Planetary Computer catalogue and successfully checked, producing **390 district/date records**. The expected **16 October 2022** combined-product composite was absent from that catalogue. The audit's `coverage_audit_incomplete` status records this source-series gap; it does not indicate remaining download failures. No source value was fabricated or interpolated.
+
+Paddy masks come from APRA500 for Y-2: **2002, 2011 and 2020**. Publisher checksums were verified. The district geometry is the same fixed Census 2011 reference. Coverage denominators include all mapped paddy pixels inside the district geometry, including pixels with missing LAI; they are not restricted to pixels where LAI is already observed. Zero remains a valid non-rice value, and no-data code 3 is explicit during mask resampling. Archives hold the scaled-input precursors: original LAI bytes, QC bytes and Boolean mapped-paddy masks on the native grid.
+
+For this descriptive check, a composite passes when **at least 50% of mapped paddy pixels** have strictly clear, main-algorithm LAI. This fixed screen was not selected using yield accuracy and does not establish that 50% coverage represents the entire crop. Diagnostic averages from lower coverage are explicitly labelled and are not admitted to the master dataset as model features.
+
+| Data completed by | Expected district/date records | Records checked | Records passing the 50% screen | Median passing composites per district/year |
+| --- | ---: | ---: | ---: | ---: |
+| August 24, for the assumed August 31 issue | 180 | 180 | 35 | 2 |
+| October 24, for the assumed October 31 issue | 324 | 318 | 102 | 5 |
+| November 30 | 396 | 390 | 169 | 8.5 |
+
+The rows are cumulative. An August or October issue includes only composites that have fully completed by its observation cutoff, not images merely timestamped before it.
+
+Across the checked district/date records, median strict clear-sky coverage is **3.9% in July**, **11.1% in August** and **87.5% in October**. However, main-algorithm retrieval coverage before imposing the additional clear-sky requirement has monthly medians of approximately **96-99%**. These are different quality definitions: many retrieved values are not strictly clear-sky values. The result supports investigating later-season LAI under the declared conservative screen. It does not prove that all monsoon retrievals are unusable or authorize relaxing quality rules to improve yield scores. Any alternative quality policy needs product-based justification and its own declared comparison.
+
+Files are grouped into two locations:
+
+- `data/processed/rice/lai_coverage/`: the predeclared plan, per-composite coverage, cutoff summary and audit receipt.
+- `data/raw/rice/lai_coverage/`: three paddy maps, unsigned source catalogue metadata, and **one ZIP** containing verified raster windows, entry hashes and the audit source code for reproduction. Raster windows were downloaded through range reads instead of retaining every full Asia/MODIS raster. Temporary loose caches and raster packages were removed after verification.
+
+The provider's per-file signing endpoint rate-limited the initial execution. A transport-only revision reused a single public container token and resumed completed windows. Both source revisions and their hashes are retained; scientific scope, pixel rules and thresholds did not change. No temporary signed URLs were saved. All 390 coverage records were independently recalculated from the archived arrays and checked against the CSV, alongside source, plan and output hashes.
+
+**Decision supported:** LAI access and seasonal extraction are feasible across this five-state sample, with stronger strict clear-sky coverage later in the season. Before a modelling experiment, obtain the full intended district/year series, choose an issue date, and verify rice-mask representativeness and yield-boundary compatibility. Availability of a Census 2011 polygon outside Odisha does not itself establish compatibility with the active annual model's historical apportioned districts. Existing targets have already been examined, so reuse would remain retrospective. This audit has not changed the app, trained model, master CSV or any accuracy claims.

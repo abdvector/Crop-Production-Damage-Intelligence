@@ -60,6 +60,8 @@ For the separate seasonal research dataset, open **`data/rice_yield_master.csv`*
 
 A small [LAI acquisition check](docs/Dataset.md#lai-acquisition-feasibility-check-22-october-2026) confirms direct access to two MODIS composites and a prior-year paddy mask. Its files remain separate under `data/raw/rice/lai_feasibility/`; they are not a complete training dataset or inputs to the current model.
 
+A [broader seasonal coverage audit](docs/Dataset.md#broader-seasonal-lai-coverage-audit) checks six districts across all five states in 2004, 2013 and 2022. It preserves 390 district/date checks from 65 available composites, with one catalogue gap. This is acquisition evidence, not new yield-model results; the underlying arrays and reproducible audit source are stored together in one archive.
+
 Earlier annual, seasonal, satellite and statistical experiments are preserved in [one archive](archive/README.md), including their original code, protocols and model. Their datasets and saved results remain in `data/`. They are not loaded as competing application workflows. The active app uses only `data/processed/rice/regional_forecast/district_years.csv` and `models/input_model/`.
 
 Papers, diagrams, the literature matrix and local mentor materials are preserved. Some earlier wheat diagrams describe the original proposal, not the current rice model. Local mentor materials are excluded from Git.
