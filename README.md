@@ -62,6 +62,8 @@ A small [LAI acquisition check](docs/Dataset.md#lai-acquisition-feasibility-chec
 
 A [broader seasonal coverage audit](docs/Dataset.md#broader-seasonal-lai-coverage-audit) checks six districts across all five states in 2004, 2013 and 2022. It preserves 390 district/date checks from 65 available composites, with one catalogue gap. This is acquisition evidence, not new yield-model results; the underlying arrays and reproducible audit source are stored together in one archive.
 
+The [matched later-season LAI dataset and fixed comparison](docs/Dataset.md#matched-later-season-lai-dataset) extend the Odisha Kharif table to 2004-2022 with five monthly paddy-masked LAI summaries. All 570 rows are retained, with missing observations explicit. The separate October 31 experiment did **not** show a clear LAI gain: later MAE was 506.8 kg/ha for history/weather Gradient Boosting and 515.5 kg/ha after adding LAI. It does not replace the annual app model. Raw sources and reproducible code are kept in one archive; details and limitations are in the data guide.
+
 Earlier annual, seasonal, satellite and statistical experiments are preserved in [one archive](archive/README.md), including their original code, protocols and model. Their datasets and saved results remain in `data/`. They are not loaded as competing application workflows. The active app uses only `data/processed/rice/regional_forecast/district_years.csv` and `models/input_model/`.
 
 Papers, diagrams, the literature matrix and local mentor materials are preserved. Some earlier wheat diagrams describe the original proposal, not the current rice model. Local mentor materials are excluded from Git.

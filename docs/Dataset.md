@@ -13,7 +13,7 @@ Open `data/rice_yield_master.csv` for one table of compatible observations. One 
 | Minimum temperature (3 X) | `T2M_MIN_06`, `_07`, `_08` | Mean daily minimum temperature, C |
 | Rainfall (3 X) | `PRECTOTCORR_06`, `_07`, `_08` | Period rainfall total, mm; these seasonal units differ from the active annual model's mm/day |
 | Humidity (3 X) | `RH2M_06`, `_07`, `_08` | Mean relative humidity, percent |
-| Solar radiation (3 X) | `ALLSKY_SFC_SW_DWN_06`, `_07`, `_08` | Mean daily solar radiation, kWh/m2/day |
+| Solar radiation (3 X) | `ALLSKY_SFC_SW_DWN_06`, `_07`, `_08` | Mean daily solar radiation, MJ/m2/day, as recorded in the NASA POWER source receipts |
 | Weather extremes (4 X) | `longest_dry_spell_days`, `wet_days`, `max_five_day_rain_mm`, `tmax_p95_c` | Longest run with rain below 1 mm/day; number of days with rain at least 1 mm; largest five-day rain total (mm); 95th percentile daily maximum temperature (C) |
 | Vegetation (3 X) | `ndvi_06`, `_07`, `_08` | Quality-filtered MODIS NDVI, dimensionless, mixed-cropland proxy; not a rice-only measurement |
 | Soil moisture (3 X) | `soil_moisture_06`, `_07`, `_08` | ERA5-Land volumetric moisture, top 0-7 cm, m3/m3; whole-district average |
@@ -110,3 +110,61 @@ Files are grouped into two locations:
 The provider's per-file signing endpoint rate-limited the initial execution. A transport-only revision reused a single public container token and resumed completed windows. Both source revisions and their hashes are retained; scientific scope, pixel rules and thresholds did not change. No temporary signed URLs were saved. All 390 coverage records were independently recalculated from the archived arrays and checked against the CSV, alongside source, plan and output hashes.
 
 **Decision supported:** LAI access and seasonal extraction are feasible across this five-state sample, with stronger strict clear-sky coverage later in the season. Before a modelling experiment, obtain the full intended district/year series, choose an issue date, and verify rice-mask representativeness and yield-boundary compatibility. Availability of a Census 2011 polygon outside Odisha does not itself establish compatibility with the active annual model's historical apportioned districts. Existing targets have already been examined, so reuse would remain retrospective. This audit has not changed the app, trained model, master CSV or any accuracy claims.
+
+## Matched later-season LAI dataset
+
+The follow-up table is `data/processed/rice/lai_seasonal/matched_yield_lai.csv`: **570 rows, 30 Odisha districts, 2004-2022**. Every original master column and row is retained unchanged. The join is one-to-one on Census 2011 district code and agricultural start year. Odisha is used here because its seasonal yield/history/weather table already shares this district reference. This does not establish a valid join to the five-state annual model's historical districts. The fixed reference is not independent annual boundary certification.
+
+The declared estimation date is **October 31**, admitting only whole eight-day composites completed by **October 24**, with an assumed seven-day delay. Depending on local cropping dates, this can be near or after harvest; it is not a verified early or universally pre-harvest forecast. Archive reprocessing and historical product availability prevent an operational-vintage claim.
+
+Five candidate variables, `lai_06` through `lai_10`, measure paddy-masked LAI in m2/m2. For each district/composite, valid pixel counts and raw LAI sums are combined across **all intersecting tiles** before applying the same 50% strict-coverage screen. This avoids treating a district's partial tile as its full area. Admitted composite means are averaged within their completion month, using the last included observation day (`exclusive end - 1 day`) to assign that month. Monthly means can therefore summarize different numbers of observations. Each month has admitted/expected composite counts as **diagnostics**, not automatically model predictors. The resulting table has 51 columns: the original 36, five LAI summaries and ten counts.
+
+| LAI feature | Observed district/year rows | Missing rows |
+| --- | ---: | ---: |
+| June | 478 | 92 |
+| July | 50 | 520 |
+| August | 43 | 527 |
+| September | 514 | 56 |
+| October, observations through October 24 | 563 | 7 |
+
+Only **12 rows** have all five monthly LAI variables observed. Missing values remain blank in the data; there is no raw-data interpolation or zero filling. Sparse monsoon coverage and variable within-month sampling remain material limitations even though October coverage is substantially better.
+
+Acquisition checked **1,364 available tile/date products** across four tiles, yielding **10,260 district/composite records**. There were no remaining download failures. Of 1,368 expected tile/date products, the October 16, 2022 composite is absent from the catalogue for all four tiles. Those 30 district/date observations remain unavailable. Duplicate processing versions for September 22, 2021 were resolved using the latest production timestamp in the product ID, without consulting yield outcomes; all catalogue metadata and the plan revision are retained. This is explicitly a reprocessed archive selection, not the data available on the historical issue date.
+
+Files in `data/processed/rice/lai_seasonal/`:
+
+- `plan.json`: acquisition scope, quality rules, dates and checksums, declared before extraction and outcome matching.
+- `composites.csv`: every expected district/date, including missing catalogue observations and failed quality screens.
+- `features.csv`: district/year monthly LAI and observation counts.
+- `matched_yield_lai.csv`: the complete left join to the existing seasonal master.
+- `audit.json` and `verification.json`: source/output hashes and independent checks.
+- `comparison_protocol.json`, `comparison_predictions.csv` and `comparison_report.json`: the separate fixed experiment below.
+
+All new raw materials are packaged in **`data/raw/rice/lai_seasonal/sources.zip`**. It retains 57 source files: downloaded paddy maps, publisher checksums, unsigned catalogue metadata, mapped-paddy counts, yearly archives of original LAI/QC bytes at paddy pixels, and preparation/comparison/verification source code. Existing pilot/audit masks are reused through recorded original paths. Every packaged file was checked byte-for-byte before loose copies were removed; no observations were discarded. Temporary raster packages and download caches are removed after verification.
+
+To reproduce, extract `sources.zip` into its containing folder, then extract `preparation_source.zip` into a temporary `.lai-dataset-work/` folder at project root. `build.py` recreates the acquisition and join, `compare.py` runs the declared comparison, and `verify.py` independently recomputes outputs. Use the pinned project environment plus Rasterio 1.5.2 in `.lai-dataset-work/runtime`; the builder records library versions and hashes. The initial declaration is already saved, so run `compare.py` without `--declare`. The verifier also reads the packed archive directly without unpacking it. Building requires public network access; verification uses retained data. The active app does not import these preparation scripts or require Rasterio.
+
+Independent verification recomputed all **1,364 tile/date arrays**, all **10,260 district/composite checks**, all monthly features and every matched row. It used an alternative quality-bit expression, checked source/output hashes, confirmed every original master value was unchanged, and loaded the active annual model successfully. Source parameter metadata also confirmed solar radiation is **MJ/m2/day**; the earlier kWh/m2/day wording in this guide was corrected without changing stored values.
+
+## Fixed LAI comparison
+
+One fixed **Gradient Boosting Regressor** is compared with and without LAI. Both predict the deviation from the five-past-yield mean and add that reference back. Parameters: 200 trees, learning rate 0.03, depth 2, minimum leaf size 10, squared-error loss and seed 42. The reference method is the same five-past-yield mean. This is an adaptation of the rice LAI/boosting idea, not a replication of the paper's dataset, tuning or reported accuracy.
+
+Training uses **2004-2011 (240 rows)**. Year 2012 is an excluded gap, so the first 2013 prediction respects the assumed Y-2 availability of training yields. Both fitted models are then frozen for **2013-2017** and **2018-2022**, 150 rows each. There is no hyperparameter search or automatic deployment based on these scores. Gaussian predictor/residual assumptions are not requirements of these prediction trees. Neither model provides regression coefficient significance tests or causal effects.
+
+The environmental input set is the five historical yields plus 19 June-August weather summaries. The added set contains five monthly LAI means. Current production/acreage, target yield, year, district identity, NDVI, soil moisture, observation-count diagnostics, protein and aluminium are excluded. Missing LAI is handled by medians and missingness indicators fitted **only on the 2004-2011 training rows**; a wholly missing training column would be excluded. Raw data is never overwritten by imputed values.
+
+| Period | Method | MAE, kg/ha | RMSE, kg/ha | Predictive R squared |
+| --- | --- | ---: | ---: | ---: |
+| 2013-2017 | Past-yield mean | 659.5 | 809.3 | -0.474 |
+| 2013-2017 | History/weather GBR | 586.9 | 726.9 | -0.189 |
+| 2013-2017 | History/weather/LAI GBR | 585.0 | 729.6 | -0.198 |
+| 2018-2022 | Past-yield mean | 577.7 | 682.0 | -0.213 |
+| 2018-2022 | History/weather GBR | 506.8 | 597.0 | 0.071 |
+| 2018-2022 | History/weather/LAI GBR | 515.5 | 612.1 | 0.023 |
+
+**Finding:** this fixed comparison does not demonstrate a useful LAI improvement. Against the identical environmental model, adding LAI lowers earlier MAE by 1.8 kg/ha but increases later MAE by 8.7 kg/ha. A paired bootstrap resampling the five assessment years gives 95% intervals for MAE improvement of **-22.4 to 26.1** and **-28.6 to 11.2 kg/ha**, respectively. With only five year clusters these are coarse retrospective uncertainty estimates. LAI-model later bias is -370.9 kg/ha, showing substantial underprediction. Negative earlier R squared and low positive later R squared do not support a strong forecast claim.
+
+These outcomes do not prove LAI is intrinsically unhelpful: monthly aggregation, conservative quality filtering, annual paddy masks, sparse monsoon observations, the small training sample and changes over time all limit this particular experiment. Missingness can itself reflect cloud/coverage patterns. Adding later-season LAI to weather ending in August also changes information timing, so it does not isolate a causal vegetation contribution. No further tuning was performed after seeing these scores.
+
+The assessment years have been examined in prior project work; this is not new independent validation. Metrics must not be compared directly with the active **annual**, five-state model or paper scores on different targets, geography and splits. The active app model, its results and the original master remain unchanged. This dataset and experiment are available for review; no reliable damage alerts or operational forecasting capability have been established.

@@ -1,0 +1,79 @@
+{
+  "status": "fixed_before_running_comparison",
+  "target": "Official district Kharif rice yield, kg/ha",
+  "issue": "October 31, composites fully completed by October 24; retrospective reprocessed data",
+  "training_years": [
+    2004,
+    2011
+  ],
+  "excluded_gap_year": 2012,
+  "earlier_check": [
+    2013,
+    2017
+  ],
+  "later_check": [
+    2018,
+    2022
+  ],
+  "training_reason": "Freeze through 2011 so even first 2013 assessment respects assumed Y-2 yield availability.",
+  "model": "GradientBoostingRegressor predicts deviation from five-lag yield mean; add reference and clip at zero",
+  "parameters": {
+    "n_estimators": 200,
+    "learning_rate": 0.03,
+    "max_depth": 2,
+    "min_samples_leaf": 10,
+    "loss": "squared_error",
+    "random_state": 42
+  },
+  "environment_features": [
+    "yield_lag2",
+    "yield_lag3",
+    "yield_lag4",
+    "yield_lag5",
+    "yield_lag6",
+    "T2M_MAX_06",
+    "T2M_MAX_07",
+    "T2M_MAX_08",
+    "T2M_MIN_06",
+    "T2M_MIN_07",
+    "T2M_MIN_08",
+    "PRECTOTCORR_06",
+    "PRECTOTCORR_07",
+    "PRECTOTCORR_08",
+    "RH2M_06",
+    "RH2M_07",
+    "RH2M_08",
+    "ALLSKY_SFC_SW_DWN_06",
+    "ALLSKY_SFC_SW_DWN_07",
+    "ALLSKY_SFC_SW_DWN_08",
+    "longest_dry_spell_days",
+    "wet_days",
+    "max_five_day_rain_mm",
+    "tmax_p95_c"
+  ],
+  "lai_features": [
+    "lai_06",
+    "lai_07",
+    "lai_08",
+    "lai_09",
+    "lai_10"
+  ],
+  "comparison": [
+    "Five-past-yield mean",
+    "History and weather GBR",
+    "History, weather and LAI GBR"
+  ],
+  "imputation": "Training-only medians and missingness indicators; drop predictors completely missing in training; no target imputation.",
+  "selection": "No parameter search, feature selection using outcomes, test-based tuning or automatic model replacement.",
+  "inference": "No Gaussian predictor or residual distribution required for these prediction trees. Metrics are predictive, not coefficient significance tests.",
+  "uncertainty": "Paired bootstrap of assessment-year MAE differences, 10000 draws, seed 42; only five years per period, coarse retrospective uncertainty.",
+  "limitations": [
+    "Years already examined previously; not new independent confirmation.",
+    "Fixed district reference and annual paddy masks do not certify annual Kharif boundaries or harvested rice.",
+    "October estimate may be near or after harvest in some areas; not a verified pre-harvest or operational forecast.",
+    "Weather stops August 24; added LAI also adds later-season information, not an isolated causal vegetation effect.",
+    "Missingness indicators can encode cloud/coverage differences; no claim of causal LAI effect.",
+    "Neither annual app model metrics nor paper metrics are directly comparable to this seasonal target/sample."
+  ],
+  "script_sha256": "d370731245cf7a300d9f0fb4dce8c186204bdb47e0234a83357e8dde1b4ba2de"
+}

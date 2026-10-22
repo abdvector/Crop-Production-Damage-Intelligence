@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "archived_tile_composites_recomputed": 1364,
+  "district_composites_checked": 10260,
+  "matched_rows_checked": 570,
+  "all_original_base_columns_unchanged": true,
+  "month_features_independently_recomputed": true,
+  "quality_recomputed_using_alternative_bitmasks": true,
+  "source_and_output_hashes_verified": true,
+  "existing_model_contract_passed": true,
+  "comparison_labels_and_metrics_independently_recomputed": true,
+  "verifier_sha256": "26c1ddd5b0aaa38d5e562734d1f08827020adf227c3337f962c17ec129febafe",
+  "archived_preparation_comparison_verifier_code_hashes_passed": true,
+  "comparison_repeated_with_byte_identical_predictions_and_report": true
+}

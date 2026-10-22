@@ -1,0 +1,211 @@
+{
+  "status": "retrospective_comparison_complete",
+  "training_rows": 240,
+  "assessment_rows": 300,
+  "protocol_sha256": "4208f764af9f84c71b486572d9cc68c625eabbd036d99bed5e432ed4c6ba5056",
+  "matched_data_sha256": "74ea537d84d13cc2872cda0c85653b83961b33f1b8b6accd0c56a87301fb8dce",
+  "predictions_sha256": "a9c4c6b9abd47faa935b6c7361f2689de8441071a3d20370d342a39f47008f62",
+  "fitting": {
+    "environment": {
+      "used_columns": [
+        "yield_lag2",
+        "yield_lag3",
+        "yield_lag4",
+        "yield_lag5",
+        "yield_lag6",
+        "T2M_MAX_06",
+        "T2M_MAX_07",
+        "T2M_MAX_08",
+        "T2M_MIN_06",
+        "T2M_MIN_07",
+        "T2M_MIN_08",
+        "PRECTOTCORR_06",
+        "PRECTOTCORR_07",
+        "PRECTOTCORR_08",
+        "RH2M_06",
+        "RH2M_07",
+        "RH2M_08",
+        "ALLSKY_SFC_SW_DWN_06",
+        "ALLSKY_SFC_SW_DWN_07",
+        "ALLSKY_SFC_SW_DWN_08",
+        "longest_dry_spell_days",
+        "wet_days",
+        "max_five_day_rain_mm",
+        "tmax_p95_c"
+      ],
+      "all_missing_training_columns_excluded": [],
+      "transformed_predictor_count": 24,
+      "imputer_fitted_only_on_years": [
+        2004,
+        2011
+      ]
+    },
+    "lai": {
+      "used_columns": [
+        "yield_lag2",
+        "yield_lag3",
+        "yield_lag4",
+        "yield_lag5",
+        "yield_lag6",
+        "T2M_MAX_06",
+        "T2M_MAX_07",
+        "T2M_MAX_08",
+        "T2M_MIN_06",
+        "T2M_MIN_07",
+        "T2M_MIN_08",
+        "PRECTOTCORR_06",
+        "PRECTOTCORR_07",
+        "PRECTOTCORR_08",
+        "RH2M_06",
+        "RH2M_07",
+        "RH2M_08",
+        "ALLSKY_SFC_SW_DWN_06",
+        "ALLSKY_SFC_SW_DWN_07",
+        "ALLSKY_SFC_SW_DWN_08",
+        "longest_dry_spell_days",
+        "wet_days",
+        "max_five_day_rain_mm",
+        "tmax_p95_c",
+        "lai_06",
+        "lai_07",
+        "lai_08",
+        "lai_09",
+        "lai_10"
+      ],
+      "all_missing_training_columns_excluded": [],
+      "transformed_predictor_count": 33,
+      "imputer_fitted_only_on_years": [
+        2004,
+        2011
+      ]
+    }
+  },
+  "scores": [
+    {
+      "period": "Earlier check",
+      "years": [
+        2013,
+        2017
+      ],
+      "model": "baseline",
+      "rows": 150,
+      "MAE_kg_ha": 659.4933333333333,
+      "RMSE_kg_ha": 809.3058424765428,
+      "R_squared": -0.4735644233177956,
+      "bias_kg_ha": -469.04
+    },
+    {
+      "period": "Earlier check",
+      "years": [
+        2013,
+        2017
+      ],
+      "model": "environment",
+      "rows": 150,
+      "MAE_kg_ha": 586.8603585668543,
+      "RMSE_kg_ha": 726.8519826451368,
+      "R_squared": -0.18860002551084776,
+      "bias_kg_ha": -322.02763863529
+    },
+    {
+      "period": "Earlier check",
+      "years": [
+        2013,
+        2017
+      ],
+      "model": "lai",
+      "rows": 150,
+      "MAE_kg_ha": 585.0347404926904,
+      "RMSE_kg_ha": 729.5690542501412,
+      "R_squared": -0.19750293183220347,
+      "bias_kg_ha": -319.0681415411321
+    },
+    {
+      "period": "Later check",
+      "years": [
+        2018,
+        2022
+      ],
+      "model": "baseline",
+      "rows": 150,
+      "MAE_kg_ha": 577.7066666666667,
+      "RMSE_kg_ha": 682.0382393971763,
+      "R_squared": -0.2126485341760802,
+      "bias_kg_ha": -473.68
+    },
+    {
+      "period": "Later check",
+      "years": [
+        2018,
+        2022
+      ],
+      "model": "environment",
+      "rows": 150,
+      "MAE_kg_ha": 506.7715088197568,
+      "RMSE_kg_ha": 597.0336293591548,
+      "R_squared": 0.07078740918982074,
+      "bias_kg_ha": -345.55127049278485
+    },
+    {
+      "period": "Later check",
+      "years": [
+        2018,
+        2022
+      ],
+      "model": "lai",
+      "rows": 150,
+      "MAE_kg_ha": 515.4737559489863,
+      "RMSE_kg_ha": 612.1081847098562,
+      "R_squared": 0.023271477683400765,
+      "bias_kg_ha": -370.8733392406466
+    }
+  ],
+  "paired_uncertainty": [
+    {
+      "period": "Earlier check",
+      "comparison": "LAI versus baseline",
+      "positive_means_lower_LAI_error": true,
+      "MAE_improvement_kg_ha": 74.4585928406429,
+      "paired_year_bootstrap_95_percent_interval": [
+        -7.162200598892116,
+        161.38653227796485
+      ],
+      "assessment_year_clusters": 5
+    },
+    {
+      "period": "Earlier check",
+      "comparison": "LAI versus environment",
+      "positive_means_lower_LAI_error": true,
+      "MAE_improvement_kg_ha": 1.8256180741637877,
+      "paired_year_bootstrap_95_percent_interval": [
+        -22.40901697953128,
+        26.082540988802386
+      ],
+      "assessment_year_clusters": 5
+    },
+    {
+      "period": "Later check",
+      "comparison": "LAI versus baseline",
+      "positive_means_lower_LAI_error": true,
+      "MAE_improvement_kg_ha": 62.23291071768027,
+      "paired_year_bootstrap_95_percent_interval": [
+        -41.95907802349926,
+        140.34702114444696
+      ],
+      "assessment_year_clusters": 5
+    },
+    {
+      "period": "Later check",
+      "comparison": "LAI versus environment",
+      "positive_means_lower_LAI_error": true,
+      "MAE_improvement_kg_ha": -8.702247129229487,
+      "paired_year_bootstrap_95_percent_interval": [
+        -28.599696304558414,
+        11.195202046099439
+      ],
+      "assessment_year_clusters": 5
+    }
+  ],
+  "active_model_changed": false,
+  "no_independent_or_operational_validation_claimed": true
+}

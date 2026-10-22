@@ -1,0 +1,113 @@
+{
+  "status": "matched_dataset_prepared",
+  "rows": 570,
+  "districts": 30,
+  "years": [
+    2004,
+    2022
+  ],
+  "expected_tile_composites": 1368,
+  "downloaded_tile_composites": 1364,
+  "missing_catalogue": [
+    {
+      "year": 2022,
+      "tile": "h25v06",
+      "start": "2022-10-16"
+    },
+    {
+      "year": 2022,
+      "tile": "h26v06",
+      "start": "2022-10-16"
+    },
+    {
+      "year": 2022,
+      "tile": "h26v07",
+      "start": "2022-10-16"
+    },
+    {
+      "year": 2022,
+      "tile": "h25v07",
+      "start": "2022-10-16"
+    }
+  ],
+  "failures": [],
+  "district_composites": 10260,
+  "lai_observed_rows": {
+    "lai_06": 478,
+    "lai_07": 50,
+    "lai_08": 43,
+    "lai_09": 514,
+    "lai_10": 563
+  },
+  "complete_five_month_rows": 12,
+  "base_unchanged": true,
+  "plan_sha256": "ccd5d35e9418b489f441121e3ecf21ff063686e38b3c83116ee9b0cbee90abcb",
+  "outputs_sha256": {
+    "composites.csv": "7afe4ad99592df4f4b9cd39041a52ce4ede3d55a7b9b9dc6c0b96957b19f46ce",
+    "features.csv": "6d086f546e7c3eacf193c2ba55cbb66f33617923db596905fc26261ca82cf38a",
+    "matched_yield_lai.csv": "74ea537d84d13cc2872cda0c85653b83961b33f1b8b6accd0c56a87301fb8dce"
+  },
+  "raw_files_sha256": {
+    "APRA500_paddyRice2003.tif": "d9876739eba54daada63acf0d7e7741093e4e2f9c7d0c89c65a32a64bfa76a42",
+    "APRA500_paddyRice2004.tif": "f1fb2bda83aef0ccd84c8cd9f57b012a20fdfc3a0e4c321ab0adf3ce7853d52d",
+    "APRA500_paddyRice2005.tif": "6379bbe8b0de775e30cccdb1eefc9631e963d9e7a00f1f8066f0dc48114dd478",
+    "APRA500_paddyRice2006.tif": "ff2b6fa53c9c41926b67a2bdfa6ac61559df5690aa0a035614bf0033f53f4e09",
+    "APRA500_paddyRice2007.tif": "7ceacd57f55e33e1901a51e797adcfb94f16724fc4ba0b3c9e04880e7a955810",
+    "APRA500_paddyRice2009.tif": "14c9b4ee5d3c477837cf91e40da3a3d087e169f465dde9b7053ea29e4de1b707",
+    "APRA500_paddyRice2010.tif": "9337444c13b753eb9938dae2dd6b52fdd1536ff51dec405a97b610e2d0072213",
+    "APRA500_paddyRice2012.tif": "16a0c34932de5edc70c9aea8945e2fca3fffd0792ad6bf193600f4c25f538921",
+    "APRA500_paddyRice2013.tif": "2b2b2785e74d27554249d5b08604e609bcb6d42c681372d6ca8e54e4b2c26229",
+    "APRA500_paddyRice2014.tif": "acc67b6e564f8068c9236fd6b281cf8ded91dd01e49f57de2ac725dfdb2e8187",
+    "APRA500_paddyRice2015.tif": "516dfdbac6d26620869c5273467697a00dffcc808ca54d315326f39ec0ab8c50",
+    "APRA500_paddyRice2016.tif": "573182f5e51739192b50f98874168313e92cb4aabdf396ba6e9df7374fa564c5",
+    "APRA500_paddyRice2017.tif": "a702c45593d6c7faa04c0dd8a7235606947ec434710e0409a783835945b96859",
+    "APRA500_paddyRice2018.tif": "ef0c68320af5a90962c5e32f548febdf2cdb27a0704eed586ab84fd9ec8d91ef",
+    "APRA500_paddyRice2019.tif": "e04c6a3e1a54a29305282d686d47234d2299dfde10bf1dd50eb656820d0a3cfa",
+    "catalogue_2004.json": "c4dc0be763b54cd295b5cdaaaace974315411442d4b68988c923735525850911",
+    "catalogue_2005.json": "3c3e5454fd3ca398977882b07d550a665c0448fa57653817dc7b815b11cf9677",
+    "catalogue_2006.json": "2db6bd005cd7a6ec53d3022e564604def30b5dfa836ef5539773d0ef7f9031c5",
+    "catalogue_2007.json": "db86ff02ab6997aaacdef27b3116ff49759c2b5cdfffcac253c1f106b18c24e8",
+    "catalogue_2008.json": "182c419950ca15809c10d9f5fa48ce1cedb4da774ba86f3aa0ef2c751ace714b",
+    "catalogue_2009.json": "b98fe9650d02a8d3daeac9dd3ad2d1c14d5c851abaf87a08c4f579d5729e41a3",
+    "catalogue_2010.json": "d380c6f5c2a26323e0a6dec68f800af2ebb36b39f4dd1c9d7bf89f0bfc68e060",
+    "catalogue_2011.json": "75a354bbcef04fef4e4fcddba23a35d7f510ced4be3156823c881b81d80da693",
+    "catalogue_2012.json": "5e93d4d885ed455b16a2c0bbe9172767ae30e8b49a43e7dd5be2266d93259fec",
+    "catalogue_2013.json": "1b121cf9ec36823c69d95e67a3ce053259690e1b42e79d73684b0760d3138102",
+    "catalogue_2014.json": "b192a1467f3fbc26c4ce4f18d24b7eb7a59c740d281fa0f04706683f3c62a3d9",
+    "catalogue_2015.json": "620a32118b7418b1dff62ebe3cad7319feabb7c8f7bdafd81f84de9be4442967",
+    "catalogue_2016.json": "2203be5a9d7a616da7e80c61e0754f3221abac9898155205af6934c6b83fe86c",
+    "catalogue_2017.json": "e948967d30f750b3d832c9dd8e42f868045025494e45f9df0c1b8072107777e4",
+    "catalogue_2018.json": "001464ebb0edb294eb822fe1351cc865aad93b4a64bc48c390bd4e5b0842a2e2",
+    "catalogue_2019.json": "9f88b77ec1e6eaaed7dadf8add3f1ac446c23e05a03283f17fe2fb96f3129f98",
+    "catalogue_2020.json": "360993e463c967e7c49c0d438bcc8ee97527a2807237463666db39c3fae18bf9",
+    "catalogue_2021.json": "457c85124e539c2aea42483f0bedc2b5910c0a8998356274e2b9f0b582f7c1f9",
+    "catalogue_2022.json": "2481e45abe7b736798e61b2b80a04b9f8c1870441075b0b8339106bfa635f8e8",
+    "grid_counts.json": "08b41f4af752e1e3c12e4981fe8f11d01556868f0eb9bc00f7fc1a8d7e255098",
+    "mask_publisher.json": "4560f36cea8b74dee274f65892eb48395f26651a415dc2ef95c8a4dc3d4e6435",
+    "preparation_source.zip": "d65f8f4883d0ffc10f68049a03ac599e8975f6fb45d37e2599b2577e74a7148f",
+    "sources.json": "7778e5102729391d89bafb66545d973d3b5ff0e1c38926218b34cffa684cb9d3",
+    "windows_2004.zip": "c8515a9d594b5b896ff71d78fa30cc13d8966475a44a514b1f249d58c93e6bdc",
+    "windows_2005.zip": "dcd8267ff09996498a296a9647eb55e0f6a3a1f9c1729a124d4bd7826818952b",
+    "windows_2006.zip": "72054fb4dcaa6956cb5b14937945cc9b66f37300fa3af2313814199155cdcafc",
+    "windows_2007.zip": "1bfe444ebb7d7a2c771ff7a2440df5fbafb99fcba3a6f640ac7dcaee7bf8c8a0",
+    "windows_2008.zip": "043f3e8dcfbb9912496b3c1e898b9e302522496281af8af159c71da6eb3fba67",
+    "windows_2009.zip": "cee914e9b31da0d8c79259632076be85c3b9c58c1f8f66ebd9a60b1001a943bb",
+    "windows_2010.zip": "62706c23cc00c792260618ec11d48542098ec64def3139cf9b07840cf53b7aa4",
+    "windows_2011.zip": "68a0d681c21e13aed1bff8f11736e71d28666cf724f3fda5091b81f254c8ec76",
+    "windows_2012.zip": "0a4c0b5465b99d5205627b5b4e21a1c1be53c2c68d69718ec72f0dc00addf680",
+    "windows_2013.zip": "13f1be4b6b5b187fa2266ee1b7cb4d5e7a1a79b356835a0fb6ba3ae76b8ffec2",
+    "windows_2014.zip": "59981860f48c7bf4ca42514a1635309e22c66a619cb6986abaf31ed9732cfeea",
+    "windows_2015.zip": "9422fd3d8a30258dd3703c276e8375385bda4a94b0238cb480345fd0ec7aa5db",
+    "windows_2016.zip": "441eed3e757b90e2d9a7bdbb39d2b2fdda1f46446ce1b603cf7f6128fe47329d",
+    "windows_2017.zip": "f18bf6af7e42282c442536f7fad6c142d346964b94405d04489a96f8a3046f69",
+    "windows_2018.zip": "d7301f9ef810883ed52ad14cb0816be8c3016fea67ee5bacd435f45e6f7e5374",
+    "windows_2019.zip": "4ac5db23b09d91e1aed2c60a6cdf61f5ee41e372d8627d5c4d25004005af6a72",
+    "windows_2020.zip": "56270c4729e287f171db024c6e2ce9698b07107edd2df0ad0b0ba22280316b44",
+    "windows_2021.zip": "3de15d29f3d730cb977fddf6ff310d9be5cd8edf565ade89c5edb0b88dd107a2",
+    "windows_2022.zip": "680bbba08fe0bb6811d72f696896a5cf0772c7810a5908a4a7a0391a649af132"
+  },
+  "audit_scope": "Dataset preparation; subsequent model comparison is separately recorded in comparison_report.json",
+  "no_training_performed_during_preparation": true,
+  "raw_archive_sha256": "4b815af04b9ec8f4c0405540eda7b07b709c2de6481fed021ed5353c758fef5e",
+  "raw_files_storage": "Entries inside data/raw/rice/lai_seasonal/sources.zip; previous pilot/audit mask paths remain available outside this archive."
+}
