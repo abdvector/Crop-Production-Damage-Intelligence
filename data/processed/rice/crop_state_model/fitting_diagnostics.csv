@@ -1,0 +1,25 @@
+method,agricultural_start_year,training_rows,training_end_year,numeric_columns,fitting_mae_kg_ha,outside_training_range_observed_cells
+Recent mean,2012,210,2010,6,,
+History forest,2012,210,2010,6,183.53746005363638,36.0
+History/weather forest,2012,210,2010,25,156.61610647112317,36.0
+History/weather/crop-state forest,2012,210,2010,34,154.74535019702594,38.0
+Recent mean,2013,240,2011,6,,
+History forest,2013,240,2011,6,206.33770211729873,37.0
+History/weather forest,2013,240,2011,25,167.15656821041048,56.0
+History/weather/crop-state forest,2013,240,2011,34,165.2144344024528,56.0
+Recent mean,2014,270,2012,6,,
+History forest,2014,270,2012,6,203.51823331287284,36.0
+History/weather forest,2014,270,2012,25,171.3120280967506,53.0
+History/weather/crop-state forest,2014,270,2012,34,169.29564020299122,54.0
+Recent mean,2015,300,2013,6,,
+History forest,2015,300,2013,6,237.9462297753629,42.0
+History/weather forest,2015,300,2013,25,201.20471131142494,48.0
+History/weather/crop-state forest,2015,300,2013,34,200.31738117711507,50.0
+Recent mean,2016,330,2014,6,,
+History forest,2016,330,2014,6,258.71234081404054,52.0
+History/weather forest,2016,330,2014,25,229.2721943754995,52.0
+History/weather/crop-state forest,2016,330,2014,34,228.9183303191145,52.0
+Recent mean,2017,360,2015,6,,
+History forest,2017,360,2015,6,263.6457319497072,49.0
+History/weather forest,2017,360,2015,25,241.09275958395907,52.0
+History/weather/crop-state forest,2017,360,2015,34,241.8316876342499,54.0

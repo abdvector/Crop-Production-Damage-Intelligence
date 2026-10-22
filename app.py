@@ -6,6 +6,10 @@ from pathlib import Path
 PROJECT_ROOT = Path(__file__).resolve().parent
 os.chdir(PROJECT_ROOT)
 if __name__ == "__main__":
+    if "--compare-crop-state-models" in sys.argv:
+        from src.rice_crop_state_model import run
+        print(run())
+        raise SystemExit(0)
     if "--prepare-crop-state-export" in sys.argv:
         from src.rice_crop_state import prepare_export
         print(prepare_export())

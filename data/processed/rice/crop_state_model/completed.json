@@ -1,0 +1,62 @@
+{
+  "manifest": {
+    "version": 1,
+    "methods": [
+      "Recent mean",
+      "History forest",
+      "History/weather forest",
+      "History/weather/crop-state forest"
+    ],
+    "forest_parameters": {
+      "n_estimators": 300,
+      "max_depth": 4,
+      "min_samples_leaf": 10,
+      "random_state": 42,
+      "n_jobs": 2,
+      "max_features": 1.0,
+      "bootstrap": true,
+      "criterion": "squared_error"
+    },
+    "evaluation_years": [
+      2012,
+      2013,
+      2014,
+      2015,
+      2016,
+      2017
+    ],
+    "timing": "fit through Y-2; issue August 31",
+    "input_sha256": {
+      "src/rice_crop_state_model.py": "b1ee9133474b68eb44cf19fc6ab253d1f3a584a109dee2f352ed75e719b2f222",
+      "docs/Crop_State_Comparison_Protocol.md": "c7f0212672f9a1a257b8e8e292345502ce4de364f3a2337e1493f6ab1e43838e",
+      "data/processed/rice/crop_state/prepared_inputs.csv": "1f0ab40b3ba91716ccb96caca672f6feb920859554185dee886a7e8b8d5302ed",
+      "data/processed/rice/crop_state/import_audit.json": "7411c067101e28f6ba26f7a951ecb5eab27fa59b4d562a8b49e694d71fa83047",
+      "data/processed/rice/crop_state/export_plan.json": "231d143e51961ad0a9e67c0b3b1dd857c88b7ae55bcff362f6dbd33c58c88917",
+      "src/rice_crop_state.py": "812fe9a2cf932d9d9040ddb8936b62cff81581bb3a53afe6a4497faa7628a758",
+      "src/rice_foundation.py": "eea25a0a238d6d8dbeceefc33e7ce7d1ca8a23a4997bc72622f10c5f398d8de0",
+      "data/processed/rice/odisha_seasonal/prepared_inputs.csv": "87b72b515e23b0870d1d85629a9c42a7f170699172588b335cd86648220ad892"
+    },
+    "environment": {
+      "python": "3.13.5",
+      "numpy": "2.5.3",
+      "pandas": "3.0.6",
+      "scikit_learn": "1.9.1"
+    }
+  },
+  "output_sha256": {
+    "augmentation_uncertainty.csv": "78c3c671332241331582a067bce0d5429aed433b66016fa0b4d5c4d715d21abc",
+    "district_metrics.csv": "e76b1e2810e851af9b61546f931cb5aa2e4f6e048e22d3c0914303469d361360",
+    "fitting_diagnostics.csv": "a32f5a9fa9f2def0d63e117ef21f32ddff4582aab58331f1d5ce35a05a093ba8",
+    "imputation_audit.csv": "963db692442f68e8ed7f59749b2276dd36492372a0432a120bd472dbc9f9b8f5",
+    "ndvi_availability_by_year.csv": "6e06685f69553e98b9dae83e2ca5a59fd31d9c2b687391db2e9344327b6497c8",
+    "overall_metrics.csv": "00f2eef2a2c6ad72938e0f7c1beaf3c8735da461b53a462cf0857e3480c6e104",
+    "paired_year_changes.csv": "cf9d093747caf401b7ee7ff0ed411e81f5ab0d2e0b6172de41c857c9660b111a",
+    "predictions.csv": "7cf1bbc981b02710256952a083feb4e04cebe6d003a180daf86c402b36591263",
+    "run_manifest.json": "43d0b3f37fe0b3268b40b233cc7c37566de6c1af1d508324bde74b2288f5937b",
+    "summary.json": "80bfff5d29636f5369c5b22c993edd260b616b61d779120030651d5835f01896",
+    "yearly_metrics.csv": "4e80c4b39f56c5974583163904bd1d4dda966ad5e384641fd7cbcbe0cbe0bde7",
+    "figures/accuracy_and_coverage.png": "a600c2dc1d47d3fb19f38449d930744c4621a742c0e7c454243c7d5e0d57dc85",
+    "figures/forecast_errors.png": "8ed00717373ffa1b2133f0cdeb0c17f2b088eb5e513be8919ce13a8db7b973a9",
+    "figures/yearly_errors.png": "93f8f45f130e93b410ccbec1c98efc5e44381b2ebaf8f67882a4c3aa63f9d7af"
+  }
+}

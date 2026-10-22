@@ -1,0 +1,3 @@
+reference,mean_mae_reduction_kg_ha,year_bootstrap_95_low,year_bootstrap_95_high,assessment_years,status
+Recent mean,-114.49728914618625,-419.51638843658253,165.6125654932487,6,exploratory; six years; serial dependence not ruled out
+History/weather forest,-2.2709789454254783,-6.3101055980829885,2.6147863584976108,6,exploratory; six years; serial dependence not ruled out

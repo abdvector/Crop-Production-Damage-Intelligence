@@ -1,0 +1,68 @@
+{
+  "status": "completed_exploratory_comparison",
+  "input_rows": 420,
+  "assessment_rows_per_method": 180,
+  "metrics": [
+    {
+      "method": "History forest",
+      "records": 180,
+      "mae_kg_ha": 754.3950706274818,
+      "rmse_kg_ha": 954.6146221221112,
+      "bias_kg_ha": -172.28395455970238,
+      "r_squared": -0.596555177393072,
+      "wape_percent": 43.29245447712387
+    },
+    {
+      "method": "History/weather forest",
+      "records": 180,
+      "mae_kg_ha": 796.5707546452052,
+      "rmse_kg_ha": 1000.7417723017312,
+      "bias_kg_ha": -191.78804682546453,
+      "r_squared": -0.7545745443865735,
+      "wape_percent": 45.7127895925961
+    },
+    {
+      "method": "History/weather/crop-state forest",
+      "records": 180,
+      "mae_kg_ha": 798.8417335906308,
+      "rmse_kg_ha": 1002.5710456656844,
+      "bias_kg_ha": -182.50404437119485,
+      "r_squared": -0.7609948418234607,
+      "wape_percent": 45.84311421485479
+    },
+    {
+      "method": "Recent mean",
+      "records": 180,
+      "mae_kg_ha": 684.3444444444444,
+      "rmse_kg_ha": 814.4960132226281,
+      "bias_kg_ha": -256.1,
+      "r_squared": -0.16226642855098894,
+      "wape_percent": 39.27246062615571
+    }
+  ],
+  "augmentation": [
+    {
+      "reference": "Recent mean",
+      "mean_mae_reduction_kg_ha": -114.49728914618625,
+      "year_bootstrap_95_low": -419.51638843658253,
+      "year_bootstrap_95_high": 165.6125654932487,
+      "assessment_years": 6,
+      "status": "exploratory; six years; serial dependence not ruled out"
+    },
+    {
+      "reference": "History/weather forest",
+      "mean_mae_reduction_kg_ha": -2.2709789454254783,
+      "year_bootstrap_95_low": -6.3101055980829885,
+      "year_bootstrap_95_high": 2.6147863584976108,
+      "assessment_years": 6,
+      "status": "exploratory; six years; serial dependence not ruled out"
+    }
+  ],
+  "new_independent_test": false,
+  "operational_forecast": false,
+  "ndvi_available_rows": {
+    "ndvi_06": 375,
+    "ndvi_07": 62,
+    "ndvi_08": 29
+  }
+}

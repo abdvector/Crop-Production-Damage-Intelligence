@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "methods": [
+    "Recent mean",
+    "History forest",
+    "History/weather forest",
+    "History/weather/crop-state forest"
+  ],
+  "forest_parameters": {
+    "n_estimators": 300,
+    "max_depth": 4,
+    "min_samples_leaf": 10,
+    "random_state": 42,
+    "n_jobs": 2,
+    "max_features": 1.0,
+    "bootstrap": true,
+    "criterion": "squared_error"
+  },
+  "evaluation_years": [
+    2012,
+    2013,
+    2014,
+    2015,
+    2016,
+    2017
+  ],
+  "timing": "fit through Y-2; issue August 31",
+  "input_sha256": {
+    "src/rice_crop_state_model.py": "b1ee9133474b68eb44cf19fc6ab253d1f3a584a109dee2f352ed75e719b2f222",
+    "docs/Crop_State_Comparison_Protocol.md": "c7f0212672f9a1a257b8e8e292345502ce4de364f3a2337e1493f6ab1e43838e",
+    "data/processed/rice/crop_state/prepared_inputs.csv": "1f0ab40b3ba91716ccb96caca672f6feb920859554185dee886a7e8b8d5302ed",
+    "data/processed/rice/crop_state/import_audit.json": "7411c067101e28f6ba26f7a951ecb5eab27fa59b4d562a8b49e694d71fa83047",
+    "data/processed/rice/crop_state/export_plan.json": "231d143e51961ad0a9e67c0b3b1dd857c88b7ae55bcff362f6dbd33c58c88917",
+    "src/rice_crop_state.py": "812fe9a2cf932d9d9040ddb8936b62cff81581bb3a53afe6a4497faa7628a758",
+    "src/rice_foundation.py": "eea25a0a238d6d8dbeceefc33e7ce7d1ca8a23a4997bc72622f10c5f398d8de0",
+    "data/processed/rice/odisha_seasonal/prepared_inputs.csv": "87b72b515e23b0870d1d85629a9c42a7f170699172588b335cd86648220ad892"
+  },
+  "environment": {
+    "python": "3.13.5",
+    "numpy": "2.5.3",
+    "pandas": "3.0.6",
+    "scikit_learn": "1.9.1"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "status": "import_validated_not_trained",
+  "rows": 420,
+  "new_predictors": [
+    "ndvi_06",
+    "ndvi_07",
+    "ndvi_08",
+    "soil_moisture_06",
+    "soil_moisture_07",
+    "soil_moisture_08"
+  ],
+  "coverage": [
+    {
+      "month": 6,
+      "ndvi_missing_rows_after_coverage_rule": 45,
+      "soil_minimum_coverage": 0.7158614424478157
+    },
+    {
+      "month": 7,
+      "ndvi_missing_rows_after_coverage_rule": 358,
+      "soil_minimum_coverage": 0.7158614424478157
+    },
+    {
+      "month": 8,
+      "ndvi_missing_rows_after_coverage_rule": 391,
+      "soil_minimum_coverage": 0.7158614424478157
+    }
+  ],
+  "raw_sha256": {
+    "Odisha_Crop_State_2004_2007_v3.csv": "4a3b33f548e9331022af236060f03c2d36d24ec2a9f2416f02ac144be39f1bd6",
+    "Odisha_Crop_State_2008_2011_v3.csv": "878328ab10353382941fe1c0f3d450fafcb6ffad047d3aed018ff100e85a3e0b",
+    "Odisha_Crop_State_2012_2014_v3.csv": "6c7f0a4436d2be3fb870f251dc7d5c4fcb9b8d858258edd71cf86bcf1a67b1a7",
+    "Odisha_Crop_State_2015_2017_v3.csv": "27f6c15033b5665701384652bddb6dce6b2779563539a512ea65fd3af74f1984"
+  },
+  "prepared_sha256": "1f0ab40b3ba91716ccb96caca672f6feb920859554185dee886a7e8b8d5302ed",
+  "cloud_execution_independently_verified": false
+}
