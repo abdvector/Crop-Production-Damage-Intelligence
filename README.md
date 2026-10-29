@@ -20,6 +20,8 @@ To build or verify the model and evaluation artifacts:
 
 The checked-in model is the exact fit used in evaluation. Completed builds verify hashes and environment rather than silently retraining changed code.
 
+Cloud deployment uses `src/model_runtime.py` to retain the original training receipt while allowing another Python 3 patch/minor runtime. Numerical package versions must still match `requirements.txt`; source/code hashes and model/evaluation checksums remain enforced. Before serving predictions, the loader reproduces all 600 saved assessment predictions against the verified source. A different runtime is accepted only when this replay passes. No retraining or rewriting of results occurs. The original `--train` command retains its exact training-environment check.
+
 ## The project in four parts
 
 | File | Responsibility |

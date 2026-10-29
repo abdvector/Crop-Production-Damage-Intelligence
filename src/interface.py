@@ -7,7 +7,8 @@ import pandas as pd
 import streamlit as st
 
 from src.data import ROOT, FEATURES, LAGS, LABELS, MONTHS, TARGET, load_data
-from src.model import OUT, load_model, predict
+from src.model import OUT, predict
+from src.model_runtime import load_model
 
 
 @st.cache_resource
