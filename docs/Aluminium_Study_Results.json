@@ -1,0 +1,336 @@
+{
+  "dataset": "10.18167/DVN1/HSIM8E",
+  "version": "1.0",
+  "source_receipt_sha256": "8514fff1e1871d512dbe002c66460e63029a1f8b75431d8e7fa9ecf04f0fb673",
+  "families": 334,
+  "SNPs": 9928,
+  "target": "Published adjusted ALU grain yield (kg/ha)",
+  "assessment": "Repeated family-level 5-fold cross-validation, 10 repeats, seed 42, one pooled score per repeat",
+  "ridge_penalty": 1.0,
+  "mean_scores": {
+    "Training mean": {
+      "MAE (kg/ha)": 503.80882882906434,
+      "RMSE (kg/ha)": 641.4851186016027,
+      "R squared": -0.006283082733692625,
+      "Mean error (kg/ha)": -0.006303607035796831,
+      "Pearson r": null
+    },
+    "Limed yield only": {
+      "MAE (kg/ha)": 433.82936746498706,
+      "RMSE (kg/ha)": 552.7786468180805,
+      "R squared": 0.25277489556752303,
+      "Mean error (kg/ha)": 0.16278936311687944,
+      "Pearson r": 0.5028919010160163
+    },
+    "SNP only": {
+      "MAE (kg/ha)": 478.1461638447292,
+      "RMSE (kg/ha)": 616.2833435033401,
+      "R squared": 0.07119552297791083,
+      "Mean error (kg/ha)": -2.805435926397941,
+      "Pearson r": 0.26746592940934394
+    },
+    "Limed yield + SNP": {
+      "MAE (kg/ha)": 438.21900110544357,
+      "RMSE (kg/ha)": 559.1912252333728,
+      "R squared": 0.23528577514291332,
+      "Mean error (kg/ha)": -0.8533325341596536,
+      "Pearson r": 0.49234717597905686
+    }
+  },
+  "repeat_scores": {
+    "Training mean": [
+      {
+        "MAE (kg/ha)": 504.47165536917777,
+        "RMSE (kg/ha)": 641.547603507511,
+        "R squared": -0.006473846873907618,
+        "Mean error (kg/ha)": -0.01121236104724309,
+        "Pearson r": null
+      },
+      {
+        "MAE (kg/ha)": 502.9834170444908,
+        "RMSE (kg/ha)": 640.959020084098,
+        "R squared": -0.004627929048579116,
+        "Mean error (kg/ha)": 0.0020456014018743088,
+        "Pearson r": null
+      },
+      {
+        "MAE (kg/ha)": 502.97320630051877,
+        "RMSE (kg/ha)": 641.2052810075195,
+        "R squared": -0.0054000474532400755,
+        "Mean error (kg/ha)": -0.05681101207575463,
+        "Pearson r": null
+      },
+      {
+        "MAE (kg/ha)": 507.45682380385887,
+        "RMSE (kg/ha)": 644.8575889371649,
+        "R squared": -0.016886192765797947,
+        "Mean error (kg/ha)": 0.04670271606330094,
+        "Pearson r": null
+      },
+      {
+        "MAE (kg/ha)": 503.5409683844367,
+        "RMSE (kg/ha)": 641.5246644391688,
+        "R squared": -0.006401873541066028,
+        "Mean error (kg/ha)": 0.06336695803175062,
+        "Pearson r": null
+      },
+      {
+        "MAE (kg/ha)": 501.96627158560847,
+        "RMSE (kg/ha)": 639.8515510781708,
+        "R squared": -0.001159273264045746,
+        "Mean error (kg/ha)": -0.025648227934388687,
+        "Pearson r": null
+      },
+      {
+        "MAE (kg/ha)": 503.9132690296853,
+        "RMSE (kg/ha)": 641.1247214761923,
+        "R squared": -0.005147431103891265,
+        "Mean error (kg/ha)": 0.04242674242716326,
+        "Pearson r": null
+      },
+      {
+        "MAE (kg/ha)": 502.35299854692494,
+        "RMSE (kg/ha)": 639.918785520119,
+        "R squared": -0.0013696843241031154,
+        "Mean error (kg/ha)": 0.0024573075970611333,
+        "Pearson r": null
+      },
+      {
+        "MAE (kg/ha)": 505.18281436686374,
+        "RMSE (kg/ha)": 643.3827298339853,
+        "R squared": -0.012240054384669241,
+        "Mean error (kg/ha)": -0.12640313919297375,
+        "Pearson r": null
+      },
+      {
+        "MAE (kg/ha)": 503.2468638590785,
+        "RMSE (kg/ha)": 640.4792401320973,
+        "R squared": -0.0031244945776260913,
+        "Mean error (kg/ha)": 3.9344371241590733e-05,
+        "Pearson r": null
+      }
+    ],
+    "Limed yield only": [
+      {
+        "MAE (kg/ha)": 432.62818757570045,
+        "RMSE (kg/ha)": 552.0280307445506,
+        "R squared": 0.25481006258545347,
+        "Mean error (kg/ha)": 1.6328138839792246,
+        "Pearson r": 0.5048786584928736
+      },
+      {
+        "MAE (kg/ha)": 432.6609929565588,
+        "RMSE (kg/ha)": 551.7977898244716,
+        "R squared": 0.2554315434785447,
+        "Mean error (kg/ha)": -0.15913764409480224,
+        "Pearson r": 0.5054754967501744
+      },
+      {
+        "MAE (kg/ha)": 432.8754265040296,
+        "RMSE (kg/ha)": 551.5477274059514,
+        "R squared": 0.2561062341140343,
+        "Mean error (kg/ha)": -0.49353922566460634,
+        "Pearson r": 0.506142892730694
+      },
+      {
+        "MAE (kg/ha)": 432.1843372768142,
+        "RMSE (kg/ha)": 551.8173108245933,
+        "R squared": 0.25537886121596065,
+        "Mean error (kg/ha)": -0.28381504763386606,
+        "Pearson r": 0.505355868831063
+      },
+      {
+        "MAE (kg/ha)": 436.21053470047815,
+        "RMSE (kg/ha)": 554.9840751881095,
+        "R squared": 0.2468078874932732,
+        "Mean error (kg/ha)": 0.09594413323795739,
+        "Pearson r": 0.4971316920175237
+      },
+      {
+        "MAE (kg/ha)": 435.1485118751398,
+        "RMSE (kg/ha)": 554.3871878510874,
+        "R squared": 0.24842713783531634,
+        "Mean error (kg/ha)": -0.2627780894077989,
+        "Pearson r": 0.4986577151902468
+      },
+      {
+        "MAE (kg/ha)": 432.89255348471477,
+        "RMSE (kg/ha)": 550.7320514119115,
+        "R squared": 0.2583048747047333,
+        "Mean error (kg/ha)": -0.4548843600147744,
+        "Pearson r": 0.5082612386349306
+      },
+      {
+        "MAE (kg/ha)": 433.37005115575886,
+        "RMSE (kg/ha)": 552.0541893255912,
+        "R squared": 0.2547394372833447,
+        "Mean error (kg/ha)": 2.2661242613761345,
+        "Pearson r": 0.5048440410401934
+      },
+      {
+        "MAE (kg/ha)": 435.5925328746195,
+        "RMSE (kg/ha)": 556.3862822420026,
+        "R squared": 0.24299709170260386,
+        "Mean error (kg/ha)": -0.26306262843040795,
+        "Pearson r": 0.4933365999207202
+      },
+      {
+        "MAE (kg/ha)": 434.7305462460569,
+        "RMSE (kg/ha)": 552.0518233625356,
+        "R squared": 0.2547458252619663,
+        "Mean error (kg/ha)": -0.4497716521782667,
+        "Pearson r": 0.5048348065517434
+      }
+    ],
+    "SNP only": [
+      {
+        "MAE (kg/ha)": 475.9035005045535,
+        "RMSE (kg/ha)": 614.9620662582055,
+        "R squared": 0.07521372677927063,
+        "Mean error (kg/ha)": 1.4957275576705273,
+        "Pearson r": 0.2753618477377966
+      },
+      {
+        "MAE (kg/ha)": 476.8983795014954,
+        "RMSE (kg/ha)": 612.1206129562014,
+        "R squared": 0.08373999654153352,
+        "Mean error (kg/ha)": -4.855573047245719,
+        "Pearson r": 0.29213449093050203
+      },
+      {
+        "MAE (kg/ha)": 478.7993751166343,
+        "RMSE (kg/ha)": 618.3108791958318,
+        "R squared": 0.06511434444984221,
+        "Mean error (kg/ha)": 0.7377250096747647,
+        "Pearson r": 0.2552215232681664
+      },
+      {
+        "MAE (kg/ha)": 480.2744141704673,
+        "RMSE (kg/ha)": 619.1491318336199,
+        "R squared": 0.06257775125837284,
+        "Mean error (kg/ha)": -7.2550484712692604,
+        "Pearson r": 0.25046888132736905
+      },
+      {
+        "MAE (kg/ha)": 478.39625867758946,
+        "RMSE (kg/ha)": 617.7941069929482,
+        "R squared": 0.06667640988825985,
+        "Mean error (kg/ha)": -4.491257400136381,
+        "Pearson r": 0.25891760193046115
+      },
+      {
+        "MAE (kg/ha)": 471.4555449693786,
+        "RMSE (kg/ha)": 609.8215804840365,
+        "R squared": 0.0906097394877543,
+        "Mean error (kg/ha)": -3.609133665810039,
+        "Pearson r": 0.3058557192030127
+      },
+      {
+        "MAE (kg/ha)": 477.3562429331873,
+        "RMSE (kg/ha)": 614.5782899497915,
+        "R squared": 0.07636762012550447,
+        "Mean error (kg/ha)": -1.9898130292167588,
+        "Pearson r": 0.2782257970255063
+      },
+      {
+        "MAE (kg/ha)": 474.0346932211324,
+        "RMSE (kg/ha)": 612.3070964552727,
+        "R squared": 0.08318163142396529,
+        "Mean error (kg/ha)": -3.800668603725626,
+        "Pearson r": 0.29166981524494645
+      },
+      {
+        "MAE (kg/ha)": 483.445810317814,
+        "RMSE (kg/ha)": 620.0804417322004,
+        "R squared": 0.05975553227822239,
+        "Mean error (kg/ha)": -4.478169066341323,
+        "Pearson r": 0.2445531904854042
+      },
+      {
+        "MAE (kg/ha)": 484.89741903503983,
+        "RMSE (kg/ha)": 623.7092291752928,
+        "R squared": 0.04871847754638281,
+        "Mean error (kg/ha)": 0.1918514524204048,
+        "Pearson r": 0.22225042694027447
+      }
+    ],
+    "Limed yield + SNP": [
+      {
+        "MAE (kg/ha)": 435.8002417302946,
+        "RMSE (kg/ha)": 559.1980884920223,
+        "R squared": 0.2353264352316521,
+        "Mean error (kg/ha)": 3.9710803033311914,
+        "Pearson r": 0.4931766376586354
+      },
+      {
+        "MAE (kg/ha)": 433.72261020610745,
+        "RMSE (kg/ha)": 553.3957240015578,
+        "R squared": 0.2511129538903659,
+        "Mean error (kg/ha)": -3.3861660355158922,
+        "Pearson r": 0.5062419840247588
+      },
+      {
+        "MAE (kg/ha)": 442.0288169595037,
+        "RMSE (kg/ha)": 560.1418062326032,
+        "R squared": 0.23274329001044536,
+        "Mean error (kg/ha)": 3.041743742974638,
+        "Pearson r": 0.4898482835251916
+      },
+      {
+        "MAE (kg/ha)": 436.718614289058,
+        "RMSE (kg/ha)": 557.3580737330952,
+        "R squared": 0.2403504001663771,
+        "Mean error (kg/ha)": -4.214524170729214,
+        "Pearson r": 0.49564797918518444
+      },
+      {
+        "MAE (kg/ha)": 441.24657154442195,
+        "RMSE (kg/ha)": 563.6163276019107,
+        "R squared": 0.2231952868188284,
+        "Mean error (kg/ha)": -3.791487547174776,
+        "Pearson r": 0.4819255165404777
+      },
+      {
+        "MAE (kg/ha)": 434.7849940068583,
+        "RMSE (kg/ha)": 554.8116273266966,
+        "R squared": 0.2472758871902696,
+        "Mean error (kg/ha)": 0.1933511032176205,
+        "Pearson r": 0.5028765162573089
+      },
+      {
+        "MAE (kg/ha)": 435.1676359189245,
+        "RMSE (kg/ha)": 552.7845544522601,
+        "R squared": 0.2527661803199531,
+        "Mean error (kg/ha)": -0.8343869876961868,
+        "Pearson r": 0.5071770844782031
+      },
+      {
+        "MAE (kg/ha)": 436.5784650620809,
+        "RMSE (kg/ha)": 556.765312467234,
+        "R squared": 0.24196534550593196,
+        "Mean error (kg/ha)": 0.805856039942116,
+        "Pearson r": 0.49823907760589525
+      },
+      {
+        "MAE (kg/ha)": 442.72753135337484,
+        "RMSE (kg/ha)": 566.981677595913,
+        "R squared": 0.21389099823002622,
+        "Mean error (kg/ha)": -2.538511811105166,
+        "Pearson r": 0.47397428532913627
+      },
+      {
+        "MAE (kg/ha)": 443.4145299838122,
+        "RMSE (kg/ha)": 566.8590604304353,
+        "R squared": 0.21423097406528357,
+        "Mean error (kg/ha)": -1.7802799788408668,
+        "Pearson r": 0.47436439518577683
+      }
+    ]
+  },
+  "limitations": [
+    "One breeding population and one location-season; no unseen-site, year or district test.",
+    "LIM methods require measured limed-soil yield for the candidate family.",
+    "Published plot adjustments and SNP imputation were not refit inside these folds.",
+    "This is a fixed benchmark adaptation, not a replication of the authors\u2019 GBLUP or a causal loss estimate."
+  ]
+}

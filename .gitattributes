@@ -4,6 +4,10 @@ data/** -text
 # Keep preserved source/derived CRLF bytes without treating CR as stray whitespace.
 data/processed/rice/regional_forecast/** whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 data/raw/rice/icrisat_district/** whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+# Keep the publisher's exact bytes, including original whitespace in the trial files.
+data/raw/rice/colombia_aluminium/Omicas_GP_* -diff
+data/raw/rice/colombia_aluminium/ReadMe.rtf -diff
+data/raw/rice/colombia_aluminium/source.json whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 # Geometry coordinates are audited by source hashes and the readable crosswalk.
 data/processed/rice/seasonal_geography/reference_geometries.geojson -diff
 # Preserve the new model's code and artifact hashes on Windows checkouts.

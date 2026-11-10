@@ -1,0 +1,43 @@
+{
+  "doi": "10.18167/DVN1/HSIM8E",
+  "version": "1.0",
+  "license": "CC BY-SA 4.0",
+  "files": [
+    {
+      "filename": "Omicas_GP_genotypes.txt",
+      "url": "https://dataverse.cirad.fr/api/access/datafile/22793?format=original",
+      "md5": "e8e7e9a1f61b00d26f4d5c43360a184c",
+      "sha256": "de6e61d05a6c6f0d22139fac26a5396b2fc944a316b39cc8265f9d5a59f8fa10"
+    },
+    {
+      "filename": "Omicas_GP_germplasm.csv",
+      "url": "https://dataverse.cirad.fr/api/access/datafile/22794?format=original",
+      "md5": "8cb86957afbb749818714f933bfc9d48",
+      "sha256": "924664778af98c19d4379e7741a3c3c3381a3061968ba4c12863541354b4876c"
+    },
+    {
+      "filename": "Omicas_GP_BLUEs.csv",
+      "url": "https://dataverse.cirad.fr/api/access/datafile/22795?format=original",
+      "md5": "7566d4c850aa88d715da6e71dcad6c50",
+      "sha256": "394ab9e0f3e2694f6b811053a639fb6d2d53cc42e3c44332650f4f24a53143c4"
+    },
+    {
+      "filename": "Omicas_GP_phenotypes.csv",
+      "url": "https://dataverse.cirad.fr/api/access/datafile/25363?format=original",
+      "md5": "dc3ff60a19e36a35dfaa9e28ca7f8d3e",
+      "sha256": "d0494ea4b4637f5f2a91024d99004844cdc9db13bff14fce7f7fa5447a64d21d"
+    },
+    {
+      "filename": "Omicas_GP_variables.csv",
+      "url": "https://dataverse.cirad.fr/api/access/datafile/25364?format=original",
+      "md5": "3a0da517ce3e511ae26a9caeedd47276",
+      "sha256": "dd7c868e6d629b8ff94d128fdf999b035bfa8a5767c70ed3150c716a8a4f044a"
+    },
+    {
+      "filename": "ReadMe.rtf",
+      "url": "https://dataverse.cirad.fr/api/access/datafile/25365?format=original",
+      "md5": "01fefae085b3d45f126ddd738a048c33",
+      "sha256": "c378814f40b52daef3e88f9fb13a856d5197573c817d558f83068be0c2a72b9e"
+    }
+  ]
+}

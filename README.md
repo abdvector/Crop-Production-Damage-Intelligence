@@ -68,6 +68,8 @@ The [matched later-season LAI dataset and fixed comparison](docs/Dataset.md#matc
 
 Earlier annual, seasonal, satellite and statistical experiments are preserved in [one archive](archive/README.md), including their original code, protocols and model. Their datasets and saved results remain in `data/`. They are not loaded as competing application workflows. The active app uses only `data/processed/rice/regional_forecast/district_years.csv` and `models/input_model/`.
 
+The [separate aluminium-stress breeding trial](docs/Aluminium_Study.md) uses a published Colombian dataset to test whether SNP markers predict upland rice yield in aluminium-toxic soil. It is independent of the app and does not use protein structures.
+
 Papers, diagrams, the literature matrix and local mentor materials are preserved. Some earlier wheat diagrams describe the original proposal, not the current rice model. Local mentor materials are excluded from Git.
 
 ## Attribution

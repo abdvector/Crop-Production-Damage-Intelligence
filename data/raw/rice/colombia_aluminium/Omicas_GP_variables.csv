@@ -1,0 +1,20 @@
+﻿VAR,Variable details,Unit,Omicas_GP_phenotypes,Omicas_GP_GLUES,Omicas_GP_germplasm
+RHBV,Hoja Blanca Virus,Percent plant affected,x,,
+FL,Days to flowering,Days from sowing,x,x,
+PH,Plant height (average 5 plants),cm,x,x,
+GRNW,Grain weight per plot,grs,x,,
+HUM,Humidity at harvest,%,x,,
+YLD,Grain yield (at 14% humidity and reported per ha),kg/ha,x,x,
+ZN,Grain zinc concentration ,ppm,x,x,
+OBS,Observation ,,,,
+DNAID,Identifer for the DNA sample,,,x,x
+SOIL,"Soil type wether considered with aluminium toxicity (ALU) or otherwise, corrected with liming (LIM)",,,x,
+TRIAL,Trial name,,x,,
+TRIAL_INSTANCE,Unique plot identifier,,x,,
+TRT,The trype of treatment (TRT1 = ALU and TRT2 = LIM),,x,,
+PLOT,Plot number,,x,,
+ROW,Row number,,,,
+RANGE,Column number,,,,
+DESIGN,Designation of germplams,,,,x
+TYPE,"Type of material wether S0:4 from the families (TP_TempChecks, TP) or the check material (Check)",,,,x
+Gen ,Type of material wether S0:4 from the famliiles (Fam) or the check material (Check),,,x,
