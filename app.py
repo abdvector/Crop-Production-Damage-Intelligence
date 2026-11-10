@@ -1,4 +1,4 @@
-"""Sole launcher: python app.py, or python app.py --train."""
+"""Launch the app, verify/train the main model, or run the input comparison."""
 import os
 import sys
 from pathlib import Path
@@ -7,6 +7,11 @@ ROOT = Path(__file__).resolve().parent
 os.chdir(ROOT)
 
 if __name__ == "__main__":
+    if "--compare-inputs" in sys.argv:
+        from src.input_comparison import write_report
+        import json
+        print(json.dumps(write_report(), indent=2))
+        raise SystemExit(0)
     if "--train" in sys.argv:
         from src.model import build
         import json

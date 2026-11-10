@@ -56,6 +56,14 @@ Later-period results (300 district-year records, 2012-2017):
 
 The forest has lower error in this comparison, but this does not establish high precision, independent confirmation or reliable damage prediction.
 
+**Model and results → Compare weather and past yields** shows a separate input comparison. Three forests with the same settings predict yield directly using weather only, past yields only, or both. They use the same 840 training rows and the same two 300-row assessment periods as the app model. Weather only was weakest; adding weather to past yields did not reduce MAE in either period. This result applies to the direct-yield fits, not to the app's historical-mean adjustment model. The estimate form still uses the original saved model.
+
+To reproduce the comparison report without changing the app model:
+
+```powershell
+.\.venv\Scripts\python.exe app.py --compare-inputs
+```
+
 ## What was simplified
 
 For the separate seasonal research dataset, open **`data/rice_yield_master.csv`**: one Odisha Kharif table with 570 district-year records, yield as the label and 30 candidate predictors, including soil moisture and NDVI. See [column meanings, joins and missingness](docs/Dataset.md). This file does not replace the active annual model's input or mix the two targets.

@@ -7,6 +7,7 @@ import pandas as pd
 import streamlit as st
 
 from src.data import ROOT, FEATURES, LAGS, LABELS, MONTHS, TARGET, load_data
+from src.input_comparison import REPORT as INPUT_COMPARISON_REPORT
 from src.model import OUT, predict
 from src.model_runtime import load_model
 
@@ -186,6 +187,19 @@ def data_view(frame):
         st.write("Other retained seasonal and satellite datasets belong to the earlier studies and are not inputs to this model.")
 
 
+def input_comparison(period):
+    with st.expander("Compare weather and past yields"):
+        report = json.loads(INPUT_COMPARISON_REPORT.read_text(encoding="utf-8"))
+        rows = pd.DataFrame(row for row in report["scores"] if row["Period"] == period).set_index("Inputs")
+        st.caption("Same Random Forest settings and assessment records. Each model predicts yield directly. "
+                   "The app model above instead learns an adjustment to the past-yield mean.")
+        st.table(rows[["MAE (kg/ha)", "RMSE (kg/ha)", "R squared"]].round(
+            {"MAE (kg/ha)": 1, "RMSE (kg/ha)": 1, "R squared": 3}))
+        st.write("Weather alone had the highest average error in both periods. Adding weather to past yields "
+                 "did not lower average error in this comparison.")
+        st.caption("MAE is the average size of the error; lower is better.")
+
+
 def evidence(report):
     st.title("Model and results")
     st.write("One numerical Random Forest, compared with the mean of five past yields.")
@@ -196,6 +210,7 @@ def evidence(report):
     difference = baseline["MAE (kg/ha)"]-forest["MAE (kg/ha)"]
     st.write(f"Forest MAE is {abs(difference):.1f} kg/ha {'lower' if difference > 0 else 'higher'} than the baseline in this period.")
     st.caption("These years were examined in earlier experiments. This is a retrospective comparison, not a new independent test.")
+    input_comparison(period)
     predictions = pd.read_csv(OUT / "evaluation.csv")
     predictions = predictions.loc[predictions.period.eq(period)]
     with st.expander("Errors by year"):

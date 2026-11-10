@@ -1,0 +1,114 @@
+{
+  "source_sha256": "77163c0c5ae91565ba087c04ee297edc08989245501658e69d77d4f28dee8d74",
+  "training_rows": 840,
+  "training_years": [
+    1987,
+    2004
+  ],
+  "parameters": {
+    "n_estimators": 300,
+    "max_depth": 4,
+    "min_samples_leaf": 10,
+    "random_state": 42,
+    "n_jobs": 2
+  },
+  "features": {
+    "Weather only": [
+      "T2M_MAX_06",
+      "T2M_MAX_07",
+      "T2M_MAX_08",
+      "T2M_MIN_06",
+      "T2M_MIN_07",
+      "T2M_MIN_08",
+      "PRECTOTCORR_06",
+      "PRECTOTCORR_07",
+      "PRECTOTCORR_08",
+      "RH2M_06",
+      "RH2M_07",
+      "RH2M_08"
+    ],
+    "Past yields only": [
+      "yield_lag2",
+      "yield_lag3",
+      "yield_lag4",
+      "yield_lag5",
+      "yield_lag6"
+    ],
+    "Past yields + weather": [
+      "yield_lag2",
+      "yield_lag3",
+      "yield_lag4",
+      "yield_lag5",
+      "yield_lag6",
+      "T2M_MAX_06",
+      "T2M_MAX_07",
+      "T2M_MAX_08",
+      "T2M_MIN_06",
+      "T2M_MIN_07",
+      "T2M_MIN_08",
+      "PRECTOTCORR_06",
+      "PRECTOTCORR_07",
+      "PRECTOTCORR_08",
+      "RH2M_06",
+      "RH2M_07",
+      "RH2M_08"
+    ]
+  },
+  "target": "yield_kg_ha",
+  "scores": [
+    {
+      "Period": "Earlier check: 2006-2011",
+      "Inputs": "Weather only",
+      "Rows": 300,
+      "MAE (kg/ha)": 549.190362900838,
+      "RMSE (kg/ha)": 693.6228372925469,
+      "R squared": 0.034457766758996033,
+      "Mean error (kg/ha)": -275.8253810937687
+    },
+    {
+      "Period": "Later check: 2012-2017",
+      "Inputs": "Weather only",
+      "Rows": 300,
+      "MAE (kg/ha)": 789.1646752172103,
+      "RMSE (kg/ha)": 939.2880266244963,
+      "R squared": -0.9174727741763062,
+      "Mean error (kg/ha)": -723.4014593436318
+    },
+    {
+      "Period": "Earlier check: 2006-2011",
+      "Inputs": "Past yields only",
+      "Rows": 300,
+      "MAE (kg/ha)": 352.77034943151625,
+      "RMSE (kg/ha)": 508.6472849062476,
+      "R squared": 0.48077216218321406,
+      "Mean error (kg/ha)": -75.7972733875221
+    },
+    {
+      "Period": "Later check: 2012-2017",
+      "Inputs": "Past yields only",
+      "Rows": 300,
+      "MAE (kg/ha)": 464.5404345805787,
+      "RMSE (kg/ha)": 587.2766794604005,
+      "R squared": 0.25042145969159135,
+      "Mean error (kg/ha)": -212.7393355541998
+    },
+    {
+      "Period": "Earlier check: 2006-2011",
+      "Inputs": "Past yields + weather",
+      "Rows": 300,
+      "MAE (kg/ha)": 352.7795189236475,
+      "RMSE (kg/ha)": 507.9396236375708,
+      "R squared": 0.48221592032605354,
+      "Mean error (kg/ha)": -79.73463926267567
+    },
+    {
+      "Period": "Later check: 2012-2017",
+      "Inputs": "Past yields + weather",
+      "Rows": 300,
+      "MAE (kg/ha)": 467.03618618455306,
+      "RMSE (kg/ha)": 589.5855210284678,
+      "R squared": 0.24451603167063973,
+      "Mean error (kg/ha)": -224.32986000416543
+    }
+  ]
+}
