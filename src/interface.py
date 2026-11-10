@@ -7,7 +7,7 @@ import pandas as pd
 import streamlit as st
 
 from src.data import ROOT, FEATURES, LAGS, LABELS, MONTHS, TARGET, load_data
-from src.input_comparison import REPORT as INPUT_COMPARISON_REPORT
+from src.input_comparison import OLS_HISTORY, OLS_WEATHER, REPORT as INPUT_COMPARISON_REPORT, RF_HISTORY, RF_WEATHER
 from src.model import OUT, predict
 from src.model_runtime import load_model
 
@@ -187,14 +187,28 @@ def data_view(frame):
         st.write("Other retained seasonal and satellite datasets belong to the earlier studies and are not inputs to this model.")
 
 
-def input_comparison(period):
+def comparison_table(rows, label):
+    st.table(rows.set_index(label)[["MAE (kg/ha)", "RMSE (kg/ha)", "R squared"]].round(
+        {"MAE (kg/ha)": 1, "RMSE (kg/ha)": 1, "R squared": 3}))
+
+
+def input_comparison(period, report):
     with st.expander("Compare weather and past yields"):
-        report = json.loads(INPUT_COMPARISON_REPORT.read_text(encoding="utf-8"))
-        rows = pd.DataFrame(row for row in report["scores"] if row["Period"] == period).set_index("Inputs")
-        st.caption("Same Random Forest settings and assessment records. Each model predicts yield directly. "
-                   "The app model above instead learns an adjustment to the past-yield mean.")
-        st.table(rows[["MAE (kg/ha)", "RMSE (kg/ha)", "R squared"]].round(
-            {"MAE (kg/ha)": 1, "RMSE (kg/ha)": 1, "R squared": 3}))
+        st.markdown("**Does weather help the app model?**")
+        st.caption("Each model learns an adjustment to the same five-past-yield mean. "
+                   "Within each method, only the inputs change. OLS is ordinary least squares (linear regression).")
+        adjustment = pd.DataFrame(row for row in report["adjustment_comparison"]["scores"] if row["Period"] == period)
+        comparison_table(adjustment, "Method")
+        mae = adjustment.set_index("Method")["MAE (kg/ha)"]
+        for method, without, with_weather in [("Random Forest", RF_HISTORY, RF_WEATHER), ("OLS", OLS_HISTORY, OLS_WEATHER)]:
+            change = mae[with_weather] - mae[without]
+            message = (f"{'lowered' if change < 0 else 'raised'} MAE by {abs(change):.1f} kg/ha"
+                       if abs(change) >= .05 else "left MAE effectively unchanged")
+            st.write(f"**{method}:** Adding weather {message}.")
+        st.markdown("**Can weather predict yield on its own?**")
+        st.caption("These three forests predict yield directly using the same settings and assessment records.")
+        rows = pd.DataFrame(row for row in report["scores"] if row["Period"] == period)
+        comparison_table(rows, "Inputs")
         st.write("Weather alone had the highest average error in both periods. Adding weather to past yields "
                  "did not lower average error in this comparison.")
         st.caption("MAE is the average size of the error; lower is better.")
@@ -202,15 +216,18 @@ def input_comparison(period):
 
 def evidence(report):
     st.title("Model and results")
-    st.write("One numerical Random Forest, compared with the mean of five past yields.")
+    st.write("The app's Random Forest compared with two historical yield baselines.")
     period = st.selectbox("Evaluation period", list(dict.fromkeys(row["Period"] for row in report["scores"])), index=1)
     rows = [row for row in report["scores"] if row["Period"] == period]
+    comparison = json.loads(INPUT_COMPARISON_REPORT.read_text(encoding="utf-8"))
+    adjustment = comparison["adjustment_comparison"]
+    rows.extend(row for row in adjustment["additional_baselines"] if row["Period"] == period)
     st.dataframe(pd.DataFrame(rows).drop(columns="Period").set_index("Method").T, width="stretch")
-    forest, baseline = rows
+    forest, baseline = rows[:2]
     difference = baseline["MAE (kg/ha)"]-forest["MAE (kg/ha)"]
     st.write(f"Forest MAE is {abs(difference):.1f} kg/ha {'lower' if difference > 0 else 'higher'} than the baseline in this period.")
     st.caption("These years were examined in earlier experiments. This is a retrospective comparison, not a new independent test.")
-    input_comparison(period)
+    input_comparison(period, comparison)
     predictions = pd.read_csv(OUT / "evaluation.csv")
     predictions = predictions.loc[predictions.period.eq(period)]
     with st.expander("Errors by year"):
@@ -221,6 +238,10 @@ def evidence(report):
                            "Baseline MAE (kg/ha)": float((group.baseline-group[TARGET]).abs().mean()),
                            "Forest bias (kg/ha)": float((group.prediction-group[TARGET]).mean())})
         st.dataframe(pd.DataFrame(yearly), hide_index=True, width="stretch")
+        st.caption("Weather MAE gain is the error without weather minus the error with weather. Positive values mean weather helped.")
+        weather_gains = pd.DataFrame(adjustment["weather_mae_gain_by_year_kg_ha"])
+        st.dataframe(weather_gains.loc[weather_gains.year.isin(predictions.year)].rename(columns={"year": "Year"}).round(1),
+                     hide_index=True, width="stretch")
     states = sorted(predictions.state.unique())
     state = st.selectbox("Example state", states)
     part = predictions.loc[predictions.state.eq(state)]

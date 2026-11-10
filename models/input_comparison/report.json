@@ -60,7 +60,7 @@
       "Period": "Earlier check: 2006-2011",
       "Inputs": "Weather only",
       "Rows": 300,
-      "MAE (kg/ha)": 549.190362900838,
+      "MAE (kg/ha)": 549.1903629008381,
       "RMSE (kg/ha)": 693.6228372925469,
       "R squared": 0.034457766758996033,
       "Mean error (kg/ha)": -275.8253810937687
@@ -71,7 +71,7 @@
       "Rows": 300,
       "MAE (kg/ha)": 789.1646752172103,
       "RMSE (kg/ha)": 939.2880266244963,
-      "R squared": -0.9174727741763062,
+      "R squared": -0.917472774176306,
       "Mean error (kg/ha)": -723.4014593436318
     },
     {
@@ -79,15 +79,15 @@
       "Inputs": "Past yields only",
       "Rows": 300,
       "MAE (kg/ha)": 352.77034943151625,
-      "RMSE (kg/ha)": 508.6472849062476,
-      "R squared": 0.48077216218321406,
+      "RMSE (kg/ha)": 508.64728490624753,
+      "R squared": 0.48077216218321417,
       "Mean error (kg/ha)": -75.7972733875221
     },
     {
       "Period": "Later check: 2012-2017",
       "Inputs": "Past yields only",
       "Rows": 300,
-      "MAE (kg/ha)": 464.5404345805787,
+      "MAE (kg/ha)": 464.54043458057856,
       "RMSE (kg/ha)": 587.2766794604005,
       "R squared": 0.25042145969159135,
       "Mean error (kg/ha)": -212.7393355541998
@@ -99,7 +99,7 @@
       "MAE (kg/ha)": 352.7795189236475,
       "RMSE (kg/ha)": 507.9396236375708,
       "R squared": 0.48221592032605354,
-      "Mean error (kg/ha)": -79.73463926267567
+      "Mean error (kg/ha)": -79.73463926267564
     },
     {
       "Period": "Later check: 2012-2017",
@@ -108,7 +108,168 @@
       "MAE (kg/ha)": 467.03618618455306,
       "RMSE (kg/ha)": 589.5855210284678,
       "R squared": 0.24451603167063973,
-      "Mean error (kg/ha)": -224.32986000416543
+      "Mean error (kg/ha)": -224.3298600041654
     }
-  ]
+  ],
+  "code_sha256": "af810fee32287f8b5e20dbcd3aefb9a7f2b02b4f896b1dee0655265af0951c89",
+  "adjustment_comparison": {
+    "target": "Observed yield minus the mean of five past yields",
+    "app_evaluation_sha256": "d291eccdc54bd418eae0ccccf13f473e23493bed66524356920c69989e668c7a",
+    "scores": [
+      {
+        "Period": "Earlier check: 2006-2011",
+        "Method": "Random Forest: past yields only",
+        "Rows": 300,
+        "MAE (kg/ha)": 347.1801350537018,
+        "RMSE (kg/ha)": 509.4398444997317,
+        "R squared": 0.47915280973669805,
+        "Mean error (kg/ha)": -86.93078117525461
+      },
+      {
+        "Period": "Later check: 2012-2017",
+        "Method": "Random Forest: past yields only",
+        "Rows": 300,
+        "MAE (kg/ha)": 434.3678007733012,
+        "RMSE (kg/ha)": 555.3391800406132,
+        "R squared": 0.3297323437676287,
+        "Mean error (kg/ha)": -208.91386031296167
+      },
+      {
+        "Period": "Earlier check: 2006-2011",
+        "Method": "Random Forest: past yields + weather (app)",
+        "Rows": 300,
+        "MAE (kg/ha)": 325.8591981943155,
+        "RMSE (kg/ha)": 482.0379124177269,
+        "R squared": 0.5336769301812948,
+        "Mean error (kg/ha)": -45.242644182830134
+      },
+      {
+        "Period": "Later check: 2012-2017",
+        "Method": "Random Forest: past yields + weather (app)",
+        "Rows": 300,
+        "MAE (kg/ha)": 414.4565593947702,
+        "RMSE (kg/ha)": 535.7343946781374,
+        "R squared": 0.3762210824302529,
+        "Mean error (kg/ha)": -181.71916142812864
+      },
+      {
+        "Period": "Earlier check: 2006-2011",
+        "Method": "OLS: past yields only",
+        "Rows": 300,
+        "MAE (kg/ha)": 353.02976074570034,
+        "RMSE (kg/ha)": 527.015987878394,
+        "R squared": 0.4425934236933621,
+        "Mean error (kg/ha)": -61.67819878252354
+      },
+      {
+        "Period": "Later check: 2012-2017",
+        "Method": "OLS: past yields only",
+        "Rows": 300,
+        "MAE (kg/ha)": 416.00257171252343,
+        "RMSE (kg/ha)": 545.1611979298208,
+        "R squared": 0.35407587143301356,
+        "Mean error (kg/ha)": -155.61127473835828
+      },
+      {
+        "Period": "Earlier check: 2006-2011",
+        "Method": "OLS: past yields + weather",
+        "Rows": 300,
+        "MAE (kg/ha)": 338.8843140691934,
+        "RMSE (kg/ha)": 505.6458608026864,
+        "R squared": 0.48688179856762936,
+        "Mean error (kg/ha)": -29.84098333168672
+      },
+      {
+        "Period": "Later check: 2012-2017",
+        "Method": "OLS: past yields + weather",
+        "Rows": 300,
+        "MAE (kg/ha)": 435.3970296973861,
+        "RMSE (kg/ha)": 570.763890284541,
+        "R squared": 0.2919814888998854,
+        "Mean error (kg/ha)": -143.77792148751135
+      }
+    ],
+    "additional_baselines": [
+      {
+        "Period": "Earlier check: 2006-2011",
+        "Method": "Last available yield (Y-2)",
+        "Rows": 300,
+        "MAE (kg/ha)": 443.86103333333335,
+        "RMSE (kg/ha)": 656.9596734602512,
+        "R squared": 0.13383240677287578,
+        "Mean error (kg/ha)": -118.70976666666664
+      },
+      {
+        "Period": "Later check: 2012-2017",
+        "Method": "Last available yield (Y-2)",
+        "Rows": 300,
+        "MAE (kg/ha)": 444.35833333333335,
+        "RMSE (kg/ha)": 613.7105812194105,
+        "R squared": 0.18142428525403798,
+        "Mean error (kg/ha)": -150.56853333333336
+      }
+    ],
+    "weather_mae_gain_by_year_kg_ha": [
+      {
+        "year": 2006,
+        "Random Forest": 30.599810323350194,
+        "OLS": -13.101910623840283
+      },
+      {
+        "year": 2007,
+        "Random Forest": 6.6602244192025815,
+        "OLS": -19.75103958701382
+      },
+      {
+        "year": 2008,
+        "Random Forest": 29.456254565652024,
+        "OLS": 25.658082726642405
+      },
+      {
+        "year": 2009,
+        "Random Forest": 5.031504872847543,
+        "OLS": 11.559288245619891
+      },
+      {
+        "year": 2010,
+        "Random Forest": 34.38871756396323,
+        "OLS": 53.62104908252948
+      },
+      {
+        "year": 2011,
+        "Random Forest": 21.78910941130175,
+        "OLS": 26.887210215103806
+      },
+      {
+        "year": 2012,
+        "Random Forest": 57.25788216630595,
+        "OLS": -11.443997441991614
+      },
+      {
+        "year": 2013,
+        "Random Forest": 21.361391769933935,
+        "OLS": 9.646103187540056
+      },
+      {
+        "year": 2014,
+        "Random Forest": -18.63918760041137,
+        "OLS": -30.89571927271385
+      },
+      {
+        "year": 2015,
+        "Random Forest": 41.63869352258724,
+        "OLS": -31.282008424634242
+      },
+      {
+        "year": 2016,
+        "Random Forest": 2.054319672579286,
+        "OLS": -36.49215793505178
+      },
+      {
+        "year": 2017,
+        "Random Forest": 15.794348740191653,
+        "OLS": -15.898968022324162
+      }
+    ]
+  }
 }

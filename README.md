@@ -56,7 +56,18 @@ Later-period results (300 district-year records, 2012-2017):
 
 The forest has lower error in this comparison, but this does not establish high precision, independent confirmation or reliable damage prediction.
 
-**Model and results → Compare weather and past yields** shows a separate input comparison. Three forests with the same settings predict yield directly using weather only, past yields only, or both. They use the same 840 training rows and the same two 300-row assessment periods as the app model. Weather only was weakest; adding weather to past yields did not reduce MAE in either period. This result applies to the direct-yield fits, not to the app's historical-mean adjustment model. The estimate form still uses the original saved model.
+**Model and results → Compare weather and past yields** shows two comparisons on the same 840 training rows and the same two 300-row assessment periods. In the first, the saved app forest is compared with an otherwise identical forest using only past yields. Two ordinary least squares (OLS) models also fit the same historical-mean adjustment, with and without weather. For all four, the adjustment is added to the five-yield mean and estimates are clipped at zero.
+
+| Historical-mean adjustment model | MAE, 2006–2011 (kg/ha) | MAE, 2012–2017 (kg/ha) |
+| --- | ---: | ---: |
+| Random Forest: past yields only | 347.2 | 434.4 |
+| Random Forest: past yields + weather (app) | 325.9 | 414.5 |
+| OLS: past yields only | 353.0 | 416.0 |
+| OLS: past yields + weather | 338.9 | 435.4 |
+
+Weather lowered the adjustment forest's MAE by 21.3 and 19.9 kg/ha, respectively, but the gain was not universal across years. OLS gained from weather in the earlier period and lost accuracy in the later period. These are retrospective predictive comparisons, not causal effects or independent validation. The results page also includes last available yield (Y−2) as a second baseline.
+
+In the second comparison, three otherwise identical forests predict yield directly from weather only, past yields only, or both. Weather only was weakest, and weather did not reduce MAE when added to past yields in those direct-yield fits. The estimate form still uses the original saved model; no training runs when using the dashboard.
 
 To reproduce the comparison report without changing the app model:
 
